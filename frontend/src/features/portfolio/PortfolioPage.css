@@ -1,0 +1,17 @@
+.portfolio-page {}
+.portfolio-controls { display: flex; gap: var(--space-4); align-items: center; margin-bottom: var(--space-5); flex-wrap: wrap; }
+.portfolio-ticker-select { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.pticker-btn { font-family: var(--font-data); font-size: var(--text-xs); font-weight: var(--weight-medium); padding: 4px 10px; background: var(--bg-surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; color: var(--text-secondary); transition: all var(--duration-micro) var(--ease-out); }
+.pticker-btn:hover { border-color: var(--terracotta); color: var(--text-primary); }
+.pticker-btn.active { border-color: var(--accent, var(--terracotta)); color: var(--accent, var(--terracotta)); background: rgba(196,85,45,0.05); }
+.pticker-btn:focus-visible { outline: 2px solid var(--focus-ring); }
+.portfolio-empty { color: var(--text-muted); font-style: italic; padding: var(--space-8); text-align: center; }
+.portfolio-chart-wrap { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-5); margin-bottom: var(--space-4); }
+.portfolio-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: var(--space-4); }
+.portfolio-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); }
+.portfolio-table th { font-family: var(--font-data); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--text-muted); text-align: left; padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--divider); background: var(--bg-surface); font-weight: var(--weight-medium); }
+.portfolio-table td { font-family: var(--font-data); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-subtle); color: var(--text-primary); font-variant-numeric: tabular-nums; background: var(--bg-elevated); }
+.portfolio-table tr:last-child td { border-bottom: none; }
+.pt-name { font-family: var(--font-ui) !important; color: var(--text-secondary); }
+td.pos { color: var(--bullish); } td.neg { color: var(--bearish); }
+.portfolio-disclaimer { font-size: var(--text-sm); color: var(--text-muted); font-style: italic; }

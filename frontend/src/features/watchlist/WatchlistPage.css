@@ -1,0 +1,55 @@
+.watchlist-page {}
+
+.watchlist-add-wrap { position: relative; margin-bottom: var(--space-3); }
+.watchlist-add-input-wrap { position: relative; display: inline-block; }
+.watchlist-filter { margin-bottom: var(--space-4); }
+
+.watchlist-suggestions {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: var(--z-dropdown);
+  background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md); margin-top: 2px; overflow: hidden;
+  list-style: none;
+}
+
+.suggestion-item {
+  display: flex; align-items: center; gap: var(--space-3);
+  padding: var(--space-3) var(--space-4); width: 100%;
+  background: transparent; border: none; cursor: pointer; text-align: left;
+  transition: background var(--duration-micro) var(--ease-out);
+}
+.suggestion-item:hover { background: var(--interactive-hover); }
+.suggestion-item:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: -2px; }
+.suggestion-ticker { font-family: var(--font-data); font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--terracotta); min-width: 50px; }
+.suggestion-name { font-size: var(--text-sm); color: var(--text-secondary); }
+
+.watchlist-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.watchlist-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); min-width: 600px; }
+
+.watchlist-table th {
+  font-family: var(--font-data); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--text-muted); text-align: left; padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--divider); background: var(--bg-surface); font-weight: var(--weight-medium);
+}
+
+.watchlist-table td {
+  font-family: var(--font-data); padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary); font-variant-numeric: tabular-nums; background: var(--bg-elevated);
+}
+.watchlist-table tr:last-child td { border-bottom: none; }
+.watchlist-table tr:hover td { background: var(--interactive-hover); }
+
+.wl-ticker-link { color: var(--terracotta); font-weight: var(--weight-semibold); text-decoration: none; }
+.wl-ticker-link:hover { text-decoration: underline; }
+.wl-name { font-family: var(--font-ui) !important; color: var(--text-secondary); }
+
+td.pos { color: var(--bullish); }
+td.neg { color: var(--bearish); }
+
+.wl-remove-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; background: transparent; border: none; cursor: pointer;
+  color: var(--text-muted); border-radius: var(--radius-sm);
+  transition: color var(--duration-micro) var(--ease-out), background var(--duration-micro) var(--ease-out);
+}
+.wl-remove-btn:hover { color: var(--bearish); background: var(--error-bg); }
+.wl-remove-btn:focus-visible { outline: 2px solid var(--focus-ring); }
