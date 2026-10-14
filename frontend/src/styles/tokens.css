@@ -1,0 +1,270 @@
+/* ============================================================
+   STOCK TREND FORECASTER — DESIGN TOKENS
+   All CSS custom properties for the design system.
+   Light theme is the default; dark theme is class="dark" on <html>.
+   ============================================================ */
+
+:root {
+  /* ── Warm layer ─────────────────────────────────────────── */
+  --paper:        #F4EEE4;
+  --paper-2:      #EBE3D5;
+  --surface:      #FBF8F2;
+  --terracotta:   #C4552D;
+  --amber:        #E3A23B;
+  --clay-text:    #3A2E27;
+
+  /* ── Cool analytical layer ──────────────────────────────── */
+  --ink:          #14202B;
+  --slate:        #2E4A57;
+  --teal:         #2F7F7A;
+  --mist:         #A9BCC4;
+  --steel-text:   #5B6B75;
+
+  /* ── Semantic signal colors ─────────────────────────────── */
+  --bullish:      #2F7F7A;
+  --bearish:      #B5483A;
+  --neutral:      #8A7F73;
+  --forecast-hl:  #E3A23B;
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --text-primary:   #14202B;
+  --text-secondary: #5B6B75;
+  --text-muted:     #8A9BA4;
+  --text-inverse:   #FBF8F2;
+  --text-brand:     #C4552D;
+  --text-data:      #2E4A57;
+
+  /* ── Backgrounds ─────────────────────────────────────────── */
+  --bg-page:        #FBF8F2;
+  --bg-surface:     #F4EEE4;
+  --bg-surface-2:   #EBE3D5;
+  --bg-elevated:    #FFFFFF;
+  --bg-ink:         #14202B;
+  --bg-slate:       #2E4A57;
+  --bg-muted:       #F0EAE0;
+  --bg-skeleton:    #E8E0D4;
+
+  /* ── Borders ─────────────────────────────────────────────── */
+  --border:         #D6CBBC;
+  --border-strong:  #B8A898;
+  --border-subtle:  #EBE3D5;
+  --divider:        #D6CBBC;
+
+  /* ── Interactive states ──────────────────────────────────── */
+  --interactive-hover:  rgba(196, 85, 45, 0.06);
+  --interactive-active: rgba(196, 85, 45, 0.12);
+  --focus-ring:     #C4552D;
+  --focus-ring-offset: 2px;
+
+  /* ── Chart colors ────────────────────────────────────────── */
+  --chart-line:     #2E4A57;
+  --chart-forecast: #E3A23B;
+  --chart-volume:   #A9BCC4;
+  --chart-grid:     #D6CBBC;
+  --chart-axis:     #8A9BA4;
+  --chart-area:     rgba(46, 74, 87, 0.08);
+  --chart-forecast-area: rgba(227, 162, 59, 0.10);
+  --chart-positive: #2F7F7A;
+  --chart-negative: #B5483A;
+  --chart-tooltip-bg: #FBF8F2;
+  --chart-tooltip-border: #D6CBBC;
+
+  /* ── Feedback / Status ───────────────────────────────────── */
+  --error:          #B5483A;
+  --error-bg:       #FDF0EE;
+  --success:        #2F7F7A;
+  --success-bg:     #EEF6F5;
+  --warning:        #E3A23B;
+  --warning-bg:     #FDF6E9;
+  --info:           #2E4A57;
+  --info-bg:        #EEF2F5;
+
+  /* ── Shadows ─────────────────────────────────────────────── */
+  --shadow-xs:  0 1px 2px rgba(20, 32, 43, 0.05);
+  --shadow-sm:  0 1px 4px rgba(20, 32, 43, 0.08), 0 1px 2px rgba(20, 32, 43, 0.04);
+  --shadow-md:  0 4px 12px rgba(20, 32, 43, 0.10), 0 2px 4px rgba(20, 32, 43, 0.06);
+  --shadow-lg:  0 8px 24px rgba(20, 32, 43, 0.12), 0 4px 8px rgba(20, 32, 43, 0.06);
+  --shadow-xl:  0 16px 48px rgba(20, 32, 43, 0.14), 0 8px 16px rgba(20, 32, 43, 0.06);
+
+  /* ── Radii ────────────────────────────────────────────────── */
+  --radius-xs:    2px;
+  --radius-sm:    4px;
+  --radius-md:    10px;
+  --radius-lg:    14px;
+  --radius-xl:    20px;
+  --radius-full:  9999px;
+
+  /* ── Spacing ─────────────────────────────────────────────── */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ── Typography ──────────────────────────────────────────── */
+  --font-display:   'Fraunces', Georgia, serif;
+  --font-ui:        'DM Sans', system-ui, sans-serif;
+  --font-data:      'JetBrains Mono', 'Courier New', monospace;
+
+  --text-xs:     clamp(0.65rem,  0.8vw, 0.75rem);
+  --text-sm:     clamp(0.75rem,  1vw,   0.875rem);
+  --text-base:   clamp(0.875rem, 1.2vw, 1rem);
+  --text-md:     clamp(1rem,     1.4vw, 1.125rem);
+  --text-lg:     clamp(1.125rem, 1.6vw, 1.25rem);
+  --text-xl:     clamp(1.25rem,  2vw,   1.5rem);
+  --text-2xl:    clamp(1.5rem,   2.5vw, 1.875rem);
+  --text-3xl:    clamp(1.875rem, 3.5vw, 2.5rem);
+  --text-4xl:    clamp(2.25rem,  4.5vw, 3.5rem);
+  --text-hero:   clamp(2.75rem,  6vw,   5.5rem);
+
+  --leading-tight:    1.02;
+  --leading-snug:     1.25;
+  --leading-normal:   1.5;
+  --leading-relaxed:  1.65;
+
+  --tracking-tight:   -0.03em;
+  --tracking-snug:    -0.015em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-wider:   0.08em;
+  --tracking-widest:  0.12em;
+
+  --weight-light:   300;
+  --weight-normal:  400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+  --weight-bold:    700;
+  --weight-black:   900;
+
+  /* ── Motion ──────────────────────────────────────────────── */
+  --duration-micro:    180ms;
+  --duration-standard: 360ms;
+  --duration-hero:     800ms;
+  --ease-out:          cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:           cubic-bezier(0.64, 0, 0.78, 0);
+  --ease-in-out:       cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-spring:       cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Layout ──────────────────────────────────────────────── */
+  --sidebar-width:       240px;
+  --sidebar-width-collapsed: 60px;
+  --topnav-height:       56px;
+  --content-max:         1200px;
+  --content-wide:        1440px;
+  --content-narrow:      720px;
+  --column-gutter:       24px;
+
+  /* ── Z-index ─────────────────────────────────────────────── */
+  --z-below:      -1;
+  --z-base:        0;
+  --z-raised:     10;
+  --z-dropdown:   100;
+  --z-sticky:     200;
+  --z-overlay:    300;
+  --z-modal:      400;
+  --z-toast:      500;
+  --z-tooltip:    600;
+}
+
+/* ============================================================
+   DARK THEME
+   ============================================================ */
+html.dark {
+  /* ── Warm-charcoal surfaces ──────────────────────────────── */
+  --paper:        #1C2028;
+  --paper-2:      #242A34;
+  --surface:      #161B22;
+  --clay-text:    #D4C8B8;
+
+  /* ── Cool layer ──────────────────────────────────────────── */
+  --ink:          #E8DDD0;
+  --slate:        #7FA3B3;
+  --teal:         #3D9E99;
+  --mist:         #4A6574;
+  --steel-text:   #8BA3B0;
+
+  /* ── Signal colors stay vivid ────────────────────────────── */
+  --bullish:      #3D9E99;
+  --bearish:      #D05A4A;
+  --neutral:      #9A9088;
+  --forecast-hl:  #E8A83D;
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --text-primary:   #E8DDD0;
+  --text-secondary: #8BA3B0;
+  --text-muted:     #5A7080;
+  --text-inverse:   #161B22;
+  --text-brand:     #D96840;
+  --text-data:      #7FA3B3;
+
+  /* ── Backgrounds ─────────────────────────────────────────── */
+  --bg-page:        #161B22;
+  --bg-surface:     #1C2028;
+  --bg-surface-2:   #242A34;
+  --bg-elevated:    #2A3140;
+  --bg-ink:         #0E1318;
+  --bg-slate:       #1A2630;
+  --bg-muted:       #1E242E;
+  --bg-skeleton:    #242A34;
+
+  /* ── Borders ─────────────────────────────────────────────── */
+  --border:         #2E3848;
+  --border-strong:  #3D4D60;
+  --border-subtle:  #252C38;
+  --divider:        #2E3848;
+
+  /* ── Interactive ─────────────────────────────────────────── */
+  --interactive-hover:  rgba(217, 104, 64, 0.10);
+  --interactive-active: rgba(217, 104, 64, 0.18);
+  --focus-ring:     #D96840;
+
+  /* ── Chart ───────────────────────────────────────────────── */
+  --chart-line:     #7FA3B3;
+  --chart-forecast: #E8A83D;
+  --chart-volume:   #3D4D60;
+  --chart-grid:     #252C38;
+  --chart-axis:     #5A7080;
+  --chart-area:     rgba(127, 163, 179, 0.10);
+  --chart-forecast-area: rgba(232, 168, 61, 0.12);
+  --chart-positive: #3D9E99;
+  --chart-negative: #D05A4A;
+  --chart-tooltip-bg: #1C2028;
+  --chart-tooltip-border: #2E3848;
+
+  /* ── Feedback ────────────────────────────────────────────── */
+  --error:          #D05A4A;
+  --error-bg:       #2A1C1A;
+  --success:        #3D9E99;
+  --success-bg:     #141E20;
+  --warning:        #E8A83D;
+  --warning-bg:     #211C0E;
+  --info:           #7FA3B3;
+  --info-bg:        #141C22;
+
+  /* ── Shadows (deeper in dark) ────────────────────────────── */
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.20);
+  --shadow-sm:  0 1px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.30), 0 2px 4px rgba(0, 0, 0, 0.18);
+  --shadow-lg:  0 8px 24px rgba(0, 0, 0, 0.35), 0 4px 8px rgba(0, 0, 0, 0.20);
+  --shadow-xl:  0 16px 48px rgba(0, 0, 0, 0.40), 0 8px 16px rgba(0, 0, 0, 0.20);
+}
+
+/* ============================================================
+   REDUCED MOTION — baseline tokens only
+   Components use Framer Motion's useReducedMotion hook too.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-micro:    0ms;
+    --duration-standard: 0ms;
+    --duration-hero:     0ms;
+  }
+}
