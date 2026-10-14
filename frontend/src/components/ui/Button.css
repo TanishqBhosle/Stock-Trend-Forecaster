@@ -1,0 +1,159 @@
+/* ── Button base ─────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-ui);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition:
+    background var(--duration-micro) var(--ease-out),
+    color var(--duration-micro) var(--ease-out),
+    border-color var(--duration-micro) var(--ease-out),
+    box-shadow var(--duration-micro) var(--ease-out);
+  white-space: nowrap;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ── Sizes ────────────────────────────────────────────────── */
+.btn-sm {
+  font-size: var(--text-sm);
+  padding: 6px var(--space-3);
+  min-height: 32px;
+}
+
+.btn-md {
+  font-size: var(--text-base);
+  padding: 9px var(--space-5);
+  min-height: 40px;
+}
+
+.btn-lg {
+  font-size: var(--text-md);
+  padding: 12px var(--space-8);
+  min-height: 48px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ── Variants ─────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--terracotta);
+  color: #fff;
+  border-color: var(--terracotta);
+}
+.btn-primary:hover {
+  background: #a8451f;
+  border-color: #a8451f;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--terracotta);
+  border-color: var(--terracotta);
+}
+.btn-secondary:hover {
+  background: var(--interactive-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--interactive-hover);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background: var(--bearish);
+  color: #fff;
+  border-color: var(--bearish);
+}
+.btn-danger:hover {
+  background: #993020;
+}
+
+/* ── Icon slots ───────────────────────────────────────────── */
+.btn-icon-left,
+.btn-icon-right {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.btn-icon-left svg,
+.btn-icon-right svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Spinner ──────────────────────────────────────────────── */
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+.btn-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Icon-only button ─────────────────────────────────────── */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition:
+    background var(--duration-micro) var(--ease-out),
+    color var(--duration-micro) var(--ease-out);
+}
+
+.btn-icon:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.btn-icon-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+.btn-icon-ghost:hover {
+  background: var(--interactive-hover);
+  color: var(--text-primary);
+}
+
+.btn-icon-sm { width: 28px; height: 28px; }
+.btn-icon-md { width: 36px; height: 36px; }
+.btn-icon-lg { width: 44px; height: 44px; }
+
+.btn-icon svg {
+  width: 18px;
+  height: 18px;
+}

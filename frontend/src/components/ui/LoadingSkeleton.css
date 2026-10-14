@@ -1,0 +1,36 @@
+.page-skeleton {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.page-skeleton-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.page-skeleton-row {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.chart-skeleton {
+  width: 100%;
+}
+
+.table-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.table-skeleton-row {
+  display: flex;
+  gap: var(--space-6);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: center;
+}

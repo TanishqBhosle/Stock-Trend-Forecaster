@@ -1,0 +1,5 @@
+.theme-toggle {
+  color: var(--text-secondary);
+  transition: color var(--duration-micro) var(--ease-out);
+}
+.theme-toggle:hover { color: var(--text-primary); }

@@ -1,0 +1,86 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-ui);
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.badge-sm { font-size: var(--text-xs); padding: 2px var(--space-2); }
+.badge-md { font-size: var(--text-sm); padding: 3px var(--space-3); }
+
+.badge-default { background: var(--bg-muted); color: var(--text-secondary); }
+.badge-success  { background: var(--success-bg); color: var(--success); }
+.badge-warning  { background: var(--warning-bg); color: var(--warning); }
+.badge-error    { background: var(--error-bg);   color: var(--error); }
+.badge-info     { background: var(--info-bg);    color: var(--info); }
+.badge-muted    { background: var(--bg-muted);   color: var(--text-muted); }
+
+/* ── Signal badge ─────────────────────────────────────────── */
+.signal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-ui);
+  font-weight: var(--weight-semibold);
+  border-radius: var(--radius-xs);
+  border-width: 1px;
+  border-style: solid;
+  white-space: nowrap;
+}
+
+.signal-badge-sm { font-size: var(--text-xs); padding: 2px var(--space-2); }
+.signal-badge-md { font-size: var(--text-sm); padding: 3px var(--space-3); }
+
+.signal-badge-bullish {
+  background: rgba(47, 127, 122, 0.10);
+  color: var(--bullish);
+  border-color: rgba(47, 127, 122, 0.25);
+}
+.signal-badge-bearish {
+  background: rgba(181, 72, 58, 0.10);
+  color: var(--bearish);
+  border-color: rgba(181, 72, 58, 0.25);
+}
+.signal-badge-neutral {
+  background: rgba(138, 127, 115, 0.10);
+  color: var(--neutral);
+  border-color: rgba(138, 127, 115, 0.25);
+}
+
+/* ── Provenance label ─────────────────────────────────────── */
+.provenance-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-xs);
+  border: 1px solid;
+  white-space: nowrap;
+}
+.provenance-demo {
+  color: var(--amber);
+  background: rgba(227, 162, 59, 0.08);
+  border-color: rgba(227, 162, 59, 0.25);
+}
+.provenance-illustrative {
+  color: var(--amber);
+  background: rgba(227, 162, 59, 0.06);
+  border-color: rgba(227, 162, 59, 0.20);
+}
+.provenance-unavailable {
+  color: var(--text-muted);
+  background: var(--bg-muted);
+  border-color: var(--border);
+}
+.provenance-pending {
+  color: var(--steel-text);
+  background: var(--bg-muted);
+  border-color: var(--border-subtle);
+}
