@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { Eye, EyeOff } from 'lucide-react'
+import { Eye, EyeOff, LayoutDashboard, FlaskConical } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
@@ -22,7 +22,10 @@ export default function LoginPage() {
   const { login } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-  const from = location.state?.from?.pathname ?? '/app/dashboard'
+
+  const initialRole = location.state?.initialRole ||
+    (location.state?.from?.pathname?.startsWith('/scientist') ? 'scientist' : 'user')
+  const [accountRole, setAccountRole] = useState(initialRole)
 
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
@@ -30,10 +33,13 @@ export default function LoginPage() {
 
   const onSubmit = async (data) => {
     setLoading(true)
-    await new Promise(r => setTimeout(r, 800))
-    login(data.email, '', 'user')
+    await new Promise(r => setTimeout(r, 700))
+    login(data.email, '', accountRole)
     setLoading(false)
-    navigate(from, { replace: true })
+    const destination = accountRole === 'scientist'
+      ? (location.state?.from?.pathname?.startsWith('/scientist') ? location.state.from.pathname : '/scientist/performance')
+      : (location.state?.from?.pathname?.startsWith('/app') ? location.state.from.pathname : '/app/dashboard')
+    navigate(destination, { replace: true })
   }
 
   return (
@@ -55,14 +61,42 @@ export default function LoginPage() {
             <h1 className="auth-title">Sign in</h1>
             <DataProvenanceLabel type="demo">Demo — no real authentication</DataProvenanceLabel>
           </div>
-          <p className="auth-subtitle">Access the research platform.</p>
+          <p className="auth-subtitle">
+            {accountRole === 'scientist'
+              ? 'Enter Data Scientist credentials for model diagnostics and technical research.'
+              : 'Enter Investor / Analyst credentials for market forecasting and analysis.'}
+          </p>
+
+          {/* Account Role Selector */}
+          <div className="auth-role-tabs" role="tablist" aria-label="Select Account Role">
+            <button
+              type="button"
+              className={`auth-role-tab ${accountRole === 'user' ? 'auth-role-tab--active' : ''}`}
+              onClick={() => setAccountRole('user')}
+              role="tab"
+              aria-selected={accountRole === 'user'}
+            >
+              <LayoutDashboard size={14} />
+              <span>Investor / Analyst</span>
+            </button>
+            <button
+              type="button"
+              className={`auth-role-tab ${accountRole === 'scientist' ? 'auth-role-tab--active' : ''}`}
+              onClick={() => setAccountRole('scientist')}
+              role="tab"
+              aria-selected={accountRole === 'scientist'}
+            >
+              <FlaskConical size={14} />
+              <span>Data Scientist</span>
+            </button>
+          </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="auth-form" noValidate>
             <Input
               id="email"
               label="Email"
               type="email"
-              placeholder="you@example.com"
+              placeholder={accountRole === 'scientist' ? 'scientist@arthnex.internal' : 'you@example.com'}
               autoComplete="email"
               error={errors.email?.message}
               {...register('email')}
@@ -92,18 +126,16 @@ export default function LoginPage() {
               <Link to="/forgot-password" className="auth-link">Forgot password?</Link>
             </div>
             <Button type="submit" fullWidth loading={loading}>
-              {loading ? 'Signing in…' : 'Sign in'}
+              {loading ? 'Signing in…' : `Sign in as ${accountRole === 'scientist' ? 'Data Scientist' : 'Investor'}`}
             </Button>
           </form>
 
           <p className="auth-switch">
             No account?{' '}
-            <Link to="/signup" className="auth-link">Create one</Link>
+            <Link to="/signup" state={{ initialRole: accountRole }} className="auth-link">
+              Create an account
+            </Link>
           </p>
-
-          <div className="auth-demo-hint">
-            <p>Demo credentials — enter any valid email and a password of 6+ characters.</p>
-          </div>
         </div>
       </div>
     </div>

@@ -1,12 +1,11 @@
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   LayoutDashboard, TrendingUp, Star, BarChart2,
   FileText, FlaskConical, Activity, Database,
-  BookOpen, Settings, ChevronRight
+  BookOpen, Settings
 } from 'lucide-react'
 import { ArthNexLogo } from '@/components/ui/ArthNexLogo'
-import { useAuth } from '@/hooks/useAuth'
 import './Sidebar.css'
 
 const USER_NAV = [
@@ -19,9 +18,6 @@ const USER_NAV = [
   { group: 'Analysis', items: [
     { to: '/app/predictions', icon: FileText,  label: 'Predictions' },
     { to: '/app/backtest',    icon: FlaskConical, label: 'Backtesting' },
-  ]},
-  { group: 'Research Mode', items: [
-    { to: '/scientist/performance', icon: FlaskConical, label: 'Data Scientist Panel' },
   ]},
   { group: 'Model & Account', items: [
     { to: '/app/model-card',  icon: BookOpen,  label: 'Model Card' },
@@ -39,9 +35,6 @@ const SCIENTIST_NAV = [
     { to: '/scientist/dataset',    icon: Database,  label: 'Dataset' },
     { to: '/scientist/model-card', icon: BookOpen,  label: 'Model Card' },
   ]},
-  { group: 'Market Mode', items: [
-    { to: '/app/dashboard', icon: LayoutDashboard, label: 'Investor Workspace' },
-  ]},
   { group: 'Account', items: [
     { to: '/app/settings', icon: Settings, label: 'Settings' },
   ]},
@@ -54,17 +47,6 @@ const SCIENTIST_NAV = [
 export function Sidebar({ workspace = 'user' }) {
   const nav = workspace === 'scientist' ? SCIENTIST_NAV : USER_NAV
   const location = useLocation()
-  const navigate = useNavigate()
-  const { updateRole } = useAuth()
-
-  const handleSwitchWorkspace = (targetRole) => {
-    updateRole(targetRole)
-    if (targetRole === 'scientist') {
-      navigate('/scientist/performance')
-    } else {
-      navigate('/app/dashboard')
-    }
-  }
 
   return (
     <aside className={`sidebar sidebar-${workspace}`} aria-label="Main navigation">
@@ -73,28 +55,6 @@ export function Sidebar({ workspace = 'user' }) {
         {workspace === 'scientist' && (
           <span className="sidebar-workspace-badge">Scientist</span>
         )}
-      </div>
-
-      {/* Prominent Segmented Workspace Switcher */}
-      <div className="sidebar-ws-segmented">
-        <button
-          type="button"
-          className={`sidebar-ws-btn ${workspace === 'user' ? 'sidebar-ws-btn--active' : ''}`}
-          onClick={() => handleSwitchWorkspace('user')}
-          aria-label="Switch to Investor / Analyst Workspace"
-        >
-          <LayoutDashboard size={13} />
-          <span>Analyst</span>
-        </button>
-        <button
-          type="button"
-          className={`sidebar-ws-btn ${workspace === 'scientist' ? 'sidebar-ws-btn--active' : ''}`}
-          onClick={() => handleSwitchWorkspace('scientist')}
-          aria-label="Switch to Data Scientist Workspace"
-        >
-          <FlaskConical size={13} />
-          <span>Scientist</span>
-        </button>
       </div>
 
       <nav className="sidebar-nav">
@@ -131,28 +91,11 @@ export function Sidebar({ workspace = 'user' }) {
       </nav>
 
       <div className="sidebar-footer">
-        <div className="sidebar-switch">
-          {workspace === 'user' ? (
-            <button
-              type="button"
-              className="sidebar-switch-link"
-              onClick={() => handleSwitchWorkspace('scientist')}
-            >
-              <FlaskConical size={14} />
-              <span>Scientist view</span>
-              <ChevronRight size={12} />
-            </button>
-          ) : (
-            <button
-              type="button"
-              className="sidebar-switch-link"
-              onClick={() => handleSwitchWorkspace('user')}
-            >
-              <LayoutDashboard size={14} />
-              <span>Investor view</span>
-              <ChevronRight size={12} />
-            </button>
-          )}
+        <div className="sidebar-role-indicator">
+          <span className="sidebar-role-label">Active Role</span>
+          <span className="sidebar-role-value">
+            {workspace === 'scientist' ? 'Data Scientist' : 'Investor / Analyst'}
+          </span>
         </div>
       </div>
     </aside>

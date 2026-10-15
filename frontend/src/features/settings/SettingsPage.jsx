@@ -28,7 +28,7 @@ function loadNotificationPrefs() {
 
 export default function SettingsPage() {
   const { theme, setTheme } = useTheme()
-  const { user, logout, updateRole } = useAuth()
+  const { user, logout } = useAuth()
   const { addToast } = useToast()
   const navigate = useNavigate()
   const [defaultTicker, setDefaultTicker] = useState('^GSPC')
@@ -129,34 +129,14 @@ export default function SettingsPage() {
           <h2 className="settings-section-title">Workspace Preferences</h2>
           <div className="settings-row">
             <div>
-              <span className="settings-label" style={{ display: 'block' }}>Active Workspace Role</span>
+              <span className="settings-label" style={{ display: 'block' }}>Active Account Role</span>
               <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-secondary)' }}>
-                {user?.role === 'scientist' ? 'Data Scientist Workspace' : 'Investor / Analyst Workspace'}
+                {user?.role === 'scientist' ? 'Data Scientist (Research Access)' : 'Investor / Analyst (Market Access)'}
               </span>
             </div>
-            {user?.role === 'scientist' ? (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  updateRole('user')
-                  navigate('/app/dashboard')
-                }}
-              >
-                Switch to Analyst Workspace
-              </Button>
-            ) : (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  updateRole('scientist')
-                  navigate('/scientist/performance')
-                }}
-              >
-                Switch to Scientist Panel
-              </Button>
-            )}
+            <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-muted)', fontFamily: 'var(--font-data)' }}>
+              Sign out to change credentials
+            </span>
           </div>
           <div className="settings-row">
             <span className="settings-label">Default instrument</span>

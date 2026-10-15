@@ -57,7 +57,7 @@ export default function App() {
               <Route
                 path="/app"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute requiredRole="user">
                     <AppShell workspace="user" />
                   </ProtectedRoute>
                 }
@@ -79,7 +79,7 @@ export default function App() {
               <Route
                 path="/scientist"
                 element={
-                  <ProtectedRoute>
+                  <ProtectedRoute requiredRole="scientist">
                     <AppShell workspace="scientist" />
                   </ProtectedRoute>
                 }

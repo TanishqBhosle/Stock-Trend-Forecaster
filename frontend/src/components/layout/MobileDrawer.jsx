@@ -1,31 +1,28 @@
 import { useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X, LayoutDashboard, TrendingUp, Star, BarChart2, FileText, FlaskConical, BookOpen, Settings, Activity, Database } from 'lucide-react'
 import { ArthNexLogo } from '@/components/ui/ArthNexLogo'
-import { useAuth } from '@/hooks/useAuth'
 import './MobileDrawer.css'
 
 const USER_ITEMS = [
-  { to: '/app/dashboard',         icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/app/stocks',            icon: TrendingUp,      label: 'Stocks' },
-  { to: '/app/watchlist',         icon: Star,            label: 'Watchlist' },
-  { to: '/app/portfolio',         icon: BarChart2,       label: 'Portfolio' },
-  { to: '/app/predictions',       icon: FileText,        label: 'Predictions' },
-  { to: '/app/backtest',          icon: FlaskConical,    label: 'Backtesting' },
-  { to: '/scientist/performance', icon: FlaskConical,    label: 'Data Scientist Panel' },
-  { to: '/app/model-card',        icon: BookOpen,        label: 'Model Card' },
-  { to: '/app/settings',          icon: Settings,        label: 'Settings' },
+  { to: '/app/dashboard',   icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/app/stocks',      icon: TrendingUp,      label: 'Stocks' },
+  { to: '/app/watchlist',   icon: Star,            label: 'Watchlist' },
+  { to: '/app/portfolio',   icon: BarChart2,       label: 'Portfolio' },
+  { to: '/app/predictions', icon: FileText,        label: 'Predictions' },
+  { to: '/app/backtest',    icon: FlaskConical,    label: 'Backtesting' },
+  { to: '/app/model-card',  icon: BookOpen,        label: 'Model Card' },
+  { to: '/app/settings',    icon: Settings,        label: 'Settings' },
 ]
 
 const SCIENTIST_ITEMS = [
-  { to: '/scientist/performance', icon: Activity,        label: 'Performance' },
-  { to: '/scientist/models',      icon: BarChart2,       label: 'Models' },
-  { to: '/scientist/experiments', icon: FlaskConical,    label: 'Experiments' },
-  { to: '/scientist/dataset',     icon: Database,        label: 'Dataset' },
-  { to: '/scientist/model-card',  icon: BookOpen,        label: 'Model Card' },
-  { to: '/app/dashboard',         icon: LayoutDashboard, label: 'Investor Workspace' },
-  { to: '/app/settings',          icon: Settings,        label: 'Settings' },
+  { to: '/scientist/performance', icon: Activity,      label: 'Performance' },
+  { to: '/scientist/models',      icon: BarChart2,     label: 'Models' },
+  { to: '/scientist/experiments', icon: FlaskConical,  label: 'Experiments' },
+  { to: '/scientist/dataset',     icon: Database,      label: 'Dataset' },
+  { to: '/scientist/model-card',  icon: BookOpen,      label: 'Model Card' },
+  { to: '/app/settings',          icon: Settings,      label: 'Settings' },
 ]
 
 /**
@@ -33,8 +30,6 @@ const SCIENTIST_ITEMS = [
  */
 export function MobileDrawer({ open, onClose, workspace = 'user' }) {
   const items = workspace === 'scientist' ? SCIENTIST_ITEMS : USER_ITEMS
-  const navigate = useNavigate()
-  const { updateRole } = useAuth()
 
   // Close on Escape
   useEffect(() => {
@@ -49,16 +44,6 @@ export function MobileDrawer({ open, onClose, workspace = 'user' }) {
     else document.body.style.overflow = ''
     return () => { document.body.style.overflow = '' }
   }, [open])
-
-  const handleSwitchWorkspace = (targetRole) => {
-    onClose()
-    updateRole(targetRole)
-    if (targetRole === 'scientist') {
-      navigate('/scientist/performance')
-    } else {
-      navigate('/app/dashboard')
-    }
-  }
 
   return (
     <AnimatePresence>
@@ -90,26 +75,6 @@ export function MobileDrawer({ open, onClose, workspace = 'user' }) {
               </button>
             </div>
 
-            {/* Segmented workspace switcher */}
-            <div className="drawer-ws-segmented">
-              <button
-                type="button"
-                className={`drawer-ws-btn ${workspace === 'user' ? 'drawer-ws-btn--active' : ''}`}
-                onClick={() => handleSwitchWorkspace('user')}
-              >
-                <LayoutDashboard size={13} />
-                <span>Analyst View</span>
-              </button>
-              <button
-                type="button"
-                className={`drawer-ws-btn ${workspace === 'scientist' ? 'drawer-ws-btn--active' : ''}`}
-                onClick={() => handleSwitchWorkspace('scientist')}
-              >
-                <FlaskConical size={13} />
-                <span>Scientist View</span>
-              </button>
-            </div>
-
             <div className="drawer-items">
               {items.map((item) => {
                 const Icon = item.icon
@@ -130,7 +95,9 @@ export function MobileDrawer({ open, onClose, workspace = 'user' }) {
             </div>
 
             <div className="drawer-footer">
-              <span className="drawer-demo-notice">Demo application — not financial advice</span>
+              <span className="drawer-demo-notice">
+                {workspace === 'scientist' ? 'Data Scientist Workspace' : 'Investor Workspace'}
+              </span>
             </div>
           </motion.nav>
         </div>

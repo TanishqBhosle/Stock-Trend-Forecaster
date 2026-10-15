@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { Search, Menu, Settings, LogOut, ArrowRightLeft, FlaskConical, LayoutDashboard } from 'lucide-react'
+import { Search, Menu, Settings, LogOut } from 'lucide-react'
 import { useNavigate, Link } from 'react-router-dom'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { IconButton } from '@/components/ui/Button'
@@ -16,7 +16,7 @@ import './TopNav.css'
  * @param {'user'|'scientist'} [props.workspace='user']
  */
 export function TopNav({ breadcrumbs = [], onOpenSearch, onOpenDrawer, workspace = 'user' }) {
-  const { user, logout, updateRole } = useAuth()
+  const { user, logout } = useAuth()
   const navigate = useNavigate()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef(null)
@@ -48,16 +48,6 @@ export function TopNav({ breadcrumbs = [], onOpenSearch, onOpenDrawer, workspace
     navigate('/login')
   }
 
-  const handleSwitchWorkspace = (targetRole) => {
-    setMenuOpen(false)
-    updateRole(targetRole)
-    if (targetRole === 'scientist') {
-      navigate('/scientist/performance')
-    } else {
-      navigate('/app/dashboard')
-    }
-  }
-
   return (
     <header className={`topnav topnav-${workspace}`} role="banner">
       {/* Mobile menu */}
@@ -84,29 +74,6 @@ export function TopNav({ breadcrumbs = [], onOpenSearch, onOpenDrawer, workspace
       </nav>
 
       <div className="topnav-actions">
-        {/* Quick Direct Workspace Switcher */}
-        {workspace === 'user' ? (
-          <button
-            type="button"
-            className="topnav-ws-switch topnav-ws-switch--to-scientist"
-            onClick={() => handleSwitchWorkspace('scientist')}
-            title="Switch directly to Data Scientist Panel"
-          >
-            <FlaskConical size={13} className="topnav-ws-switch-icon" />
-            <span className="topnav-ws-switch-label">Data Scientist Panel</span>
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="topnav-ws-switch topnav-ws-switch--to-user"
-            onClick={() => handleSwitchWorkspace('user')}
-            title="Switch directly to Investor / Analyst Workspace"
-          >
-            <LayoutDashboard size={13} className="topnav-ws-switch-icon" />
-            <span className="topnav-ws-switch-label">Investor Workspace</span>
-          </button>
-        )}
-
         {/* Search trigger */}
         <button
           className="topnav-search-btn"
@@ -138,8 +105,8 @@ export function TopNav({ breadcrumbs = [], onOpenSearch, onOpenDrawer, workspace
             <div className="topnav-dropdown" role="menu" aria-label="User account menu">
               <div className="topnav-dropdown-header">
                 <div className="topnav-dropdown-user-info">
-                  <p className="topnav-dropdown-name">{user?.name || 'Demo Analyst'}</p>
-                  <p className="topnav-dropdown-email">{user?.email || 'demo@arthnex.internal'}</p>
+                  <p className="topnav-dropdown-name">{user?.name || (workspace === 'scientist' ? 'Data Scientist' : 'Demo Analyst')}</p>
+                  <p className="topnav-dropdown-email">{user?.email || 'user@arthnex.internal'}</p>
                 </div>
                 <span className="topnav-dropdown-role-badge">
                   {workspace === 'scientist' ? 'Data Scientist' : 'Investor / Analyst'}
@@ -149,28 +116,6 @@ export function TopNav({ breadcrumbs = [], onOpenSearch, onOpenDrawer, workspace
               <div className="topnav-dropdown-divider" />
 
               <div className="topnav-dropdown-items">
-                {workspace === 'user' ? (
-                  <button
-                    type="button"
-                    className="topnav-dropdown-item"
-                    role="menuitem"
-                    onClick={() => handleSwitchWorkspace('scientist')}
-                  >
-                    <ArrowRightLeft size={14} />
-                    <span>Switch to Scientist View</span>
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className="topnav-dropdown-item"
-                    role="menuitem"
-                    onClick={() => handleSwitchWorkspace('user')}
-                  >
-                    <ArrowRightLeft size={14} />
-                    <span>Switch to Analyst View</span>
-                  </button>
-                )}
-
                 <Link
                   to="/app/settings"
                   className="topnav-dropdown-item"

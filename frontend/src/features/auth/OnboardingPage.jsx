@@ -51,9 +51,9 @@ export default function OnboardingPage() {
           <div style={{ marginBottom: '1.25rem' }}>
             <ArthNexLogo size="lg" link={false} tagline={true} />
           </div>
-          <h1 className="onboarding-title">How will you use the platform?</h1>
+          <h1 className="onboarding-title">Select Account Credential Role</h1>
           <p className="onboarding-subtitle">
-            Choose your primary workspace mode. You can switch between Analyst and Scientist view at any time.
+            Choose your credential type. Accounts are role-restricted: to switch between Investor and Data Scientist panels, you must sign out and authenticate with the corresponding credentials.
           </p>
 
           <div className="onboarding-roles">
