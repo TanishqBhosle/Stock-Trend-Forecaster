@@ -128,6 +128,37 @@ export default function SettingsPage() {
         <section className="settings-section">
           <h2 className="settings-section-title">Workspace Preferences</h2>
           <div className="settings-row">
+            <div>
+              <span className="settings-label" style={{ display: 'block' }}>Active Workspace Role</span>
+              <span style={{ fontSize: 'var(--text-xs)', color: 'var(--text-secondary)' }}>
+                {user?.role === 'scientist' ? 'Data Scientist Workspace' : 'Investor / Analyst Workspace'}
+              </span>
+            </div>
+            {user?.role === 'scientist' ? (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  updateRole('user')
+                  navigate('/app/dashboard')
+                }}
+              >
+                Switch to Analyst Workspace
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  updateRole('scientist')
+                  navigate('/scientist/performance')
+                }}
+              >
+                Switch to Scientist Panel
+              </Button>
+            )}
+          </div>
+          <div className="settings-row">
             <span className="settings-label">Default instrument</span>
             <Select id="defaultTicker" value={defaultTicker} onChange={e => { setDefaultTicker(e.target.value); addToast('Default instrument saved', { type: 'info' }) }} fullWidth={false}>
               {['^GSPC (Primary Index)', 'AAPL', 'MSFT', 'GOOGL', 'NVDA', 'SPY'].map(t => {

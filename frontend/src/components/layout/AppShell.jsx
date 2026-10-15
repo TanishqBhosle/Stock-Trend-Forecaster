@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Sidebar } from './Sidebar'
 import { TopNav } from './TopNav'
 import { MobileDrawer } from './MobileDrawer'
 import { CommandPalette, useCommandPalette } from '@/components/ui/CommandPalette'
+import { useAuth } from '@/hooks/useAuth'
 import './AppShell.css'
 
 /**
@@ -18,6 +19,14 @@ export function AppShell({ workspace = 'user', breadcrumbs }) {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const { open: cmdOpen, openPalette, closePalette } = useCommandPalette()
   const location = useLocation()
+  const { user, updateRole } = useAuth()
+
+  // Ensure user.role automatically matches the active workspace
+  useEffect(() => {
+    if (user && user.role !== workspace) {
+      updateRole(workspace)
+    }
+  }, [user, workspace, updateRole])
 
   // Generate breadcrumbs from path if not provided
   const crumbs = breadcrumbs ?? generateBreadcrumbs(location.pathname)
