@@ -1,5 +1,51 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#F4EEE4"/>
-  <path d="M6 22 L11 14 L16 18 L22 10 L26 15" stroke="#C4552D" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <circle cx="22" cy="10" r="2" fill="#E3A23B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="arthnex-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B132B" />
+      <stop offset="100%" stop-color="#070B14" />
+    </linearGradient>
+    <linearGradient id="arthnex-left-grad" x1="10%" y1="90%" x2="50%" y2="10%">
+      <stop offset="0%" stop-color="#1D64EC" />
+      <stop offset="40%" stop-color="#0091FF" />
+      <stop offset="100%" stop-color="#00D2FE" />
+    </linearGradient>
+    <linearGradient id="arthnex-loop-grad" x1="45%" y1="15%" x2="90%" y2="70%">
+      <stop offset="0%" stop-color="#00D2FE" />
+      <stop offset="45%" stop-color="#00C4D8" />
+      <stop offset="100%" stop-color="#05C992" />
+    </linearGradient>
+    <linearGradient id="arthnex-arrow-grad" x1="60%" y1="60%" x2="100%" y2="10%">
+      <stop offset="0%" stop-color="#05C992" />
+      <stop offset="50%" stop-color="#10E57A" />
+      <stop offset="100%" stop-color="#34D399" />
+    </linearGradient>
+    <filter id="arthnex-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark rounded container -->
+  <rect width="120" height="120" rx="26" fill="url(#arthnex-bg)" />
+
+  <!-- Main stylized 'A' ribbon with upward trend arrow -->
+  <g filter="url(#arthnex-glow)">
+    <!-- Left blue arm going up to peak -->
+    <path
+      d="M26 86 L52 28 C53.5 24.6 57.5 24.6 59 28 L72 58 L60 64 L54 48 L37 86 Z"
+      fill="url(#arthnex-left-grad)"
+    />
+
+    <!-- Right fold curving upward into arrow stem -->
+    <path
+      d="M57 32 L72 65 C76 74 85 75 90 68 L98 54 L90 48 L84 57 C82 60 78 59 76 54 L68 37 Z"
+      fill="url(#arthnex-loop-grad)"
+    />
+
+    <!-- Arrow head pointing up and right -->
+    <path
+      d="M84 46 L95 24 L104 36 L100 37 L97 32 L94 43 Z"
+      fill="url(#arthnex-arrow-grad)"
+    />
+  </g>
 </svg>

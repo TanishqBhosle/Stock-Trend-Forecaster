@@ -5,6 +5,7 @@ import {
   FileText, FlaskConical, Activity, Database,
   BookOpen, Settings, ChevronRight
 } from 'lucide-react'
+import { ArthNexLogo } from '@/components/ui/ArthNexLogo'
 import './Sidebar.css'
 
 const USER_NAV = [
@@ -50,9 +51,7 @@ export function Sidebar({ workspace = 'user' }) {
   return (
     <aside className={`sidebar sidebar-${workspace}`} aria-label="Main navigation">
       <div className="sidebar-wordmark">
-        <NavLink to="/" className="sidebar-logo">
-          <span className="sidebar-logo-text">STF</span>
-        </NavLink>
+        <ArthNexLogo size="sm" link={true} />
         {workspace === 'scientist' && (
           <span className="sidebar-workspace-badge">Scientist</span>
         )}

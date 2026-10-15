@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { X, LayoutDashboard, TrendingUp, Star, BarChart2, FileText, FlaskConical, BookOpen, Settings, Activity, Database } from 'lucide-react'
+import { ArthNexLogo } from '@/components/ui/ArthNexLogo'
 import './MobileDrawer.css'
 
 const USER_ITEMS = [
@@ -66,9 +67,9 @@ export function MobileDrawer({ open, onClose, workspace = 'user' }) {
             aria-label="Mobile navigation"
           >
             <div className="drawer-header">
-              <NavLink to="/" className="drawer-logo" onClick={onClose}>
-                <span className="drawer-logo-text">STF</span>
-              </NavLink>
+              <div onClick={onClose}>
+                <ArthNexLogo size="sm" link={true} />
+              </div>
               <button className="drawer-close" onClick={onClose} aria-label="Close navigation">
                 <X size={18} />
               </button>

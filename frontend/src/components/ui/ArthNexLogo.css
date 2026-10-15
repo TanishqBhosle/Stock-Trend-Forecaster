@@ -1,0 +1,117 @@
+/* ── ArthNex Official Brand Styles ─────────────────────────────────── */
+
+.arthnex-logo-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  border-radius: var(--radius-sm, 6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.arthnex-logo-link:hover {
+  opacity: 0.94;
+  transform: translateY(-1px);
+}
+
+.arthnex-logo-link:focus-visible {
+  outline: 2px solid #00D2FE;
+  outline-offset: 3px;
+}
+
+.arthnex-brand-root {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  user-select: none;
+}
+
+.arthnex-variant-horizontal {
+  flex-direction: row;
+}
+
+.arthnex-variant-stacked {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.arthnex-glyph-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.arthnex-logo-link:hover .arthnex-glyph-wrap {
+  transform: scale(1.06) rotate(-2deg);
+}
+
+.arthnex-glyph {
+  display: block;
+  overflow: visible;
+}
+
+.arthnex-text-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.1;
+}
+
+.arthnex-wordmark {
+  font-family: var(--font-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+/* "Arth" portion: crisp contrast in both light & dark mode */
+.arthnex-part-arth {
+  color: var(--text-primary, #14202B);
+  transition: color 0.2s ease;
+}
+
+html.dark .arthnex-part-arth {
+  color: #FFFFFF;
+}
+
+/* "Nex" portion: cyan to vibrant emerald gradient matching logo */
+.arthnex-part-nex {
+  background: linear-gradient(135deg, #00D2FE 0%, #00BFA5 50%, #10E57A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  padding-right: 1px;
+}
+
+/* Tagline */
+.arthnex-tagline {
+  font-family: var(--font-ui, system-ui, sans-serif);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted, #8A9BA4);
+  margin-top: 0.2rem;
+}
+
+/* Image fallback/direct display */
+.arthnex-logo-img-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arthnex-logo-img {
+  display: block;
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}

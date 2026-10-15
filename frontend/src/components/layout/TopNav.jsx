@@ -1,5 +1,6 @@
-import { Search, Menu } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useRef, useEffect } from 'react'
+import { Search, Menu, Settings, LogOut, ArrowRightLeft } from 'lucide-react'
+import { useNavigate, Link } from 'react-router-dom'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { IconButton } from '@/components/ui/Button'
 import { useAuth } from '@/hooks/useAuth'
@@ -17,8 +18,32 @@ import './TopNav.css'
 export function TopNav({ breadcrumbs = [], onOpenSearch, onOpenDrawer, workspace = 'user' }) {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef(null)
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false)
+      }
+    }
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false)
+      }
+    }
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleOutsideClick)
+      document.addEventListener('keydown', handleKeyDown)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [menuOpen])
 
   const handleLogout = () => {
+    setMenuOpen(false)
     logout()
     navigate('/login')
   }
@@ -62,13 +87,80 @@ export function TopNav({ breadcrumbs = [], onOpenSearch, onOpenDrawer, workspace
 
         <ThemeToggle />
 
-        {/* User menu */}
-        <div className="topnav-user">
-          <button className="topnav-user-btn" aria-label="User menu" onClick={handleLogout}>
+        {/* User menu dropdown */}
+        <div className="topnav-user" ref={menuRef}>
+          <button
+            className="topnav-user-btn"
+            aria-label="User menu"
+            aria-expanded={menuOpen}
+            aria-haspopup="true"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
             <span className="topnav-avatar" aria-hidden="true">
               {user?.name?.[0]?.toUpperCase() ?? 'U'}
             </span>
           </button>
+
+          {menuOpen && (
+            <div className="topnav-dropdown" role="menu" aria-label="User account menu">
+              <div className="topnav-dropdown-header">
+                <div className="topnav-dropdown-user-info">
+                  <p className="topnav-dropdown-name">{user?.name || 'Demo Analyst'}</p>
+                  <p className="topnav-dropdown-email">{user?.email || 'demo@arthnex.internal'}</p>
+                </div>
+                <span className="topnav-dropdown-role-badge">
+                  {workspace === 'scientist' ? 'Data Scientist' : 'Investor / Analyst'}
+                </span>
+              </div>
+
+              <div className="topnav-dropdown-divider" />
+
+              <div className="topnav-dropdown-items">
+                {workspace === 'user' ? (
+                  <Link
+                    to="/scientist/performance"
+                    className="topnav-dropdown-item"
+                    role="menuitem"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <ArrowRightLeft size={14} />
+                    <span>Switch to Scientist View</span>
+                  </Link>
+                ) : (
+                  <Link
+                    to="/app/dashboard"
+                    className="topnav-dropdown-item"
+                    role="menuitem"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    <ArrowRightLeft size={14} />
+                    <span>Switch to Analyst View</span>
+                  </Link>
+                )}
+
+                <Link
+                  to="/app/settings"
+                  className="topnav-dropdown-item"
+                  role="menuitem"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <Settings size={14} />
+                  <span>Workspace Settings</span>
+                </Link>
+              </div>
+
+              <div className="topnav-dropdown-divider" />
+
+              <button
+                className="topnav-dropdown-item topnav-dropdown-signout"
+                role="menuitem"
+                onClick={handleLogout}
+              >
+                <LogOut size={14} />
+                <span>Sign Out</span>
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>
