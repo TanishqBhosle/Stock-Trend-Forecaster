@@ -1,102 +1,241 @@
+import { useState } from 'react'
+import { AlertCircle, Eye, EyeOff } from 'lucide-react'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
-import { ILLUSTRATIVE_METRICS } from '@/mocks/model'
+import { Button } from '@/components/ui/Button'
+import { MODEL_CONFIG, ILLUSTRATIVE_METRICS } from '@/mocks/model'
+import {
+  LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
+  Legend, BarChart, Bar, CartesianGrid
+} from 'recharts'
 import './ScientistPages.css'
 
+// Deterministic sample curves for UI demonstration only
+const DEMO_LOSS_CURVE = [
+  { epoch: 1,  trainLoss: 0.00185, valLoss: 0.00162 },
+  { epoch: 5,  trainLoss: 0.00094, valLoss: 0.00088 },
+  { epoch: 10, trainLoss: 0.00062, valLoss: 0.00061 },
+  { epoch: 15, trainLoss: 0.00049, valLoss: 0.00052 },
+  { epoch: 20, trainLoss: 0.00043, valLoss: 0.00047 },
+  { epoch: 25, trainLoss: 0.00039, valLoss: 0.00044 },
+  { epoch: 30, trainLoss: 0.00037, valLoss: 0.00043 },
+  { epoch: 35, trainLoss: 0.00036, valLoss: 0.00042 },
+]
+
+const DEMO_RESIDUALS = [
+  { bin: '< -2%', count: 42 },
+  { bin: '-2% to -1%', count: 185 },
+  { bin: '-1% to -0.5%', count: 420 },
+  { bin: '-0.5% to 0%', count: 980 },
+  { bin: '0% to +0.5%', count: 1040 },
+  { bin: '+0.5% to +1%', count: 450 },
+  { bin: '+1% to +2%', count: 195 },
+  { bin: '> +2%', count: 38 },
+]
+
 export default function PerformancePage() {
+  const [showDemoPreview, setShowDemoPreview] = useState(false)
+  const isAvailable = MODEL_CONFIG.metrics.available
   const m = ILLUSTRATIVE_METRICS
-  const metrics = [
-    { label: 'RMSE', desc: 'Root Mean Squared Error — measures average prediction error in price units. Lower is better.', lstm: m.lstm.rmse?.toFixed(2), naive: m.naiveBaseline.rmse?.toFixed(2), linear: m.linearBaseline.rmse?.toFixed(2) },
-    { label: 'MAE', desc: 'Mean Absolute Error — average absolute prediction error in price units.', lstm: m.lstm.mae?.toFixed(2), naive: m.naiveBaseline.mae?.toFixed(2), linear: m.linearBaseline.mae?.toFixed(2) },
-    { label: 'MAPE', desc: 'Mean Absolute Percentage Error — relative prediction error.', lstm: `${(m.lstm.mape * 100).toFixed(2)}%`, naive: `${(m.naiveBaseline.mape * 100).toFixed(2)}%`, linear: `${(m.linearBaseline.mape * 100).toFixed(2)}%` },
-    { label: 'Dir. accuracy', desc: 'Directional accuracy — fraction of days with correct up/down direction. 50% = random.', lstm: `${(m.lstm.directionalAccuracy * 100).toFixed(1)}%`, naive: `${(m.naiveBaseline.directionalAccuracy * 100).toFixed(1)}%`, linear: `${(m.linearBaseline.directionalAccuracy * 100).toFixed(1)}%` },
+
+  const metricDefs = [
+    { name: 'RMSE', formula: 'sqrt(mean((y - ŷ)^2))', unit: 'Price (USD)', desc: 'Root Mean Squared Error. Heavily penalizes large prediction errors.' },
+    { name: 'MAE', formula: 'mean(|y - ŷ|)', unit: 'Price (USD)', desc: 'Mean Absolute Error. Linear scale average magnitude of errors.' },
+    { name: 'MAPE', formula: 'mean(|(y - ŷ)/y|) * 100', unit: 'Percentage (%)', desc: 'Mean Absolute Percentage Error. Relative error scale.' },
+    { name: 'Directional Accuracy', formula: 'mean(sign(r) == sign(r̂)) * 100', unit: 'Percentage (%)', desc: 'Fraction of trading days where next-day up/down direction was forecasted correctly.' },
+    { name: 'Trend Accuracy', formula: 'mean(label(r) == label(r̂)) * 100', unit: 'Percentage (%)', desc: 'Fraction of days where 3-class label (Bullish/Neutral/Bearish, ±0.5% threshold) matched.' },
   ]
 
   return (
     <div className="sci-page">
       <div className="page-header">
         <div>
-          <h1 className="page-title sci-title">Model Performance</h1>
-          <p className="page-subtitle">Evaluation on held-out test set — chronological split</p>
+          <h1 className="page-title sci-title">Model Performance &amp; Evaluation</h1>
+          <p className="page-subtitle">Rigorous benchmark on held-out test split (1927–2026 Yahoo Finance ^GSPC)</p>
         </div>
-        <DataProvenanceLabel type="illustrative" />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+          <Button
+            size="sm"
+            variant={showDemoPreview ? 'secondary' : 'ghost'}
+            iconLeft={showDemoPreview ? <EyeOff size={14} /> : <Eye size={14} />}
+            onClick={() => setShowDemoPreview(v => !v)}
+          >
+            {showDemoPreview ? 'Hide Demo Preview' : 'Preview Demo Charts'}
+          </Button>
+          <DataProvenanceLabel type={isAvailable ? 'verified' : (showDemoPreview ? 'illustrative' : 'pending')}>
+            {isAvailable ? 'Verified Artifacts' : (showDemoPreview ? 'Illustrative Preview' : 'Artifacts Pending')}
+          </DataProvenanceLabel>
+        </div>
       </div>
 
-      <div className="sci-alert">
-        <strong>Illustrative values only.</strong> Real evaluation metrics require running the training notebook and loading saved artifacts. Values shown here are for visual demonstration of the interface.
-      </div>
+      {!isAvailable && !showDemoPreview && (
+        <div className="sci-honest-unavail-card">
+          <div className="unavail-card-header">
+            <AlertCircle size={24} className="unavail-icon" />
+            <div>
+              <h2 className="unavail-title">Real Evaluation Metrics Currently Unavailable</h2>
+              <p className="unavail-subtitle">
+                Model weights (<code>lstm_model.pt</code>) and evaluation results (<code>metrics.json</code>) have not yet been generated in this environment.
+              </p>
+            </div>
+          </div>
 
+          <div className="unavail-requirements">
+            <h3 className="req-title">Required Steps to Generate Real Artifacts:</h3>
+            <ol className="req-list">
+              <li>
+                <strong>Open Notebook:</strong> Launch <code>Stock_Trend_Forecaster.ipynb</code> in Google Colab (T4 GPU recommended) or a local Python 3.10+ virtual environment.
+              </li>
+              <li>
+                <strong>Load &amp; Validate:</strong> Execute Cells 1–26 to validate <code>GSPC.csv</code> (~24,800 rows) and compute 9 stationary features with 70/15/15 chronological split.
+              </li>
+              <li>
+                <strong>Train PyTorch LSTM:</strong> Run Cells 27–38 with 128 hidden units, 2 stacked layers, dropout 0.2, and early stopping on validation loss.
+              </li>
+              <li>
+                <strong>Save Checkpoints:</strong> Download generated <code>models/lstm_model.pt</code>, <code>models/metrics.json</code>, <code>models/feature_scaler.pkl</code>, and <code>models/target_scaler.pkl</code>.
+              </li>
+            </ol>
+          </div>
+
+          <div className="unavail-action-row">
+            <Button
+              variant="secondary"
+              size="sm"
+              iconLeft={<Eye size={14} />}
+              onClick={() => setShowDemoPreview(true)}
+            >
+              Toggle Illustrative Demo Preview
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {showDemoPreview && (
+        <div className="sci-alert sci-alert-demo">
+          <strong>DEMO PREVIEW MODE:</strong> The metrics and charts below are deterministic illustrative samples for reviewing chart ergonomics. They are not real PyTorch model evaluation outputs.
+        </div>
+      )}
+
+      {/* Metric definitions table */}
       <section className="sci-section">
-        <h2 className="sci-section-title">Regression metrics</h2>
-        <p className="sci-note">RMSE, MAE, and MAPE measure price-prediction accuracy on the test set. Evaluated on identical test samples for fair comparison.</p>
+        <h2 className="sci-section-title">Evaluation Metric Protocols &amp; Target Specifications</h2>
+        <p className="sci-note">
+          Evaluated strictly on held-out test samples (~2012–2026, approx. 3,720 trading days). Benchmark comparisons are evaluated on identical test sequences.
+        </p>
         <div className="perf-table-wrap">
-          <table className="perf-table" aria-label="Regression metrics">
+          <table className="perf-table" aria-label="Evaluation Metric Specifications">
             <thead>
               <tr>
                 <th>Metric</th>
+                <th>Formula</th>
+                <th>Unit</th>
                 <th>Description</th>
-                <th>LSTM (2×128)</th>
-                <th>Naive baseline</th>
-                <th>Linear baseline</th>
+                <th>Measured Value</th>
               </tr>
             </thead>
             <tbody>
-              {metrics.slice(0, 3).map(row => (
-                <tr key={row.label}>
-                  <td className="pm-name">{row.label}</td>
-                  <td className="pm-desc">{row.desc}</td>
-                  <td className="pm-lstm">{row.lstm ?? '—'}</td>
-                  <td className="pm-base">{row.naive ?? '—'}</td>
-                  <td className="pm-base">{row.linear ?? '—'}</td>
-                </tr>
-              ))}
+              {metricDefs.map(mDef => {
+                let valDisplay = 'Unavailable (Pending)'
+                if (showDemoPreview) {
+                  if (mDef.name === 'RMSE') valDisplay = `${m.lstm.rmse?.toFixed(2)} USD`
+                  else if (mDef.name === 'MAE') valDisplay = `${m.lstm.mae?.toFixed(2)} USD`
+                  else if (mDef.name === 'MAPE') valDisplay = `${(m.lstm.mape * 100).toFixed(2)}%`
+                  else if (mDef.name === 'Directional Accuracy') valDisplay = `${(m.lstm.directionalAccuracy * 100).toFixed(1)}%`
+                  else if (mDef.name === 'Trend Accuracy') valDisplay = `${(m.lstm.trendAccuracy * 100).toFixed(1)}%`
+                }
+                return (
+                  <tr key={mDef.name}>
+                    <td className="pm-name">{mDef.name}</td>
+                    <td><code>{mDef.formula}</code></td>
+                    <td className="font-data">{mDef.unit}</td>
+                    <td className="pm-desc">{mDef.desc}</td>
+                    <td className={showDemoPreview ? 'pm-lstm' : 'pm-unavail'}>
+                      {valDisplay}
+                    </td>
+                  </tr>
+                )
+              })}
             </tbody>
           </table>
         </div>
       </section>
 
-      <section className="sci-section">
-        <h2 className="sci-section-title">Directional accuracy</h2>
-        <p className="sci-note">Measures whether the predicted direction (up/down) was correct — a separate question from regression accuracy. 50% = random.</p>
-        <div className="perf-table-wrap">
-          <table className="perf-table" aria-label="Directional accuracy">
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Description</th>
-                <th>LSTM (2×128)</th>
-                <th>Naive baseline</th>
-                <th>Linear baseline</th>
-              </tr>
-            </thead>
-            <tbody>
-              {metrics.slice(3).map(row => (
-                <tr key={row.label}>
-                  <td className="pm-name">{row.label}</td>
-                  <td className="pm-desc">{row.desc}</td>
-                  <td className="pm-lstm">{row.lstm ?? '—'}</td>
-                  <td className="pm-base">{row.naive ?? '—'}</td>
-                  <td className="pm-base">{row.linear ?? '—'}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+      {/* Illustrative loss curves and residuals if preview toggled */}
+      {showDemoPreview && (
+        <>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: 'var(--space-4)', marginBottom: 'var(--space-5)' }}>
+            {/* Training / Validation Loss */}
+            <section className="sci-section" style={{ margin: 0 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-3)' }}>
+                <h2 className="sci-section-title" style={{ margin: 0 }}>Loss Curves (MSE)</h2>
+                <span className="demo-tag">Illustrative Demo</span>
+              </div>
+              <p className="sci-note">Training vs validation loss progression over epochs.</p>
+              <ResponsiveContainer width="100%" height={220}>
+                <LineChart data={DEMO_LOSS_CURVE} margin={{ top: 10, right: 10, bottom: 0, left: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" />
+                  <XAxis dataKey="epoch" tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} label={{ value: 'Epoch', position: 'insideBottom', offset: -2, fontSize: 10, fill: 'var(--chart-axis)' }} />
+                  <YAxis tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} tickFormatter={v => v.toFixed(4)} domain={['auto','auto']} width={55} />
+                  <Tooltip contentStyle={{ fontFamily:'var(--font-data)', fontSize:'11px', background:'var(--chart-tooltip-bg)', border:'1px solid var(--chart-tooltip-border)', borderRadius:'4px' }} />
+                  <Legend wrapperStyle={{ fontFamily:'var(--font-data)', fontSize:'11px' }} />
+                  <Line type="monotone" dataKey="trainLoss" stroke="var(--chart-line)" name="Train Loss" strokeWidth={1.5} dot={false} />
+                  <Line type="monotone" dataKey="valLoss" stroke="var(--terracotta)" name="Val Loss" strokeWidth={1.5} dot={false} />
+                </LineChart>
+              </ResponsiveContainer>
+            </section>
 
-      <section className="sci-section">
-        <h2 className="sci-section-title">Walk-forward validation</h2>
-        <div className="sci-unavailable-box">
-          <span className="model-unavailable">Walk-forward evaluation unavailable</span>
-          <p className="sci-note">Walk-forward (expanding window) retraining is listed in the project roadmap but has not yet been implemented. Fold-level results will appear here once artifacts are available.</p>
-        </div>
-      </section>
+            {/* Residual Distribution */}
+            <section className="sci-section" style={{ margin: 0 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-3)' }}>
+                <h2 className="sci-section-title" style={{ margin: 0 }}>Residual Distribution</h2>
+                <span className="demo-tag">Illustrative Demo</span>
+              </div>
+              <p className="sci-note">Error distribution (Predicted return - Actual return) on test samples.</p>
+              <ResponsiveContainer width="100%" height={220}>
+                <BarChart data={DEMO_RESIDUALS} margin={{ top: 10, right: 10, bottom: 0, left: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" />
+                  <XAxis dataKey="bin" tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} />
+                  <YAxis tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} width={45} />
+                  <Tooltip contentStyle={{ fontFamily:'var(--font-data)', fontSize:'11px', background:'var(--chart-tooltip-bg)', border:'1px solid var(--chart-tooltip-border)', borderRadius:'4px' }} />
+                  <Bar dataKey="count" fill="var(--teal)" radius={[2,2,0,0]} name="Sample Count" />
+                </BarChart>
+              </ResponsiveContainer>
+            </section>
+          </div>
+        </>
+      )}
 
+      {/* Chronological split protocol */}
       <section className="sci-section">
-        <h2 className="sci-section-title">Test set coverage</h2>
+        <h2 className="sci-section-title">Chronological Split Protocol (70 / 15 / 15)</h2>
         <div className="sci-coverage">
-          <div className="sci-cov-item"><span className="sci-cov-label">Test split</span><span className="sci-cov-value">15% of 24,800 rows ≈ 3,720 days</span></div>
-          <div className="sci-cov-item"><span className="sci-cov-label">Approx. date range</span><span className="sci-cov-value">~2012 – 2026</span></div>
-          <div className="sci-cov-item"><span className="sci-cov-label">Sequence offset</span><span className="sci-cov-value">First 60 rows used for lookback window</span></div>
+          <div className="sci-cov-item">
+            <span className="sci-cov-label">Training Set (70%)</span>
+            <span className="sci-cov-value">~1928 – ~1997 (~17,360 daily sessions)</span>
+          </div>
+          <div className="sci-cov-item">
+            <span className="sci-cov-label">Validation Set (15%)</span>
+            <span className="sci-cov-value">~1997 – ~2012 (~3,720 daily sessions)</span>
+          </div>
+          <div className="sci-cov-item">
+            <span className="sci-cov-label">Test Split (15%)</span>
+            <span className="sci-cov-value">~2012 – 2026 (~3,720 daily sessions)</span>
+          </div>
+          <div className="sci-cov-item">
+            <span className="sci-cov-label">Sequence Offsetting</span>
+            <span className="sci-cov-value">60-day lookback window via concatenate-then-slice</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Walk-forward validation */}
+      <section className="sci-section">
+        <h2 className="sci-section-title">Walk-Forward Validation Status</h2>
+        <div className="sci-unavailable-box">
+          <span className="model-unavailable">Walk-forward evaluation not yet implemented</span>
+          <p className="sci-note">
+            Expanding-window retraining across decadal folds is documented on the project roadmap. Fold-level metrics will be populated when the retraining script is finalized.
+          </p>
         </div>
       </section>
     </div>
