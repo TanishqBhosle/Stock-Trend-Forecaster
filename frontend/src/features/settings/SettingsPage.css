@@ -20,3 +20,56 @@
 .settings-danger-item { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); }
 .settings-danger-label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--text-primary); margin-bottom: 2px; }
 .settings-danger-desc { font-size: var(--text-xs); color: var(--text-muted); }
+
+.settings-desc {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.settings-toggle-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.settings-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--duration-micro) var(--ease-out);
+}
+
+.settings-toggle-row:hover {
+  background: var(--bg-surface-2);
+}
+
+.st-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.st-title {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+}
+
+.st-sub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.st-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--terracotta);
+  cursor: pointer;
+}

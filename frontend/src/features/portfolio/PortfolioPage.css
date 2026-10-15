@@ -15,3 +15,26 @@
 .pt-name { font-family: var(--font-ui) !important; color: var(--text-secondary); }
 td.pos { color: var(--bullish); } td.neg { color: var(--bearish); }
 .portfolio-disclaimer { font-size: var(--text-sm); color: var(--text-muted); font-style: italic; }
+
+.portfolio-scope-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--terracotta);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.portfolio-scope-callout strong {
+  color: var(--text-primary);
+}
+
+.pticker-btn.core-btn {
+  font-weight: var(--weight-bold);
+  border-color: var(--teal);
+}

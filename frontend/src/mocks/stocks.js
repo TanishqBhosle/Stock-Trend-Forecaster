@@ -17,6 +17,18 @@
 
 export const DEMO_STOCKS = [
   {
+    ticker: '^GSPC',
+    name: 'S&P 500 Index',
+    sector: 'Index',
+    exchange: 'INDEX',
+    mockPrice: 5762.45,
+    mockChange: +18.32,
+    mockChangePct: +0.32,
+    mockReturn: 0.0032,
+    mockSignal: 'NEUTRAL',
+    isPrimaryModelAsset: true,
+  },
+  {
     ticker: 'AAPL',
     name: 'Apple Inc.',
     sector: 'Technology',
@@ -26,6 +38,7 @@ export const DEMO_STOCKS = [
     mockChangePct: +0.59,
     mockReturn: 0.0078,
     mockSignal: 'BULLISH',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'MSFT',
@@ -37,6 +50,7 @@ export const DEMO_STOCKS = [
     mockChangePct: -0.52,
     mockReturn: -0.0042,
     mockSignal: 'NEUTRAL',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'GOOGL',
@@ -48,6 +62,7 @@ export const DEMO_STOCKS = [
     mockChangePct: +0.51,
     mockReturn: 0.0063,
     mockSignal: 'BULLISH',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'AMZN',
@@ -59,6 +74,7 @@ export const DEMO_STOCKS = [
     mockChangePct: -0.53,
     mockReturn: -0.0067,
     mockSignal: 'BEARISH',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'NVDA',
@@ -70,6 +86,7 @@ export const DEMO_STOCKS = [
     mockChangePct: +2.72,
     mockReturn: 0.0185,
     mockSignal: 'BULLISH',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'TSLA',
@@ -81,6 +98,7 @@ export const DEMO_STOCKS = [
     mockChangePct: -1.81,
     mockReturn: -0.0124,
     mockSignal: 'BEARISH',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'META',
@@ -92,6 +110,7 @@ export const DEMO_STOCKS = [
     mockChangePct: +0.43,
     mockReturn: 0.0043,
     mockSignal: 'NEUTRAL',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'JPM',
@@ -103,6 +122,7 @@ export const DEMO_STOCKS = [
     mockChangePct: +0.35,
     mockReturn: 0.0035,
     mockSignal: 'NEUTRAL',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'BRK-B',
@@ -114,6 +134,7 @@ export const DEMO_STOCKS = [
     mockChangePct: +0.26,
     mockReturn: 0.0026,
     mockSignal: 'NEUTRAL',
+    isPrimaryModelAsset: false,
   },
   {
     ticker: 'SPY',
@@ -125,17 +146,7 @@ export const DEMO_STOCKS = [
     mockChangePct: +0.11,
     mockReturn: 0.0011,
     mockSignal: 'NEUTRAL',
-  },
-  {
-    ticker: '^GSPC',
-    name: 'S&P 500 Index',
-    sector: 'Index',
-    exchange: 'INDEX',
-    mockPrice: 5762.45,
-    mockChange: +18.32,
-    mockChangePct: +0.32,
-    mockReturn: 0.0032,
-    mockSignal: 'NEUTRAL',
+    isPrimaryModelAsset: false,
   },
 ]
 

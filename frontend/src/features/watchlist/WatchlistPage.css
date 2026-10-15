@@ -53,3 +53,21 @@ td.neg { color: var(--bearish); }
 }
 .wl-remove-btn:hover { color: var(--bearish); background: var(--error-bg); }
 .wl-remove-btn:focus-visible { outline: 2px solid var(--focus-ring); }
+
+.watchlist-notice-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--terracotta);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.watchlist-notice-callout strong {
+  color: var(--text-primary);
+}

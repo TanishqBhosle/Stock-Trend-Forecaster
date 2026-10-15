@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Info, AlertCircle, CheckCircle2, Clock } from 'lucide-react'
 import { SignalBadge, DataProvenanceLabel } from '@/components/ui/Badge'
 import { ChartSkeleton, Skeleton } from '@/components/ui/LoadingSkeleton'
 import { ChartRangeSelector } from '@/components/ui/ChartRangeSelector'
 import { DEMO_STOCKS, getSignalGroups } from '@/mocks/stocks'
 import { getOHLCV, filterByRange } from '@/mocks/ohlcv'
 import { DEMO_FORECASTS } from '@/mocks/forecasts'
+import { DEMO_PREDICTIONS } from '@/mocks/predictions'
+import { MODEL_CONFIG } from '@/mocks/model'
 import { formatPrice, formatReturn } from '@/lib/signals'
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip,
@@ -28,45 +30,78 @@ function CustomTooltip({ active, payload }) {
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
   const [range, setRange] = useState('3M')
-  const [selectedTicker, setSelectedTicker] = useState('AAPL')
+  const [selectedTicker, setSelectedTicker] = useState('^GSPC')
 
   useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 420)
+    const t = setTimeout(() => setLoading(false), 360)
     return () => clearTimeout(t)
   }, [])
 
-  const stock = DEMO_STOCKS.find(s => s.ticker === selectedTicker)
+  const stock = DEMO_STOCKS.find(s => s.ticker === selectedTicker) || DEMO_STOCKS[0]
   const ohlcv = filterByRange(getOHLCV(selectedTicker), range)
   const chartData = ohlcv.map(r => ({ date: r.date, close: r.close }))
   const { bullish, bearish, neutral } = getSignalGroups()
   const forecast = DEMO_FORECASTS.find(f => f.ticker === selectedTicker)
+  const isPrimary = stock.ticker === '^GSPC'
+
+  // Recent predictions for current ticker or overall
+  const recentPredictions = DEMO_PREDICTIONS.filter(p =>
+    isPrimary ? p.ticker === '^GSPC' || true : p.ticker === selectedTicker
+  ).slice(0, 4)
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
         <div>
-          <h1 className="dash-title">Dashboard</h1>
-          <p className="dash-subtitle">Market overview and trend signals</p>
+          <div className="dash-title-row">
+            <h1 className="dash-title">Financial Research Dashboard</h1>
+            {isPrimary ? (
+              <span className="dash-primary-badge">Primary Model Asset (^GSPC)</span>
+            ) : (
+              <span className="dash-demo-badge">Demonstrative Stock Preview</span>
+            )}
+          </div>
+          <p className="dash-subtitle">
+            Educational time-series research &amp; directional trend forecasting — S&amp;P 500 Index
+          </p>
         </div>
-        <DataProvenanceLabel type="demo" />
+        <DataProvenanceLabel type={isPrimary ? 'demo' : 'illustrative'}>
+          {isPrimary ? 'Dataset: Yahoo Finance ^GSPC (1927–2026)' : 'Illustrative Equity Preview'}
+        </DataProvenanceLabel>
       </div>
 
-      {/* Market strip */}
-      <div className="market-strip">
-        {DEMO_STOCKS.filter(s => s.ticker !== '^GSPC').slice(0, 7).map(s => (
-          <button
-            key={s.ticker}
-            className={`market-strip-item ${selectedTicker === s.ticker ? 'active' : ''}`}
-            onClick={() => setSelectedTicker(s.ticker)}
-            aria-pressed={selectedTicker === s.ticker}
-          >
-            <span className="ms-ticker">{s.ticker}</span>
-            <span className="ms-price">{formatPrice(s.mockPrice)}</span>
-            <span className={`ms-change ${s.mockChangePct >= 0 ? 'pos' : 'neg'}`}>
-              {s.mockChangePct >= 0 ? '↑' : '↓'} {Math.abs(s.mockChangePct).toFixed(2)}%
-            </span>
-          </button>
-        ))}
+      {/* Dataset & Scope Banner */}
+      <div className="dash-scope-banner">
+        <Info size={16} className="dash-scope-icon" />
+        <p className="dash-scope-text">
+          <strong>Dataset Scope:</strong> ArthNex is trained specifically on ~24,800 historical daily records of the <strong>S&amp;P 500 Index (^GSPC)</strong> using 9 stationary features and a 60-day lookback. Individual stock quotes and forecasts are deterministic educational previews.
+        </p>
+      </div>
+
+      {/* Instrument selector strip */}
+      <div className="market-strip" role="tablist" aria-label="Available instruments">
+        {DEMO_STOCKS.map(s => {
+          const isSelected = selectedTicker === s.ticker
+          const isGspc = s.ticker === '^GSPC'
+          return (
+            <button
+              key={s.ticker}
+              role="tab"
+              className={`market-strip-item ${isSelected ? 'active' : ''} ${isGspc ? 'primary-item' : ''}`}
+              onClick={() => setSelectedTicker(s.ticker)}
+              aria-selected={isSelected}
+            >
+              <div className="ms-ticker-row">
+                <span className="ms-ticker">{s.ticker}</span>
+                {isGspc && <span className="ms-index-tag">CORE</span>}
+              </div>
+              <span className="ms-price">{formatPrice(s.mockPrice)}</span>
+              <span className={`ms-change ${s.mockChangePct >= 0 ? 'pos' : 'neg'}`}>
+                {s.mockChangePct >= 0 ? '↑' : '↓'} {Math.abs(s.mockChangePct).toFixed(2)}%
+              </span>
+            </button>
+          )
+        })}
       </div>
 
       {/* Main grid */}
@@ -76,41 +111,60 @@ export default function DashboardPage() {
         <section className="dash-chart-section" aria-label={`${selectedTicker} price chart`}>
           <div className="dash-section-header">
             <div>
-              <h2 className="dash-section-title">{stock?.name}</h2>
-              {loading ? <Skeleton width="80px" height="28px" /> :
+              <div className="dash-asset-header">
+                <h2 className="dash-section-title">{stock?.name}</h2>
+                <span className="dash-asset-tag">{stock.sector} · {stock.exchange}</span>
+              </div>
+              {loading ? <Skeleton width="120px" height="32px" /> :
                 <span className="dash-price">{formatPrice(stock?.mockPrice)}</span>
               }
             </div>
             <ChartRangeSelector selected={range} onChange={setRange} />
           </div>
-          {loading ? <ChartSkeleton height="220px" /> : (
-            <ResponsiveContainer width="100%" height={220}>
+          {loading ? <ChartSkeleton height="240px" /> : (
+            <ResponsiveContainer width="100%" height={240}>
               <AreaChart data={chartData}>
                 <defs>
                   <linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--chart-line)" stopOpacity={0.10}/>
+                    <stop offset="5%" stopColor="var(--chart-line)" stopOpacity={0.12}/>
                     <stop offset="95%" stopColor="var(--chart-line)" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
-                <XAxis dataKey="date" tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} tickLine={false} axisLine={false} interval="preserveStartEnd" tickFormatter={d=>d.slice(5)} />
+                <XAxis dataKey="date" tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} tickLine={false} axisLine={false} interval="preserveStartEnd" tickFormatter={d=>d?.slice(5)} />
                 <YAxis hide domain={['auto','auto']} />
                 <Tooltip content={<CustomTooltip />} />
                 <Area type="monotone" dataKey="close" stroke="var(--chart-line)" strokeWidth={1.5} fill="url(#dashGrad)" dot={false} activeDot={{ r:3, fill:'var(--terracotta)', stroke:'none' }} />
               </AreaChart>
             </ResponsiveContainer>
           )}
-          <p className="chart-sr-desc sr-only">{`Historical price chart for ${selectedTicker} — ${range} range. Illustrative demo data.`}</p>
+          <div className="dash-chart-footer">
+            <span className="dash-chart-legend">
+              <span className="legend-indicator" /> Historical Close
+            </span>
+            <span className="dash-chart-meta">
+              {ohlcv.length} trading sessions in range · Clean OHLCV series
+            </span>
+          </div>
+          <p className="chart-sr-desc sr-only">{`Historical price chart for ${selectedTicker} — ${range} range.`}</p>
         </section>
 
         {/* Forecast panel */}
         <aside className="dash-forecast-panel">
-          <h2 className="dash-section-title">Next-day forecast</h2>
-          <DataProvenanceLabel type="illustrative" />
+          <div className="dash-forecast-header">
+            <h2 className="dash-section-title">Next-Day Forecast</h2>
+            <DataProvenanceLabel type={isPrimary ? 'demo' : 'illustrative'}>
+              {isPrimary ? 'Core model target' : 'Demo prediction'}
+            </DataProvenanceLabel>
+          </div>
+
           {forecast ? (
             <div className="forecast-panel-body">
-              <SignalBadge signal={forecast.signal} size="md" />
+              <div className="forecast-badge-row">
+                <SignalBadge signal={forecast.signal} size="md" />
+                <span className="forecast-threshold-hint">Threshold: ±0.5%</span>
+              </div>
               <div className="forecast-return">
-                <span className="forecast-return-label">Expected return</span>
+                <span className="forecast-return-label">Predicted Return</span>
                 <span className={`forecast-return-value ${forecast.predictedReturn >= 0 ? 'pos' : 'neg'}`}>
                   {formatReturn(forecast.predictedReturn)}
                 </span>
@@ -120,40 +174,48 @@ export default function DashboardPage() {
                 <span className="forecast-meta-value">{formatPrice(forecast.predictedClose)}</span>
               </div>
               <div className="forecast-close-row">
-                <span className="forecast-meta-label">Last observed</span>
+                <span className="forecast-meta-label">Last observed close</span>
                 <span className="forecast-meta-value">{formatPrice(forecast.lastObservedClose)}</span>
               </div>
               <div className="forecast-close-row">
-                <span className="forecast-meta-label">Forecast for</span>
+                <span className="forecast-meta-label">Forecast target</span>
                 <span className="forecast-meta-value font-data">{forecast.forecastFor}</span>
               </div>
               <div className="forecast-close-row">
-                <span className="forecast-meta-label">Model</span>
+                <span className="forecast-meta-label">Model version</span>
                 <span className="forecast-meta-value font-data">{forecast.modelVersion}</span>
               </div>
+
+              <div className="forecast-rule-box">
+                <span className="rule-box-title">Classification Rule:</span>
+                <span className="rule-box-item">Bullish: Return &gt; +0.5%</span>
+                <span className="rule-box-item">Bearish: Return &lt; −0.5%</span>
+                <span className="rule-box-item">Neutral: Within ±0.5%</span>
+              </div>
+
               <Link to={`/app/forecast/${selectedTicker}`} className="forecast-detail-link">
-                Full analysis <ArrowRight size={12} />
+                Detailed forecast analysis <ArrowRight size={12} />
               </Link>
             </div>
           ) : (
-            <p className="dash-unavailable">Forecast unavailable</p>
+            <p className="dash-unavailable">Forecast unavailable for {selectedTicker}</p>
           )}
         </aside>
 
-        {/* Signal distribution */}
+        {/* Signal distribution across universe */}
         <section className="dash-signals">
-          <h2 className="dash-section-title">Signal distribution</h2>
+          <h2 className="dash-section-title">Instrument Signal Distribution</h2>
           <div className="signal-dist">
             {[
-              { label: 'Bullish', count: bullish.length, color: 'var(--bullish)', symbol: '↑' },
-              { label: 'Neutral', count: neutral.length, color: 'var(--neutral)', symbol: '→' },
-              { label: 'Bearish', count: bearish.length, color: 'var(--bearish)', symbol: '↓' },
+              { label: 'Bullish (>+0.5%)', count: bullish.length, color: 'var(--bullish)', symbol: '↑' },
+              { label: 'Neutral (±0.5%)', count: neutral.length, color: 'var(--neutral)', symbol: '→' },
+              { label: 'Bearish (<−0.5%)', count: bearish.length, color: 'var(--bearish)', symbol: '↓' },
             ].map(item => (
               <div key={item.label} className="signal-dist-item">
                 <div className="signal-dist-bar-wrap">
                   <div
                     className="signal-dist-bar"
-                    style={{ height: `${(item.count / DEMO_STOCKS.length) * 80}px`, background: item.color }}
+                    style={{ height: `${(item.count / DEMO_STOCKS.length) * 70}px`, background: item.color }}
                     aria-hidden="true"
                   />
                 </div>
@@ -164,39 +226,91 @@ export default function DashboardPage() {
           </div>
         </section>
 
-        {/* Watchlist preview */}
+        {/* Model Performance Summary card */}
+        <section className="dash-perf-summary">
+          <div className="dash-section-header">
+            <h2 className="dash-section-title">Model Status &amp; Specs</h2>
+            <Link to="/scientist/performance" className="dash-view-all">
+              Research lab <ArrowRight size={12} />
+            </Link>
+          </div>
+          <div className="dash-perf-grid">
+            <div className="perf-metric-item">
+              <span className="pmi-label">Architecture</span>
+              <span className="pmi-value">{MODEL_CONFIG.architecture}</span>
+            </div>
+            <div className="perf-metric-item">
+              <span className="pmi-label">Lookback Window</span>
+              <span className="pmi-value">{MODEL_CONFIG.lookback} Trading Days</span>
+            </div>
+            <div className="perf-metric-item">
+              <span className="pmi-label">Features</span>
+              <span className="pmi-value">9 Stationary Ratios</span>
+            </div>
+            <div className="perf-metric-item">
+              <span className="pmi-label">Split Ratio</span>
+              <span className="pmi-value">70 / 15 / 15 Chronological</span>
+            </div>
+          </div>
+          <div className="dash-artifact-notice">
+            <Clock size={14} className="notice-icon" />
+            <span>
+              Real evaluation metrics pending: Run <code>Stock_Trend_Forecaster.ipynb</code> to generate <code>metrics.json</code> &amp; weights.
+            </span>
+          </div>
+        </section>
+
+        {/* Recent prediction activity */}
         <section className="dash-watchlist">
           <div className="dash-section-header">
-            <h2 className="dash-section-title">Top signals</h2>
-            <Link to="/app/stocks" className="dash-view-all">View all <ArrowRight size={12} /></Link>
+            <div>
+              <h2 className="dash-section-title">Recent Prediction Log</h2>
+              <p className="dash-table-sub">Deterministic prediction records with outcome verification</p>
+            </div>
+            <Link to="/app/predictions" className="dash-view-all">View all history <ArrowRight size={12} /></Link>
           </div>
-          <table className="dash-table" aria-label="Top signals">
+          <table className="dash-table" aria-label="Recent predictions">
             <thead>
               <tr>
+                <th>Date</th>
                 <th>Ticker</th>
-                <th>Price</th>
-                <th>Return</th>
                 <th>Signal</th>
+                <th>Pred. Return</th>
+                <th>Actual Return</th>
+                <th>Outcome</th>
               </tr>
             </thead>
             <tbody>
-              {DEMO_STOCKS.filter(s => s.ticker !== '^GSPC').slice(0, 8).map(s => (
-                <tr key={s.ticker}>
+              {recentPredictions.map(p => (
+                <tr key={p.id}>
+                  <td className="font-data">{p.predictionDate}</td>
                   <td>
-                    <Link to={`/app/stocks/${s.ticker}`} className="dash-ticker-link">
-                      {s.ticker}
+                    <Link to={`/app/stocks/${p.ticker}`} className="dash-ticker-link">
+                      {p.ticker}
                     </Link>
                   </td>
-                  <td>{formatPrice(s.mockPrice)}</td>
-                  <td className={s.mockReturn >= 0 ? 'pos' : 'neg'}>
-                    {formatReturn(s.mockReturn)}
+                  <td><SignalBadge signal={p.predictedDirection} size="sm" /></td>
+                  <td className={p.predictedReturn >= 0 ? 'pos' : 'neg'}>
+                    {formatReturn(p.predictedReturn)}
                   </td>
-                  <td><SignalBadge signal={s.mockSignal} size="sm" /></td>
+                  <td className={p.actualReturn >= 0 ? 'pos' : 'neg'}>
+                    {p.actualReturn != null ? formatReturn(p.actualReturn) : '—'}
+                  </td>
+                  <td>
+                    {p.correct === true ? (
+                      <span className="outcome-tag outcome-correct"><CheckCircle2 size={12} /> Correct</span>
+                    ) : p.correct === false ? (
+                      <span className="outcome-tag outcome-incorrect"><AlertCircle size={12} /> Incorrect</span>
+                    ) : (
+                      <span className="outcome-tag outcome-pending"><Clock size={12} /> Pending</span>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </section>
+
       </div>
     </div>
   )

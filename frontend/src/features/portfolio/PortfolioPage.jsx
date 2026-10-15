@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { Info } from 'lucide-react'
 import { SignalBadge, DataProvenanceLabel } from '@/components/ui/Badge'
 import { ChartRangeSelector } from '@/components/ui/ChartRangeSelector'
 import { DEMO_STOCKS } from '@/mocks/stocks'
@@ -8,10 +9,10 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } f
 import './PortfolioPage.css'
 
 const COLORS = ['var(--chart-line)','var(--terracotta)','var(--teal)','var(--amber)']
-const AVAILABLE = DEMO_STOCKS.filter(s => s.ticker !== '^GSPC').slice(0, 6)
+const AVAILABLE = DEMO_STOCKS.slice(0, 7) // Includes ^GSPC and demo equities
 
 export default function PortfolioPage() {
-  const [selected, setSelected] = useState(['AAPL','NVDA','SPY'])
+  const [selected, setSelected] = useState(['^GSPC', 'AAPL', 'NVDA'])
   const [range, setRange] = useState('6M')
 
   const toggle = (ticker) => {
@@ -38,23 +39,31 @@ export default function PortfolioPage() {
     <div className="portfolio-page">
       <div className="page-header">
         <div>
-          <h1 className="page-title">Portfolio Comparison</h1>
-          <p className="page-subtitle">Normalised price performance (% from period start)</p>
+          <h1 className="page-title">Multi-Instrument Comparison</h1>
+          <p className="page-subtitle">Normalised relative price movement (% from period start)</p>
         </div>
         <DataProvenanceLabel type="demo" />
       </div>
 
+      {/* Scope callout */}
+      <div className="portfolio-scope-callout">
+        <Info size={16} className="callout-icon" />
+        <p className="callout-text">
+          <strong>Single-Asset Architecture Scope:</strong> ArthNex is trained on single-asset S&amp;P 500 (^GSPC) daily time-series data. Multi-asset portfolio analysis, correlation matrices, and custom allocations require multi-asset model pipelines. To prevent fabricating artificial portfolio returns, this view provides purely relative price-performance comparisons.
+        </p>
+      </div>
+
       <div className="portfolio-controls">
-        <div className="portfolio-ticker-select" role="group" aria-label="Select tickers to compare (max 4)">
+        <div className="portfolio-ticker-select" role="group" aria-label="Select instruments to compare (max 4)">
           {AVAILABLE.map((s) => (
             <button
               key={s.ticker}
-              className={`pticker-btn ${selected.includes(s.ticker) ? 'active' : ''}`}
+              className={`pticker-btn ${selected.includes(s.ticker) ? 'active' : ''} ${s.ticker === '^GSPC' ? 'core-btn' : ''}`}
               onClick={() => toggle(s.ticker)}
               aria-pressed={selected.includes(s.ticker)}
               style={{ '--accent': COLORS[selected.indexOf(s.ticker)] }}
             >
-              {s.ticker}
+              {s.ticker} {s.ticker === '^GSPC' ? '(Core)' : ''}
             </button>
           ))}
         </div>

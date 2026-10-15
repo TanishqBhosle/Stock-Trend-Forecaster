@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { BarChart2, FlaskConical, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { ArthNexLogo } from '@/components/ui/ArthNexLogo'
 import { useAuth } from '@/hooks/useAuth'
 import './Auth.css'
 
@@ -47,10 +48,12 @@ export default function OnboardingPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="onboarding-eyebrow">Welcome to Stock Trend Forecaster</p>
-          <h1 className="onboarding-title">How will you use this platform?</h1>
+          <div style={{ marginBottom: '1.25rem' }}>
+            <ArthNexLogo size="lg" link={false} tagline={true} />
+          </div>
+          <h1 className="onboarding-title">How will you use the platform?</h1>
           <p className="onboarding-subtitle">
-            Choose a workspace. You can switch between them at any time from the sidebar.
+            Choose your primary workspace mode. You can switch between Analyst and Scientist view at any time.
           </p>
 
           <div className="onboarding-roles">

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Plus, Trash2, Search } from 'lucide-react'
+import { Plus, Trash2, Search, Info } from 'lucide-react'
 import { SignalBadge, DataProvenanceLabel } from '@/components/ui/Badge'
 import { EmptyState } from '@/components/ui/EmptyState'
 import { Input } from '@/components/ui/Input'
@@ -14,12 +14,11 @@ import './WatchlistPage.css'
 export default function WatchlistPage() {
   const { tickers, add, remove } = useWatchlist()
   const { addToast } = useToast()
+  const navigate = useNavigate()
   const [addQuery, setAddQuery] = useState('')
   const [filterQuery, setFilterQuery] = useState('')
 
-  const availableTickers = DEMO_STOCKS
-    .filter(s => s.ticker !== '^GSPC')
-    .map(s => s.ticker)
+  const availableTickers = DEMO_STOCKS.map(s => s.ticker)
 
   const suggestions = addQuery
     ? availableTickers.filter(t =>
@@ -52,10 +51,17 @@ export default function WatchlistPage() {
     <div className="watchlist-page">
       <div className="page-header">
         <div>
-          <h1 className="page-title">Watchlist</h1>
-          <p className="page-subtitle">{tickers.length} ticker{tickers.length !== 1 ? 's' : ''}</p>
+          <h1 className="page-title">Personal Watchlist</h1>
+          <p className="page-subtitle">{tickers.length} tracked instrument{tickers.length !== 1 ? 's' : ''} (saved in local browser storage)</p>
         </div>
-        <DataProvenanceLabel type="demo" />
+        <DataProvenanceLabel type="demo">Client localStorage</DataProvenanceLabel>
+      </div>
+
+      <div className="watchlist-notice-callout">
+        <Info size={16} className="notice-icon" />
+        <p className="notice-text">
+          <strong>Client-Side State:</strong> Watchlists are stored locally in your browser via <code>localStorage</code>. Data is not synced to an external database.
+        </p>
       </div>
 
       {/* Add ticker */}
@@ -123,8 +129,8 @@ export default function WatchlistPage() {
           illustration="watchlist"
           title="Your watchlist is empty"
           description="Add demo tickers to track their signals and forecasts in one place."
-          actionLabel="Browse stocks"
-          onAction={() => window.location.href = '/app/stocks'}
+          actionLabel="Browse instruments"
+          onAction={() => navigate('/app/stocks')}
         />
       ) : watchlistStocks.length === 0 ? (
         <EmptyState

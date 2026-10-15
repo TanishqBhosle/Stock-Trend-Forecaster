@@ -33,7 +33,7 @@ export default function BacktestPage() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
-      ticker: 'AAPL', startDate: '2024-01-01', endDate: '2025-01-01',
+      ticker: '^GSPC', startDate: '2024-01-01', endDate: '2025-01-01',
       initialCapital: '10000', bullThreshold: '0.5', bearThreshold: '-0.5', txCost: '0.1',
     },
   })
@@ -66,18 +66,20 @@ export default function BacktestPage() {
           <h1 className="page-title">Backtesting Studio</h1>
           <p className="page-subtitle">Simulate a trend-following strategy using illustrative demo signals</p>
         </div>
-        <DataProvenanceLabel type="illustrative" />
+        <DataProvenanceLabel type="illustrative">Illustrative Simulation</DataProvenanceLabel>
       </div>
 
       <div className="backtest-layout">
         {/* Controls */}
         <aside className="backtest-controls">
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <h2 className="backtest-controls-title">Parameters</h2>
+            <h2 className="backtest-controls-title">Strategy Parameters</h2>
 
-            <Select id="ticker" label="Ticker" error={errors.ticker?.message} {...register('ticker')}>
-              {DEMO_STOCKS.filter(s => s.ticker !== '^GSPC').map(s => (
-                <option key={s.ticker} value={s.ticker}>{s.ticker} — {s.name}</option>
+            <Select id="ticker" label="Instrument" error={errors.ticker?.message} {...register('ticker')}>
+              {DEMO_STOCKS.map(s => (
+                <option key={s.ticker} value={s.ticker}>
+                  {s.ticker} — {s.name} {s.ticker === '^GSPC' ? '(Core Dataset)' : ''}
+                </option>
               ))}
             </Select>
 

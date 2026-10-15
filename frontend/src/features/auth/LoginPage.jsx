@@ -7,6 +7,7 @@ import { Eye, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
+import { ArthNexLogo } from '@/components/ui/ArthNexLogo'
 import { useAuth } from '@/hooks/useAuth'
 import './Auth.css'
 
@@ -39,12 +40,12 @@ export default function LoginPage() {
     <div className="auth-root">
       <div className="auth-brand-col">
         <div className="auth-brand-inner">
-          <Link to="/" className="auth-wordmark">Stock Trend Forecaster</Link>
+          <ArthNexLogo size="lg" link={true} tagline={true} />
           <blockquote className="auth-brand-quote">
             "Examine the evidence before drawing conclusions."
           </blockquote>
           <p className="auth-brand-sub">
-            A research tool for S&P 500 LSTM forecasting and trend analysis.
+            The Next Era of Market Intelligence — LSTM forecasting and deep trend analytics.
           </p>
         </div>
       </div>

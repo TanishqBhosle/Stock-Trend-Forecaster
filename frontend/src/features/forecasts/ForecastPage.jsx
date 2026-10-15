@@ -113,42 +113,62 @@ export default function ForecastPage() {
             <p className="sr-only">Chart showing {range} historical price for {ticker} with an illustrative next-day forecast point.</p>
           </div>
 
-          {/* How return is calculated */}
+          {/* How return is calculated & Threshold rules */}
           <div className="forecast-explainer">
-            <h2 className="forecast-section-title">How the expected return is calculated</h2>
+            <h2 className="forecast-section-title">Model Target &amp; Price Recovery Methodology</h2>
             <p className="forecast-explainer-text">
-              The LSTM model predicts the <em>next-day return</em> as a decimal (e.g., 0.008 for +0.8%).
-              The predicted closing price is then recovered as:
+              The 2-layer stacked LSTM predicts the <em>stationary next-day return</em> as a continuous decimal.
+              The predicted closing price is then recovered deterministically using today's observed closing price:
             </p>
             <div className="forecast-formula">
               <code>predicted_price = Close[t] × (1 + predicted_return)</code>
             </div>
             <p className="forecast-explainer-text">
-              This approach uses a stationary target (returns) rather than raw price levels,
-              which prevents the StandardScaler from extrapolating when prices far exceed
-              training-period values.
+              Predicting returns rather than raw price levels prevents out-of-distribution extrapolation
+              when modern prices (over 5,000) exceed training set historical averages (~500).
             </p>
+
+            <h3 className="forecast-thresholds-heading">Directional Trend Classification Rules</h3>
+            <div className="forecast-thresholds-grid">
+              <div className="threshold-rule-card bullish-rule">
+                <span className="trc-label">BULLISH</span>
+                <span className="trc-condition">Predicted Return &gt; +0.50% (+0.005)</span>
+                <span className="trc-desc">Upward price movement exceeds noise boundary.</span>
+              </div>
+              <div className="threshold-rule-card neutral-rule">
+                <span className="trc-label">NEUTRAL</span>
+                <span className="trc-condition">−0.50% &le; Predicted Return &le; +0.50%</span>
+                <span className="trc-desc">Movement within normal intraday volatility band.</span>
+              </div>
+              <div className="threshold-rule-card bearish-rule">
+                <span className="trc-label">BEARISH</span>
+                <span className="trc-condition">Predicted Return &lt; −0.50% (−0.005)</span>
+                <span className="trc-desc">Downward price movement exceeds noise boundary.</span>
+              </div>
+            </div>
           </div>
         </main>
 
         {/* Evidence sidebar */}
         <aside className="forecast-sidebar">
           <section className="forecast-evidence">
-            <h2 className="forecast-section-title">Forecast metadata</h2>
+            <h2 className="forecast-section-title">Forecast Metadata</h2>
             {forecast ? (
               <div className="evidence-rows">
                 {[
-                  { label: 'Forecast date',   value: forecast.forecastDate },
-                  { label: 'Forecast for',    value: forecast.forecastFor },
-                  { label: 'Model version',   value: forecast.modelVersion },
-                  { label: 'Horizon',         value: '1 trading day' },
-                  { label: 'Architecture',    value: MODEL_CONFIG.architecture },
-                  { label: 'Lookback',        value: `${MODEL_CONFIG.lookback} days` },
-                  { label: 'Input features',  value: `${MODEL_CONFIG.features.length}` },
+                  { label: 'Forecast generated', value: forecast.forecastDate },
+                  { label: 'Forecast target date', value: forecast.forecastFor },
+                  { label: 'Horizon', value: '1 trading day (close-to-close)' },
+                  { label: 'Model version', value: forecast.modelVersion },
+                  { label: 'Architecture', value: MODEL_CONFIG.architecture },
+                  { label: 'Lookback window', value: `${MODEL_CONFIG.lookback} days` },
+                  { label: 'Input features', value: `${MODEL_CONFIG.features.length} stationary returns/ratios` },
+                  { label: 'Primary dataset', value: MODEL_CONFIG.dataset.source },
+                  { label: 'Dataset range', value: MODEL_CONFIG.dataset.dateRange },
                 ].map(row => (
                   <div key={row.label} className="evidence-row">
                     <span className="ev-label">{row.label}</span>
-                    <span className="ev-value">{row.value}</span>
+                    <span className="ev-value font-data">{row.value}</span>
                   </div>
                 ))}
               </div>
@@ -159,10 +179,19 @@ export default function ForecastPage() {
             )}
           </section>
 
+          <section className="forecast-scope-box">
+            <h3 className="scope-box-title">Instrument Scope</h3>
+            <p className="scope-box-text">
+              {ticker === '^GSPC'
+                ? 'This forecast targets ^GSPC, the verified single-asset training set of ArthNex.'
+                : `Note: The LSTM model is trained on S&P 500 (^GSPC). Single-stock forecast for ${ticker} is demonstrative.`}
+            </p>
+          </section>
+
           <section className="forecast-limitations">
-            <h2 className="forecast-section-title">Limitations</h2>
+            <h2 className="forecast-section-title">Known Limitations</h2>
             <ul className="limitations-list">
-              {MODEL_CONFIG.limitations.slice(0, 3).map((l, i) => (
+              {MODEL_CONFIG.limitations.slice(0, 4).map((l, i) => (
                 <li key={i}>{l}</li>
               ))}
             </ul>

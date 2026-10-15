@@ -110,21 +110,48 @@ export default function StockDetailPage() {
           <Link to={`/app/forecast/${ticker}`} className="forecast-btn">
             View forecast →
           </Link>
-          <DataProvenanceLabel type="demo" />
+          <DataProvenanceLabel type={ticker === '^GSPC' ? 'demo' : 'illustrative'}>
+            {ticker === '^GSPC' ? 'Core Dataset (^GSPC)' : 'Illustrative Preview'}
+          </DataProvenanceLabel>
         </div>
+      </div>
+
+      {/* Scope banner */}
+      <div className="stock-detail-scope-callout">
+        {ticker === '^GSPC' ? (
+          <p>
+            <strong>Primary Model Instrument (^GSPC):</strong> This is the primary dataset used for the ArthNex 2-layer stacked LSTM model. Trained on 24,800 daily records (1927–2026), 9 stationary engineered features, 70/15/15 chronological split, and a 60-day lookback window.
+          </p>
+        ) : (
+          <p>
+            <strong>Illustrative Equity Preview:</strong> The trained model pipeline is trained on the S&amp;P 500 (^GSPC). Forecasts and signals for {ticker} are deterministic demonstrative previews to illustrate single-stock analysis interfaces.
+          </p>
+        )}
       </div>
 
       {/* Price chart */}
       <section className="detail-chart-section" aria-label={`${ticker} price chart`}>
         <div className="detail-chart-header">
-          <h2 className="detail-section-title">Historical price</h2>
+          <div>
+            <h2 className="detail-section-title">Historical Price &amp; Forecast Overlay</h2>
+            <div className="chart-legend-row">
+              <span className="legend-item">
+                <span className="legend-box observed-box" /> Observed Close
+              </span>
+              {forecast && (
+                <span className="legend-item">
+                  <span className="legend-box forecast-box" /> Forecast Target ({forecast.forecastFor})
+                </span>
+              )}
+            </div>
+          </div>
           <ChartRangeSelector selected={range} onChange={setRange} />
         </div>
         <ResponsiveContainer width="100%" height={260}>
           <ComposedChart data={chartData} margin={{ top: 4, right: 0, bottom: 0, left: 0 }}>
             <defs>
               <linearGradient id="detailGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%"  stopColor="var(--chart-line)" stopOpacity={0.10}/>
+                <stop offset="5%"  stopColor="var(--chart-line)" stopOpacity={0.12}/>
                 <stop offset="95%" stopColor="var(--chart-line)" stopOpacity={0}/>
               </linearGradient>
             </defs>
@@ -145,7 +172,14 @@ export default function StockDetailPage() {
 
       {/* Volume chart */}
       <section className="detail-volume-section" aria-label={`${ticker} volume chart`}>
-        <h2 className="detail-section-title">Volume</h2>
+        <div className="detail-volume-header">
+          <h2 className="detail-section-title">Trading Volume</h2>
+          {ticker === '^GSPC' && (
+            <span className="volume-context-note">
+              Note: Pre-1950s records had 0 volume; volume is excluded from model feature set.
+            </span>
+          )}
+        </div>
         <ResponsiveContainer width="100%" height={80}>
           <BarChart data={rows.slice(-60)} margin={{ top: 0, right: 0, bottom: 0, left: 0 }}>
             <XAxis dataKey="date" hide />
