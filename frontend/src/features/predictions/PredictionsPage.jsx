@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Search } from 'lucide-react'
 import { SignalBadge, DataProvenanceLabel } from '@/components/ui/Badge'
 import { Input } from '@/components/ui/Input'
 import { EmptyState } from '@/components/ui/EmptyState'
 import { DEMO_PREDICTIONS } from '@/mocks/predictions'
+import { fetchPredictions } from '@/services/stockService'
 import { formatReturn } from '@/lib/signals'
 import './PredictionsPage.css'
 
@@ -16,9 +17,31 @@ export default function PredictionsPage() {
   const [page, setPage] = useState(1)
   const [sortKey, setSortKey] = useState('predictionDate')
   const [sortDir, setSortDir] = useState('desc')
+  const [liveRecords, setLiveRecords] = useState(null)
+
+  useEffect(() => {
+    let mounted = true
+    async function loadLivePredictions() {
+      try {
+        const res = await fetchPredictions({
+          ticker: query || undefined,
+          signal: signalFilter !== 'ALL' ? signalFilter : undefined,
+          page,
+          pageSize: 50
+        })
+        if (mounted && res && res.records && res.records.length > 0) {
+          setLiveRecords(res.records)
+        }
+      } catch (err) {
+        console.warn('Error loading live predictions:', err)
+      }
+    }
+    loadLivePredictions()
+    return () => { mounted = false }
+  }, [query, signalFilter, page])
 
   const filtered = useMemo(() => {
-    let records = [...DEMO_PREDICTIONS]
+    let records = liveRecords || [...DEMO_PREDICTIONS]
     if (query) {
       const q = query.toLowerCase()
       records = records.filter(r => r.ticker.toLowerCase().includes(q))
@@ -33,7 +56,7 @@ export default function PredictionsPage() {
       return 0
     })
     return records
-  }, [query, signalFilter, sortKey, sortDir])
+  }, [query, signalFilter, sortKey, sortDir, liveRecords])
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE)
   const page_records = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
@@ -50,7 +73,9 @@ export default function PredictionsPage() {
           <h1 className="page-title">Prediction History</h1>
           <p className="page-subtitle">{filtered.length} records</p>
         </div>
-        <DataProvenanceLabel type="illustrative" />
+        <DataProvenanceLabel type={liveRecords ? 'verified' : 'illustrative'}>
+          {liveRecords ? 'Verified Prediction Records' : 'Illustrative Log'}
+        </DataProvenanceLabel>
       </div>
 
       <div className="predictions-controls">

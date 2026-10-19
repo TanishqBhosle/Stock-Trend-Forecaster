@@ -9,7 +9,7 @@ import { formatPrice, formatReturn } from '@/lib/signals'
 import './StocksPage.css'
 
 const SIGNAL_FILTERS = ['ALL', 'BULLISH', 'NEUTRAL', 'BEARISH']
-const TYPE_FILTERS = ['ALL', 'CORE INDEX', 'EQUITIES']
+const TYPE_FILTERS = ['ALL', 'CORE INDEX']
 
 export default function StocksPage() {
   const [query, setQuery] = useState('')
@@ -25,12 +25,6 @@ export default function StocksPage() {
 
   const filtered = useMemo(() => {
     let stocks = [...DEMO_STOCKS]
-
-    if (typeFilter === 'CORE INDEX') {
-      stocks = stocks.filter(s => s.ticker === '^GSPC')
-    } else if (typeFilter === 'EQUITIES') {
-      stocks = stocks.filter(s => s.ticker !== '^GSPC')
-    }
 
     if (query) {
       const q = query.toLowerCase()

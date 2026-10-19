@@ -249,14 +249,14 @@ export default function LandingPage() {
 
               {/* Ticker switcher */}
               <div className="ln-preview__tickers" role="group" aria-label="Select ticker">
-                {['^GSPC', 'SPY', 'AAPL', 'MSFT'].map(t => (
+                {['^GSPC'].map(t => (
                   <button
                     key={t}
                     className={`ln-preview__ticker-btn ${activeTicker === t ? 'active' : ''}`}
                     onClick={() => setActiveTicker(t)}
                     aria-pressed={activeTicker === t}
                   >
-                    {t === '^GSPC' ? '^GSPC (S&P 500)' : t}
+                    S&P 500 Index (^GSPC)
                   </button>
                 ))}
               </div>

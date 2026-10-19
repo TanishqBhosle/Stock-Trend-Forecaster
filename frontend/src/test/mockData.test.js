@@ -5,8 +5,9 @@ import { getOHLCV, filterByRange } from '@/mocks/ohlcv'
 import { classifySignal } from '@/lib/signals'
 
 describe('DEMO_STOCKS', () => {
-  it('contains 11 stocks', () => {
-    expect(DEMO_STOCKS).toHaveLength(11)
+  it('contains the primary ^GSPC asset', () => {
+    expect(DEMO_STOCKS).toHaveLength(1)
+    expect(DEMO_STOCKS[0].ticker).toBe('^GSPC')
   })
 
   it('all stocks have required fields', () => {
@@ -26,8 +27,8 @@ describe('DEMO_STOCKS', () => {
   })
 
   it('getStock finds by ticker (case insensitive)', () => {
-    expect(getStock('aapl')?.ticker).toBe('AAPL')
-    expect(getStock('AAPL')?.ticker).toBe('AAPL')
+    expect(getStock('^gspc')?.ticker).toBe('^GSPC')
+    expect(getStock('^GSPC')?.ticker).toBe('^GSPC')
     expect(getStock('invalid')).toBeUndefined()
   })
 })
@@ -47,20 +48,20 @@ describe('DEMO_FORECASTS', () => {
   })
 
   it('getForecast returns correct entry', () => {
-    const f = getForecast('AAPL')
-    expect(f?.ticker).toBe('AAPL')
+    const f = getForecast('^GSPC')
+    expect(f?.ticker).toBe('^GSPC')
     expect(getForecast('INVALID')).toBeNull()
   })
 })
 
 describe('OHLCV generation', () => {
   it('generates 504 rows by default', () => {
-    const rows = getOHLCV('AAPL')
+    const rows = getOHLCV('^GSPC')
     expect(rows.length).toBe(504)
   })
 
   it('rows have valid OHLCV structure', () => {
-    const rows = getOHLCV('MSFT')
+    const rows = getOHLCV('^GSPC')
     for (const r of rows.slice(0, 5)) {
       expect(r.date).toMatch(/^\d{4}-\d{2}-\d{2}$/)
       expect(r.high).toBeGreaterThanOrEqual(r.low)
@@ -70,14 +71,14 @@ describe('OHLCV generation', () => {
   })
 
   it('is deterministic — same ticker returns same values', () => {
-    const a = getOHLCV('NVDA')
-    const b = getOHLCV('NVDA')
+    const a = getOHLCV('^GSPC')
+    const b = getOHLCV('^GSPC')
     expect(a[0]).toEqual(b[0])
     expect(a[503]).toEqual(b[503])
   })
 
   it('filterByRange narrows the series', () => {
-    const rows = getOHLCV('SPY')
+    const rows = getOHLCV('^GSPC')
     const year = filterByRange(rows, '1Y')
     const month = filterByRange(rows, '1M')
     expect(year.length).toBeGreaterThan(month.length)

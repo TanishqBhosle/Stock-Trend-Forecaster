@@ -27,27 +27,57 @@ function CustomTooltip({ active, payload }) {
   )
 }
 
+import { fetchStocks, fetchOHLCV, fetchForecast, fetchPredictions } from '@/services/stockService'
+
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
   const [range, setRange] = useState('3M')
   const [selectedTicker, setSelectedTicker] = useState('^GSPC')
+  const [stocks, setStocks] = useState(DEMO_STOCKS)
+  const [ohlcvData, setOhlcvData] = useState([])
+  const [forecast, setForecast] = useState(null)
+  const [recentPredictions, setRecentPredictions] = useState(DEMO_PREDICTIONS.slice(0, 4))
 
   useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 360)
-    return () => clearTimeout(t)
-  }, [])
+    let mounted = true
+    async function loadData() {
+      setLoading(true)
+      try {
+        const [fetchedStocks, fetchedOhlcv, fetchedForecast, fetchedPreds] = await Promise.allSettled([
+          fetchStocks(),
+          fetchOHLCV(selectedTicker, range),
+          fetchForecast(selectedTicker),
+          fetchPredictions({ ticker: selectedTicker, page: 1, pageSize: 4 })
+        ])
+        if (!mounted) return
+        if (fetchedStocks.status === 'fulfilled' && fetchedStocks.value) {
+          setStocks(fetchedStocks.value)
+        }
+        if (fetchedOhlcv.status === 'fulfilled' && fetchedOhlcv.value?.length > 0) {
+          setOhlcvData(fetchedOhlcv.value)
+        }
+        if (fetchedForecast.status === 'fulfilled' && fetchedForecast.value) {
+          setForecast(fetchedForecast.value)
+        }
+        if (fetchedPreds.status === 'fulfilled' && fetchedPreds.value?.records?.length > 0) {
+          setRecentPredictions(fetchedPreds.value.records.slice(0, 4))
+        }
+      } catch (err) {
+        console.warn('Dashboard load error:', err)
+      } finally {
+        if (mounted) setLoading(false)
+      }
+    }
+    loadData()
+    return () => { mounted = false }
+  }, [selectedTicker, range])
 
-  const stock = DEMO_STOCKS.find(s => s.ticker === selectedTicker) || DEMO_STOCKS[0]
-  const ohlcv = filterByRange(getOHLCV(selectedTicker), range)
+  const stock = stocks.find(s => s.ticker === selectedTicker) || stocks[0]
+  const ohlcv = ohlcvData.length > 0 ? ohlcvData : filterByRange(getOHLCV(selectedTicker), range)
   const chartData = ohlcv.map(r => ({ date: r.date, close: r.close }))
   const { bullish, bearish, neutral } = getSignalGroups()
-  const forecast = DEMO_FORECASTS.find(f => f.ticker === selectedTicker)
+  const activeForecast = forecast || DEMO_FORECASTS.find(f => f.ticker === selectedTicker)
   const isPrimary = stock.ticker === '^GSPC'
-
-  // Recent predictions for current ticker or overall
-  const recentPredictions = DEMO_PREDICTIONS.filter(p =>
-    isPrimary ? p.ticker === '^GSPC' || true : p.ticker === selectedTicker
-  ).slice(0, 4)
 
   return (
     <div className="dashboard">
@@ -80,7 +110,7 @@ export default function DashboardPage() {
 
       {/* Instrument selector strip */}
       <div className="market-strip" role="tablist" aria-label="Available instruments">
-        {DEMO_STOCKS.map(s => {
+        {stocks.map(s => {
           const isSelected = selectedTicker === s.ticker
           const isGspc = s.ticker === '^GSPC'
           return (
@@ -157,33 +187,33 @@ export default function DashboardPage() {
             </DataProvenanceLabel>
           </div>
 
-          {forecast ? (
+          {activeForecast ? (
             <div className="forecast-panel-body">
               <div className="forecast-badge-row">
-                <SignalBadge signal={forecast.signal} size="md" />
+                <SignalBadge signal={activeForecast.signal || activeForecast.trendClassification} size="md" />
                 <span className="forecast-threshold-hint">Threshold: ±0.5%</span>
               </div>
               <div className="forecast-return">
                 <span className="forecast-return-label">Predicted Return</span>
-                <span className={`forecast-return-value ${forecast.predictedReturn >= 0 ? 'pos' : 'neg'}`}>
-                  {formatReturn(forecast.predictedReturn)}
+                <span className={`forecast-return-value ${activeForecast.predictedReturn >= 0 ? 'pos' : 'neg'}`}>
+                  {formatReturn(activeForecast.predictedReturn)}
                 </span>
               </div>
               <div className="forecast-close-row">
                 <span className="forecast-meta-label">Predicted close</span>
-                <span className="forecast-meta-value">{formatPrice(forecast.predictedClose)}</span>
+                <span className="forecast-meta-value">{formatPrice(activeForecast.predictedClose)}</span>
               </div>
               <div className="forecast-close-row">
                 <span className="forecast-meta-label">Last observed close</span>
-                <span className="forecast-meta-value">{formatPrice(forecast.lastObservedClose)}</span>
+                <span className="forecast-meta-value">{formatPrice(activeForecast.lastObservedClose || activeForecast.observedClose)}</span>
               </div>
               <div className="forecast-close-row">
                 <span className="forecast-meta-label">Forecast target</span>
-                <span className="forecast-meta-value font-data">{forecast.forecastFor}</span>
+                <span className="forecast-meta-value font-data">{activeForecast.forecastFor}</span>
               </div>
               <div className="forecast-close-row">
                 <span className="forecast-meta-label">Model version</span>
-                <span className="forecast-meta-value font-data">{forecast.modelVersion}</span>
+                <span className="forecast-meta-value font-data">{activeForecast.modelVersion}</span>
               </div>
 
               <div className="forecast-rule-box">
@@ -215,7 +245,7 @@ export default function DashboardPage() {
                 <div className="signal-dist-bar-wrap">
                   <div
                     className="signal-dist-bar"
-                    style={{ height: `${(item.count / DEMO_STOCKS.length) * 70}px`, background: item.color }}
+                    style={{ height: `${(item.count / (stocks.length || 1)) * 70}px`, background: item.color }}
                     aria-hidden="true"
                   />
                 </div>

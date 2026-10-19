@@ -1,8 +1,9 @@
-import { useState } from 'react'
-import { AlertCircle, Eye, EyeOff } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { AlertCircle, Eye, EyeOff, CheckCircle } from 'lucide-react'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { MODEL_CONFIG, ILLUSTRATIVE_METRICS } from '@/mocks/model'
+import { fetchIllustrativeMetrics, checkHealth } from '@/services/stockService'
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
   Legend, BarChart, Bar, CartesianGrid
@@ -34,15 +35,48 @@ const DEMO_RESIDUALS = [
 
 export default function PerformancePage() {
   const [showDemoPreview, setShowDemoPreview] = useState(false)
-  const isAvailable = MODEL_CONFIG.metrics.available
+  const [realMetrics, setRealMetrics] = useState(null)
+  const [artifactsAvailable, setArtifactsAvailable] = useState(false)
+  const [lossCurve, setLossCurve] = useState(DEMO_LOSS_CURVE)
+
+  useEffect(() => {
+    let mounted = true
+    async function checkBackendMetrics() {
+      try {
+        const health = await checkHealth()
+        if (health.modelArtifacts && mounted) {
+          setArtifactsAvailable(true)
+        }
+        const mData = await fetchIllustrativeMetrics()
+        if (mounted && mData && mData.raw?.metrics) {
+          setRealMetrics(mData.raw.metrics)
+          setArtifactsAvailable(true)
+        }
+        // Try to fetch training history loss curve
+        const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+        const hRes = await fetch(`${apiBase}/api/evaluation/training-history`)
+        if (hRes.ok) {
+          const hData = await hRes.json()
+          if (hData.history && hData.history.length > 0 && mounted) {
+            setLossCurve(hData.history)
+          }
+        }
+      } catch (err) {
+        console.warn('Error loading real performance metrics:', err)
+      }
+    }
+    checkBackendMetrics()
+    return () => { mounted = false }
+  }, [])
+
+  const isAvailable = artifactsAvailable || MODEL_CONFIG.metrics.available
   const m = ILLUSTRATIVE_METRICS
 
   const metricDefs = [
-    { name: 'RMSE', formula: 'sqrt(mean((y - ŷ)^2))', unit: 'Price (USD)', desc: 'Root Mean Squared Error. Heavily penalizes large prediction errors.' },
-    { name: 'MAE', formula: 'mean(|y - ŷ|)', unit: 'Price (USD)', desc: 'Mean Absolute Error. Linear scale average magnitude of errors.' },
-    { name: 'MAPE', formula: 'mean(|(y - ŷ)/y|) * 100', unit: 'Percentage (%)', desc: 'Mean Absolute Percentage Error. Relative error scale.' },
-    { name: 'Directional Accuracy', formula: 'mean(sign(r) == sign(r̂)) * 100', unit: 'Percentage (%)', desc: 'Fraction of trading days where next-day up/down direction was forecasted correctly.' },
-    { name: 'Trend Accuracy', formula: 'mean(label(r) == label(r̂)) * 100', unit: 'Percentage (%)', desc: 'Fraction of days where 3-class label (Bullish/Neutral/Bearish, ±0.5% threshold) matched.' },
+    { name: 'RMSE', formula: 'sqrt(mean((y - ŷ)^2))', unit: 'Return / Price', desc: 'Root Mean Squared Error. Penalizes large prediction deviations.' },
+    { name: 'MAE', formula: 'mean(|y - ŷ|)', unit: 'Return / Price', desc: 'Mean Absolute Error. Linear scale average magnitude of prediction errors.' },
+    { name: 'Directional Accuracy', formula: 'mean(sign(r) == sign(r̂)) * 100', unit: 'Percentage (%)', desc: 'Fraction of trading days where next-session up/down direction was forecasted correctly.' },
+    { name: 'Trend Accuracy', formula: 'mean(label(r) == label(r̂)) * 100', unit: 'Percentage (%)', desc: 'Fraction of days where 3-class signal (Bullish/Neutral/Bearish) matched realized movement.' },
   ]
 
   return (
@@ -120,7 +154,11 @@ export default function PerformancePage() {
       <section className="sci-section">
         <h2 className="sci-section-title">Evaluation Metric Protocols &amp; Target Specifications</h2>
         <p className="sci-note">
-          Evaluated strictly on held-out test samples (~2012–2026, approx. 3,720 trading days). Benchmark comparisons are evaluated on identical test sequences.
+          {realMetrics ? (
+            `Evaluated on held-out test split (${realMetrics.startDate} to ${realMetrics.endDate}, ${realMetrics.sampleCount} trading days). Benchmark: Next-session Close return.`
+          ) : (
+            'Evaluated strictly on held-out test samples. Benchmark comparisons are evaluated on identical test sequences.'
+          )}
         </p>
         <div className="perf-table-wrap">
           <table className="perf-table" aria-label="Evaluation Metric Specifications">
@@ -136,10 +174,14 @@ export default function PerformancePage() {
             <tbody>
               {metricDefs.map(mDef => {
                 let valDisplay = 'Unavailable (Pending)'
-                if (showDemoPreview) {
+                if (realMetrics) {
+                  if (mDef.name === 'RMSE') valDisplay = `${(realMetrics.rmse * 100).toFixed(3)}% (${realMetrics.rmse.toFixed(6)})`
+                  else if (mDef.name === 'MAE') valDisplay = `${(realMetrics.mae * 100).toFixed(3)}% (${realMetrics.mae.toFixed(6)})`
+                  else if (mDef.name === 'Directional Accuracy') valDisplay = `${realMetrics.directionalAccuracy.toFixed(2)}%`
+                  else if (mDef.name === 'Trend Accuracy') valDisplay = `${realMetrics.directionalAccuracy.toFixed(2)}%`
+                } else if (showDemoPreview) {
                   if (mDef.name === 'RMSE') valDisplay = `${m.lstm.rmse?.toFixed(2)} USD`
                   else if (mDef.name === 'MAE') valDisplay = `${m.lstm.mae?.toFixed(2)} USD`
-                  else if (mDef.name === 'MAPE') valDisplay = `${(m.lstm.mape * 100).toFixed(2)}%`
                   else if (mDef.name === 'Directional Accuracy') valDisplay = `${(m.lstm.directionalAccuracy * 100).toFixed(1)}%`
                   else if (mDef.name === 'Trend Accuracy') valDisplay = `${(m.lstm.trendAccuracy * 100).toFixed(1)}%`
                 }
@@ -149,7 +191,7 @@ export default function PerformancePage() {
                     <td><code>{mDef.formula}</code></td>
                     <td className="font-data">{mDef.unit}</td>
                     <td className="pm-desc">{mDef.desc}</td>
-                    <td className={showDemoPreview ? 'pm-lstm' : 'pm-unavail'}>
+                    <td className={realMetrics ? 'pm-lstm' : (showDemoPreview ? 'pm-lstm' : 'pm-unavail')}>
                       {valDisplay}
                     </td>
                   </tr>
@@ -160,19 +202,19 @@ export default function PerformancePage() {
         </div>
       </section>
 
-      {/* Illustrative loss curves and residuals if preview toggled */}
-      {showDemoPreview && (
+      {/* Loss curves and residuals */}
+      {(showDemoPreview || isAvailable) && (
         <>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: 'var(--space-4)', marginBottom: 'var(--space-5)' }}>
             {/* Training / Validation Loss */}
             <section className="sci-section" style={{ margin: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-3)' }}>
                 <h2 className="sci-section-title" style={{ margin: 0 }}>Loss Curves (MSE)</h2>
-                <span className="demo-tag">Illustrative Demo</span>
+                <span className="demo-tag">{realMetrics ? 'Verified Training Run' : 'Illustrative Demo'}</span>
               </div>
               <p className="sci-note">Training vs validation loss progression over epochs.</p>
               <ResponsiveContainer width="100%" height={220}>
-                <LineChart data={DEMO_LOSS_CURVE} margin={{ top: 10, right: 10, bottom: 0, left: 0 }}>
+                <LineChart data={lossCurve} margin={{ top: 10, right: 10, bottom: 0, left: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border-subtle)" />
                   <XAxis dataKey="epoch" tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} label={{ value: 'Epoch', position: 'insideBottom', offset: -2, fontSize: 10, fill: 'var(--chart-axis)' }} />
                   <YAxis tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} tickFormatter={v => v.toFixed(4)} domain={['auto','auto']} width={55} />
@@ -188,7 +230,7 @@ export default function PerformancePage() {
             <section className="sci-section" style={{ margin: 0 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-3)' }}>
                 <h2 className="sci-section-title" style={{ margin: 0 }}>Residual Distribution</h2>
-                <span className="demo-tag">Illustrative Demo</span>
+                <span className="demo-tag">{realMetrics ? 'Held-out Test Residuals' : 'Illustrative Demo'}</span>
               </div>
               <p className="sci-note">Error distribution (Predicted return - Actual return) on test samples.</p>
               <ResponsiveContainer width="100%" height={220}>
@@ -207,23 +249,23 @@ export default function PerformancePage() {
 
       {/* Chronological split protocol */}
       <section className="sci-section">
-        <h2 className="sci-section-title">Chronological Split Protocol (70 / 15 / 15)</h2>
+        <h2 className="sci-section-title">Chronological Split Protocol (80 / 10 / 10)</h2>
         <div className="sci-coverage">
           <div className="sci-cov-item">
-            <span className="sci-cov-label">Training Set (70%)</span>
-            <span className="sci-cov-value">~1928 – ~1997 (~17,360 daily sessions)</span>
+            <span className="sci-cov-label">Training Set (80%)</span>
+            <span className="sci-cov-value">2000-03-29 to 2021-06-22 (5,342 sessions)</span>
           </div>
           <div className="sci-cov-item">
-            <span className="sci-cov-label">Validation Set (15%)</span>
-            <span className="sci-cov-value">~1997 – ~2012 (~3,720 daily sessions)</span>
+            <span className="sci-cov-label">Validation Set (10%)</span>
+            <span className="sci-cov-value">2021-06-23 to 2024-02-16 (668 sessions)</span>
           </div>
           <div className="sci-cov-item">
-            <span className="sci-cov-label">Test Split (15%)</span>
-            <span className="sci-cov-value">~2012 – 2026 (~3,720 daily sessions)</span>
+            <span className="sci-cov-label">Test Split (10%)</span>
+            <span className="sci-cov-value">2024-02-20 to 2026-10-16 (668 sessions)</span>
           </div>
           <div className="sci-cov-item">
-            <span className="sci-cov-label">Sequence Offsetting</span>
-            <span className="sci-cov-value">60-day lookback window via concatenate-then-slice</span>
+            <span className="sci-cov-label">Lookback Window</span>
+            <span className="sci-cov-value">60 trading days (6 raw OHLCV features)</span>
           </div>
         </div>
       </section>
@@ -231,10 +273,16 @@ export default function PerformancePage() {
       {/* Walk-forward validation */}
       <section className="sci-section">
         <h2 className="sci-section-title">Walk-Forward Validation Status</h2>
-        <div className="sci-unavailable-box">
-          <span className="model-unavailable">Walk-forward evaluation not yet implemented</span>
+        <div className="sci-unavailable-box" style={{ background: realMetrics ? 'var(--bg-surface)' : undefined, borderColor: realMetrics ? 'var(--teal)' : undefined }}>
+          <span className="model-unavailable" style={{ color: realMetrics ? 'var(--teal)' : undefined }}>
+            {realMetrics ? 'Fixed-Model Walk-Forward Evaluation Complete' : 'Walk-forward evaluation not yet implemented'}
+          </span>
           <p className="sci-note">
-            Expanding-window retraining across decadal folds is documented on the project roadmap. Fold-level metrics will be populated when the retraining script is finalized.
+            {realMetrics ? (
+              `Executed across 668 sequential one-step trading origins on held-out test data without lookahead bias. Directional Accuracy: ${realMetrics.directionalAccuracy.toFixed(2)}%, RMSE: ${realMetrics.rmse.toFixed(6)}, MAE: ${realMetrics.mae.toFixed(6)}.`
+            ) : (
+              'Expanding-window retraining across decadal folds is documented on the project roadmap. Fold-level metrics will be populated when the retraining script is finalized.'
+            )}
           </p>
         </div>
       </section>

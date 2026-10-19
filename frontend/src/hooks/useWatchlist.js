@@ -5,9 +5,11 @@ const STORAGE_KEY = 'stf-watchlist'
 function loadWatchlist() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : ['AAPL', 'NVDA', 'SPY']
+    const list = raw ? JSON.parse(raw) : ['^GSPC']
+    const filtered = Array.isArray(list) ? list.filter(t => t === '^GSPC') : ['^GSPC']
+    return filtered.length ? filtered : ['^GSPC']
   } catch {
-    return ['AAPL', 'NVDA', 'SPY']
+    return ['^GSPC']
   }
 }
 

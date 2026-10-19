@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { SignalBadge, DataProvenanceLabel } from '@/components/ui/Badge'
 import { ChartRangeSelector } from '@/components/ui/ChartRangeSelector'
@@ -8,6 +8,7 @@ import { getOHLCV, filterByRange } from '@/mocks/ohlcv'
 import { getForecast } from '@/mocks/forecasts'
 import { MODEL_CONFIG } from '@/mocks/model'
 import { formatPrice, formatReturn, signalSymbol } from '@/lib/signals'
+import { fetchStock, fetchForecast, fetchOHLCV } from '@/services/stockService'
 import {
   ComposedChart, Area, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, ReferenceLine
 } from 'recharts'
@@ -20,7 +21,7 @@ function ForecastTooltip({ active, payload }) {
     <div className="forecast-tt">
       <span>{d?.date}</span>
       <span>{formatPrice(d?.close)}</span>
-      {d?.isForecast && <span className="tt-fc">Illustrative forecast</span>}
+      {d?.isForecast && <span className="tt-fc">{d?.dataStatus === 'verified' ? 'Model forecast' : 'Illustrative forecast'}</span>}
     </div>
   )
 }
@@ -28,18 +29,44 @@ function ForecastTooltip({ active, payload }) {
 export default function ForecastPage() {
   const { ticker } = useParams()
   const [range, setRange] = useState('3M')
+  const [stock, setStock] = useState(() => getStock(ticker))
+  const [forecast, setForecast] = useState(() => getForecast(ticker))
+  const [ohlcvRows, setOhlcvRows] = useState([])
 
-  const stock = getStock(ticker)
-  const forecast = getForecast(ticker)
+  useEffect(() => {
+    let mounted = true
+    async function loadForecastData() {
+      try {
+        const [stk, fc, ohlc] = await Promise.allSettled([
+          fetchStock(ticker),
+          fetchForecast(ticker),
+          fetchOHLCV(ticker, range)
+        ])
+        if (!mounted) return
+        if (stk.status === 'fulfilled' && stk.value) setStock(stk.value)
+        if (fc.status === 'fulfilled' && fc.value) setForecast(fc.value)
+        if (ohlc.status === 'fulfilled' && ohlc.value?.length > 0) setOhlcvRows(ohlc.value)
+      } catch (err) {
+        console.warn('Error loading live forecast data:', err)
+      }
+    }
+    loadForecastData()
+    return () => { mounted = false }
+  }, [ticker, range])
 
   if (!stock) {
     return <EmptyState illustration="search" title={`Ticker not found: ${ticker}`} description="Not in demo dataset." actionLabel="View stocks" onAction={() => history.back()} />
   }
 
-  const rows = filterByRange(getOHLCV(ticker), range)
+  const rows = ohlcvRows.length > 0 ? ohlcvRows : filterByRange(getOHLCV(ticker), range)
   const chartData = rows.map(r => ({ date: r.date, close: r.close }))
   if (forecast) {
-    chartData.push({ date: forecast.forecastFor, close: forecast.predictedClose, isForecast: true })
+    chartData.push({
+      date: forecast.forecastFor,
+      close: forecast.predictedClose,
+      isForecast: true,
+      dataStatus: forecast.dataStatus
+    })
   }
 
   const signalSym = forecast ? signalSymbol(forecast.signal) : '—'
@@ -55,7 +82,9 @@ export default function ForecastPage() {
           </h1>
           <p className="forecast-company">{stock.name}</p>
         </div>
-        <DataProvenanceLabel type="illustrative">Illustrative forecast</DataProvenanceLabel>
+        <DataProvenanceLabel type={forecast?.dataStatus === 'verified' ? 'verified' : 'illustrative'}>
+          {forecast?.dataStatus === 'verified' ? 'Verified LSTM Forecast' : 'Illustrative forecast'}
+        </DataProvenanceLabel>
       </div>
 
       <div className="forecast-layout">

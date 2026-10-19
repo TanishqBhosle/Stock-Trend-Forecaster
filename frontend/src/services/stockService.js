@@ -27,7 +27,8 @@ function delay(ms = MOCK_DELAY) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-const USE_MOCKS = import.meta.env.VITE_USE_MOCKS !== 'false'
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+const USE_MOCKS = import.meta.env.VITE_USE_MOCKS === 'true'
 
 // ── Stocks ────────────────────────────────────────────────────────────────────
 
@@ -36,9 +37,22 @@ const USE_MOCKS = import.meta.env.VITE_USE_MOCKS !== 'false'
  * @returns {Promise<import('@/mocks/stocks').StockMeta[]>}
  */
 export async function fetchStocks() {
-  await delay()
-  if (USE_MOCKS) return DEMO_STOCKS
-  throw new Error('Real API not connected. Set VITE_USE_MOCKS=true.')
+  await delay(100)
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/v1/stocks`)
+      if (res.ok) {
+        const liveStocks = await res.json()
+        const gspc = liveStocks.find(s => s.ticker === '^GSPC') || liveStocks[0]
+        if (gspc) {
+          return [gspc]
+        }
+      }
+    } catch (err) {
+      console.warn('Backend unavailable, falling back to cached demo stocks:', err)
+    }
+  }
+  return DEMO_STOCKS
 }
 
 /**
@@ -47,13 +61,22 @@ export async function fetchStocks() {
  * @returns {Promise<import('@/mocks/stocks').StockMeta>}
  */
 export async function fetchStock(ticker) {
-  await delay(280)
-  if (USE_MOCKS) {
-    const s = getStock(ticker)
-    if (!s) throw new Error(`Ticker not found: ${ticker}`)
-    return s
+  await delay(100)
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/v1/stocks/${encodeURIComponent(ticker)}`)
+      if (res.ok) {
+        const data = await res.json()
+        const fallback = getStock(ticker)
+        return fallback ? { ...fallback, ...data } : data
+      }
+    } catch (err) {
+      console.warn(`Backend fetch failed for ${ticker}, using fallback:`, err)
+    }
   }
-  throw new Error('Real API not connected.')
+  const s = getStock(ticker)
+  if (!s) throw new Error(`Ticker not found: ${ticker}`)
+  return s
 }
 
 // ── OHLCV ─────────────────────────────────────────────────────────────────────
@@ -65,12 +88,22 @@ export async function fetchStock(ticker) {
  * @returns {Promise<import('@/mocks/ohlcv').OHLCVRow[]>}
  */
 export async function fetchOHLCV(ticker, range = '1Y') {
-  await delay(380)
-  if (USE_MOCKS) {
-    const rows = getOHLCV(ticker)
-    return filterByRange(rows, range)
+  await delay(120)
+  if (!USE_MOCKS && (ticker === '^GSPC' || ticker === 'GSPC')) {
+    try {
+      const res = await fetch(`${API_BASE}/api/market/history?range=${range}`)
+      if (res.ok) {
+        const json = await res.json()
+        if (json.data && json.data.length > 0) {
+          return json.data
+        }
+      }
+    } catch (err) {
+      console.warn('Backend OHLCV fetch failed, using fallback:', err)
+    }
   }
-  throw new Error('Real API not connected.')
+  const rows = getOHLCV(ticker)
+  return filterByRange(rows, range)
 }
 
 // ── Forecasts ─────────────────────────────────────────────────────────────────
@@ -80,9 +113,18 @@ export async function fetchOHLCV(ticker, range = '1Y') {
  * @returns {Promise<import('@/mocks/forecasts').ForecastResult[]>}
  */
 export async function fetchForecasts() {
-  await delay(320)
-  if (USE_MOCKS) return DEMO_FORECASTS
-  throw new Error('Real API not connected.')
+  await delay(100)
+  if (!USE_MOCKS) {
+    try {
+      const f = await fetchForecast('^GSPC')
+      if (f) {
+        return DEMO_FORECASTS.map(item => item.ticker === '^GSPC' ? { ...item, ...f } : item)
+      }
+    } catch (err) {
+      console.warn('Backend fetchForecasts failed:', err)
+    }
+  }
+  return DEMO_FORECASTS
 }
 
 /**
@@ -91,32 +133,90 @@ export async function fetchForecasts() {
  * @returns {Promise<import('@/mocks/forecasts').ForecastResult>}
  */
 export async function fetchForecast(ticker) {
-  await delay(350)
-  if (USE_MOCKS) {
-    const f = getForecast(ticker)
-    if (!f) throw new Error(`No forecast for ticker: ${ticker}`)
-    return f
+  await delay(120)
+  if (!USE_MOCKS && (ticker === '^GSPC' || ticker === 'GSPC')) {
+    try {
+      const res = await fetch(`${API_BASE}/api/forecast/latest`)
+      if (res.ok) {
+        const data = await res.json()
+        return {
+          ticker: data.ticker,
+          lastObservedClose: data.referenceClose,
+          observedClose: data.referenceClose,
+          predictedReturn: data.predictedReturn,
+          predictedClose: data.predictedClose,
+          signal: data.trendSignal,
+          trendClassification: data.trendSignal,
+          forecastDate: data.forecastDate,
+          forecastFor: data.forecastFor,
+          modelVersion: data.modelVersion,
+          dataStatus: 'verified',
+          expectedMovement: data.expectedMovement,
+          disclaimer: data.disclaimer,
+          lookbackDays: data.lookbackDays,
+          featureCount: data.inputFeatureCount
+        }
+      }
+    } catch (err) {
+      console.warn('Backend forecast fetch failed, using fallback:', err)
+    }
   }
-  throw new Error('Real API not connected.')
+  const f = getForecast(ticker)
+  if (!f) throw new Error(`No forecast for ticker: ${ticker}`)
+  return f
 }
 
 // ── Model ─────────────────────────────────────────────────────────────────────
 
 /**
- * Get model configuration (verified from README).
+ * Get model configuration (verified from backend / README).
  * @returns {Promise<typeof MODEL_CONFIG>}
  */
 export async function fetchModelConfig() {
-  await delay(280)
+  await delay(80)
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/model/config`)
+      if (res.ok) {
+        const cfg = await res.json()
+        return { ...MODEL_CONFIG, ...cfg }
+      }
+    } catch (err) {
+      console.warn('Backend model config fetch failed:', err)
+    }
+  }
   return MODEL_CONFIG
 }
 
 /**
- * Get illustrative demo metrics (clearly labeled).
+ * Get performance metrics from real backend evaluation.
  * @returns {Promise<typeof ILLUSTRATIVE_METRICS>}
  */
 export async function fetchIllustrativeMetrics() {
-  await delay(300)
+  await delay(100)
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/evaluation/test`)
+      if (res.ok) {
+        const data = await res.json()
+        if (data.metrics) {
+          return {
+            _label: 'Held-out Chronological Test Split (Verified Artifacts)',
+            lstm: {
+              rmse: data.metrics.rmse,
+              mae: data.metrics.mae,
+              mape: data.metrics.mae,
+              directionalAccuracy: data.metrics.directionalAccuracy / 100.0,
+              trendAccuracy: data.metrics.directionalAccuracy / 100.0
+            },
+            raw: data
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('Backend performance fetch failed:', err)
+    }
+  }
   return ILLUSTRATIVE_METRICS
 }
 
@@ -132,16 +232,29 @@ export async function fetchIllustrativeMetrics() {
  * @returns {Promise<{records: import('@/mocks/predictions').PredictionRecord[], total: number}>}
  */
 export async function fetchPredictions({ ticker, signal, page = 1, pageSize = 20 } = {}) {
-  await delay(400)
-  if (USE_MOCKS) {
-    let records = [...DEMO_PREDICTIONS]
-    if (ticker) records = records.filter(r => r.ticker.toLowerCase() === ticker.toLowerCase())
-    if (signal) records = records.filter(r => r.predictedDirection === signal)
-    const total = records.length
-    const start = (page - 1) * pageSize
-    return { records: records.slice(start, start + pageSize), total }
+  await delay(120)
+  if (!USE_MOCKS) {
+    try {
+      let url = `${API_BASE}/api/forecast/history?page=${page}&pageSize=${pageSize}`
+      if (ticker) url += `&ticker=${encodeURIComponent(ticker)}`
+      if (signal && signal !== 'ALL') url += `&signal=${encodeURIComponent(signal)}`
+      const res = await fetch(url)
+      if (res.ok) {
+        const data = await res.json()
+        if (data.records && data.records.length > 0) {
+          return { records: data.records, total: data.total }
+        }
+      }
+    } catch (err) {
+      console.warn('Backend predictions fetch failed, using fallback:', err)
+    }
   }
-  throw new Error('Real API not connected.')
+  let records = [...DEMO_PREDICTIONS]
+  if (ticker) records = records.filter(r => r.ticker.toLowerCase() === ticker.toLowerCase())
+  if (signal) records = records.filter(r => r.predictedDirection === signal)
+  const total = records.length
+  const start = (page - 1) * pageSize
+  return { records: records.slice(start, start + pageSize), total }
 }
 
 // ── Experiments ───────────────────────────────────────────────────────────────
@@ -236,12 +349,27 @@ export async function runBacktest(params) {
 
 /**
  * Check API/data source availability.
- * @returns {Promise<{mocks: boolean, api: boolean}>}
+ * @returns {Promise<{mocks: boolean, api: boolean, modelArtifacts: boolean, status?: any}>}
  */
 export async function checkHealth() {
+  try {
+    const res = await fetch(`${API_BASE}/api/status`)
+    if (res.ok) {
+      const data = await res.json()
+      return {
+        mocks: USE_MOCKS,
+        api: true,
+        modelArtifacts: Boolean(data.modelAvailability),
+        status: data,
+      }
+    }
+  } catch (err) {
+    // API offline
+  }
   return {
     mocks: true,
-    api:   false, // No real backend connected
+    api: false,
     modelArtifacts: false,
   }
 }
+

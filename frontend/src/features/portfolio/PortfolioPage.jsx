@@ -9,10 +9,10 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } f
 import './PortfolioPage.css'
 
 const COLORS = ['var(--chart-line)','var(--terracotta)','var(--teal)','var(--amber)']
-const AVAILABLE = DEMO_STOCKS.slice(0, 7) // Includes ^GSPC and demo equities
-
+const AVAILABLE = DEMO_STOCKS
+ 
 export default function PortfolioPage() {
-  const [selected, setSelected] = useState(['^GSPC', 'AAPL', 'NVDA'])
+  const [selected, setSelected] = useState(['^GSPC'])
   const [range, setRange] = useState('6M')
 
   const toggle = (ticker) => {
