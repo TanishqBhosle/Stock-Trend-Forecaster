@@ -71,11 +71,6 @@ export const MODEL_CONFIG = {
       walkForwardMae:     0.006537,
       walkForwardDA:      55.39,
     },
-    naiveBaseline: {
-      rmse:               0.010820,
-      mae:                0.007410,
-      directionalAccuracy: 49.10,
-    },
   },
 
   limitations: [
@@ -97,10 +92,5 @@ export const ILLUSTRATIVE_METRICS = {
     mae:  0.65, // %
     directionalAccuracy: 0.5539,
     trendAccuracy: 0.5539,
-  },
-  naiveBaseline: {
-    rmse: 1.08,
-    mae:  0.74,
-    directionalAccuracy: 0.491,
   },
 }
