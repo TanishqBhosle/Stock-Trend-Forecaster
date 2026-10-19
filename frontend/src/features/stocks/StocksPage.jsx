@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Search, Info } from 'lucide-react'
 import { SignalBadge, DataProvenanceLabel } from '@/components/ui/Badge'
 import { Input } from '@/components/ui/Input'
 import { EmptyState } from '@/components/ui/EmptyState'
 import { DEMO_STOCKS } from '@/mocks/stocks'
+import { fetchStocks } from '@/services/stockService'
 import { formatPrice, formatReturn } from '@/lib/signals'
 import './StocksPage.css'
 
@@ -18,13 +19,23 @@ export default function StocksPage() {
   const [sortBy, setSortBy] = useState('ticker')
   const [sortDir, setSortDir] = useState('asc')
 
+  const [stockList, setStockList] = useState(DEMO_STOCKS)
+
+  useEffect(() => {
+    let mounted = true
+    fetchStocks().then(res => {
+      if (mounted && res && res.length > 0) setStockList(res)
+    }).catch(() => {})
+    return () => { mounted = false }
+  }, [])
+
   const handleSort = (col) => {
     if (sortBy === col) setSortDir(d => d === 'asc' ? 'desc' : 'asc')
     else { setSortBy(col); setSortDir('asc') }
   }
 
   const filtered = useMemo(() => {
-    let stocks = [...DEMO_STOCKS]
+    let stocks = [...stockList]
 
     if (query) {
       const q = query.toLowerCase()
@@ -32,8 +43,11 @@ export default function StocksPage() {
         s.ticker.toLowerCase().includes(q) || s.name.toLowerCase().includes(q)
       )
     }
+    if (typeFilter === 'CORE INDEX') {
+      stocks = stocks.filter(s => s.isPrimaryModelAsset || s.sector === 'Index' || s.ticker === '^GSPC')
+    }
     if (signalFilter !== 'ALL') {
-      stocks = stocks.filter(s => s.mockSignal === signalFilter)
+      stocks = stocks.filter(s => (s.latestSignal || s.mockSignal) === signalFilter)
     }
     stocks = [...stocks].sort((a, b) => {
       // Keep ^GSPC on top if sorting by ticker or default
@@ -44,14 +58,14 @@ export default function StocksPage() {
         return sortDir === 'asc' ? cmp : -cmp
       }
       let av, bv
-      if (sortBy === 'price') { av = a.mockPrice; bv = b.mockPrice }
-      else { av = a.mockReturn; bv = b.mockReturn }
+      if (sortBy === 'price') { av = a.currentPrice || a.mockPrice; bv = b.currentPrice || b.mockPrice }
+      else { av = a.predictedReturn ?? a.mockReturn; bv = b.predictedReturn ?? b.mockReturn }
       if (av < bv) return sortDir === 'asc' ? -1 : 1
       if (av > bv) return sortDir === 'asc' ? 1 : -1
       return 0
     })
     return stocks
-  }, [query, signalFilter, typeFilter, sortBy, sortDir])
+  }, [stockList, query, signalFilter, typeFilter, sortBy, sortDir])
 
   return (
     <div className="stocks-page">

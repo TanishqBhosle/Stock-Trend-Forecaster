@@ -46,7 +46,7 @@ export default function ModelsPage() {
     artifact: 'model.pt',
     status: isTrained ? 'Trained & Evaluated' : 'Pending evaluation',
     type: 'Recurrent Neural Network (Deep Learning)',
-    description: 'Single dedicated PyTorch LSTM model with 64 hidden units, 0.2 dropout, and 60-day sequence lookback, predicting next-session Close return on S&P 500 (^GSPC).',
+    description: 'Single dedicated PyTorch LSTM model with 128 hidden units, 0.2 dropout, and 60-day sequence lookback, predicting next-session Close return on S&P 500 (^GSPC).',
     inputShape: '(batch, 60, 6)',
     outputShape: '(batch, 1)',
     features: ['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'],
