@@ -104,7 +104,7 @@ export default function DashboardPage() {
       <div className="dash-scope-banner">
         <Info size={16} className="dash-scope-icon" />
         <p className="dash-scope-text">
-          <strong>Dataset Scope:</strong> ArthNex is trained specifically on ~24,800 historical daily records of the <strong>S&amp;P 500 Index (^GSPC)</strong> using 9 stationary features and a 60-day lookback. Individual stock quotes and forecasts are deterministic educational previews.
+          <strong>Dataset Scope:</strong> ArthNex is trained on 6,738 historical daily sessions of the <strong>S&amp;P 500 Index (^GSPC)</strong> (2000–present) using exactly 6 raw OHLCV features and a 60-day lookback window.
         </p>
       </div>
 
@@ -275,11 +275,11 @@ export default function DashboardPage() {
             </div>
             <div className="perf-metric-item">
               <span className="pmi-label">Features</span>
-              <span className="pmi-value">9 Stationary Ratios</span>
+              <span className="pmi-value">6 Raw OHLCV Features</span>
             </div>
             <div className="perf-metric-item">
               <span className="pmi-label">Split Ratio</span>
-              <span className="pmi-value">70 / 15 / 15 Chronological</span>
+              <span className="pmi-value">80 / 10 / 10 Chronological</span>
             </div>
           </div>
           <div className="dash-artifact-notice">

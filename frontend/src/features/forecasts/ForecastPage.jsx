@@ -191,7 +191,7 @@ export default function ForecastPage() {
                   { label: 'Model version', value: forecast.modelVersion },
                   { label: 'Architecture', value: MODEL_CONFIG.architecture },
                   { label: 'Lookback window', value: `${MODEL_CONFIG.lookback} days` },
-                  { label: 'Input features', value: `${MODEL_CONFIG.features.length} stationary returns/ratios` },
+                  { label: 'Input features', value: `${MODEL_CONFIG.features.length} raw OHLCV features` },
                   { label: 'Primary dataset', value: MODEL_CONFIG.dataset.source },
                   { label: 'Dataset range', value: MODEL_CONFIG.dataset.dateRange },
                 ].map(row => (
