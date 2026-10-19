@@ -1,0 +1,6682 @@
+[
+  {
+    "date": "2024-02-20",
+    "actualReturn": -0.006005322095006704,
+    "predictedReturn": 0.0004904419765807688,
+    "actualClose": 4975.51,
+    "predictedClose": 5008.02,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-02-21",
+    "actualReturn": 0.0012641999637708068,
+    "predictedReturn": 0.0004929474671371281,
+    "actualClose": 4981.8,
+    "predictedClose": 4977.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-02-22",
+    "actualReturn": 0.02112288400530815,
+    "predictedReturn": 0.0004883973160758615,
+    "actualClose": 5087.03,
+    "predictedClose": 4984.23,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-02-23",
+    "actualReturn": 0.0003479475562926382,
+    "predictedReturn": 0.00048857182264328,
+    "actualClose": 5088.8,
+    "predictedClose": 5089.52,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-02-26",
+    "actualReturn": -0.003786751301959157,
+    "predictedReturn": 0.00048212928231805563,
+    "actualClose": 5069.53,
+    "predictedClose": 5091.25,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-02-27",
+    "actualReturn": 0.0017063496634364128,
+    "predictedReturn": 0.0004796063876710832,
+    "actualClose": 5078.18,
+    "predictedClose": 5071.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-02-28",
+    "actualReturn": -0.0016581551171839237,
+    "predictedReturn": 0.0004831011756323278,
+    "actualClose": 5069.76,
+    "predictedClose": 5080.63,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-02-29",
+    "actualReturn": 0.005229094531387091,
+    "predictedReturn": 0.0004824498319067061,
+    "actualClose": 5096.27,
+    "predictedClose": 5072.21,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-01",
+    "actualReturn": 0.008007829077541828,
+    "predictedReturn": 0.0005120966234244406,
+    "actualClose": 5137.08,
+    "predictedClose": 5098.88,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-04",
+    "actualReturn": -0.0011932620545849204,
+    "predictedReturn": 0.0005185918998904526,
+    "actualClose": 5130.95,
+    "predictedClose": 5139.74,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-05",
+    "actualReturn": -0.01019310113042593,
+    "predictedReturn": 0.0005217695143073797,
+    "actualClose": 5078.65,
+    "predictedClose": 5133.63,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-06",
+    "actualReturn": 0.00514110317453742,
+    "predictedReturn": 0.0005180425941944122,
+    "actualClose": 5104.76,
+    "predictedClose": 5081.28,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-07",
+    "actualReturn": 0.01030412781983614,
+    "predictedReturn": 0.0005173137760721147,
+    "actualClose": 5157.36,
+    "predictedClose": 5107.4,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-08",
+    "actualReturn": -0.006528519093990326,
+    "predictedReturn": 0.0005066417506895959,
+    "actualClose": 5123.69,
+    "predictedClose": 5159.97,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-11",
+    "actualReturn": -0.001122238114476204,
+    "predictedReturn": 0.000503928167745471,
+    "actualClose": 5117.94,
+    "predictedClose": 5126.27,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-12",
+    "actualReturn": 0.011201787739992142,
+    "predictedReturn": 0.0004955801996402442,
+    "actualClose": 5175.27,
+    "predictedClose": 5120.48,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-13",
+    "actualReturn": -0.0019245296716690063,
+    "predictedReturn": 0.000493033672682941,
+    "actualClose": 5165.31,
+    "predictedClose": 5177.82,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-14",
+    "actualReturn": -0.002871091477572918,
+    "predictedReturn": 0.0004972065798938274,
+    "actualClose": 5150.48,
+    "predictedClose": 5167.88,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-15",
+    "actualReturn": -0.006482917349785566,
+    "predictedReturn": 0.0005095279775559902,
+    "actualClose": 5117.09,
+    "predictedClose": 5153.1,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-18",
+    "actualReturn": 0.006318059284240007,
+    "predictedReturn": 0.0005820424994453788,
+    "actualClose": 5149.42,
+    "predictedClose": 5120.07,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-19",
+    "actualReturn": 0.005649149417877197,
+    "predictedReturn": 0.0005445171846076846,
+    "actualClose": 5178.51,
+    "predictedClose": 5152.22,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-20",
+    "actualReturn": 0.008904173970222473,
+    "predictedReturn": 0.0005170139484107494,
+    "actualClose": 5224.62,
+    "predictedClose": 5181.19,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-21",
+    "actualReturn": 0.003236535470932722,
+    "predictedReturn": 0.0005025775171816349,
+    "actualClose": 5241.53,
+    "predictedClose": 5227.25,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-22",
+    "actualReturn": -0.0014021878596395254,
+    "predictedReturn": 0.0004992790636606514,
+    "actualClose": 5234.18,
+    "predictedClose": 5244.15,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-25",
+    "actualReturn": -0.003054964356124401,
+    "predictedReturn": 0.0004809211823157966,
+    "actualClose": 5218.19,
+    "predictedClose": 5236.7,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-26",
+    "actualReturn": -0.0027997952420264482,
+    "predictedReturn": 0.0004693751980084926,
+    "actualClose": 5203.58,
+    "predictedClose": 5220.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-03-27",
+    "actualReturn": 0.00863062683492899,
+    "predictedReturn": 0.00047554521006532013,
+    "actualClose": 5248.49,
+    "predictedClose": 5206.05,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-03-28",
+    "actualReturn": 0.001116485451348126,
+    "predictedReturn": 0.0004777735157404095,
+    "actualClose": 5254.35,
+    "predictedClose": 5251.0,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-01",
+    "actualReturn": -0.0020135845988988876,
+    "predictedReturn": 0.0004819878377020359,
+    "actualClose": 5243.77,
+    "predictedClose": 5256.88,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-02",
+    "actualReturn": -0.007239059079438448,
+    "predictedReturn": 0.0004707487241830677,
+    "actualClose": 5205.81,
+    "predictedClose": 5246.24,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-03",
+    "actualReturn": 0.0010911223944276571,
+    "predictedReturn": 0.0004763620381709188,
+    "actualClose": 5211.49,
+    "predictedClose": 5208.29,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-04",
+    "actualReturn": -0.012334336526691914,
+    "predictedReturn": 0.000475680164527148,
+    "actualClose": 5147.21,
+    "predictedClose": 5213.97,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-05",
+    "actualReturn": 0.011099194176495075,
+    "predictedReturn": 0.000486038567032665,
+    "actualClose": 5204.34,
+    "predictedClose": 5149.71,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-08",
+    "actualReturn": -0.0003746309957932681,
+    "predictedReturn": 0.0004740094591397792,
+    "actualClose": 5202.39,
+    "predictedClose": 5206.81,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-09",
+    "actualReturn": 0.001445493195205927,
+    "predictedReturn": 0.00046424640459008515,
+    "actualClose": 5209.91,
+    "predictedClose": 5204.81,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-10",
+    "actualReturn": -0.009456980973482132,
+    "predictedReturn": 0.0004621273837983608,
+    "actualClose": 5160.64,
+    "predictedClose": 5212.32,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-11",
+    "actualReturn": 0.007444797549396753,
+    "predictedReturn": 0.0004718853160738945,
+    "actualClose": 5199.06,
+    "predictedClose": 5163.08,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-12",
+    "actualReturn": -0.014550688676536083,
+    "predictedReturn": 0.0004691510694101453,
+    "actualClose": 5123.41,
+    "predictedClose": 5201.5,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-15",
+    "actualReturn": -0.012021355330944061,
+    "predictedReturn": 0.00047925085527822375,
+    "actualClose": 5061.82,
+    "predictedClose": 5125.87,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-16",
+    "actualReturn": -0.0020565069280564785,
+    "predictedReturn": 0.0004868896212428808,
+    "actualClose": 5051.41,
+    "predictedClose": 5064.28,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-17",
+    "actualReturn": -0.005780602805316448,
+    "predictedReturn": 0.0004903593217022717,
+    "actualClose": 5022.21,
+    "predictedClose": 5053.89,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-18",
+    "actualReturn": -0.002208160003647208,
+    "predictedReturn": 0.00048381619853898883,
+    "actualClose": 5011.12,
+    "predictedClose": 5024.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-19",
+    "actualReturn": -0.008758547715842724,
+    "predictedReturn": 0.00047973915934562683,
+    "actualClose": 4967.23,
+    "predictedClose": 5013.52,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-22",
+    "actualReturn": 0.00873124785721302,
+    "predictedReturn": 0.00048421270912513137,
+    "actualClose": 5010.6,
+    "predictedClose": 4969.64,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-23",
+    "actualReturn": 0.011964576318860054,
+    "predictedReturn": 0.0004837858723476529,
+    "actualClose": 5070.55,
+    "predictedClose": 5013.02,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-24",
+    "actualReturn": 0.00021301006199792027,
+    "predictedReturn": 0.00048020435497164726,
+    "actualClose": 5071.63,
+    "predictedClose": 5072.98,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-25",
+    "actualReturn": -0.004576430190354586,
+    "predictedReturn": 0.00047728419303894043,
+    "actualClose": 5048.42,
+    "predictedClose": 5074.05,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-26",
+    "actualReturn": 0.010209142230451107,
+    "predictedReturn": 0.0004827740485779941,
+    "actualClose": 5099.96,
+    "predictedClose": 5050.86,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-04-29",
+    "actualReturn": 0.003178448649123311,
+    "predictedReturn": 0.00047717499546706676,
+    "actualClose": 5116.17,
+    "predictedClose": 5102.39,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-04-30",
+    "actualReturn": -0.015730513259768486,
+    "predictedReturn": 0.00047050538705661893,
+    "actualClose": 5035.69,
+    "predictedClose": 5118.58,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-01",
+    "actualReturn": -0.003435438731685281,
+    "predictedReturn": 0.0004836315056309104,
+    "actualClose": 5018.39,
+    "predictedClose": 5038.13,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-02",
+    "actualReturn": 0.009128437377512455,
+    "predictedReturn": 0.0005009921151213348,
+    "actualClose": 5064.2,
+    "predictedClose": 5020.9,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-03",
+    "actualReturn": 0.012556740082800388,
+    "predictedReturn": 0.0005052278283983469,
+    "actualClose": 5127.79,
+    "predictedClose": 5066.76,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-06",
+    "actualReturn": 0.010326123796403408,
+    "predictedReturn": 0.0004958060453645885,
+    "actualClose": 5180.74,
+    "predictedClose": 5130.33,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-07",
+    "actualReturn": 0.0013434297870844603,
+    "predictedReturn": 0.00048399000661447644,
+    "actualClose": 5187.7,
+    "predictedClose": 5183.25,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-08",
+    "actualReturn": -5.835618139826693e-06,
+    "predictedReturn": 0.0004848033422604203,
+    "actualClose": 5187.67,
+    "predictedClose": 5190.22,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-09",
+    "actualReturn": 0.005090947728604078,
+    "predictedReturn": 0.00048303563380613923,
+    "actualClose": 5214.08,
+    "predictedClose": 5190.18,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-10",
+    "actualReturn": 0.001649398822337389,
+    "predictedReturn": 0.00047889043344184756,
+    "actualClose": 5222.68,
+    "predictedClose": 5216.58,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-13",
+    "actualReturn": -0.0002413040492683649,
+    "predictedReturn": 0.00047452517901547253,
+    "actualClose": 5221.42,
+    "predictedClose": 5225.16,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-14",
+    "actualReturn": 0.004837813321501017,
+    "predictedReturn": 0.00048620777670294046,
+    "actualClose": 5246.68,
+    "predictedClose": 5223.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-15",
+    "actualReturn": 0.011715928092598915,
+    "predictedReturn": 0.0005033360794186592,
+    "actualClose": 5308.15,
+    "predictedClose": 5249.32,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-16",
+    "actualReturn": -0.002081667771562934,
+    "predictedReturn": 0.0005028700106777251,
+    "actualClose": 5297.1,
+    "predictedClose": 5310.82,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-17",
+    "actualReturn": 0.001164773479104042,
+    "predictedReturn": 0.000491413869895041,
+    "actualClose": 5303.27,
+    "predictedClose": 5299.7,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-20",
+    "actualReturn": 0.0009163899230770767,
+    "predictedReturn": 0.0004795955610461533,
+    "actualClose": 5308.13,
+    "predictedClose": 5305.81,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-21",
+    "actualReturn": 0.002501874230802059,
+    "predictedReturn": 0.0004697577969636768,
+    "actualClose": 5321.41,
+    "predictedClose": 5310.62,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-22",
+    "actualReturn": -0.002706123050302267,
+    "predictedReturn": 0.00046922379988245666,
+    "actualClose": 5307.01,
+    "predictedClose": 5323.91,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-23",
+    "actualReturn": -0.007380789611488581,
+    "predictedReturn": 0.00047420477494597435,
+    "actualClose": 5267.84,
+    "predictedClose": 5309.53,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-24",
+    "actualReturn": 0.007001042366027832,
+    "predictedReturn": 0.0004795405548065901,
+    "actualClose": 5304.72,
+    "predictedClose": 5270.37,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-28",
+    "actualReturn": 0.00024880186538212,
+    "predictedReturn": 0.0004615632933564484,
+    "actualClose": 5306.04,
+    "predictedClose": 5307.17,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-05-29",
+    "actualReturn": -0.007367046549916267,
+    "predictedReturn": 0.00046676641795784235,
+    "actualClose": 5266.95,
+    "predictedClose": 5308.52,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-30",
+    "actualReturn": -0.005975035484880209,
+    "predictedReturn": 0.0004674827796407044,
+    "actualClose": 5235.48,
+    "predictedClose": 5269.41,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-05-31",
+    "actualReturn": 0.008027875795960426,
+    "predictedReturn": 0.00047390826512128115,
+    "actualClose": 5277.51,
+    "predictedClose": 5237.96,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-06-03",
+    "actualReturn": 0.001116082537919283,
+    "predictedReturn": 0.0005106040043756366,
+    "actualClose": 5283.4,
+    "predictedClose": 5280.2,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-04",
+    "actualReturn": 0.0015028091147542,
+    "predictedReturn": 0.0005028019659221172,
+    "actualClose": 5291.34,
+    "predictedClose": 5286.06,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-05",
+    "actualReturn": 0.011847649700939655,
+    "predictedReturn": 0.0004885906237177551,
+    "actualClose": 5354.03,
+    "predictedClose": 5293.93,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-06-06",
+    "actualReturn": -0.0001998166408156976,
+    "predictedReturn": 0.00047664446174167097,
+    "actualClose": 5352.96,
+    "predictedClose": 5356.58,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-07",
+    "actualReturn": -0.0011152197839692235,
+    "predictedReturn": 0.0004716443072538823,
+    "actualClose": 5346.99,
+    "predictedClose": 5355.48,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-10",
+    "actualReturn": 0.0025808545760810375,
+    "predictedReturn": 0.0004715125251095742,
+    "actualClose": 5360.79,
+    "predictedClose": 5349.51,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-11",
+    "actualReturn": 0.0027103812899440527,
+    "predictedReturn": 0.0004695502284448594,
+    "actualClose": 5375.32,
+    "predictedClose": 5363.31,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-12",
+    "actualReturn": 0.008503672666847706,
+    "predictedReturn": 0.00046701700193807483,
+    "actualClose": 5421.03,
+    "predictedClose": 5377.83,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-06-13",
+    "actualReturn": 0.002344655804336071,
+    "predictedReturn": 0.00047324446495622396,
+    "actualClose": 5433.74,
+    "predictedClose": 5423.6,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-14",
+    "actualReturn": -0.00039386071148328483,
+    "predictedReturn": 0.00046844760072417557,
+    "actualClose": 5431.6,
+    "predictedClose": 5436.29,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-17",
+    "actualReturn": 0.00766438664868474,
+    "predictedReturn": 0.00046342809218913317,
+    "actualClose": 5473.23,
+    "predictedClose": 5434.12,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-06-18",
+    "actualReturn": 0.0025213274639099836,
+    "predictedReturn": 0.00045979925198480487,
+    "actualClose": 5487.03,
+    "predictedClose": 5475.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-20",
+    "actualReturn": -0.0025259319227188826,
+    "predictedReturn": 0.00045998755376785994,
+    "actualClose": 5473.17,
+    "predictedClose": 5489.55,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-21",
+    "actualReturn": -0.001562130288220942,
+    "predictedReturn": 0.0004680252750404179,
+    "actualClose": 5464.62,
+    "predictedClose": 5475.73,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-24",
+    "actualReturn": -0.0030651718843728304,
+    "predictedReturn": 0.000534007849637419,
+    "actualClose": 5447.87,
+    "predictedClose": 5467.54,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-25",
+    "actualReturn": 0.003933589905500412,
+    "predictedReturn": 0.0005085358861833811,
+    "actualClose": 5469.3,
+    "predictedClose": 5450.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-26",
+    "actualReturn": 0.0015724311815574765,
+    "predictedReturn": 0.00048667803639546037,
+    "actualClose": 5477.9,
+    "predictedClose": 5471.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-27",
+    "actualReturn": 0.0009073212277144194,
+    "predictedReturn": 0.00047436001477763057,
+    "actualClose": 5482.87,
+    "predictedClose": 5480.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-06-28",
+    "actualReturn": -0.004083652514964342,
+    "predictedReturn": 0.00046885362826287746,
+    "actualClose": 5460.48,
+    "predictedClose": 5485.44,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-01",
+    "actualReturn": 0.0026755640283226967,
+    "predictedReturn": 0.0005432271864265203,
+    "actualClose": 5475.09,
+    "predictedClose": 5463.45,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-02",
+    "actualReturn": 0.006195317953824997,
+    "predictedReturn": 0.0005089674377813935,
+    "actualClose": 5509.01,
+    "predictedClose": 5477.88,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-03",
+    "actualReturn": 0.005084444303065538,
+    "predictedReturn": 0.0004800425376743078,
+    "actualClose": 5537.02,
+    "predictedClose": 5511.65,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-05",
+    "actualReturn": 0.005448765121400356,
+    "predictedReturn": 0.0004402330960147083,
+    "actualClose": 5567.19,
+    "predictedClose": 5539.46,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-08",
+    "actualReturn": 0.0010166990105062723,
+    "predictedReturn": 0.000440740492194891,
+    "actualClose": 5572.85,
+    "predictedClose": 5569.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-09",
+    "actualReturn": 0.0007410719408653677,
+    "predictedReturn": 0.0004421627090778202,
+    "actualClose": 5576.98,
+    "predictedClose": 5575.31,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-10",
+    "actualReturn": 0.010208065621554852,
+    "predictedReturn": 0.0004441433120518923,
+    "actualClose": 5633.91,
+    "predictedClose": 5579.46,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-11",
+    "actualReturn": -0.008763029240071774,
+    "predictedReturn": 0.00044583764974959195,
+    "actualClose": 5584.54,
+    "predictedClose": 5636.42,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-12",
+    "actualReturn": 0.005517026875168085,
+    "predictedReturn": 0.00046357919927686453,
+    "actualClose": 5615.35,
+    "predictedClose": 5587.13,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-15",
+    "actualReturn": 0.0028262026607990265,
+    "predictedReturn": 0.00046570951235480607,
+    "actualClose": 5631.22,
+    "predictedClose": 5617.97,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-16",
+    "actualReturn": 0.006389375310391188,
+    "predictedReturn": 0.0004642598214559257,
+    "actualClose": 5667.2,
+    "predictedClose": 5633.83,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-17",
+    "actualReturn": -0.01392754353582859,
+    "predictedReturn": 0.0004712323425337672,
+    "actualClose": 5588.27,
+    "predictedClose": 5669.87,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-18",
+    "actualReturn": -0.007816404104232788,
+    "predictedReturn": 0.0004821541369892657,
+    "actualClose": 5544.59,
+    "predictedClose": 5590.96,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-19",
+    "actualReturn": -0.007140265312045813,
+    "predictedReturn": 0.00048460328252986073,
+    "actualClose": 5505.0,
+    "predictedClose": 5547.28,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-22",
+    "actualReturn": 0.010792035609483719,
+    "predictedReturn": 0.00048019905807450414,
+    "actualClose": 5564.41,
+    "predictedClose": 5507.64,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-23",
+    "actualReturn": -0.0015581025509163737,
+    "predictedReturn": 0.000466804311145097,
+    "actualClose": 5555.74,
+    "predictedClose": 5567.01,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-24",
+    "actualReturn": -0.023149093613028526,
+    "predictedReturn": 0.00046240247320383787,
+    "actualClose": 5427.13,
+    "predictedClose": 5558.31,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-25",
+    "actualReturn": -0.005142620299011469,
+    "predictedReturn": 0.00047372851986438036,
+    "actualClose": 5399.22,
+    "predictedClose": 5429.7,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-26",
+    "actualReturn": 0.011090468615293503,
+    "predictedReturn": 0.00049343187129125,
+    "actualClose": 5459.1,
+    "predictedClose": 5401.88,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-07-29",
+    "actualReturn": 0.0008133101509884,
+    "predictedReturn": 0.0004814354469999671,
+    "actualClose": 5463.54,
+    "predictedClose": 5461.73,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-30",
+    "actualReturn": -0.00496017187833786,
+    "predictedReturn": 0.00046832620864734054,
+    "actualClose": 5436.44,
+    "predictedClose": 5466.1,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-07-31",
+    "actualReturn": 0.015793398022651672,
+    "predictedReturn": 0.0004711383953690529,
+    "actualClose": 5522.3,
+    "predictedClose": 5439.0,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-01",
+    "actualReturn": -0.013693503104150295,
+    "predictedReturn": 0.0004869975964538753,
+    "actualClose": 5446.68,
+    "predictedClose": 5524.99,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-02",
+    "actualReturn": -0.018381860107183456,
+    "predictedReturn": 0.0005035492358729243,
+    "actualClose": 5346.56,
+    "predictedClose": 5449.42,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-05",
+    "actualReturn": -0.02996879816055298,
+    "predictedReturn": 0.0005228800000622869,
+    "actualClose": 5186.33,
+    "predictedClose": 5349.36,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-06",
+    "actualReturn": 0.010354085825383663,
+    "predictedReturn": 0.0005389540456235409,
+    "actualClose": 5240.03,
+    "predictedClose": 5189.13,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-07",
+    "actualReturn": -0.007734647952020168,
+    "predictedReturn": 0.0005304216174408793,
+    "actualClose": 5199.5,
+    "predictedClose": 5242.81,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-08",
+    "actualReturn": 0.02304261177778244,
+    "predictedReturn": 0.0005244154599495232,
+    "actualClose": 5319.31,
+    "predictedClose": 5202.23,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-09",
+    "actualReturn": 0.004671677015721798,
+    "predictedReturn": 0.0005053647328168154,
+    "actualClose": 5344.16,
+    "predictedClose": 5322.0,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-12",
+    "actualReturn": 4.303397872718051e-05,
+    "predictedReturn": 0.00048389023868367076,
+    "actualClose": 5344.39,
+    "predictedClose": 5346.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-13",
+    "actualReturn": 0.016847580671310425,
+    "predictedReturn": 0.0004699248820543289,
+    "actualClose": 5434.43,
+    "predictedClose": 5346.9,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-14",
+    "actualReturn": 0.00382372853346169,
+    "predictedReturn": 0.0004667293978855014,
+    "actualClose": 5455.21,
+    "predictedClose": 5436.97,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-15",
+    "actualReturn": 0.016133246943354607,
+    "predictedReturn": 0.00046049727825447917,
+    "actualClose": 5543.22,
+    "predictedClose": 5457.72,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-16",
+    "actualReturn": 0.001989779295399785,
+    "predictedReturn": 0.00046267706784419715,
+    "actualClose": 5554.25,
+    "predictedClose": 5545.78,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-19",
+    "actualReturn": 0.009722284972667694,
+    "predictedReturn": 0.00045725819654762745,
+    "actualClose": 5608.25,
+    "predictedClose": 5556.79,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-20",
+    "actualReturn": -0.001984555507078767,
+    "predictedReturn": 0.0004501817747950554,
+    "actualClose": 5597.12,
+    "predictedClose": 5610.77,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-21",
+    "actualReturn": 0.004239676985889673,
+    "predictedReturn": 0.0004427299718372524,
+    "actualClose": 5620.85,
+    "predictedClose": 5599.6,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-22",
+    "actualReturn": -0.008932805620133877,
+    "predictedReturn": 0.0004408911627251655,
+    "actualClose": 5570.64,
+    "predictedClose": 5623.33,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-23",
+    "actualReturn": 0.011483371257781982,
+    "predictedReturn": 0.00043967258534394205,
+    "actualClose": 5634.61,
+    "predictedClose": 5573.09,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-26",
+    "actualReturn": -0.003153726691380143,
+    "predictedReturn": 0.00044282234739512205,
+    "actualClose": 5616.84,
+    "predictedClose": 5637.1,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-27",
+    "actualReturn": 0.0015951960813254118,
+    "predictedReturn": 0.000438374379882589,
+    "actualClose": 5625.8,
+    "predictedClose": 5619.3,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-28",
+    "actualReturn": -0.005975973326712847,
+    "predictedReturn": 0.00043194659519940615,
+    "actualClose": 5592.18,
+    "predictedClose": 5628.23,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-08-29",
+    "actualReturn": -3.937906876672059e-05,
+    "predictedReturn": 0.0004350890521891415,
+    "actualClose": 5591.96,
+    "predictedClose": 5594.61,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-08-30",
+    "actualReturn": 0.010093051940202713,
+    "predictedReturn": 0.0004372479161247611,
+    "actualClose": 5648.4,
+    "predictedClose": 5594.41,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-03",
+    "actualReturn": -0.021151075139641762,
+    "predictedReturn": 0.00045992759987711906,
+    "actualClose": 5528.93,
+    "predictedClose": 5651.0,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-04",
+    "actualReturn": -0.0016025436343625188,
+    "predictedReturn": 0.00047111319145187736,
+    "actualClose": 5520.07,
+    "predictedClose": 5531.53,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-05",
+    "actualReturn": -0.003018017625436187,
+    "predictedReturn": 0.00046629307325929403,
+    "actualClose": 5503.41,
+    "predictedClose": 5522.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-06",
+    "actualReturn": -0.017260249704122543,
+    "predictedReturn": 0.00046386924805119634,
+    "actualClose": 5408.42,
+    "predictedClose": 5505.96,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-09",
+    "actualReturn": 0.011580070480704308,
+    "predictedReturn": 0.0004722056910395622,
+    "actualClose": 5471.05,
+    "predictedClose": 5410.97,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-10",
+    "actualReturn": 0.00447267247363925,
+    "predictedReturn": 0.00047349309897981584,
+    "actualClose": 5495.52,
+    "predictedClose": 5473.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-11",
+    "actualReturn": 0.010665025562047958,
+    "predictedReturn": 0.00047402491327375174,
+    "actualClose": 5554.13,
+    "predictedClose": 5498.13,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-12",
+    "actualReturn": 0.007495302241295576,
+    "predictedReturn": 0.00047321064630523324,
+    "actualClose": 5595.76,
+    "predictedClose": 5556.76,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-13",
+    "actualReturn": 0.005407711490988731,
+    "predictedReturn": 0.0004680646816268563,
+    "actualClose": 5626.02,
+    "predictedClose": 5598.38,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-16",
+    "actualReturn": 0.0012566297082230449,
+    "predictedReturn": 0.0004620012769009918,
+    "actualClose": 5633.09,
+    "predictedClose": 5628.62,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-17",
+    "actualReturn": 0.0002645500935614109,
+    "predictedReturn": 0.0004577675135806203,
+    "actualClose": 5634.58,
+    "predictedClose": 5635.67,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-18",
+    "actualReturn": -0.002896455815061927,
+    "predictedReturn": 0.00045653138658963144,
+    "actualClose": 5618.26,
+    "predictedClose": 5637.15,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-19",
+    "actualReturn": 0.0169768538326025,
+    "predictedReturn": 0.00046180112985894084,
+    "actualClose": 5713.64,
+    "predictedClose": 5620.85,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-09-20",
+    "actualReturn": -0.0019410273525863886,
+    "predictedReturn": 0.0004693145747296512,
+    "actualClose": 5702.55,
+    "predictedClose": 5716.32,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-23",
+    "actualReturn": 0.0028092730790376663,
+    "predictedReturn": 0.000553832680452615,
+    "actualClose": 5718.57,
+    "predictedClose": 5705.71,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-24",
+    "actualReturn": 0.0025111788418143988,
+    "predictedReturn": 0.0005136049585416913,
+    "actualClose": 5732.93,
+    "predictedClose": 5721.51,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-25",
+    "actualReturn": -0.0018612489802762866,
+    "predictedReturn": 0.000492475344799459,
+    "actualClose": 5722.26,
+    "predictedClose": 5735.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-26",
+    "actualReturn": 0.0040386756882071495,
+    "predictedReturn": 0.0004775765701197088,
+    "actualClose": 5745.37,
+    "predictedClose": 5724.99,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-27",
+    "actualReturn": -0.0012532169930636883,
+    "predictedReturn": 0.0004856658342760056,
+    "actualClose": 5738.17,
+    "predictedClose": 5748.16,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-09-30",
+    "actualReturn": 0.004236552398651838,
+    "predictedReturn": 0.00048119970597326756,
+    "actualClose": 5762.48,
+    "predictedClose": 5740.93,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-01",
+    "actualReturn": -0.009324107319116592,
+    "predictedReturn": 0.0004879727785009891,
+    "actualClose": 5708.75,
+    "predictedClose": 5765.29,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-02",
+    "actualReturn": 0.00013839089660905302,
+    "predictedReturn": 0.00048601883463561535,
+    "actualClose": 5709.54,
+    "predictedClose": 5711.52,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-03",
+    "actualReturn": -0.0016814135015010834,
+    "predictedReturn": 0.0004793864209204912,
+    "actualClose": 5699.94,
+    "predictedClose": 5712.28,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-04",
+    "actualReturn": 0.008970249444246292,
+    "predictedReturn": 0.00047070320579223335,
+    "actualClose": 5751.07,
+    "predictedClose": 5702.62,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-07",
+    "actualReturn": -0.009586022235453129,
+    "predictedReturn": 0.00046233038301579654,
+    "actualClose": 5695.94,
+    "predictedClose": 5753.73,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-08",
+    "actualReturn": 0.009689347818493843,
+    "predictedReturn": 0.0004632617346942425,
+    "actualClose": 5751.13,
+    "predictedClose": 5698.58,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-09",
+    "actualReturn": 0.007113412022590637,
+    "predictedReturn": 0.00045690638944506645,
+    "actualClose": 5792.04,
+    "predictedClose": 5753.76,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-10",
+    "actualReturn": -0.002070122864097357,
+    "predictedReturn": 0.00045762499212287366,
+    "actualClose": 5780.05,
+    "predictedClose": 5794.69,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-11",
+    "actualReturn": 0.0060518477112054825,
+    "predictedReturn": 0.0004501453076954931,
+    "actualClose": 5815.03,
+    "predictedClose": 5782.65,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-14",
+    "actualReturn": 0.007707667071372271,
+    "predictedReturn": 0.0004448108375072479,
+    "actualClose": 5859.85,
+    "predictedClose": 5817.62,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-15",
+    "actualReturn": -0.007609466556459665,
+    "predictedReturn": 0.000437225098721683,
+    "actualClose": 5815.26,
+    "predictedClose": 5862.41,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-16",
+    "actualReturn": 0.004679145757108927,
+    "predictedReturn": 0.0004536906781140715,
+    "actualClose": 5842.47,
+    "predictedClose": 5817.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-17",
+    "actualReturn": -0.00017116048547904938,
+    "predictedReturn": 0.00045353983296081424,
+    "actualClose": 5841.47,
+    "predictedClose": 5845.12,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-18",
+    "actualReturn": 0.003971552941948175,
+    "predictedReturn": 0.00045354163739830256,
+    "actualClose": 5864.67,
+    "predictedClose": 5844.12,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-21",
+    "actualReturn": -0.0018227695254608989,
+    "predictedReturn": 0.0004506204859353602,
+    "actualClose": 5853.98,
+    "predictedClose": 5867.31,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-22",
+    "actualReturn": -0.0004748538776766509,
+    "predictedReturn": 0.00045002647675573826,
+    "actualClose": 5851.2,
+    "predictedClose": 5856.61,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-23",
+    "actualReturn": -0.009191323071718216,
+    "predictedReturn": 0.0004481982905417681,
+    "actualClose": 5797.42,
+    "predictedClose": 5853.82,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-10-24",
+    "actualReturn": 0.0021457721013575792,
+    "predictedReturn": 0.0004528455319814384,
+    "actualClose": 5809.86,
+    "predictedClose": 5800.05,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-25",
+    "actualReturn": -0.0002994471578858793,
+    "predictedReturn": 0.0004548481374513358,
+    "actualClose": 5808.12,
+    "predictedClose": 5812.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-28",
+    "actualReturn": 0.0026514434721320868,
+    "predictedReturn": 0.0004551782039925456,
+    "actualClose": 5823.52,
+    "predictedClose": 5810.76,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-29",
+    "actualReturn": 0.0016141271917149425,
+    "predictedReturn": 0.00045849906746298075,
+    "actualClose": 5832.92,
+    "predictedClose": 5826.19,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-30",
+    "actualReturn": -0.0033002339769154787,
+    "predictedReturn": 0.0004640878178179264,
+    "actualClose": 5813.67,
+    "predictedClose": 5835.63,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-10-31",
+    "actualReturn": -0.018614700064063072,
+    "predictedReturn": 0.000467351550469175,
+    "actualClose": 5705.45,
+    "predictedClose": 5816.39,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-01",
+    "actualReturn": 0.004092509392648935,
+    "predictedReturn": 0.0004838549648411572,
+    "actualClose": 5728.8,
+    "predictedClose": 5708.21,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-04",
+    "actualReturn": -0.002812083577737212,
+    "predictedReturn": 0.0004780357703566551,
+    "actualClose": 5712.69,
+    "predictedClose": 5731.54,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-05",
+    "actualReturn": 0.012265644967556,
+    "predictedReturn": 0.00046985363587737083,
+    "actualClose": 5782.76,
+    "predictedClose": 5715.37,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-06",
+    "actualReturn": 0.025295928120613098,
+    "predictedReturn": 0.00046654196921736,
+    "actualClose": 5929.04,
+    "predictedClose": 5785.46,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-07",
+    "actualReturn": 0.007431229576468468,
+    "predictedReturn": 0.00051509914919734,
+    "actualClose": 5973.1,
+    "predictedClose": 5932.09,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-08",
+    "actualReturn": 0.0037568332627415657,
+    "predictedReturn": 0.0005158738349564373,
+    "actualClose": 5995.54,
+    "predictedClose": 5976.18,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-11",
+    "actualReturn": 0.0009690634324215353,
+    "predictedReturn": 0.0005092071369290352,
+    "actualClose": 6001.35,
+    "predictedClose": 5998.59,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-12",
+    "actualReturn": -0.002892659744247794,
+    "predictedReturn": 0.0004991949535906315,
+    "actualClose": 5983.99,
+    "predictedClose": 6004.35,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-13",
+    "actualReturn": 0.00023222772870212793,
+    "predictedReturn": 0.0004928286653012037,
+    "actualClose": 5985.38,
+    "predictedClose": 5986.94,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-14",
+    "actualReturn": -0.006049735005944967,
+    "predictedReturn": 0.0004887618706561625,
+    "actualClose": 5949.17,
+    "predictedClose": 5988.31,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-15",
+    "actualReturn": -0.01320348959416151,
+    "predictedReturn": 0.00048710883129388094,
+    "actualClose": 5870.62,
+    "predictedClose": 5952.07,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-18",
+    "actualReturn": 0.003917814232409,
+    "predictedReturn": 0.0004960845690220594,
+    "actualClose": 5893.62,
+    "predictedClose": 5873.53,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-19",
+    "actualReturn": 0.003963585011661053,
+    "predictedReturn": 0.00048681380576454103,
+    "actualClose": 5916.98,
+    "predictedClose": 5896.49,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-20",
+    "actualReturn": 2.1950861992081627e-05,
+    "predictedReturn": 0.0004810301761608571,
+    "actualClose": 5917.11,
+    "predictedClose": 5919.83,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-21",
+    "actualReturn": 0.005340461619198322,
+    "predictedReturn": 0.00047322799218818545,
+    "actualClose": 5948.71,
+    "predictedClose": 5919.91,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-22",
+    "actualReturn": 0.0034679591190069914,
+    "predictedReturn": 0.0004781085008289665,
+    "actualClose": 5969.34,
+    "predictedClose": 5951.55,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-25",
+    "actualReturn": 0.0030204802751541138,
+    "predictedReturn": 0.00047888734843581915,
+    "actualClose": 5987.37,
+    "predictedClose": 5972.2,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-26",
+    "actualReturn": 0.0057220058515667915,
+    "predictedReturn": 0.0005099715199321508,
+    "actualClose": 6021.63,
+    "predictedClose": 5990.42,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-11-27",
+    "actualReturn": -0.0038012380246073008,
+    "predictedReturn": 0.0004906433750875294,
+    "actualClose": 5998.74,
+    "predictedClose": 6024.58,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-11-29",
+    "actualReturn": 0.005607785657048225,
+    "predictedReturn": 0.00046924303751438856,
+    "actualClose": 6032.38,
+    "predictedClose": 6001.56,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-02",
+    "actualReturn": 0.002448456361889839,
+    "predictedReturn": 0.00043777714017778635,
+    "actualClose": 6047.15,
+    "predictedClose": 6035.02,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-03",
+    "actualReturn": 0.00045144910109229386,
+    "predictedReturn": 0.000460538431070745,
+    "actualClose": 6049.88,
+    "predictedClose": 6049.93,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-04",
+    "actualReturn": 0.0060514179058372974,
+    "predictedReturn": 0.0004691250214818865,
+    "actualClose": 6086.49,
+    "predictedClose": 6052.72,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-05",
+    "actualReturn": -0.0018697755876928568,
+    "predictedReturn": 0.0004703995364252478,
+    "actualClose": 6075.11,
+    "predictedClose": 6089.35,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-06",
+    "actualReturn": 0.0024954539258033037,
+    "predictedReturn": 0.00047578237717971206,
+    "actualClose": 6090.27,
+    "predictedClose": 6078.0,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-09",
+    "actualReturn": -0.006144213955849409,
+    "predictedReturn": 0.00047258540871553123,
+    "actualClose": 6052.85,
+    "predictedClose": 6093.15,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-10",
+    "actualReturn": -0.002963883336633444,
+    "predictedReturn": 0.00048466690350323915,
+    "actualClose": 6034.91,
+    "predictedClose": 6055.78,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-11",
+    "actualReturn": 0.008165786042809486,
+    "predictedReturn": 0.00048164871986955404,
+    "actualClose": 6084.19,
+    "predictedClose": 6037.82,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-12",
+    "actualReturn": -0.005414022598415613,
+    "predictedReturn": 0.0004819992755074054,
+    "actualClose": 6051.25,
+    "predictedClose": 6087.12,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-13",
+    "actualReturn": -2.6466639610589482e-05,
+    "predictedReturn": 0.0004716266703326255,
+    "actualClose": 6051.09,
+    "predictedClose": 6054.1,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-16",
+    "actualReturn": 0.003799354424700141,
+    "predictedReturn": 0.0004636521334759891,
+    "actualClose": 6074.08,
+    "predictedClose": 6053.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-17",
+    "actualReturn": -0.003863994963467121,
+    "predictedReturn": 0.00047496616025455296,
+    "actualClose": 6050.61,
+    "predictedClose": 6076.97,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-18",
+    "actualReturn": -0.029492845758795738,
+    "predictedReturn": 0.00048572703963145614,
+    "actualClose": 5872.16,
+    "predictedClose": 6053.55,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-19",
+    "actualReturn": -0.0008651123498566449,
+    "predictedReturn": 0.0005125580355525017,
+    "actualClose": 5867.08,
+    "predictedClose": 5875.17,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-20",
+    "actualReturn": 0.010869123972952366,
+    "predictedReturn": 0.0005172613891772926,
+    "actualClose": 5930.85,
+    "predictedClose": 5870.11,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-23",
+    "actualReturn": 0.007287273649126291,
+    "predictedReturn": 0.0005827164859510958,
+    "actualClose": 5974.07,
+    "predictedClose": 5934.31,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-24",
+    "actualReturn": 0.011042758822441101,
+    "predictedReturn": 0.0005262841004878283,
+    "actualClose": 6040.04,
+    "predictedClose": 5977.21,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-26",
+    "actualReturn": -0.0004056587931700051,
+    "predictedReturn": 0.000451632309705019,
+    "actualClose": 6037.59,
+    "predictedClose": 6042.77,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2024-12-27",
+    "actualReturn": -0.011055735871195793,
+    "predictedReturn": 0.00043526318040676415,
+    "actualClose": 5970.84,
+    "predictedClose": 6040.22,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-30",
+    "actualReturn": -0.010701995342969894,
+    "predictedReturn": 0.00043678563088178635,
+    "actualClose": 5906.94,
+    "predictedClose": 5973.45,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2024-12-31",
+    "actualReturn": -0.004284800495952368,
+    "predictedReturn": 0.00044443580554798245,
+    "actualClose": 5881.63,
+    "predictedClose": 5909.57,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-02",
+    "actualReturn": -0.002223886549472809,
+    "predictedReturn": 0.00044234911911189556,
+    "actualClose": 5868.55,
+    "predictedClose": 5884.23,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-03",
+    "actualReturn": 0.012596026994287968,
+    "predictedReturn": 0.0004510008729994297,
+    "actualClose": 5942.47,
+    "predictedClose": 5871.2,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-06",
+    "actualReturn": 0.005538044963032007,
+    "predictedReturn": 0.0004540742374956608,
+    "actualClose": 5975.38,
+    "predictedClose": 5945.17,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-07",
+    "actualReturn": -0.011103913187980652,
+    "predictedReturn": 0.0004819289315491915,
+    "actualClose": 5909.03,
+    "predictedClose": 5978.26,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-08",
+    "actualReturn": 0.0015603601932525635,
+    "predictedReturn": 0.0004927469417452812,
+    "actualClose": 5918.25,
+    "predictedClose": 5911.94,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-10",
+    "actualReturn": -0.015411644242703915,
+    "predictedReturn": 0.0004943350213579834,
+    "actualClose": 5827.04,
+    "predictedClose": 5921.18,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-13",
+    "actualReturn": 0.0015754441265016794,
+    "predictedReturn": 0.0005036705988459289,
+    "actualClose": 5836.22,
+    "predictedClose": 5829.97,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-14",
+    "actualReturn": 0.001146279857493937,
+    "predictedReturn": 0.0004999752272851765,
+    "actualClose": 5842.91,
+    "predictedClose": 5839.14,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-15",
+    "actualReturn": 0.018312791362404823,
+    "predictedReturn": 0.0004918261547572911,
+    "actualClose": 5949.91,
+    "predictedClose": 5845.78,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-16",
+    "actualReturn": -0.0021126894280314445,
+    "predictedReturn": 0.0004929864662699401,
+    "actualClose": 5937.34,
+    "predictedClose": 5952.84,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-17",
+    "actualReturn": 0.009991059079766273,
+    "predictedReturn": 0.0004905106616206467,
+    "actualClose": 5996.66,
+    "predictedClose": 5940.25,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-21",
+    "actualReturn": 0.008768226951360703,
+    "predictedReturn": 0.0004896813770756125,
+    "actualClose": 6049.24,
+    "predictedClose": 5999.6,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-22",
+    "actualReturn": 0.006137941498309374,
+    "predictedReturn": 0.0004952003946527839,
+    "actualClose": 6086.37,
+    "predictedClose": 6052.24,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-23",
+    "actualReturn": 0.005313486326485872,
+    "predictedReturn": 0.0004907377297058702,
+    "actualClose": 6118.71,
+    "predictedClose": 6089.36,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-24",
+    "actualReturn": -0.002855132333934307,
+    "predictedReturn": 0.0004896953469142318,
+    "actualClose": 6101.24,
+    "predictedClose": 6121.71,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-27",
+    "actualReturn": -0.01458071544766426,
+    "predictedReturn": 0.00048623199108988047,
+    "actualClose": 6012.28,
+    "predictedClose": 6104.21,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-28",
+    "actualReturn": 0.009217869490385056,
+    "predictedReturn": 0.0005054550128988922,
+    "actualClose": 6067.7,
+    "predictedClose": 6015.32,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-29",
+    "actualReturn": -0.0046788956969976425,
+    "predictedReturn": 0.0005002385005354881,
+    "actualClose": 6039.31,
+    "predictedClose": 6070.74,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-01-30",
+    "actualReturn": 0.005275414325296879,
+    "predictedReturn": 0.0004903116496279836,
+    "actualClose": 6071.17,
+    "predictedClose": 6042.27,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-01-31",
+    "actualReturn": -0.005046825855970383,
+    "predictedReturn": 0.0004944686079397798,
+    "actualClose": 6040.53,
+    "predictedClose": 6074.17,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-03",
+    "actualReturn": -0.007608597632497549,
+    "predictedReturn": 0.0005034946370869875,
+    "actualClose": 5994.57,
+    "predictedClose": 6043.57,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-04",
+    "actualReturn": 0.007224882021546364,
+    "predictedReturn": 0.0005075284861959517,
+    "actualClose": 6037.88,
+    "predictedClose": 5997.61,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-05",
+    "actualReturn": 0.003908672835677862,
+    "predictedReturn": 0.0004994160262867808,
+    "actualClose": 6061.48,
+    "predictedClose": 6040.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-06",
+    "actualReturn": 0.0036442987620830536,
+    "predictedReturn": 0.0005012917681597173,
+    "actualClose": 6083.57,
+    "predictedClose": 6064.52,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-07",
+    "actualReturn": -0.009464770555496216,
+    "predictedReturn": 0.0005047995364293456,
+    "actualClose": 6025.99,
+    "predictedClose": 6086.64,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-10",
+    "actualReturn": 0.0067125409841537476,
+    "predictedReturn": 0.0005078332033008337,
+    "actualClose": 6066.44,
+    "predictedClose": 6029.05,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-11",
+    "actualReturn": 0.0003395827952772379,
+    "predictedReturn": 0.0005009035230614245,
+    "actualClose": 6068.5,
+    "predictedClose": 6069.48,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-12",
+    "actualReturn": -0.002723866607993841,
+    "predictedReturn": 0.0004938998026773334,
+    "actualClose": 6051.97,
+    "predictedClose": 6071.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-13",
+    "actualReturn": 0.010426292195916176,
+    "predictedReturn": 0.000496687600389123,
+    "actualClose": 6115.07,
+    "predictedClose": 6054.98,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-14",
+    "actualReturn": -7.194381032604724e-05,
+    "predictedReturn": 0.0004997526411898434,
+    "actualClose": 6114.63,
+    "predictedClose": 6118.13,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-18",
+    "actualReturn": 0.0024449878837913275,
+    "predictedReturn": 0.0004935290780849755,
+    "actualClose": 6129.58,
+    "predictedClose": 6117.65,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-19",
+    "actualReturn": 0.002376969438046217,
+    "predictedReturn": 0.0004969316069036722,
+    "actualClose": 6144.15,
+    "predictedClose": 6132.63,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-20",
+    "actualReturn": -0.0043341852724552155,
+    "predictedReturn": 0.0004964011022821069,
+    "actualClose": 6117.52,
+    "predictedClose": 6147.2,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-21",
+    "actualReturn": -0.017064126208424568,
+    "predictedReturn": 0.0005022308905608952,
+    "actualClose": 6013.13,
+    "predictedClose": 6120.59,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-24",
+    "actualReturn": -0.004969106521457434,
+    "predictedReturn": 0.0005217633442953229,
+    "actualClose": 5983.25,
+    "predictedClose": 6016.27,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-25",
+    "actualReturn": -0.004679731093347073,
+    "predictedReturn": 0.0005228864029049873,
+    "actualClose": 5955.25,
+    "predictedClose": 5986.38,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-26",
+    "actualReturn": 0.00013602427497971803,
+    "predictedReturn": 0.0005301782512106001,
+    "actualClose": 5956.06,
+    "predictedClose": 5958.41,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-02-27",
+    "actualReturn": -0.015864552929997444,
+    "predictedReturn": 0.0005234009004198015,
+    "actualClose": 5861.57,
+    "predictedClose": 5959.18,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-02-28",
+    "actualReturn": 0.01585414446890354,
+    "predictedReturn": 0.0005263487109914422,
+    "actualClose": 5954.5,
+    "predictedClose": 5864.66,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-03",
+    "actualReturn": -0.017596740275621414,
+    "predictedReturn": 0.0005515443626791239,
+    "actualClose": 5849.72,
+    "predictedClose": 5957.78,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-04",
+    "actualReturn": -0.012234826572239399,
+    "predictedReturn": 0.0005542880389839411,
+    "actualClose": 5778.15,
+    "predictedClose": 5852.96,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-05",
+    "actualReturn": 0.011159277521073818,
+    "predictedReturn": 0.0005655678687617183,
+    "actualClose": 5842.63,
+    "predictedClose": 5781.42,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-06",
+    "actualReturn": -0.017819007858633995,
+    "predictedReturn": 0.0005510117625817657,
+    "actualClose": 5738.52,
+    "predictedClose": 5845.85,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-07",
+    "actualReturn": 0.005520617589354515,
+    "predictedReturn": 0.0005426640855148435,
+    "actualClose": 5770.2,
+    "predictedClose": 5741.63,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-10",
+    "actualReturn": -0.026973091065883636,
+    "predictedReturn": 0.0005477743688970804,
+    "actualClose": 5614.56,
+    "predictedClose": 5773.36,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-11",
+    "actualReturn": -0.0075678653083741665,
+    "predictedReturn": 0.0005706975352950394,
+    "actualClose": 5572.07,
+    "predictedClose": 5617.76,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-12",
+    "actualReturn": 0.004886869806796312,
+    "predictedReturn": 0.0005792609881609678,
+    "actualClose": 5599.3,
+    "predictedClose": 5575.3,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-03-13",
+    "actualReturn": -0.01389098446816206,
+    "predictedReturn": 0.0005607563070952892,
+    "actualClose": 5521.52,
+    "predictedClose": 5602.44,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-14",
+    "actualReturn": 0.021265869960188866,
+    "predictedReturn": 0.0005473944474942982,
+    "actualClose": 5638.94,
+    "predictedClose": 5524.54,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-17",
+    "actualReturn": 0.0064161308109760284,
+    "predictedReturn": 0.0005324693629518151,
+    "actualClose": 5675.12,
+    "predictedClose": 5641.94,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-18",
+    "actualReturn": -0.010653512552380562,
+    "predictedReturn": 0.0005277494783513248,
+    "actualClose": 5614.66,
+    "predictedClose": 5678.12,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-19",
+    "actualReturn": 0.010798495262861252,
+    "predictedReturn": 0.000520952045917511,
+    "actualClose": 5675.29,
+    "predictedClose": 5617.59,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-20",
+    "actualReturn": -0.002184893237426877,
+    "predictedReturn": 0.0005149923963472247,
+    "actualClose": 5662.89,
+    "predictedClose": 5678.21,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-03-21",
+    "actualReturn": 0.0008246534271165729,
+    "predictedReturn": 0.0005126810865476727,
+    "actualClose": 5667.56,
+    "predictedClose": 5665.79,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-03-24",
+    "actualReturn": 0.017645999789237976,
+    "predictedReturn": 0.0006074889097362757,
+    "actualClose": 5767.57,
+    "predictedClose": 5671.0,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-25",
+    "actualReturn": 0.0015743334079161286,
+    "predictedReturn": 0.0005622530588880181,
+    "actualClose": 5776.65,
+    "predictedClose": 5770.81,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-03-26",
+    "actualReturn": -0.01115693524479866,
+    "predictedReturn": 0.0005304981605149806,
+    "actualClose": 5712.2,
+    "predictedClose": 5779.71,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-27",
+    "actualReturn": -0.0033069809433072805,
+    "predictedReturn": 0.0005112871876917779,
+    "actualClose": 5693.31,
+    "predictedClose": 5715.12,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-03-28",
+    "actualReturn": -0.01973722130060196,
+    "predictedReturn": 0.0005053877830505371,
+    "actualClose": 5580.94,
+    "predictedClose": 5696.19,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-03-31",
+    "actualReturn": 0.00553852180019021,
+    "predictedReturn": 0.0005083648720756173,
+    "actualClose": 5611.85,
+    "predictedClose": 5583.78,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-01",
+    "actualReturn": 0.003781235544010997,
+    "predictedReturn": 0.0005223641637712717,
+    "actualClose": 5633.07,
+    "predictedClose": 5614.78,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-04-02",
+    "actualReturn": 0.0067281946539878845,
+    "predictedReturn": 0.0005122596630826592,
+    "actualClose": 5670.97,
+    "predictedClose": 5635.96,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-03",
+    "actualReturn": -0.048395633697509766,
+    "predictedReturn": 0.0005006446735933423,
+    "actualClose": 5396.52,
+    "predictedClose": 5673.81,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-04",
+    "actualReturn": -0.05974960699677467,
+    "predictedReturn": 0.0005645417841151357,
+    "actualClose": 5074.08,
+    "predictedClose": 5399.57,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-07",
+    "actualReturn": -0.0023314724676311016,
+    "predictedReturn": 0.0006457752315327525,
+    "actualClose": 5062.25,
+    "predictedClose": 5077.36,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-04-08",
+    "actualReturn": -0.015700524672865868,
+    "predictedReturn": 0.0006821094430051744,
+    "actualClose": 4982.77,
+    "predictedClose": 5065.7,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-09",
+    "actualReturn": 0.09515387564897537,
+    "predictedReturn": 0.0006746766157448292,
+    "actualClose": 5456.9,
+    "predictedClose": 4986.13,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-10",
+    "actualReturn": -0.034607578068971634,
+    "predictedReturn": 0.0006939050508663058,
+    "actualClose": 5268.05,
+    "predictedClose": 5460.69,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-11",
+    "actualReturn": 0.018092095851898193,
+    "predictedReturn": 0.0006575389998033643,
+    "actualClose": 5363.36,
+    "predictedClose": 5271.51,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-14",
+    "actualReturn": 0.007944712415337563,
+    "predictedReturn": 0.0006096041179262102,
+    "actualClose": 5405.97,
+    "predictedClose": 5366.63,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-15",
+    "actualReturn": -0.0017277809092774987,
+    "predictedReturn": 0.0005721516208723187,
+    "actualClose": 5396.63,
+    "predictedClose": 5409.06,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-04-16",
+    "actualReturn": -0.022408371791243553,
+    "predictedReturn": 0.0005383653333410621,
+    "actualClose": 5275.7,
+    "predictedClose": 5399.54,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-17",
+    "actualReturn": 0.0013268380425870419,
+    "predictedReturn": 0.0005299849435687065,
+    "actualClose": 5282.7,
+    "predictedClose": 5278.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-04-21",
+    "actualReturn": -0.02356749214231968,
+    "predictedReturn": 0.0005268537206575274,
+    "actualClose": 5158.2,
+    "predictedClose": 5285.48,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-22",
+    "actualReturn": 0.02511720545589924,
+    "predictedReturn": 0.0005181875312700868,
+    "actualClose": 5287.76,
+    "predictedClose": 5160.87,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-23",
+    "actualReturn": 0.016661139205098152,
+    "predictedReturn": 0.0005165603361092508,
+    "actualClose": 5375.86,
+    "predictedClose": 5290.49,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-24",
+    "actualReturn": 0.020259113982319832,
+    "predictedReturn": 0.0005305809900164604,
+    "actualClose": 5484.77,
+    "predictedClose": 5378.71,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-25",
+    "actualReturn": 0.007373133674263954,
+    "predictedReturn": 0.0005223148036748171,
+    "actualClose": 5525.21,
+    "predictedClose": 5487.63,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-28",
+    "actualReturn": 0.0006407066830433905,
+    "predictedReturn": 0.0005073890788480639,
+    "actualClose": 5528.75,
+    "predictedClose": 5528.01,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-04-29",
+    "actualReturn": 0.005802410654723644,
+    "predictedReturn": 0.0005009400192648172,
+    "actualClose": 5560.83,
+    "predictedClose": 5531.52,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-04-30",
+    "actualReturn": 0.0014799913624301553,
+    "predictedReturn": 0.0005071139894425869,
+    "actualClose": 5569.06,
+    "predictedClose": 5563.65,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-01",
+    "actualReturn": 0.006299102213233709,
+    "predictedReturn": 0.0005261121550574899,
+    "actualClose": 5604.14,
+    "predictedClose": 5571.99,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-02",
+    "actualReturn": 0.014726574532687664,
+    "predictedReturn": 0.000525915645994246,
+    "actualClose": 5686.67,
+    "predictedClose": 5607.09,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-05",
+    "actualReturn": -0.0063815973699092865,
+    "predictedReturn": 0.0005214719567447901,
+    "actualClose": 5650.38,
+    "predictedClose": 5689.64,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-06",
+    "actualReturn": -0.007693239487707615,
+    "predictedReturn": 0.0005102794384583831,
+    "actualClose": 5606.91,
+    "predictedClose": 5653.26,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-07",
+    "actualReturn": 0.004346356261521578,
+    "predictedReturn": 0.0005123274167999625,
+    "actualClose": 5631.28,
+    "predictedClose": 5609.78,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-08",
+    "actualReturn": 0.0057997750118374825,
+    "predictedReturn": 0.0005187098286114633,
+    "actualClose": 5663.94,
+    "predictedClose": 5634.2,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-09",
+    "actualReturn": -0.0007114809122867882,
+    "predictedReturn": 0.0005352144362404943,
+    "actualClose": 5659.91,
+    "predictedClose": 5666.97,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-12",
+    "actualReturn": 0.032558783888816833,
+    "predictedReturn": 0.0005246556247584522,
+    "actualClose": 5844.19,
+    "predictedClose": 5662.88,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-13",
+    "actualReturn": 0.0072482009418308735,
+    "predictedReturn": 0.0005416894564405084,
+    "actualClose": 5886.55,
+    "predictedClose": 5847.36,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-14",
+    "actualReturn": 0.0010244156001135707,
+    "predictedReturn": 0.0005425042472779751,
+    "actualClose": 5892.58,
+    "predictedClose": 5889.74,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-15",
+    "actualReturn": 0.004132332280278206,
+    "predictedReturn": 0.0005372833693400025,
+    "actualClose": 5916.93,
+    "predictedClose": 5895.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-16",
+    "actualReturn": 0.0070052724331617355,
+    "predictedReturn": 0.0005287079839035869,
+    "actualClose": 5958.38,
+    "predictedClose": 5920.06,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-19",
+    "actualReturn": 0.0008761131321080029,
+    "predictedReturn": 0.0005204905173741281,
+    "actualClose": 5963.6,
+    "predictedClose": 5961.48,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-20",
+    "actualReturn": -0.0038802295457571745,
+    "predictedReturn": 0.0005016744835302234,
+    "actualClose": 5940.46,
+    "predictedClose": 5966.59,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-21",
+    "actualReturn": -0.01613513007760048,
+    "predictedReturn": 0.0004976951749995351,
+    "actualClose": 5844.61,
+    "predictedClose": 5943.42,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-22",
+    "actualReturn": -0.00044487102422863245,
+    "predictedReturn": 0.0005166822811588645,
+    "actualClose": 5842.01,
+    "predictedClose": 5847.63,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-23",
+    "actualReturn": -0.0067082978785037994,
+    "predictedReturn": 0.0005241598701104522,
+    "actualClose": 5802.82,
+    "predictedClose": 5845.07,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-27",
+    "actualReturn": 0.02045905590057373,
+    "predictedReturn": 0.0005173871759325266,
+    "actualClose": 5921.54,
+    "predictedClose": 5805.82,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-28",
+    "actualReturn": -0.005571225192397833,
+    "predictedReturn": 0.0005240302998572588,
+    "actualClose": 5888.55,
+    "predictedClose": 5924.64,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-05-29",
+    "actualReturn": 0.004011194221675396,
+    "predictedReturn": 0.0005165066686458886,
+    "actualClose": 5912.17,
+    "predictedClose": 5891.59,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-05-30",
+    "actualReturn": -8.118516416288912e-05,
+    "predictedReturn": 0.0005097707617096603,
+    "actualClose": 5911.69,
+    "predictedClose": 5915.18,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-02",
+    "actualReturn": 0.004102041944861412,
+    "predictedReturn": 0.000543030328117311,
+    "actualClose": 5935.94,
+    "predictedClose": 5914.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-03",
+    "actualReturn": 0.005800290498882532,
+    "predictedReturn": 0.0005302646313793957,
+    "actualClose": 5970.37,
+    "predictedClose": 5939.09,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-04",
+    "actualReturn": 7.368745718849823e-05,
+    "predictedReturn": 0.0005243332125246525,
+    "actualClose": 5970.81,
+    "predictedClose": 5973.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-05",
+    "actualReturn": -0.005277383606880903,
+    "predictedReturn": 0.0005169481737539172,
+    "actualClose": 5939.3,
+    "predictedClose": 5973.9,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-06",
+    "actualReturn": 0.01028068270534277,
+    "predictedReturn": 0.0005213457043282688,
+    "actualClose": 6000.36,
+    "predictedClose": 5942.4,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-09",
+    "actualReturn": 0.000919948099181056,
+    "predictedReturn": 0.0005069072358310223,
+    "actualClose": 6005.88,
+    "predictedClose": 6003.4,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-10",
+    "actualReturn": 0.005482989363372326,
+    "predictedReturn": 0.0005042051197960973,
+    "actualClose": 6038.81,
+    "predictedClose": 6008.91,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-11",
+    "actualReturn": -0.0027438888791948557,
+    "predictedReturn": 0.0005075077642686665,
+    "actualClose": 6022.24,
+    "predictedClose": 6041.87,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-12",
+    "actualReturn": 0.003822420025244355,
+    "predictedReturn": 0.0005155297694727778,
+    "actualClose": 6045.26,
+    "predictedClose": 6025.34,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-13",
+    "actualReturn": -0.011296380311250687,
+    "predictedReturn": 0.0005098533001728356,
+    "actualClose": 5976.97,
+    "predictedClose": 6048.34,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-16",
+    "actualReturn": 0.009392660111188889,
+    "predictedReturn": 0.0005202403990551829,
+    "actualClose": 6033.11,
+    "predictedClose": 5980.08,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-17",
+    "actualReturn": -0.008352184668183327,
+    "predictedReturn": 0.0005214420380070806,
+    "actualClose": 5982.72,
+    "predictedClose": 6036.26,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-18",
+    "actualReturn": -0.00030924021848477423,
+    "predictedReturn": 0.0005203170003369451,
+    "actualClose": 5980.87,
+    "predictedClose": 5985.83,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-20",
+    "actualReturn": -0.0021786584984511137,
+    "predictedReturn": 0.0005223016487434506,
+    "actualClose": 5967.84,
+    "predictedClose": 5983.99,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-23",
+    "actualReturn": 0.009606503881514072,
+    "predictedReturn": 0.0005715040606446564,
+    "actualClose": 6025.17,
+    "predictedClose": 5971.25,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-24",
+    "actualReturn": 0.0111217200756073,
+    "predictedReturn": 0.0005607779021374881,
+    "actualClose": 6092.18,
+    "predictedClose": 6028.55,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-25",
+    "actualReturn": -3.286103037680732e-06,
+    "predictedReturn": 0.000547567498870194,
+    "actualClose": 6092.16,
+    "predictedClose": 6095.52,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-06-26",
+    "actualReturn": 0.008020121604204178,
+    "predictedReturn": 0.0005362574011087418,
+    "actualClose": 6141.02,
+    "predictedClose": 6095.43,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-27",
+    "actualReturn": 0.00521897105500102,
+    "predictedReturn": 0.0005321679636836052,
+    "actualClose": 6173.07,
+    "predictedClose": 6144.29,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-06-30",
+    "actualReturn": 0.00516442721709609,
+    "predictedReturn": 0.0005817171186208725,
+    "actualClose": 6204.95,
+    "predictedClose": 6176.66,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-07-01",
+    "actualReturn": -0.0011185311013832688,
+    "predictedReturn": 0.0005687996745109558,
+    "actualClose": 6198.01,
+    "predictedClose": 6208.48,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-02",
+    "actualReturn": 0.004745096899569035,
+    "predictedReturn": 0.00056913384469226,
+    "actualClose": 6227.42,
+    "predictedClose": 6201.54,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-03",
+    "actualReturn": 0.008338955231010914,
+    "predictedReturn": 0.0005567292682826519,
+    "actualClose": 6279.35,
+    "predictedClose": 6230.89,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-07-07",
+    "actualReturn": -0.007862296886742115,
+    "predictedReturn": 0.0005032062763348222,
+    "actualClose": 6229.98,
+    "predictedClose": 6282.51,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-07-08",
+    "actualReturn": -0.0007158868829719722,
+    "predictedReturn": 0.0005122058792039752,
+    "actualClose": 6225.52,
+    "predictedClose": 6233.17,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-09",
+    "actualReturn": 0.006062103435397148,
+    "predictedReturn": 0.0005296194576658309,
+    "actualClose": 6263.26,
+    "predictedClose": 6228.82,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-07-10",
+    "actualReturn": 0.0027462050784379244,
+    "predictedReturn": 0.0005194916157051921,
+    "actualClose": 6280.46,
+    "predictedClose": 6266.51,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-11",
+    "actualReturn": -0.003297522896900773,
+    "predictedReturn": 0.0005235938588157296,
+    "actualClose": 6259.75,
+    "predictedClose": 6283.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-14",
+    "actualReturn": 0.0014074138598516583,
+    "predictedReturn": 0.0005128660704940557,
+    "actualClose": 6268.56,
+    "predictedClose": 6262.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-15",
+    "actualReturn": -0.003956298343837261,
+    "predictedReturn": 0.0005073662614449859,
+    "actualClose": 6243.76,
+    "predictedClose": 6271.74,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-16",
+    "actualReturn": 0.0031936573795974255,
+    "predictedReturn": 0.0005143964663147926,
+    "actualClose": 6263.7,
+    "predictedClose": 6246.97,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-17",
+    "actualReturn": 0.005373767577111721,
+    "predictedReturn": 0.0005185437621548772,
+    "actualClose": 6297.36,
+    "predictedClose": 6266.95,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-07-18",
+    "actualReturn": -9.048620995599777e-05,
+    "predictedReturn": 0.0005260024918243289,
+    "actualClose": 6296.79,
+    "predictedClose": 6300.67,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-21",
+    "actualReturn": 0.001399134867824614,
+    "predictedReturn": 0.0005243469495326281,
+    "actualClose": 6305.6,
+    "predictedClose": 6300.09,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-22",
+    "actualReturn": 0.0006375316297635436,
+    "predictedReturn": 0.0005194817204028368,
+    "actualClose": 6309.62,
+    "predictedClose": 6308.88,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-23",
+    "actualReturn": 0.007811886724084616,
+    "predictedReturn": 0.0005296420422382653,
+    "actualClose": 6358.91,
+    "predictedClose": 6312.96,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-07-24",
+    "actualReturn": 0.0006982236518524587,
+    "predictedReturn": 0.0005342261865735054,
+    "actualClose": 6363.35,
+    "predictedClose": 6362.31,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-25",
+    "actualReturn": 0.003974327817559242,
+    "predictedReturn": 0.0005297593306750059,
+    "actualClose": 6388.64,
+    "predictedClose": 6366.72,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-28",
+    "actualReturn": 0.00017685811326373369,
+    "predictedReturn": 0.0005103751900605857,
+    "actualClose": 6389.77,
+    "predictedClose": 6391.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-29",
+    "actualReturn": -0.00295944232493639,
+    "predictedReturn": 0.0005016389186494052,
+    "actualClose": 6370.86,
+    "predictedClose": 6392.98,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-30",
+    "actualReturn": -0.001249432796612382,
+    "predictedReturn": 0.0005086524179205298,
+    "actualClose": 6362.9,
+    "predictedClose": 6374.1,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-07-31",
+    "actualReturn": -0.003694819286465645,
+    "predictedReturn": 0.0005190485389903188,
+    "actualClose": 6339.39,
+    "predictedClose": 6366.2,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-01",
+    "actualReturn": -0.01599213294684887,
+    "predictedReturn": 0.0005401101661846042,
+    "actualClose": 6238.01,
+    "predictedClose": 6342.81,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-08-04",
+    "actualReturn": 0.014737100340425968,
+    "predictedReturn": 0.0005482597043737769,
+    "actualClose": 6329.94,
+    "predictedClose": 6241.43,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-08-05",
+    "actualReturn": -0.00485786609351635,
+    "predictedReturn": 0.0005280786426737905,
+    "actualClose": 6299.19,
+    "predictedClose": 6333.28,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-06",
+    "actualReturn": 0.007281907368451357,
+    "predictedReturn": 0.0005312173161655664,
+    "actualClose": 6345.06,
+    "predictedClose": 6302.54,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-08-07",
+    "actualReturn": -0.0007974799955263734,
+    "predictedReturn": 0.0005303535144776106,
+    "actualClose": 6340.0,
+    "predictedClose": 6348.43,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-08",
+    "actualReturn": 0.007799715269356966,
+    "predictedReturn": 0.0005288971588015556,
+    "actualClose": 6389.45,
+    "predictedClose": 6343.35,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-08-11",
+    "actualReturn": -0.002504127798601985,
+    "predictedReturn": 0.000515647348947823,
+    "actualClose": 6373.45,
+    "predictedClose": 6392.74,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-12",
+    "actualReturn": 0.011345435865223408,
+    "predictedReturn": 0.0005067560123279691,
+    "actualClose": 6445.76,
+    "predictedClose": 6376.68,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-08-13",
+    "actualReturn": 0.0032300788443535566,
+    "predictedReturn": 0.0005099133122712374,
+    "actualClose": 6466.58,
+    "predictedClose": 6449.05,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-14",
+    "actualReturn": 0.00030309081193991005,
+    "predictedReturn": 0.0005136984400451183,
+    "actualClose": 6468.54,
+    "predictedClose": 6469.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-15",
+    "actualReturn": -0.002897134982049465,
+    "predictedReturn": 0.0005014851922169328,
+    "actualClose": 6449.8,
+    "predictedClose": 6471.78,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-18",
+    "actualReturn": -0.00010076317994389683,
+    "predictedReturn": 0.0004974427283741534,
+    "actualClose": 6449.15,
+    "predictedClose": 6453.01,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-19",
+    "actualReturn": -0.0058581032790243626,
+    "predictedReturn": 0.00048694212455302477,
+    "actualClose": 6411.37,
+    "predictedClose": 6452.29,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-08-20",
+    "actualReturn": -0.002431669272482395,
+    "predictedReturn": 0.00048650227836333215,
+    "actualClose": 6395.78,
+    "predictedClose": 6414.49,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-21",
+    "actualReturn": -0.004004181362688541,
+    "predictedReturn": 0.0004883093643002212,
+    "actualClose": 6370.17,
+    "predictedClose": 6398.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-22",
+    "actualReturn": 0.015186444856226444,
+    "predictedReturn": 0.0004802035982720554,
+    "actualClose": 6466.91,
+    "predictedClose": 6373.23,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-08-25",
+    "actualReturn": -0.004266385454684496,
+    "predictedReturn": 0.0004930680734105408,
+    "actualClose": 6439.32,
+    "predictedClose": 6470.1,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-26",
+    "actualReturn": 0.004133995156735182,
+    "predictedReturn": 0.000482874020235613,
+    "actualClose": 6465.94,
+    "predictedClose": 6442.43,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-27",
+    "actualReturn": 0.0023909842129796743,
+    "predictedReturn": 0.0004917962942272425,
+    "actualClose": 6481.4,
+    "predictedClose": 6469.12,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-28",
+    "actualReturn": 0.00315671949647367,
+    "predictedReturn": 0.0004828889505006373,
+    "actualClose": 6501.86,
+    "predictedClose": 6484.53,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-08-29",
+    "actualReturn": -0.006398184224963188,
+    "predictedReturn": 0.0004800070892088115,
+    "actualClose": 6460.26,
+    "predictedClose": 6504.98,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-02",
+    "actualReturn": -0.006922279950231314,
+    "predictedReturn": 0.00047935417387634516,
+    "actualClose": 6415.54,
+    "predictedClose": 6463.36,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-03",
+    "actualReturn": 0.005100073758512735,
+    "predictedReturn": 0.0004901859210804105,
+    "actualClose": 6448.26,
+    "predictedClose": 6418.68,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-04",
+    "actualReturn": 0.00834648683667183,
+    "predictedReturn": 0.0004890465643256903,
+    "actualClose": 6502.08,
+    "predictedClose": 6451.41,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-05",
+    "actualReturn": -0.0031651530880481005,
+    "predictedReturn": 0.0004907537368126214,
+    "actualClose": 6481.5,
+    "predictedClose": 6505.27,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-08",
+    "actualReturn": 0.0021059790160506964,
+    "predictedReturn": 0.0005017226212657988,
+    "actualClose": 6495.15,
+    "predictedClose": 6484.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-09",
+    "actualReturn": 0.0026881536468863487,
+    "predictedReturn": 0.0005100495181977749,
+    "actualClose": 6512.61,
+    "predictedClose": 6498.46,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-10",
+    "actualReturn": 0.002983469981700182,
+    "predictedReturn": 0.0005057743401266634,
+    "actualClose": 6532.04,
+    "predictedClose": 6515.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-11",
+    "actualReturn": 0.008485889993607998,
+    "predictedReturn": 0.0005120584974065423,
+    "actualClose": 6587.47,
+    "predictedClose": 6535.38,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-12",
+    "actualReturn": -0.00048276130110025406,
+    "predictedReturn": 0.0005180645966902375,
+    "actualClose": 6584.29,
+    "predictedClose": 6590.88,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-15",
+    "actualReturn": 0.004706619307398796,
+    "predictedReturn": 0.0005065167788416147,
+    "actualClose": 6615.28,
+    "predictedClose": 6587.63,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-16",
+    "actualReturn": -0.0012879302958026528,
+    "predictedReturn": 0.0005069996113888919,
+    "actualClose": 6606.76,
+    "predictedClose": 6618.63,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-17",
+    "actualReturn": -0.000970168155618012,
+    "predictedReturn": 0.0005148277268745005,
+    "actualClose": 6600.35,
+    "predictedClose": 6610.16,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-18",
+    "actualReturn": 0.004789119120687246,
+    "predictedReturn": 0.0005284779472276568,
+    "actualClose": 6631.96,
+    "predictedClose": 6603.84,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-19",
+    "actualReturn": 0.004885418806225061,
+    "predictedReturn": 0.000525006907992065,
+    "actualClose": 6664.36,
+    "predictedClose": 6635.44,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-22",
+    "actualReturn": 0.0044100466184318066,
+    "predictedReturn": 0.0005955770029686391,
+    "actualClose": 6693.75,
+    "predictedClose": 6668.33,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-23",
+    "actualReturn": -0.005502159241586924,
+    "predictedReturn": 0.0005696110310964286,
+    "actualClose": 6656.92,
+    "predictedClose": 6697.56,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-24",
+    "actualReturn": -0.0028466179501265287,
+    "predictedReturn": 0.0005529182963073254,
+    "actualClose": 6637.97,
+    "predictedClose": 6660.6,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-25",
+    "actualReturn": -0.005009061191231012,
+    "predictedReturn": 0.0005416687345132232,
+    "actualClose": 6604.72,
+    "predictedClose": 6641.57,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-26",
+    "actualReturn": 0.0059018367901444435,
+    "predictedReturn": 0.0005441035609692335,
+    "actualClose": 6643.7,
+    "predictedClose": 6608.31,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-09-29",
+    "actualReturn": 0.002635544165968895,
+    "predictedReturn": 0.0005293189315125346,
+    "actualClose": 6661.21,
+    "predictedClose": 6647.22,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-09-30",
+    "actualReturn": 0.004090848378837109,
+    "predictedReturn": 0.0005256064468994737,
+    "actualClose": 6688.46,
+    "predictedClose": 6664.71,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-01",
+    "actualReturn": 0.0033999208826571703,
+    "predictedReturn": 0.0005372248124331236,
+    "actualClose": 6711.2,
+    "predictedClose": 6692.05,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-02",
+    "actualReturn": 0.0006183547084219754,
+    "predictedReturn": 0.0005432955222204328,
+    "actualClose": 6715.35,
+    "predictedClose": 6714.85,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-03",
+    "actualReturn": 6.551280239364132e-05,
+    "predictedReturn": 0.0005349364364519715,
+    "actualClose": 6715.79,
+    "predictedClose": 6718.94,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-06",
+    "actualReturn": 0.0036465919110924006,
+    "predictedReturn": 0.0005359649658203125,
+    "actualClose": 6740.28,
+    "predictedClose": 6719.39,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-07",
+    "actualReturn": -0.0038114057388156652,
+    "predictedReturn": 0.0005341562209650874,
+    "actualClose": 6714.59,
+    "predictedClose": 6743.88,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-08",
+    "actualReturn": 0.005827663466334343,
+    "predictedReturn": 0.000533191254362464,
+    "actualClose": 6753.72,
+    "predictedClose": 6718.17,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-09",
+    "actualReturn": -0.0027555704582482576,
+    "predictedReturn": 0.0005279179895296693,
+    "actualClose": 6735.11,
+    "predictedClose": 6757.29,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-10",
+    "actualReturn": -0.02711167372763157,
+    "predictedReturn": 0.0005260667530819774,
+    "actualClose": 6552.51,
+    "predictedClose": 6738.65,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-13",
+    "actualReturn": 0.01559867151081562,
+    "predictedReturn": 0.0005554776289500296,
+    "actualClose": 6654.72,
+    "predictedClose": 6556.15,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-14",
+    "actualReturn": -0.0015643266960978508,
+    "predictedReturn": 0.0005407310090959072,
+    "actualClose": 6644.31,
+    "predictedClose": 6658.32,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-15",
+    "actualReturn": 0.0040260013192892075,
+    "predictedReturn": 0.0005379552603699267,
+    "actualClose": 6671.06,
+    "predictedClose": 6647.88,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-16",
+    "actualReturn": -0.006294386927038431,
+    "predictedReturn": 0.0005364203825592995,
+    "actualClose": 6629.07,
+    "predictedClose": 6674.64,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-17",
+    "actualReturn": 0.005270715337246656,
+    "predictedReturn": 0.0005456345388665795,
+    "actualClose": 6664.01,
+    "predictedClose": 6632.69,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-20",
+    "actualReturn": 0.010672271251678467,
+    "predictedReturn": 0.0005351571599021554,
+    "actualClose": 6735.13,
+    "predictedClose": 6667.58,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-21",
+    "actualReturn": 3.26964509440586e-05,
+    "predictedReturn": 0.0005137073458172381,
+    "actualClose": 6735.35,
+    "predictedClose": 6738.59,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-22",
+    "actualReturn": -0.005337539128959179,
+    "predictedReturn": 0.0005139962886460125,
+    "actualClose": 6699.4,
+    "predictedClose": 6738.81,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-23",
+    "actualReturn": 0.0058273933827877045,
+    "predictedReturn": 0.000526116811670363,
+    "actualClose": 6738.44,
+    "predictedClose": 6702.92,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-24",
+    "actualReturn": 0.007902422919869423,
+    "predictedReturn": 0.0005282597267068923,
+    "actualClose": 6791.69,
+    "predictedClose": 6742.0,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-27",
+    "actualReturn": 0.012290051206946373,
+    "predictedReturn": 0.0005181743763387203,
+    "actualClose": 6875.16,
+    "predictedClose": 6795.21,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-28",
+    "actualReturn": 0.002287943847477436,
+    "predictedReturn": 0.0005157560808584094,
+    "actualClose": 6890.89,
+    "predictedClose": 6878.71,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-29",
+    "actualReturn": -4.35782567365095e-05,
+    "predictedReturn": 0.0005236456636339426,
+    "actualClose": 6890.59,
+    "predictedClose": 6894.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-10-30",
+    "actualReturn": -0.009904812090098858,
+    "predictedReturn": 0.0005404016701504588,
+    "actualClose": 6822.34,
+    "predictedClose": 6894.31,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-10-31",
+    "actualReturn": 0.002617921680212021,
+    "predictedReturn": 0.0005469006136991084,
+    "actualClose": 6840.2,
+    "predictedClose": 6826.07,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-03",
+    "actualReturn": 0.0017207127530127764,
+    "predictedReturn": 0.0005559161072596908,
+    "actualClose": 6851.97,
+    "predictedClose": 6844.0,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-04",
+    "actualReturn": -0.01173682976514101,
+    "predictedReturn": 0.0005542427534237504,
+    "actualClose": 6771.55,
+    "predictedClose": 6855.77,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-05",
+    "actualReturn": 0.003653555642813444,
+    "predictedReturn": 0.0005478309467434883,
+    "actualClose": 6796.29,
+    "predictedClose": 6775.26,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-06",
+    "actualReturn": -0.01117818895727396,
+    "predictedReturn": 0.0005464752321131527,
+    "actualClose": 6720.32,
+    "predictedClose": 6800.0,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-07",
+    "actualReturn": 0.0012618418550118804,
+    "predictedReturn": 0.0005506786983460188,
+    "actualClose": 6728.8,
+    "predictedClose": 6724.02,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-10",
+    "actualReturn": 0.015401018783450127,
+    "predictedReturn": 0.0005491456249728799,
+    "actualClose": 6832.43,
+    "predictedClose": 6732.49,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-11",
+    "actualReturn": 0.002075350610539317,
+    "predictedReturn": 0.0005345341050997376,
+    "actualClose": 6846.61,
+    "predictedClose": 6836.08,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-12",
+    "actualReturn": 0.000629517191555351,
+    "predictedReturn": 0.0005192299140617251,
+    "actualClose": 6850.92,
+    "predictedClose": 6850.16,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-13",
+    "actualReturn": -0.01655685529112816,
+    "predictedReturn": 0.0005179629079066217,
+    "actualClose": 6737.49,
+    "predictedClose": 6854.47,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-14",
+    "actualReturn": -0.0005017255898565054,
+    "predictedReturn": 0.0005250229150988162,
+    "actualClose": 6734.11,
+    "predictedClose": 6741.03,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-17",
+    "actualReturn": -0.009162265807390213,
+    "predictedReturn": 0.0005182718159630895,
+    "actualClose": 6672.41,
+    "predictedClose": 6737.6,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-18",
+    "actualReturn": -0.008256436325609684,
+    "predictedReturn": 0.0005184721085242927,
+    "actualClose": 6617.32,
+    "predictedClose": 6675.87,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-19",
+    "actualReturn": 0.003753835801035166,
+    "predictedReturn": 0.0005184186738915741,
+    "actualClose": 6642.16,
+    "predictedClose": 6620.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-11-20",
+    "actualReturn": -0.015567283146083355,
+    "predictedReturn": 0.0005140440771356225,
+    "actualClose": 6538.76,
+    "predictedClose": 6645.57,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-21",
+    "actualReturn": 0.009823035448789597,
+    "predictedReturn": 0.0005282680504024029,
+    "actualClose": 6602.99,
+    "predictedClose": 6542.21,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-24",
+    "actualReturn": 0.015467217192053795,
+    "predictedReturn": 0.0005381335504353046,
+    "actualClose": 6705.12,
+    "predictedClose": 6606.54,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-25",
+    "actualReturn": 0.00906169693917036,
+    "predictedReturn": 0.0005421023233793676,
+    "actualClose": 6765.88,
+    "predictedClose": 6708.75,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-26",
+    "actualReturn": 0.006906711496412754,
+    "predictedReturn": 0.0005236619035713375,
+    "actualClose": 6812.61,
+    "predictedClose": 6769.42,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-11-28",
+    "actualReturn": 0.005354773253202438,
+    "predictedReturn": 0.0005029973108321428,
+    "actualClose": 6849.09,
+    "predictedClose": 6816.04,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-01",
+    "actualReturn": -0.005323329474776983,
+    "predictedReturn": 0.0004545276751741767,
+    "actualClose": 6812.63,
+    "predictedClose": 6852.2,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-02",
+    "actualReturn": 0.0024572352413088083,
+    "predictedReturn": 0.00046762896818108857,
+    "actualClose": 6829.37,
+    "predictedClose": 6815.82,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-03",
+    "actualReturn": 0.002979791257530451,
+    "predictedReturn": 0.00047752069076523185,
+    "actualClose": 6849.72,
+    "predictedClose": 6832.63,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-04",
+    "actualReturn": 0.0010803218465298414,
+    "predictedReturn": 0.00048482284182682633,
+    "actualClose": 6857.12,
+    "predictedClose": 6853.04,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-05",
+    "actualReturn": 0.0019366417545825243,
+    "predictedReturn": 0.0004915453610010445,
+    "actualClose": 6870.4,
+    "predictedClose": 6860.49,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-08",
+    "actualReturn": -0.003477255580946803,
+    "predictedReturn": 0.0004964983090758324,
+    "actualClose": 6846.51,
+    "predictedClose": 6873.81,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-09",
+    "actualReturn": -0.0008763589430600405,
+    "predictedReturn": 0.0004964146064594388,
+    "actualClose": 6840.51,
+    "predictedClose": 6849.91,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-10",
+    "actualReturn": 0.006749556865543127,
+    "predictedReturn": 0.000490936974529177,
+    "actualClose": 6886.68,
+    "predictedClose": 6843.87,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-11",
+    "actualReturn": 0.0020793508738279343,
+    "predictedReturn": 0.0005061129340901971,
+    "actualClose": 6901.0,
+    "predictedClose": 6890.17,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-12",
+    "actualReturn": -0.010663649067282677,
+    "predictedReturn": 0.0005052321939729154,
+    "actualClose": 6827.41,
+    "predictedClose": 6904.49,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-15",
+    "actualReturn": -0.0015965630300343037,
+    "predictedReturn": 0.0005049134488217533,
+    "actualClose": 6816.51,
+    "predictedClose": 6830.86,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-16",
+    "actualReturn": -0.002383918035775423,
+    "predictedReturn": 0.0005057590897195041,
+    "actualClose": 6800.26,
+    "predictedClose": 6819.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-17",
+    "actualReturn": -0.011592144146561623,
+    "predictedReturn": 0.000505857402458787,
+    "actualClose": 6721.43,
+    "predictedClose": 6803.7,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-18",
+    "actualReturn": 0.007934262044727802,
+    "predictedReturn": 0.0005108088371343911,
+    "actualClose": 6774.76,
+    "predictedClose": 6724.86,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-19",
+    "actualReturn": 0.008818059228360653,
+    "predictedReturn": 0.0005107336910441518,
+    "actualClose": 6834.5,
+    "predictedClose": 6778.22,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-22",
+    "actualReturn": 0.006436496507376432,
+    "predictedReturn": 0.0005747105460613966,
+    "actualClose": 6878.49,
+    "predictedClose": 6838.43,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2025-12-23",
+    "actualReturn": 0.004550388548523188,
+    "predictedReturn": 0.000533417914994061,
+    "actualClose": 6909.79,
+    "predictedClose": 6882.16,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-24",
+    "actualReturn": 0.0032214822713285685,
+    "predictedReturn": 0.0004940532962791622,
+    "actualClose": 6932.05,
+    "predictedClose": 6913.2,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-26",
+    "actualReturn": -0.0003043635515496135,
+    "predictedReturn": 0.0004341102612670511,
+    "actualClose": 6929.94,
+    "predictedClose": 6935.06,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-29",
+    "actualReturn": -0.003492051502689719,
+    "predictedReturn": 0.00041715955012477934,
+    "actualClose": 6905.74,
+    "predictedClose": 6932.83,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-30",
+    "actualReturn": -0.0013756671687588096,
+    "predictedReturn": 0.0004287308838684112,
+    "actualClose": 6896.24,
+    "predictedClose": 6908.7,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2025-12-31",
+    "actualReturn": -0.00735766626894474,
+    "predictedReturn": 0.0004312704550102353,
+    "actualClose": 6845.5,
+    "predictedClose": 6899.21,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-02",
+    "actualReturn": 0.0018947067437693477,
+    "predictedReturn": 0.0004326245398260653,
+    "actualClose": 6858.47,
+    "predictedClose": 6848.46,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-05",
+    "actualReturn": 0.006354127079248428,
+    "predictedReturn": 0.00045045209117233753,
+    "actualClose": 6902.05,
+    "predictedClose": 6861.56,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-06",
+    "actualReturn": 0.006196712609380484,
+    "predictedReturn": 0.0004900417989119887,
+    "actualClose": 6944.82,
+    "predictedClose": 6905.43,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-07",
+    "actualReturn": -0.0034399235155433416,
+    "predictedReturn": 0.0005061702686361969,
+    "actualClose": 6920.93,
+    "predictedClose": 6948.34,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-08",
+    "actualReturn": 7.654826185898855e-05,
+    "predictedReturn": 0.000509558420162648,
+    "actualClose": 6921.46,
+    "predictedClose": 6924.46,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-09",
+    "actualReturn": 0.006475487258285284,
+    "predictedReturn": 0.000512877362780273,
+    "actualClose": 6966.28,
+    "predictedClose": 6925.01,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-12",
+    "actualReturn": 0.001577633200213313,
+    "predictedReturn": 0.0005104351439513266,
+    "actualClose": 6977.27,
+    "predictedClose": 6969.84,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-13",
+    "actualReturn": -0.0019391230307519436,
+    "predictedReturn": 0.0005061285337433219,
+    "actualClose": 6963.74,
+    "predictedClose": 6980.8,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-14",
+    "actualReturn": -0.005333360284566879,
+    "predictedReturn": 0.0005062266136519611,
+    "actualClose": 6926.6,
+    "predictedClose": 6967.27,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-15",
+    "actualReturn": 0.0025799262803047895,
+    "predictedReturn": 0.0005157667328603566,
+    "actualClose": 6944.47,
+    "predictedClose": 6930.17,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-16",
+    "actualReturn": -0.0006423023296520114,
+    "predictedReturn": 0.0005128459306433797,
+    "actualClose": 6940.01,
+    "predictedClose": 6948.03,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-20",
+    "actualReturn": -0.02062675729393959,
+    "predictedReturn": 0.000515538442414254,
+    "actualClose": 6796.86,
+    "predictedClose": 6943.59,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-21",
+    "actualReturn": 0.011587741784751415,
+    "predictedReturn": 0.0005284788785502315,
+    "actualClose": 6875.62,
+    "predictedClose": 6800.45,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-22",
+    "actualReturn": 0.005487502086907625,
+    "predictedReturn": 0.0005332209402695298,
+    "actualClose": 6913.35,
+    "predictedClose": 6879.29,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-23",
+    "actualReturn": 0.0003268698346801102,
+    "predictedReturn": 0.0005246861837804317,
+    "actualClose": 6915.61,
+    "predictedClose": 6916.98,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-26",
+    "actualReturn": 0.005006082821637392,
+    "predictedReturn": 0.0005117341643199325,
+    "actualClose": 6950.23,
+    "predictedClose": 6919.15,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-01-27",
+    "actualReturn": 0.004081896040588617,
+    "predictedReturn": 0.0005058507667854428,
+    "actualClose": 6978.6,
+    "predictedClose": 6953.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-28",
+    "actualReturn": -8.172305388143286e-05,
+    "predictedReturn": 0.0005098687834106386,
+    "actualClose": 6978.03,
+    "predictedClose": 6982.16,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-29",
+    "actualReturn": -0.0012926312629133463,
+    "predictedReturn": 0.0005167372291907668,
+    "actualClose": 6969.01,
+    "predictedClose": 6981.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-01-30",
+    "actualReturn": -0.004301899578422308,
+    "predictedReturn": 0.0005474730860441923,
+    "actualClose": 6939.03,
+    "predictedClose": 6972.83,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-02-02",
+    "actualReturn": 0.005391266196966171,
+    "predictedReturn": 0.0005615190602838993,
+    "actualClose": 6976.44,
+    "predictedClose": 6942.93,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-03",
+    "actualReturn": -0.00840398296713829,
+    "predictedReturn": 0.0005489705363288522,
+    "actualClose": 6917.81,
+    "predictedClose": 6980.27,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-04",
+    "actualReturn": -0.0050723920576274395,
+    "predictedReturn": 0.0005679099704138935,
+    "actualClose": 6882.72,
+    "predictedClose": 6921.74,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-05",
+    "actualReturn": -0.01225101575255394,
+    "predictedReturn": 0.0005884510464966297,
+    "actualClose": 6798.4,
+    "predictedClose": 6886.77,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-06",
+    "actualReturn": 0.019695796072483063,
+    "predictedReturn": 0.0005912572960369289,
+    "actualClose": 6932.3,
+    "predictedClose": 6802.42,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-09",
+    "actualReturn": 0.004691086709499359,
+    "predictedReturn": 0.0005737353349104524,
+    "actualClose": 6964.82,
+    "predictedClose": 6936.28,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-02-10",
+    "actualReturn": -0.003303712932392955,
+    "predictedReturn": 0.0005514342919923365,
+    "actualClose": 6941.81,
+    "predictedClose": 6968.66,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-02-11",
+    "actualReturn": -4.895606980426237e-05,
+    "predictedReturn": 0.0005404960829764605,
+    "actualClose": 6941.47,
+    "predictedClose": 6945.56,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-02-12",
+    "actualReturn": -0.01566101238131523,
+    "predictedReturn": 0.0005469098687171936,
+    "actualClose": 6832.76,
+    "predictedClose": 6945.27,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-13",
+    "actualReturn": 0.0004990891320630908,
+    "predictedReturn": 0.0005725891096517444,
+    "actualClose": 6836.17,
+    "predictedClose": 6836.67,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-02-17",
+    "actualReturn": 0.0010313220554962754,
+    "predictedReturn": 0.0005576920812018216,
+    "actualClose": 6843.22,
+    "predictedClose": 6839.98,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-02-18",
+    "actualReturn": 0.005566070321947336,
+    "predictedReturn": 0.0005410003359429538,
+    "actualClose": 6881.31,
+    "predictedClose": 6846.92,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-19",
+    "actualReturn": -0.0028221257962286472,
+    "predictedReturn": 0.0005248890956863761,
+    "actualClose": 6861.89,
+    "predictedClose": 6884.92,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-02-20",
+    "actualReturn": 0.006939724553376436,
+    "predictedReturn": 0.0005181726301088929,
+    "actualClose": 6909.51,
+    "predictedClose": 6865.45,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-23",
+    "actualReturn": -0.01038565207272768,
+    "predictedReturn": 0.0005189860239624977,
+    "actualClose": 6837.75,
+    "predictedClose": 6913.1,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-24",
+    "actualReturn": 0.007651614025235176,
+    "predictedReturn": 0.0005267051747068763,
+    "actualClose": 6890.07,
+    "predictedClose": 6841.35,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-25",
+    "actualReturn": 0.008136355318129063,
+    "predictedReturn": 0.0005214656703174114,
+    "actualClose": 6946.13,
+    "predictedClose": 6893.66,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-26",
+    "actualReturn": -0.005365580786019564,
+    "predictedReturn": 0.000518137589097023,
+    "actualClose": 6908.86,
+    "predictedClose": 6949.73,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-02-27",
+    "actualReturn": -0.0043393527157604694,
+    "predictedReturn": 0.0005296793533489108,
+    "actualClose": 6878.88,
+    "predictedClose": 6912.52,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-02",
+    "actualReturn": 0.00039835472125560045,
+    "predictedReturn": 0.0005510253831744194,
+    "actualClose": 6881.62,
+    "predictedClose": 6882.67,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-03",
+    "actualReturn": -0.009444030933082104,
+    "predictedReturn": 0.0005509655456990004,
+    "actualClose": 6816.63,
+    "predictedClose": 6885.41,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-04",
+    "actualReturn": 0.007756049279123545,
+    "predictedReturn": 0.0005585317267104983,
+    "actualClose": 6869.5,
+    "predictedClose": 6820.44,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-05",
+    "actualReturn": -0.005646704696118832,
+    "predictedReturn": 0.0005381949013099074,
+    "actualClose": 6830.71,
+    "predictedClose": 6873.2,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-06",
+    "actualReturn": -0.013276795856654644,
+    "predictedReturn": 0.0005421765963546932,
+    "actualClose": 6740.02,
+    "predictedClose": 6834.41,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-09",
+    "actualReturn": 0.008304161950945854,
+    "predictedReturn": 0.0005430900491774082,
+    "actualClose": 6795.99,
+    "predictedClose": 6743.68,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-10",
+    "actualReturn": -0.002135119866579771,
+    "predictedReturn": 0.00055856560356915,
+    "actualClose": 6781.48,
+    "predictedClose": 6799.79,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-11",
+    "actualReturn": -0.0008376011974178255,
+    "predictedReturn": 0.000553280464373529,
+    "actualClose": 6775.8,
+    "predictedClose": 6785.23,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-12",
+    "actualReturn": -0.01522767636924982,
+    "predictedReturn": 0.0005416050553321838,
+    "actualClose": 6672.62,
+    "predictedClose": 6779.47,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-13",
+    "actualReturn": -0.006059115286916494,
+    "predictedReturn": 0.000552809564396739,
+    "actualClose": 6632.19,
+    "predictedClose": 6676.31,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-16",
+    "actualReturn": 0.010130883194506168,
+    "predictedReturn": 0.0005413497565314174,
+    "actualClose": 6699.38,
+    "predictedClose": 6635.78,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-17",
+    "actualReturn": 0.0024942548479884863,
+    "predictedReturn": 0.0005278431344777346,
+    "actualClose": 6716.09,
+    "predictedClose": 6702.92,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-18",
+    "actualReturn": -0.013607568107545376,
+    "predictedReturn": 0.0005184883484616876,
+    "actualClose": 6624.7,
+    "predictedClose": 6719.57,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-19",
+    "actualReturn": -0.0027487976476550102,
+    "predictedReturn": 0.0005208198563195765,
+    "actualClose": 6606.49,
+    "predictedClose": 6628.15,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-20",
+    "actualReturn": -0.015138182789087296,
+    "predictedReturn": 0.0005348358536139131,
+    "actualClose": 6506.48,
+    "predictedClose": 6610.02,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-23",
+    "actualReturn": 0.01145320013165474,
+    "predictedReturn": 0.0006235274486243725,
+    "actualClose": 6581.0,
+    "predictedClose": 6510.54,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-24",
+    "actualReturn": -0.003742574481293559,
+    "predictedReturn": 0.0005946159362792969,
+    "actualClose": 6556.37,
+    "predictedClose": 6584.91,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-25",
+    "actualReturn": 0.005419124383479357,
+    "predictedReturn": 0.0005592811503447592,
+    "actualClose": 6591.9,
+    "predictedClose": 6560.04,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-26",
+    "actualReturn": -0.017406173050403595,
+    "predictedReturn": 0.0005330437561497092,
+    "actualClose": 6477.16,
+    "predictedClose": 6595.41,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-27",
+    "actualReturn": -0.01672184281051159,
+    "predictedReturn": 0.0005211422685533762,
+    "actualClose": 6368.85,
+    "predictedClose": 6480.54,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-03-30",
+    "actualReturn": -0.003945748787373304,
+    "predictedReturn": 0.0005258266464807093,
+    "actualClose": 6343.72,
+    "predictedClose": 6372.2,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-03-31",
+    "actualReturn": 0.029131140559911728,
+    "predictedReturn": 0.0005312666762620211,
+    "actualClose": 6528.52,
+    "predictedClose": 6347.09,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-01",
+    "actualReturn": 0.007168516516685486,
+    "predictedReturn": 0.0005462407134473324,
+    "actualClose": 6575.32,
+    "predictedClose": 6532.09,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-02",
+    "actualReturn": 0.0011208758223801851,
+    "predictedReturn": 0.0005401704693213105,
+    "actualClose": 6582.69,
+    "predictedClose": 6578.87,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-06",
+    "actualReturn": 0.004426782485097647,
+    "predictedReturn": 0.0005192711250856519,
+    "actualClose": 6611.83,
+    "predictedClose": 6586.11,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-07",
+    "actualReturn": 0.0007592480978928506,
+    "predictedReturn": 0.0004906434915028512,
+    "actualClose": 6616.85,
+    "predictedClose": 6615.07,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-08",
+    "actualReturn": 0.025081414729356766,
+    "predictedReturn": 0.0004887328250333667,
+    "actualClose": 6782.81,
+    "predictedClose": 6620.08,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-09",
+    "actualReturn": 0.006170023698359728,
+    "predictedReturn": 0.0005123726441524923,
+    "actualClose": 6824.66,
+    "predictedClose": 6786.29,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-10",
+    "actualReturn": -0.0011385211255401373,
+    "predictedReturn": 0.0005072478670626879,
+    "actualClose": 6816.89,
+    "predictedClose": 6828.12,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-13",
+    "actualReturn": 0.010173275135457516,
+    "predictedReturn": 0.0004944336251355708,
+    "actualClose": 6886.24,
+    "predictedClose": 6820.26,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-14",
+    "actualReturn": 0.011782865971326828,
+    "predictedReturn": 0.0004932221490889788,
+    "actualClose": 6967.38,
+    "predictedClose": 6889.64,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-15",
+    "actualReturn": 0.007975783199071884,
+    "predictedReturn": 0.0004967465647496283,
+    "actualClose": 7022.95,
+    "predictedClose": 6970.84,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-16",
+    "actualReturn": 0.002609955845400691,
+    "predictedReturn": 0.0005036453949287534,
+    "actualClose": 7041.28,
+    "predictedClose": 7026.49,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-17",
+    "actualReturn": 0.012040463276207447,
+    "predictedReturn": 0.000506298674736172,
+    "actualClose": 7126.06,
+    "predictedClose": 7044.84,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-20",
+    "actualReturn": -0.0023743726778775454,
+    "predictedReturn": 0.0005248117377050221,
+    "actualClose": 7109.14,
+    "predictedClose": 7129.8,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-21",
+    "actualReturn": -0.006348217837512493,
+    "predictedReturn": 0.0005083678988739848,
+    "actualClose": 7064.01,
+    "predictedClose": 7112.75,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-22",
+    "actualReturn": 0.010460084304213524,
+    "predictedReturn": 0.0005098670953884721,
+    "actualClose": 7137.9,
+    "predictedClose": 7067.61,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-23",
+    "actualReturn": -0.004132868256419897,
+    "predictedReturn": 0.0005040174582973123,
+    "actualClose": 7108.4,
+    "predictedClose": 7141.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-24",
+    "actualReturn": 0.007973689585924149,
+    "predictedReturn": 0.0005095204105600715,
+    "actualClose": 7165.08,
+    "predictedClose": 7112.02,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-04-27",
+    "actualReturn": 0.0012323767878115177,
+    "predictedReturn": 0.0004979171208105981,
+    "actualClose": 7173.91,
+    "predictedClose": 7168.65,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-28",
+    "actualReturn": -0.004894172307103872,
+    "predictedReturn": 0.0004944152315147221,
+    "actualClose": 7138.8,
+    "predictedClose": 7177.46,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-29",
+    "actualReturn": -0.0003991720441263169,
+    "predictedReturn": 0.0004960597725585103,
+    "actualClose": 7135.95,
+    "predictedClose": 7142.34,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-04-30",
+    "actualReturn": 0.010238239541649818,
+    "predictedReturn": 0.0005012568435631692,
+    "actualClose": 7209.01,
+    "predictedClose": 7139.53,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-01",
+    "actualReturn": 0.0029283289331942797,
+    "predictedReturn": 0.0005140940193086863,
+    "actualClose": 7230.12,
+    "predictedClose": 7212.72,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-04",
+    "actualReturn": -0.004062189254909754,
+    "predictedReturn": 0.0005049406900070608,
+    "actualClose": 7200.75,
+    "predictedClose": 7233.77,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-05",
+    "actualReturn": 0.008120017126202583,
+    "predictedReturn": 0.0005075286608189344,
+    "actualClose": 7259.22,
+    "predictedClose": 7204.4,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-06",
+    "actualReturn": 0.014588329941034317,
+    "predictedReturn": 0.0005088284378871322,
+    "actualClose": 7365.12,
+    "predictedClose": 7262.91,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-07",
+    "actualReturn": -0.0038030953146517277,
+    "predictedReturn": 0.0005319124320521951,
+    "actualClose": 7337.11,
+    "predictedClose": 7369.04,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-08",
+    "actualReturn": 0.008425703272223473,
+    "predictedReturn": 0.000541066168807447,
+    "actualClose": 7398.93,
+    "predictedClose": 7341.08,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-11",
+    "actualReturn": 0.0018799566896632314,
+    "predictedReturn": 0.0005263551138341427,
+    "actualClose": 7412.84,
+    "predictedClose": 7402.82,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-12",
+    "actualReturn": -0.0016026088269427419,
+    "predictedReturn": 0.0005274753202684224,
+    "actualClose": 7400.96,
+    "predictedClose": 7416.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-13",
+    "actualReturn": 0.005849246401339769,
+    "predictedReturn": 0.0005258930614218116,
+    "actualClose": 7444.25,
+    "predictedClose": 7404.85,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-14",
+    "actualReturn": 0.007655604742467403,
+    "predictedReturn": 0.0005258891033008695,
+    "actualClose": 7501.24,
+    "predictedClose": 7448.16,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-15",
+    "actualReturn": -0.012363320216536522,
+    "predictedReturn": 0.0005166083574295044,
+    "actualClose": 7408.5,
+    "predictedClose": 7505.12,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-18",
+    "actualReturn": -0.0007356678834185004,
+    "predictedReturn": 0.0005200562882237136,
+    "actualClose": 7403.05,
+    "predictedClose": 7412.35,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-19",
+    "actualReturn": -0.006678320933133364,
+    "predictedReturn": 0.0005204733461141586,
+    "actualClose": 7353.61,
+    "predictedClose": 7406.9,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-20",
+    "actualReturn": 0.010792026296257973,
+    "predictedReturn": 0.0005201715393923223,
+    "actualClose": 7432.97,
+    "predictedClose": 7357.44,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-21",
+    "actualReturn": 0.0017153304070234299,
+    "predictedReturn": 0.0005162546294741333,
+    "actualClose": 7445.72,
+    "predictedClose": 7436.81,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-22",
+    "actualReturn": 0.0037269731983542442,
+    "predictedReturn": 0.0005152553785592318,
+    "actualClose": 7473.47,
+    "predictedClose": 7449.56,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-26",
+    "actualReturn": 0.0061082602478563786,
+    "predictedReturn": 0.0005058223032392561,
+    "actualClose": 7519.12,
+    "predictedClose": 7477.25,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-27",
+    "actualReturn": 0.00016487915127072483,
+    "predictedReturn": 0.000510236422996968,
+    "actualClose": 7520.36,
+    "predictedClose": 7522.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-05-28",
+    "actualReturn": 0.005753716453909874,
+    "predictedReturn": 0.0005140934372320771,
+    "actualClose": 7563.63,
+    "predictedClose": 7524.23,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-05-29",
+    "actualReturn": 0.0021722607780247927,
+    "predictedReturn": 0.0005146138137206435,
+    "actualClose": 7580.06,
+    "predictedClose": 7567.52,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-01",
+    "actualReturn": 0.00262529612518847,
+    "predictedReturn": 0.0005583558231592178,
+    "actualClose": 7599.96,
+    "predictedClose": 7584.29,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-02",
+    "actualReturn": 0.0012920888839289546,
+    "predictedReturn": 0.0005599920405074954,
+    "actualClose": 7609.78,
+    "predictedClose": 7604.22,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-03",
+    "actualReturn": -0.00737204123288393,
+    "predictedReturn": 0.0005466245929710567,
+    "actualClose": 7553.68,
+    "predictedClose": 7613.94,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-04",
+    "actualReturn": 0.00405496172606945,
+    "predictedReturn": 0.0005383958923630416,
+    "actualClose": 7584.31,
+    "predictedClose": 7557.75,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-05",
+    "actualReturn": -0.026445362716913223,
+    "predictedReturn": 0.0005258686142042279,
+    "actualClose": 7383.74,
+    "predictedClose": 7588.3,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-08",
+    "actualReturn": 0.002978130942210555,
+    "predictedReturn": 0.0005287444218993187,
+    "actualClose": 7405.73,
+    "predictedClose": 7387.64,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-09",
+    "actualReturn": -0.0025763940066099167,
+    "predictedReturn": 0.0005149304633960128,
+    "actualClose": 7386.65,
+    "predictedClose": 7409.54,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-10",
+    "actualReturn": -0.016199450939893723,
+    "predictedReturn": 0.0005285207880660892,
+    "actualClose": 7266.99,
+    "predictedClose": 7390.55,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-11",
+    "actualReturn": 0.01751888543367386,
+    "predictedReturn": 0.0005238884477876127,
+    "actualClose": 7394.3,
+    "predictedClose": 7270.8,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-12",
+    "actualReturn": 0.005025513935834169,
+    "predictedReturn": 0.0005230921669863164,
+    "actualClose": 7431.46,
+    "predictedClose": 7398.17,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-15",
+    "actualReturn": 0.01652839221060276,
+    "predictedReturn": 0.0005094307707622647,
+    "actualClose": 7554.29,
+    "predictedClose": 7435.25,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-16",
+    "actualReturn": -0.005684179719537497,
+    "predictedReturn": 0.000513767299707979,
+    "actualClose": 7511.35,
+    "predictedClose": 7558.17,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-17",
+    "actualReturn": -0.012148282490670681,
+    "predictedReturn": 0.0005120147252455354,
+    "actualClose": 7420.1,
+    "predictedClose": 7515.2,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-18",
+    "actualReturn": 0.01084621250629425,
+    "predictedReturn": 0.0005250161630101502,
+    "actualClose": 7500.58,
+    "predictedClose": 7424.0,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-22",
+    "actualReturn": -0.0037050519604235888,
+    "predictedReturn": 0.0005867914878763258,
+    "actualClose": 7472.79,
+    "predictedClose": 7504.98,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-23",
+    "actualReturn": -0.014362785033881664,
+    "predictedReturn": 0.0005664712516590953,
+    "actualClose": 7365.46,
+    "predictedClose": 7477.02,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-24",
+    "actualReturn": -0.000982931931503117,
+    "predictedReturn": 0.0005474161589518189,
+    "actualClose": 7358.22,
+    "predictedClose": 7369.49,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-25",
+    "actualReturn": -9.920611773850396e-05,
+    "predictedReturn": 0.0005436904029920697,
+    "actualClose": 7357.49,
+    "predictedClose": 7362.22,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-26",
+    "actualReturn": -0.0004716574039775878,
+    "predictedReturn": 0.0005346607067622244,
+    "actualClose": 7354.02,
+    "predictedClose": 7361.42,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-06-29",
+    "actualReturn": 0.011750057339668274,
+    "predictedReturn": 0.0005937485839240253,
+    "actualClose": 7440.43,
+    "predictedClose": 7358.39,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-06-30",
+    "actualReturn": 0.007920199073851109,
+    "predictedReturn": 0.0005650990642607212,
+    "actualClose": 7499.36,
+    "predictedClose": 7444.63,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-01",
+    "actualReturn": -0.0021508345380425453,
+    "predictedReturn": 0.0005500413244590163,
+    "actualClose": 7483.23,
+    "predictedClose": 7503.48,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-02",
+    "actualReturn": 1.3702514252145193e-06,
+    "predictedReturn": 0.0005396020133048296,
+    "actualClose": 7483.24,
+    "predictedClose": 7487.27,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-06",
+    "actualReturn": 0.007241507526487112,
+    "predictedReturn": 0.0005291790002956986,
+    "actualClose": 7537.43,
+    "predictedClose": 7487.2,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-07",
+    "actualReturn": -0.004455109592527151,
+    "predictedReturn": 0.0005127984331920743,
+    "actualClose": 7503.85,
+    "predictedClose": 7541.3,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-08",
+    "actualReturn": -0.0028172386810183525,
+    "predictedReturn": 0.0005066110752522945,
+    "actualClose": 7482.71,
+    "predictedClose": 7507.65,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-09",
+    "actualReturn": 0.008142795413732529,
+    "predictedReturn": 0.0005047637387178838,
+    "actualClose": 7543.64,
+    "predictedClose": 7486.49,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-10",
+    "actualReturn": 0.004208843223750591,
+    "predictedReturn": 0.0004899114137515426,
+    "actualClose": 7575.39,
+    "predictedClose": 7547.34,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-13",
+    "actualReturn": -0.007927022874355316,
+    "predictedReturn": 0.00047331899986602366,
+    "actualClose": 7515.34,
+    "predictedClose": 7578.98,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-14",
+    "actualReturn": 0.003758978331461549,
+    "predictedReturn": 0.0004800476599484682,
+    "actualClose": 7543.59,
+    "predictedClose": 7518.95,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-15",
+    "actualReturn": 0.003819144330918789,
+    "predictedReturn": 0.0004853196442127228,
+    "actualClose": 7572.4,
+    "predictedClose": 7547.25,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-16",
+    "actualReturn": -0.0051014055497944355,
+    "predictedReturn": 0.0004950883449055254,
+    "actualClose": 7533.77,
+    "predictedClose": 7576.15,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-17",
+    "actualReturn": -0.010098540224134922,
+    "predictedReturn": 0.0005040565738454461,
+    "actualClose": 7457.69,
+    "predictedClose": 7537.57,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-20",
+    "actualReturn": -0.0019322546431794763,
+    "predictedReturn": 0.0005081846611574292,
+    "actualClose": 7443.28,
+    "predictedClose": 7461.48,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-21",
+    "actualReturn": 0.008856366388499737,
+    "predictedReturn": 0.000507645308971405,
+    "actualClose": 7509.2,
+    "predictedClose": 7447.06,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-22",
+    "actualReturn": -0.0013636917574331164,
+    "predictedReturn": 0.0005050203180871904,
+    "actualClose": 7498.96,
+    "predictedClose": 7512.99,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-23",
+    "actualReturn": -0.012089697644114494,
+    "predictedReturn": 0.0004992046160623431,
+    "actualClose": 7408.3,
+    "predictedClose": 7502.7,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-24",
+    "actualReturn": 0.0004967639106325805,
+    "predictedReturn": 0.0005093782674521208,
+    "actualClose": 7411.98,
+    "predictedClose": 7412.07,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-27",
+    "actualReturn": 0.0001619264075998217,
+    "predictedReturn": 0.0005022481782361865,
+    "actualClose": 7413.18,
+    "predictedClose": 7415.7,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-28",
+    "actualReturn": 0.0021043072920292616,
+    "predictedReturn": 0.0005017325165681541,
+    "actualClose": 7428.78,
+    "predictedClose": 7416.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-07-29",
+    "actualReturn": -0.01516128983348608,
+    "predictedReturn": 0.0005107263568788767,
+    "actualClose": 7316.15,
+    "predictedClose": 7432.57,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-30",
+    "actualReturn": 0.016604358330368996,
+    "predictedReturn": 0.0005241879262030125,
+    "actualClose": 7437.63,
+    "predictedClose": 7319.98,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-07-31",
+    "actualReturn": 0.00700361980125308,
+    "predictedReturn": 0.0005223830230534077,
+    "actualClose": 7489.72,
+    "predictedClose": 7441.52,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-03",
+    "actualReturn": 0.014790911227464676,
+    "predictedReturn": 0.0005167395574972034,
+    "actualClose": 7600.5,
+    "predictedClose": 7493.59,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-04",
+    "actualReturn": 0.017896194010972977,
+    "predictedReturn": 0.0005081011913716793,
+    "actualClose": 7736.52,
+    "predictedClose": 7604.36,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-05",
+    "actualReturn": -0.0016764921601861715,
+    "predictedReturn": 0.0005150760407559574,
+    "actualClose": 7723.55,
+    "predictedClose": 7740.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-06",
+    "actualReturn": -0.0017595334211364388,
+    "predictedReturn": 0.0005169692449271679,
+    "actualClose": 7709.96,
+    "predictedClose": 7727.54,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-07",
+    "actualReturn": 0.006184231489896774,
+    "predictedReturn": 0.000512986967805773,
+    "actualClose": 7757.64,
+    "predictedClose": 7713.92,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-10",
+    "actualReturn": -0.0005839756922796369,
+    "predictedReturn": 0.0005038477247580886,
+    "actualClose": 7753.11,
+    "predictedClose": 7761.55,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-11",
+    "actualReturn": -0.0032128614839166403,
+    "predictedReturn": 0.0004968353314325213,
+    "actualClose": 7728.2,
+    "predictedClose": 7756.96,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-12",
+    "actualReturn": 0.0026267182547599077,
+    "predictedReturn": 0.0004918371560052037,
+    "actualClose": 7748.5,
+    "predictedClose": 7732.0,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-13",
+    "actualReturn": 0.0065161301754415035,
+    "predictedReturn": 0.00048560654977336526,
+    "actualClose": 7798.99,
+    "predictedClose": 7752.26,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-14",
+    "actualReturn": -0.0016964335227385163,
+    "predictedReturn": 0.0004858574829995632,
+    "actualClose": 7785.76,
+    "predictedClose": 7802.78,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-17",
+    "actualReturn": -0.00522745493799448,
+    "predictedReturn": 0.0004746150807477534,
+    "actualClose": 7745.06,
+    "predictedClose": 7789.46,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-18",
+    "actualReturn": -0.006881843786686659,
+    "predictedReturn": 0.0004749061481561512,
+    "actualClose": 7691.76,
+    "predictedClose": 7748.74,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-19",
+    "actualReturn": 0.002108778106048703,
+    "predictedReturn": 0.0004781928437296301,
+    "actualClose": 7707.98,
+    "predictedClose": 7695.44,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-20",
+    "actualReturn": -0.008668915368616581,
+    "predictedReturn": 0.0004901167703792453,
+    "actualClose": 7641.16,
+    "predictedClose": 7711.76,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-21",
+    "actualReturn": 0.0043461937457323074,
+    "predictedReturn": 0.0004903425578959286,
+    "actualClose": 7674.37,
+    "predictedClose": 7644.91,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-24",
+    "actualReturn": -0.0028028690721839666,
+    "predictedReturn": 0.00048344035167247057,
+    "actualClose": 7652.86,
+    "predictedClose": 7678.08,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-25",
+    "actualReturn": 0.0031909537501633167,
+    "predictedReturn": 0.0004780281742569059,
+    "actualClose": 7677.28,
+    "predictedClose": 7656.52,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-26",
+    "actualReturn": -0.00020574864174705,
+    "predictedReturn": 0.00047206756426021457,
+    "actualClose": 7675.7,
+    "predictedClose": 7680.9,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-27",
+    "actualReturn": 0.007203256711363792,
+    "predictedReturn": 0.0004658676916733384,
+    "actualClose": 7730.99,
+    "predictedClose": 7679.28,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-08-28",
+    "actualReturn": -0.002487452235072851,
+    "predictedReturn": 0.000466522469650954,
+    "actualClose": 7711.76,
+    "predictedClose": 7734.6,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-08-31",
+    "actualReturn": -0.0033221507910639048,
+    "predictedReturn": 0.0004672040231525898,
+    "actualClose": 7686.14,
+    "predictedClose": 7715.36,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-01",
+    "actualReturn": -0.007112792693078518,
+    "predictedReturn": 0.0004877017345279455,
+    "actualClose": 7631.47,
+    "predictedClose": 7689.89,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-02",
+    "actualReturn": 0.004603291396051645,
+    "predictedReturn": 0.0004901498323306441,
+    "actualClose": 7666.6,
+    "predictedClose": 7635.21,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-03",
+    "actualReturn": 0.010579639114439487,
+    "predictedReturn": 0.00048699197941459715,
+    "actualClose": 7747.71,
+    "predictedClose": 7670.33,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-04",
+    "actualReturn": -0.0037572216242551804,
+    "predictedReturn": 0.000483466312289238,
+    "actualClose": 7718.6,
+    "predictedClose": 7751.46,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-08",
+    "actualReturn": -0.005840447265654802,
+    "predictedReturn": 0.00047192495549097657,
+    "actualClose": 7673.52,
+    "predictedClose": 7722.24,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-09",
+    "actualReturn": -0.0048426478169858456,
+    "predictedReturn": 0.0004828453529626131,
+    "actualClose": 7636.36,
+    "predictedClose": 7677.23,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-10",
+    "actualReturn": -0.005848292727023363,
+    "predictedReturn": 0.0004881005734205246,
+    "actualClose": 7591.7,
+    "predictedClose": 7640.09,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-11",
+    "actualReturn": 0.00859883613884449,
+    "predictedReturn": 0.0004904885427094996,
+    "actualClose": 7656.98,
+    "predictedClose": 7595.42,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-14",
+    "actualReturn": -0.004832192324101925,
+    "predictedReturn": 0.00048677794984541833,
+    "actualClose": 7619.98,
+    "predictedClose": 7660.71,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-15",
+    "actualReturn": -0.004494762513786554,
+    "predictedReturn": 0.000489976373501122,
+    "actualClose": 7585.73,
+    "predictedClose": 7623.71,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-16",
+    "actualReturn": -0.004471543710678816,
+    "predictedReturn": 0.000496255059260875,
+    "actualClose": 7551.81,
+    "predictedClose": 7589.49,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-17",
+    "actualReturn": 0.011381338350474834,
+    "predictedReturn": 0.0005037395749241114,
+    "actualClose": 7637.76,
+    "predictedClose": 7555.61,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-18",
+    "actualReturn": 0.0016680590342730284,
+    "predictedReturn": 0.0005003514233976603,
+    "actualClose": 7650.5,
+    "predictedClose": 7641.58,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-21",
+    "actualReturn": 0.014927154406905174,
+    "predictedReturn": 0.0005678301095031202,
+    "actualClose": 7764.7,
+    "predictedClose": 7654.84,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-22",
+    "actualReturn": -7.734824976068921e-06,
+    "predictedReturn": 0.0005307969404384494,
+    "actualClose": 7764.64,
+    "predictedClose": 7768.82,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-23",
+    "actualReturn": -0.0075483666732907295,
+    "predictedReturn": 0.00051653798436746,
+    "actualClose": 7706.03,
+    "predictedClose": 7768.65,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-24",
+    "actualReturn": -0.0002465474826749414,
+    "predictedReturn": 0.0005093262298032641,
+    "actualClose": 7704.13,
+    "predictedClose": 7709.95,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-25",
+    "actualReturn": 0.005098599474877119,
+    "predictedReturn": 0.0005082290153950453,
+    "actualClose": 7743.41,
+    "predictedClose": 7708.05,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-28",
+    "actualReturn": -0.007712392136454582,
+    "predictedReturn": 0.0004917411133646965,
+    "actualClose": 7683.69,
+    "predictedClose": 7747.22,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-09-29",
+    "actualReturn": -0.0016723863082006574,
+    "predictedReturn": 0.0004960802616551518,
+    "actualClose": 7670.84,
+    "predictedClose": 7687.5,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-09-30",
+    "actualReturn": -0.002515996340662241,
+    "predictedReturn": 0.0004972192109562457,
+    "actualClose": 7651.54,
+    "predictedClose": 7674.65,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-10-01",
+    "actualReturn": 0.001948647783137858,
+    "predictedReturn": 0.0004842595080845058,
+    "actualClose": 7666.45,
+    "predictedClose": 7655.25,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-10-02",
+    "actualReturn": 0.00733977509662509,
+    "predictedReturn": 0.0005037296796217561,
+    "actualClose": 7722.72,
+    "predictedClose": 7670.31,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-10-05",
+    "actualReturn": 0.006633670534938574,
+    "predictedReturn": 0.0005050410400144756,
+    "actualClose": 7773.95,
+    "predictedClose": 7726.62,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-10-06",
+    "actualReturn": 0.005785987712442875,
+    "predictedReturn": 0.0005143737653270364,
+    "actualClose": 7818.93,
+    "predictedClose": 7777.95,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-10-07",
+    "actualReturn": -0.0021946935448795557,
+    "predictedReturn": 0.0005043771816417575,
+    "actualClose": 7801.77,
+    "predictedClose": 7822.87,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-10-08",
+    "actualReturn": -0.004666909575462341,
+    "predictedReturn": 0.0005008825683034956,
+    "actualClose": 7765.36,
+    "predictedClose": 7805.68,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-10-09",
+    "actualReturn": 0.0059469458647072315,
+    "predictedReturn": 0.0005182435270398855,
+    "actualClose": 7811.54,
+    "predictedClose": 7769.38,
+    "actualDirection": "BULLISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-10-12",
+    "actualReturn": -0.0005504426080733538,
+    "predictedReturn": 0.0005029403837397695,
+    "actualClose": 7807.24,
+    "predictedClose": 7815.47,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-10-13",
+    "actualReturn": -0.00022927936515770853,
+    "predictedReturn": 0.0004824237839784473,
+    "actualClose": 7805.45,
+    "predictedClose": 7811.01,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-10-14",
+    "actualReturn": -0.011083314195275307,
+    "predictedReturn": 0.0004847453674301505,
+    "actualClose": 7718.94,
+    "predictedClose": 7809.23,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  },
+  {
+    "date": "2026-10-15",
+    "actualReturn": 0.0032543479464948177,
+    "predictedReturn": 0.0005092699429951608,
+    "actualClose": 7744.06,
+    "predictedClose": 7722.87,
+    "actualDirection": "NEUTRAL",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": true
+  },
+  {
+    "date": "2026-10-16",
+    "actualReturn": -0.010927099734544754,
+    "predictedReturn": 0.0005225408240221441,
+    "actualClose": 7659.44,
+    "predictedClose": 7748.11,
+    "actualDirection": "BEARISH",
+    "predictedDirection": "NEUTRAL",
+    "isCorrect": false
+  }
+]

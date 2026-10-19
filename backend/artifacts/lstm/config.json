@@ -1,0 +1,32 @@
+{
+  "version": "lstm-v1.0",
+  "architecture": "2-layer Stacked LSTM",
+  "hiddenSize": 128,
+  "numLayers": 2,
+  "dropout": 0.2,
+  "lookback": 60,
+  "features": [
+    "Open",
+    "High",
+    "Low",
+    "Close",
+    "Adj Close",
+    "Volume"
+  ],
+  "target": {
+    "name": "Next-session Close return",
+    "formula": "Close[t] / Close[t-1] - 1",
+    "priceRecovery": "predicted_next_close = latest_actual_close * (1 + predicted_next_return)"
+  },
+  "optimizer": "Adam (lr=0.001)",
+  "lossFunction": "MSE",
+  "batchSize": 64,
+  "learningRate": 0.001,
+  "device": "cpu",
+  "split": {
+    "train": "80%",
+    "val": "10%",
+    "test": "10%",
+    "method": "Chronological (no shuffling across time boundaries)"
+  }
+}

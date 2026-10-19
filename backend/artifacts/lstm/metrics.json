@@ -1,0 +1,44 @@
+{
+  "available": true,
+  "modelVersion": "lstm-v1.0",
+  "jobId": "cli_training_run",
+  "evaluatedAt": "2026-10-19T04:46:40.083834",
+  "datasetDateRange": "2000-01-03 to 2026-10-16",
+  "totalObservations": 6738,
+  "splits": {
+    "total_samples": 6678,
+    "train_samples": 5342,
+    "val_samples": 668,
+    "test_samples": 668,
+    "train_dates": [
+      "2000-03-29",
+      "2021-06-22"
+    ],
+    "val_dates": [
+      "2021-06-23",
+      "2024-02-16"
+    ],
+    "test_dates": [
+      "2024-02-20",
+      "2026-10-16"
+    ]
+  },
+  "testMetrics": {
+    "rmse": 0.009654565758664512,
+    "mae": 0.006537330770582177,
+    "directionalAccuracy": 55.38922155688623,
+    "sampleCount": 668,
+    "startDate": "2024-02-20",
+    "endDate": "2026-10-16",
+    "evaluationType": "held_out_test"
+  },
+  "walkForwardMetrics": {
+    "rmse": 0.009654565758078461,
+    "mae": 0.00653733076984151,
+    "directionalAccuracy": 55.38922155688623,
+    "sampleCount": 668,
+    "startDate": "2024-02-20",
+    "endDate": "2026-10-16",
+    "evaluationType": "fixed_model_walk_forward"
+  }
+}
