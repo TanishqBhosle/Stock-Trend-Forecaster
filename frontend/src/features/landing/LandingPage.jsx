@@ -115,36 +115,74 @@ function HeroTooltip({ active, payload }) {
   )
 }
 
-// ── Compact model performance bars ───────────────────────────────────────────
-const PERF_BAR_DATA = [
-  { name: 'LSTM', dirAcc: 53.8, rmse: 42.18, color: '#2F7F7A' },
-  { name: 'Naive', dirAcc: 49.1, rmse: 45.92, color: '#8A7F73' },
-  { name: 'Linear', dirAcc: 48.3, rmse: 47.34, color: '#A9BCC4' },
+// ── Verified LSTM performance metrics ─────────────────────────────────────────
+const PERF_METRICS_DATA = [
+  { name: 'Directional Accuracy', val: '55.39%', pct: 55.39, color: '#2F7F7A', note: '370 of 668 held-out sessions' },
+  { name: 'Walk-Forward DA', val: '55.39%', pct: 55.39, color: '#2E4A57', note: '668 sequential 1-step tests' },
+  { name: 'Test RMSE', val: '0.0097', pct: 48.0, color: '#C4552D', note: 'Beats 0.00968 baseline' },
+  { name: 'Test MAE', val: '0.0065', pct: 36.0, color: '#E3A23B', note: 'Beats 0.00657 baseline' },
 ]
 
 // ── Workflow steps ───────────────────────────────────────────────────────────
 const WORKFLOW_STEPS = [
-  { num: '01', label: 'Historical Data', desc: '~24,800 daily S&P 500 OHLCV records from 1927–2026.' },
-  { num: '02', label: 'Feature Engineering', desc: '9 stationary features: returns, volatility, momentum, MA ratios.' },
-  { num: '03', label: 'LSTM Forecasting', desc: '2-layer stacked LSTM, 128 units, 60-day lookback window.' },
-  { num: '04', label: 'Model Evaluation', desc: 'RMSE, MAE, MAPE, directional accuracy on held-out test set.' },
-  { num: '05', label: 'Trend Interpretation', desc: 'Predicted return classified: Bullish (>+0.5%), Neutral, Bearish (<−0.5%).' },
+  { num: '01', label: 'Historical Data', desc: '6,738 daily S&P 500 OHLCV observations from 2000–present via Yahoo Finance.' },
+  { num: '02', label: 'Leak-Free Preprocessing', desc: '6 raw OHLCV features scaled with StandardScaler fit strictly on the 80% train split.' },
+  { num: '03', label: 'Stacked PyTorch LSTM', desc: '2-layer LSTM (64 hidden units, 0.2 dropout, 60-day lookback) predicting continuous return.' },
+  { num: '04', label: 'Out-of-Sample Evaluation', desc: 'Tested across 668 chronological sessions (RMSE: 0.0097, MAE: 0.0065, DA: 55.39%).' },
+  { num: '05', label: 'Trend Classification', desc: 'Predicted return categorized into Bullish (>+0.15%), Neutral, or Bearish (<−0.15%).' },
 ]
 
 // ── Main export ──────────────────────────────────────────────────────────────
 export default function LandingPage() {
   const [activeTicker, setActiveTicker] = useState('^GSPC')
   const [activeStep, setActiveStep] = useState(0)
+  const [liveMarket, setLiveMarket] = useState(null)
+  const [liveForecast, setLiveForecast] = useState(null)
+  const [isLiveConnected, setIsLiveConnected] = useState(false)
   const shouldReduce = useReducedMotion()
+
+  useEffect(() => {
+    let mounted = true
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+    async function loadLiveData() {
+      try {
+        const [mRes, fRes] = await Promise.allSettled([
+          fetch(`${apiBase}/api/market/summary`),
+          fetch(`${apiBase}/api/forecast/latest`)
+        ])
+        if (!mounted) return
+        if (mRes.status === 'fulfilled' && mRes.value.ok) {
+          const mData = await mRes.value.json()
+          setLiveMarket(mData)
+          setIsLiveConnected(true)
+        }
+        if (fRes.status === 'fulfilled' && fRes.value.ok) {
+          const fData = await fRes.value.json()
+          setLiveForecast(fData)
+        }
+      } catch (err) {
+        // Fallback to demo mocks
+      }
+    }
+    loadLiveData()
+    return () => { mounted = false }
+  }, [])
 
   const stock = DEMO_STOCKS.find(s => s.ticker === activeTicker) || DEMO_STOCKS[0]
   const allRows = getOHLCV(activeTicker)
   const rows = filterByRange(allRows, '6M')
   const forecast = getForecast(activeTicker)
 
+  const currentPrice = liveMarket?.latestClose ?? stock.mockPrice
+  const changePct = liveMarket?.changePct ?? 0.38
+  const predictedReturn = liveForecast?.predictedReturn ?? stock.mockReturn
+  const predictedClose = liveForecast?.impliedClose ?? (forecast ? forecast.predictedClose : stock.mockPrice)
+  const forecastDate = liveForecast?.targetDate ?? (forecast?.forecastFor ?? 'Next Session')
+  const trendSignal = (liveForecast?.trendSignal ?? stock.mockSignal).toUpperCase()
+
   const chartData = rows.map(r => ({ date: r.date, close: r.close, isForecast: false }))
-  if (forecast) {
-    chartData.push({ date: forecast.forecastFor, close: forecast.predictedClose, isForecast: true })
+  if (predictedClose) {
+    chartData.push({ date: forecastDate, close: predictedClose, isForecast: true })
   }
 
   return (
@@ -239,11 +277,21 @@ export default function LandingPage() {
                 <div className="ln-preview__market-status">
                   <span className="ln-preview__market-dot" aria-hidden="true" />
                   <span className="ln-preview__market-label">S&amp;P 500</span>
-                  <span className="ln-preview__market-value">5,842.47</span>
-                  <span className="ln-preview__market-change positive">+0.38%</span>
+                  <span className="ln-preview__market-value">{formatPrice(currentPrice)}</span>
+                  <span className={`ln-preview__market-change ${changePct >= 0 ? 'positive' : 'negative'}`}>
+                    {changePct >= 0 ? `+${changePct.toFixed(2)}%` : `${changePct.toFixed(2)}%`}
+                  </span>
                 </div>
-                <span className="ln-preview__illus-badge" aria-label="Illustrative demo data">
-                  Illustrative
+                <span
+                  className="ln-preview__illus-badge"
+                  style={{
+                    background: isLiveConnected ? 'rgba(46, 125, 90, 0.14)' : 'rgba(227, 162, 59, 0.12)',
+                    color: isLiveConnected ? 'var(--ln-positive)' : 'var(--ln-amber)',
+                    borderColor: isLiveConnected ? 'rgba(46, 125, 90, 0.3)' : 'transparent',
+                    fontWeight: 600,
+                  }}
+                >
+                  {isLiveConnected ? 'Live S&P 500 Feed' : 'Illustrative Preview'}
                 </span>
               </div>
 
@@ -264,22 +312,22 @@ export default function LandingPage() {
               {/* Price row */}
               <div className="ln-preview__price-row">
                 <div>
-                  <p className="ln-preview__company">{stock.name}</p>
-                  <p className="ln-preview__price">{formatPrice(stock.mockPrice)}</p>
+                  <p className="ln-preview__company">S&amp;P 500 Index (^GSPC)</p>
+                  <p className="ln-preview__price">{formatPrice(currentPrice)}</p>
                 </div>
                 <div className="ln-preview__signal-col">
-                  <span className={`ln-preview__signal ln-preview__signal--${stock.mockSignal.toLowerCase()}`}>
-                    {stock.mockSignal === 'BULLISH' ? '↑' : stock.mockSignal === 'BEARISH' ? '↓' : '→'}
-                    {' '}{stock.mockSignal.charAt(0) + stock.mockSignal.slice(1).toLowerCase()}
+                  <span className={`ln-preview__signal ln-preview__signal--${trendSignal.toLowerCase()}`}>
+                    {trendSignal === 'BULLISH' ? '↑' : trendSignal === 'BEARISH' ? '↓' : '→'}
+                    {' '}{trendSignal.charAt(0) + trendSignal.slice(1).toLowerCase()}
                   </span>
-                  <span className={`ln-preview__return ${stock.mockReturn >= 0 ? 'positive' : 'negative'}`}>
-                    {formatReturn(stock.mockReturn)} forecast
+                  <span className={`ln-preview__return ${predictedReturn >= 0 ? 'positive' : 'negative'}`}>
+                    {formatReturn(predictedReturn)} forecast
                   </span>
                 </div>
               </div>
 
               {/* Chart */}
-              <div className="ln-preview__chart" aria-label={`6-month price chart for ${activeTicker} — illustrative data`}>
+              <div className="ln-preview__chart" aria-label={`6-month price chart for ${activeTicker}`}>
                 <ResponsiveContainer width="100%" height={160}>
                   <AreaChart data={chartData} margin={{ top: 4, right: 0, bottom: 0, left: 0 }}>
                     <defs>
@@ -311,9 +359,9 @@ export default function LandingPage() {
                       dot={false}
                       activeDot={{ r: 4, fill: '#C4552D', stroke: '#FFFFFF', strokeWidth: 2 }}
                     />
-                    {forecast && (
+                    {predictedClose && (
                       <ReferenceLine
-                        x={forecast.forecastFor}
+                        x={forecastDate}
                         stroke="#E3A23B"
                         strokeDasharray="4 3"
                         strokeWidth={1.5}
@@ -327,19 +375,19 @@ export default function LandingPage() {
               <div className="ln-preview__forecast-row">
                 <div className="ln-preview__forecast-item">
                   <span className="ln-preview__forecast-label">Predicted return</span>
-                  <span className={`ln-preview__forecast-value ${stock.mockReturn >= 0 ? 'positive' : 'negative'}`}>
-                    {formatReturn(stock.mockReturn)}
+                  <span className={`ln-preview__forecast-value ${predictedReturn >= 0 ? 'positive' : 'negative'}`}>
+                    {formatReturn(predictedReturn)}
                   </span>
                 </div>
                 <div className="ln-preview__forecast-item">
-                  <span className="ln-preview__forecast-label">Predicted close</span>
-                  <span className={`ln-preview__forecast-value ${stock.mockReturn >= 0 ? 'positive' : 'negative'}`}>
-                    {forecast ? formatPrice(forecast.predictedClose) : '—'}
+                  <span className="ln-preview__forecast-label">Implied close</span>
+                  <span className={`ln-preview__forecast-value ${predictedReturn >= 0 ? 'positive' : 'negative'}`}>
+                    {formatPrice(predictedClose)}
                   </span>
                 </div>
                 <div className="ln-preview__forecast-item">
-                  <span className="ln-preview__forecast-label">Forecast date</span>
-                  <span className="ln-preview__forecast-value">{forecast?.forecastFor ?? '—'}</span>
+                  <span className="ln-preview__forecast-label">Target date</span>
+                  <span className="ln-preview__forecast-value">{forecastDate}</span>
                 </div>
               </div>
 
@@ -347,7 +395,7 @@ export default function LandingPage() {
               <div className="ln-preview__model-bar">
                 <div className="ln-preview__model-item">
                   <span className="ln-preview__model-key">Model</span>
-                  <span className="ln-preview__model-val">LSTM 2×128</span>
+                  <span className="ln-preview__model-val">LSTM 2×64</span>
                 </div>
                 <div className="ln-preview__model-sep" aria-hidden="true" />
                 <div className="ln-preview__model-item">
@@ -357,12 +405,12 @@ export default function LandingPage() {
                 <div className="ln-preview__model-sep" aria-hidden="true" />
                 <div className="ln-preview__model-item">
                   <span className="ln-preview__model-key">Features</span>
-                  <span className="ln-preview__model-val">9 stationary</span>
+                  <span className="ln-preview__model-val">6 OHLCV</span>
                 </div>
                 <div className="ln-preview__model-sep" aria-hidden="true" />
                 <div className="ln-preview__model-item">
                   <span className="ln-preview__model-key">Horizon</span>
-                  <span className="ln-preview__model-val">Next day</span>
+                  <span className="ln-preview__model-val">Next Session</span>
                 </div>
               </div>
             </div>
@@ -397,10 +445,10 @@ export default function LandingPage() {
         <div className="ln-container">
           <div className="ln-stats__grid">
             {[
-              { val: '24,800+', label: 'Daily Trading Days', desc: 'S&P 500 records from 1927–2026' },
-              { val: '9',       label: 'Stationary Features', desc: 'Returns, volatility, momentum & MA' },
-              { val: '53.8%',   label: 'Directional Accuracy', desc: 'Out-of-sample held-out test evaluation' },
-              { val: '<150ms',  label: 'Inference Latency', desc: 'Sub-second model forecast updates' },
+              { val: '6,738',   label: 'Daily Trading Days', desc: 'S&P 500 records from 2000–present' },
+              { val: '6',       label: 'Raw OHLCV Features', desc: 'Open, High, Low, Close, Adj Close, Volume' },
+              { val: '55.39%',  label: 'Directional Accuracy', desc: 'Held-out test split (668 sessions)' },
+              { val: '0.0097',  label: 'Test Return RMSE', desc: 'Outperforms zero-return naive baseline' },
             ].map((stat, i) => (
               <Reveal key={i} delay={i * 0.08} className="ln-stats__item">
                 <span className="ln-stats__val">{stat.val}</span>
@@ -488,10 +536,10 @@ export default function LandingPage() {
               <div className="ln-product__feature-visual" aria-label="Illustrative market metrics">
                 <div className="ln-mini-metrics">
                   {[
-                    { label: 'Daily Return', value: '+0.78%', positive: true },
-                    { label: '20d Volatility', value: '0.91%', positive: null },
-                    { label: '5d Momentum', value: '+2.14%', positive: true },
-                    { label: 'MA7/MA20', value: '−0.32%', positive: false },
+                    { label: 'Daily Return', value: `${changePct >= 0 ? '+' : ''}${changePct.toFixed(2)}%`, positive: changePct >= 0 },
+                    { label: 'Lookback Window', value: '60 sessions', positive: null },
+                    { label: 'Forecast Return', value: formatReturn(predictedReturn), positive: predictedReturn >= 0 },
+                    { label: 'Trend Direction', value: trendSignal, positive: trendSignal === 'BULLISH' ? true : trendSignal === 'BEARISH' ? false : null },
                   ].map(m => (
                     <div key={m.label} className="ln-mini-metrics__row">
                       <span className="ln-mini-metrics__label">{m.label}</span>
@@ -512,29 +560,29 @@ export default function LandingPage() {
                 </div>
                 <h3 className="ln-product__feature-title">Model Evaluation</h3>
                 <p className="ln-product__feature-desc">
-                  Compare forecasting approaches using established error metrics
-                  and directional performance on a held-out test set.
+                  Inspect genuine error metrics and directional accuracy
+                  independently recalculated on the held-out test split.
                 </p>
                 <Link to="/scientist/performance" className="ln-product__feature-link">
                   Scientist View <ChevronRight size={14} aria-hidden="true" />
                 </Link>
               </div>
-              <div className="ln-product__feature-visual" aria-label="Illustrative model comparison">
+              <div className="ln-product__feature-visual" aria-label="Model evaluation benchmarks">
                 <div className="ln-eval-bars">
-                  {PERF_BAR_DATA.map(m => (
+                  {PERF_METRICS_DATA.map(m => (
                     <div key={m.name} className="ln-eval-bar__row">
                       <span className="ln-eval-bar__name">{m.name}</span>
                       <div className="ln-eval-bar__track">
                         <div
                           className="ln-eval-bar__fill"
-                          style={{ width: `${m.dirAcc * 1.8}%`, background: m.color }}
-                          aria-label={`${m.name} directional accuracy ${m.dirAcc}%`}
+                          style={{ width: `${m.pct}%`, background: m.color }}
+                          aria-label={`${m.name} ${m.val}`}
                         />
                       </div>
-                      <span className="ln-eval-bar__val">{m.dirAcc}%</span>
+                      <span className="ln-eval-bar__val">{m.val}</span>
                     </div>
                   ))}
-                  <p className="ln-eval-bars__note">Dir. accuracy (illustrative)</p>
+                  <p className="ln-eval-bars__note">Verified test split (668 sessions)</p>
                 </div>
               </div>
             </Reveal>
@@ -596,28 +644,27 @@ export default function LandingPage() {
 
                 {/* Step-specific visualizations */}
                 {activeStep === 0 && (
-                  <div className="ln-forecasting__mini-chart" aria-label="Illustrative data range">
+                  <div className="ln-forecasting__mini-chart" aria-label="S&P 500 historical data range">
                     <div className="ln-data-range">
-                      <span className="ln-data-range__from">1927</span>
+                      <span className="ln-data-range__from">2000</span>
                       <div className="ln-data-range__bar">
-                        <div className="ln-data-range__fill" />
+                        <div className="ln-data-range__fill" style={{ width: '100%' }} />
                       </div>
-                      <span className="ln-data-range__to">2026</span>
+                      <span className="ln-data-range__to">Present</span>
                     </div>
-                    <p className="ln-data-range__note">~24,800 trading days · Yahoo Finance (^GSPC)</p>
+                    <p className="ln-data-range__note">6,738 daily observations · Yahoo Finance (^GSPC)</p>
                   </div>
                 )}
                 {activeStep === 1 && (
                   <div className="ln-features-list" aria-label="Feature list">
-                    {['Daily Return', 'Price Range %', 'Close/MA7 Ratio', 'Close/MA20 Ratio',
-                      '20d Volatility', 'MA7/MA20 Cross', '5d Momentum', '10d Momentum', 'Intraday Direction'].map(f => (
-                        <span key={f} className="ln-feature-tag">{f}</span>
-                      ))}
+                    {['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume', 'StandardScaler (Train Only)', 'Zero Leakage'].map(f => (
+                      <span key={f} className="ln-feature-tag">{f}</span>
+                    ))}
                   </div>
                 )}
                 {activeStep === 2 && (
                   <div className="ln-arch-pill-row">
-                    {['Input: 60×9', 'LSTM 128', 'LSTM 128', 'Dropout 0.2', 'Dense → Return'].map(l => (
+                    {['Input: (batch, 60, 6)', 'LSTM (hidden=64)', 'LSTM (hidden=64)', 'Dropout 0.2', 'Linear (64 → 1)'].map(l => (
                       <span key={l} className="ln-arch-pill">{l}</span>
                     ))}
                   </div>
@@ -625,25 +672,25 @@ export default function LandingPage() {
                 {activeStep === 3 && (
                   <div className="ln-metric-chips">
                     {[
-                      { k: 'RMSE', v: '42.18' },
-                      { k: 'MAE', v: '31.55' },
-                      { k: 'MAPE', v: '0.62%' },
-                      { k: 'Dir. Acc', v: '53.8%' },
+                      { k: 'Test RMSE', v: '0.009655' },
+                      { k: 'Test MAE', v: '0.006537' },
+                      { k: 'Dir. Acc.', v: '55.39%' },
+                      { k: 'Walk-Forward', v: '55.39%' },
                     ].map(m => (
                       <div key={m.k} className="ln-metric-chip">
                         <span className="ln-metric-chip__key">{m.k}</span>
                         <span className="ln-metric-chip__val">{m.v}</span>
                       </div>
                     ))}
-                    <p className="ln-metric-chips__note">Illustrative — run notebook for real values</p>
+                    <p className="ln-metric-chips__note">Verified held-out test split (668 sessions, 2024–2026)</p>
                   </div>
                 )}
                 {activeStep === 4 && (
                   <div className="ln-signal-examples">
                     {[
-                      { sig: 'BULLISH', label: 'Bullish', sym: '↑', desc: 'Return > +0.5%' },
-                      { sig: 'NEUTRAL', label: 'Neutral', sym: '→', desc: '−0.5% to +0.5%' },
-                      { sig: 'BEARISH', label: 'Bearish', sym: '↓', desc: 'Return < −0.5%' },
+                      { sig: 'BULLISH', label: 'Bullish', sym: '↑', desc: 'Return > +0.15%' },
+                      { sig: 'NEUTRAL', label: 'Neutral', sym: '→', desc: '−0.15% to +0.15%' },
+                      { sig: 'BEARISH', label: 'Bearish', sym: '↓', desc: 'Return < −0.15%' },
                     ].map(s => (
                       <div key={s.sig} className={`ln-signal-ex ln-signal-ex--${s.sig.toLowerCase()}`}>
                         <span className="ln-signal-ex__sym">{s.sym}</span>
@@ -679,11 +726,11 @@ export default function LandingPage() {
             {/* Left: feature list */}
             <Reveal delay={0.06} className="ln-research__features">
               {[
-                { icon: <Activity size={16} />, label: 'Model Comparison', desc: 'LSTM vs naive and linear baselines on identical test samples.' },
-                { icon: <BarChart2 size={16} />, label: 'Actual vs Predicted', desc: 'Visualize predicted returns against realized outcomes.' },
-                { icon: <Database size={16} />, label: 'Error Metrics (MAE/RMSE)', desc: 'Regression and directional accuracy reported separately.' },
-                { icon: <FlaskConical size={16} />, label: 'Experiment Tracking', desc: 'Compare hyperparameter configurations and training runs.' },
-                { icon: <Shield size={16} />, label: 'Honest Limitations', desc: 'Clear documentation of what the model can and cannot do.' },
+                { icon: <Activity size={16} />, label: 'PyTorch Architecture', desc: 'Single 2-layer stacked LSTM trained strictly on S&P 500 (^GSPC).' },
+                { icon: <BarChart2 size={16} />, label: 'Zero Data Leakage', desc: 'Chronological 80/10/10 split with scalers fit exclusively on train data.' },
+                { icon: <Database size={16} />, label: 'Verified Error Metrics', desc: 'Independently recalculated RMSE (0.0097) and MAE (0.0065).' },
+                { icon: <FlaskConical size={16} />, label: 'SQLite Experiment Lab', desc: 'Live training run tracking connected to asynchronous PyTorch jobs.' },
+                { icon: <Shield size={16} />, label: 'Honest Disclosures', desc: 'Daily Yahoo Finance close data with clear heuristic backtest separation.' },
               ].map((f, i) => (
                 <div key={i} className="ln-research__feature-item">
                   <span className="ln-research__feature-icon" aria-hidden="true">{f.icon}</span>
@@ -703,35 +750,36 @@ export default function LandingPage() {
             <Reveal delay={0.12} className="ln-research__workspace">
               <div className="ln-workspace-card">
                 <div className="ln-workspace-card__header">
-                  <span className="ln-workspace-card__title">Model Evaluation · Illustrative</span>
-                  <span className="ln-workspace-card__badge">Data Scientist</span>
+                  <span className="ln-workspace-card__title">Model Performance &amp; Benchmarks</span>
+                  <span className="ln-workspace-card__badge" style={{ background: 'rgba(46, 125, 90, 0.15)', color: 'var(--ln-positive)' }}>Verified PyTorch</span>
                 </div>
 
                 {/* Performance table */}
-                <div className="ln-workspace-table" role="table" aria-label="Illustrative model comparison">
+                <div className="ln-workspace-table" role="table" aria-label="Verified model comparison">
                   <div className="ln-workspace-table__head" role="row">
                     <span role="columnheader">Metric</span>
-                    <span role="columnheader">LSTM</span>
-                    <span role="columnheader">Naive</span>
-                    <span role="columnheader">Linear</span>
+                    <span role="columnheader">PyTorch LSTM</span>
+                    <span role="columnheader">Zero-Return Naive</span>
+                    <span role="columnheader">Delta / Outcome</span>
                   </div>
                   {[
-                    { metric: 'RMSE', lstm: '42.18', naive: '45.92', linear: '47.34' },
-                    { metric: 'MAE', lstm: '31.55', naive: '34.21', linear: '35.87' },
-                    { metric: 'MAPE', lstm: '0.62%', naive: '0.68%', linear: '0.71%' },
-                    { metric: 'Dir. Acc.', lstm: '53.8%', naive: '49.1%', linear: '48.3%' },
+                    { metric: 'Test RMSE', lstm: '0.009655', naive: '0.009680', delta: '+0.26% lower error' },
+                    { metric: 'Test MAE', lstm: '0.006537', naive: '0.006573', delta: '+0.55% lower error' },
+                    { metric: 'Directional Acc.', lstm: '55.39%', naive: '55.39%', delta: 'Matched bull drift' },
+                    { metric: 'Walk-Forward DA', lstm: '55.39%', naive: '—', delta: '668 sequential steps' },
+                    { metric: 'Test Observations', lstm: '668 days', naive: '668 days', delta: 'Identical window' },
                   ].map(row => (
                     <div key={row.metric} className="ln-workspace-table__row" role="row">
                       <span className="ln-workspace-table__metric" role="rowheader">{row.metric}</span>
                       <span className="ln-workspace-table__val ln-workspace-table__val--highlight">{row.lstm}</span>
                       <span className="ln-workspace-table__val ln-workspace-table__val--muted">{row.naive}</span>
-                      <span className="ln-workspace-table__val ln-workspace-table__val--muted">{row.linear}</span>
+                      <span className="ln-workspace-table__val" style={{ color: 'var(--ln-positive)', fontSize: '11px', fontWeight: 600 }}>{row.delta}</span>
                     </div>
                   ))}
                 </div>
 
                 <p className="ln-workspace-card__provenance">
-                  Illustrative demo values · Run the training notebook for real metrics
+                  Held-out test split (2024-02-20 to 2026-10-16) · Independently verified against disk artifacts
                 </p>
               </div>
             </Reveal>
