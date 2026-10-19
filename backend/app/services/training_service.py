@@ -100,8 +100,8 @@ class TrainingService:
             test_set = splits["test"]
             split_info = splits["info"]
 
-            # 4. Fit scalers on TRAINING data only
-            feature_scaler, target_scaler = preprocessing_service.fit_and_save_scalers(
+            # 4. Fit scalers on TRAINING data only (in-memory; written only after successful training)
+            feature_scaler, target_scaler = preprocessing_service.fit_scalers(
                 train_set["X"], train_set["y"]
             )
 
@@ -155,16 +155,22 @@ class TrainingService:
                 step_size=1
             )
 
-            # 9. Save artifacts
-            model_path = self.artifacts_dir / "model.pt"
-            save_model_checkpoint(model, model_path, metadata={
+            # 9. Atomic artifact deployment via staging directory
+            staging_dir = self.artifacts_dir / ".staging"
+            staging_dir.mkdir(parents=True, exist_ok=True)
+
+            # Save scalers to staging
+            preprocessing_service.save_scalers(feature_scaler, target_scaler, target_dir=staging_dir)
+
+            # Save model checkpoint to staging
+            save_model_checkpoint(model, staging_dir / "model.pt", metadata={
                 "jobId": job_id,
                 "trainedAt": datetime.datetime.utcnow().isoformat(),
                 "device": str(get_device()),
                 "splitInfo": split_info
             })
 
-            # Save config.json
+            # Save config.json to staging
             config_data = {
                 "version": "lstm-v1.0",
                 "architecture": f"{settings.NUM_LAYERS}-layer Stacked LSTM",
@@ -190,10 +196,10 @@ class TrainingService:
                     "method": "Chronological (no shuffling across time boundaries)"
                 }
             }
-            with open(self.artifacts_dir / "config.json", "w") as f:
+            with open(staging_dir / "config.json", "w") as f:
                 json.dump(config_data, f, indent=2)
 
-            # Save metrics.json
+            # Save metrics.json to staging
             combined_metrics = {
                 "available": True,
                 "modelVersion": "lstm-v1.0",
@@ -205,19 +211,37 @@ class TrainingService:
                 "testMetrics": test_eval["metrics"],
                 "walkForwardMetrics": walk_forward_eval["metrics"]
             }
-            with open(self.artifacts_dir / "metrics.json", "w") as f:
+            with open(staging_dir / "metrics.json", "w") as f:
                 json.dump(combined_metrics, f, indent=2)
 
-            # Save training_history.json
-            with open(self.artifacts_dir / "training_history.json", "w") as f:
+            # Save training_history.json to staging
+            with open(staging_dir / "training_history.json", "w") as f:
                 json.dump(train_meta, f, indent=2)
 
-            # Save predictions cache for quick retrieval
-            with open(self.artifacts_dir / "test_predictions.json", "w") as f:
+            # Save predictions cache to staging
+            with open(staging_dir / "test_predictions.json", "w") as f:
                 json.dump(test_eval["predictions"], f, indent=2)
 
-            with open(self.artifacts_dir / "walk_forward_predictions.json", "w") as f:
+            with open(staging_dir / "walk_forward_predictions.json", "w") as f:
                 json.dump(walk_forward_eval["predictions"], f, indent=2)
+
+            # Atomic promotion: backup existing files and move staged files into artifacts_dir
+            import shutil
+            for staged_file in staging_dir.iterdir():
+                dest_file = self.artifacts_dir / staged_file.name
+                if dest_file.exists():
+                    bak_file = self.artifacts_dir / f"{staged_file.name}.bak"
+                    try:
+                        shutil.copy2(dest_file, bak_file)
+                    except Exception:
+                        pass
+                shutil.move(str(staged_file), str(dest_file))
+
+            shutil.rmtree(staging_dir, ignore_errors=True)
+
+            # Invalidate in-memory caches to pick up newly trained model
+            from app.services.forecast_service import forecast_service
+            forecast_service.clear_cache()
 
             # Update DB
             run_record.status = "completed"
@@ -235,7 +259,7 @@ class TrainingService:
 
             self.current_job["status"] = "completed"
             self.current_job["completedAt"] = datetime.datetime.utcnow().isoformat()
-            logger.info(f"Training job {job_id} successfully completed!")
+            logger.info(f"Training job {job_id} successfully completed and atomically deployed!")
 
         except Exception as e:
             logger.exception(f"Training job {job_id} failed: {e}")

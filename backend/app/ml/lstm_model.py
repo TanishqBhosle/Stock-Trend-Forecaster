@@ -105,7 +105,7 @@ def load_model_checkpoint(
     if device is None:
         device = get_device()
         
-    checkpoint = torch.load(filepath, map_location=device)
+    checkpoint = torch.load(filepath, map_location=device, weights_only=True)
     model = LSTMRegressor(
         input_size=checkpoint.get("input_size", settings.INPUT_SIZE),
         hidden_size=checkpoint.get("hidden_size", settings.HIDDEN_SIZE),

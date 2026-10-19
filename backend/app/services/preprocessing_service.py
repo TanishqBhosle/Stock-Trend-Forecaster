@@ -33,6 +33,11 @@ class PreprocessingService:
             reference_closes: list of Close[t-1]
             origin_dates: list of dates corresponding to t-1
         """
+        required_cols = list(self.feature_cols) + ["Date"]
+        missing = [col for col in required_cols if col not in df.columns]
+        if missing:
+            raise KeyError(f"DataFrame is missing required feature/date columns: {missing}")
+
         N = len(df)
         if N <= lookback:
             raise ValueError(f"Data length {N} is too short for lookback window {lookback}.")
@@ -118,7 +123,7 @@ class PreprocessingService:
             "info": split_info
         }
 
-    def fit_and_save_scalers(
+    def fit_scalers(
         self,
         X_train_raw: np.ndarray,
         y_train_raw: np.ndarray
@@ -127,10 +132,9 @@ class PreprocessingService:
         Fits StandardScaler on TRAINING sequences only.
         Feature scaler is fit on (N_train * 60, 6) reshaped 2D matrix.
         Target scaler is fit on (N_train, 1).
-        Saves fitted scalers to artifacts directory.
+        Does not write to disk immediately to allow atomic deployment.
         """
         feature_scaler = StandardScaler()
-        # Reshape X_train from (N, 60, 6) to (N*60, 6) to fit mean & std per feature column
         N, seq_len, num_features = X_train_raw.shape
         X_train_flat = X_train_raw.reshape(-1, num_features)
         feature_scaler.fit(X_train_flat)
@@ -138,11 +142,28 @@ class PreprocessingService:
         target_scaler = StandardScaler()
         target_scaler.fit(y_train_raw)
 
-        self.artifacts_dir.mkdir(parents=True, exist_ok=True)
-        joblib.dump(feature_scaler, self.feature_scaler_path)
-        joblib.dump(target_scaler, self.target_scaler_path)
-        logger.info(f"Saved feature scaler and target scaler to {self.artifacts_dir}")
+        return feature_scaler, target_scaler
 
+    def save_scalers(
+        self,
+        feature_scaler: StandardScaler,
+        target_scaler: StandardScaler,
+        target_dir: Optional[Path] = None
+    ) -> None:
+        """Saves fitted scalers to specified or default artifacts directory."""
+        dest_dir = target_dir or self.artifacts_dir
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        joblib.dump(feature_scaler, dest_dir / "feature_scaler.pkl")
+        joblib.dump(target_scaler, dest_dir / "target_scaler.pkl")
+        logger.info(f"Saved feature scaler and target scaler to {dest_dir}")
+
+    def fit_and_save_scalers(
+        self,
+        X_train_raw: np.ndarray,
+        y_train_raw: np.ndarray
+    ) -> Tuple[StandardScaler, StandardScaler]:
+        feature_scaler, target_scaler = self.fit_scalers(X_train_raw, y_train_raw)
+        self.save_scalers(feature_scaler, target_scaler)
         return feature_scaler, target_scaler
 
     def load_scalers(self) -> Tuple[StandardScaler, StandardScaler]:
