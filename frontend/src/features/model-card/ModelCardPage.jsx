@@ -1,9 +1,41 @@
+import { useState, useEffect } from 'react'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
 import { MODEL_CONFIG } from '@/mocks/model'
 import './ModelCardPage.css'
 
 export default function ModelCardPage() {
-  const m = MODEL_CONFIG
+  const [config, setConfig] = useState(MODEL_CONFIG)
+  const [metrics, setMetrics] = useState(MODEL_CONFIG.metrics)
+
+  useEffect(() => {
+    let mounted = true
+    const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+    async function loadBackendArtifacts() {
+      try {
+        const [cRes, mRes] = await Promise.allSettled([
+          fetch(`${apiBase}/api/model/config`),
+          fetch(`${apiBase}/api/model/metrics`)
+        ])
+        if (!mounted) return
+        if (cRes.status === 'fulfilled' && cRes.value.ok) {
+          const cData = await cRes.value.json()
+          setConfig(prev => ({ ...prev, ...cData }))
+        }
+        if (mRes.status === 'fulfilled' && mRes.value.ok) {
+          const mData = await mRes.value.json()
+          if (mData.testMetrics) {
+            setMetrics(prev => ({ ...prev, ...mData }))
+          }
+        }
+      } catch (err) {
+        console.warn('Error loading backend model artifacts:', err)
+      }
+    }
+    loadBackendArtifacts()
+    return () => { mounted = false }
+  }, [])
+
+  const m = config
   return (
     <div className="model-card-page">
       <div className="page-header">

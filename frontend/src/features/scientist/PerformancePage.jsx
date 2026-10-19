@@ -84,7 +84,7 @@ export default function PerformancePage() {
       <div className="page-header">
         <div>
           <h1 className="page-title sci-title">Model Performance &amp; Evaluation</h1>
-          <p className="page-subtitle">Rigorous benchmark on held-out test split (1927–2026 Yahoo Finance ^GSPC)</p>
+          <p className="page-subtitle">Rigorous benchmark on held-out test split (2000–present Yahoo Finance ^GSPC)</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
           <Button
