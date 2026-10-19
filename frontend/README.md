@@ -1,8 +1,6 @@
 # Stock Trend Forecaster — Frontend
 
-A complete, premium frontend for the Stock Trend Forecaster application. Built with React, Vite, and a warm editorial design system.
-
-> **Demo application.** All market data, forecasts, model metrics, and backtest results are illustrative demo values. This is not a financial advisory tool.
+A complete, premium frontend for the Stock Trend Forecaster application. Built with React 19, Vite, Recharts, and a warm editorial design system. Fully integrated with the FastAPI machine learning backend for live S&P 500 (`^GSPC`) daily forecasts, model diagnostics, and experiment tracking.
 
 ---
 
@@ -33,17 +31,17 @@ Open [http://localhost:5173](http://localhost:5173).
 
 ## Environment variables
 
-Copy `.env.example` to `.env` and configure as needed:
+Copy `.env.example` to `.env` to configure backend API connectivity:
 
 ```env
-# Leave empty to use mock data
-VITE_API_BASE_URL=
+# Backend API Base URL (FastAPI)
+VITE_API_BASE_URL=http://localhost:8000
 
-# Set to "true" to use deterministic demo data
-VITE_USE_MOCKS=true
+# Set to "false" to use live FastAPI endpoints and PyTorch model predictions
+VITE_USE_MOCKS=false
 ```
 
-When `VITE_API_BASE_URL` is empty, the application always uses mock data regardless of `VITE_USE_MOCKS`.
+When `VITE_USE_MOCKS=false` and `VITE_API_BASE_URL` is set, the application connects to the live FastAPI backend. If the backend is unreachable or `VITE_USE_MOCKS=true`, the frontend gracefully falls back to deterministic mock data.
 
 ---
 
@@ -186,13 +184,11 @@ Colors, spacing, radii, and motion durations are defined as CSS custom propertie
 
 ---
 
-## Known limitations
+## Backend Integration & System Disclosures
 
-- All financial data is illustrative demo data, not live market data
-- Model evaluation metrics are unavailable (no saved training artifacts in this deployment)
-- Walk-forward validation is listed in the project roadmap but not yet implemented
-- No backend, API, inference server, or brokerage integration exists
-- The backtest engine is a deterministic demo simulator, not a real backtesting engine
-- This frontend is not production-ready from a security standpoint (demo auth only)
-
-See `MOCKS_AND_BACKEND_TODO.md` for the full integration checklist.
+- **Live FastAPI Integration:** Fully integrated with the FastAPI backend (`http://localhost:8000`). When running with `VITE_USE_MOCKS=false`, the Dashboard, Forecast, Model Card, Predictions, and Data Scientist views load genuine daily market data, PyTorch LSTM predictions, and SQLite experiment logs.
+- **Instrument Scope:** Dedicated strictly to the S&P 500 Index (`^GSPC`). Single-stock equity prototypes have been removed to preserve architectural integrity.
+- **Market Data Observations:** Data fetched via Yahoo Finance represents the latest available daily end-of-day Close, not real-time tick data.
+- **Model Card & Metrics:** The Model Card and Performance pages dynamically query `GET /api/model/config` and `GET /api/model/metrics` to display verified hyperparameters and held-out test evaluation benchmarks (RMSE: 0.009655, MAE: 0.006537, DA: 55.39%).
+- **Backtesting Studio:** An illustrative heuristic strategy simulator with moving threshold controls. It is strictly separated from genuine LSTM inference and does not imply guaranteed trading profitability.
+- **Authentication & RBAC:** Client-side role routing (`user` vs. `data-scientist`) provides intuitive navigation between workspaces. For multi-tenant production deployments, backend token authentication (JWT/OAuth2) is recommended for mutating endpoints.

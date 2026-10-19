@@ -1,300 +1,290 @@
-# S&P 500 Stock Trend Forecaster
+# Stock Trend Forecaster
 
-A deep learning pipeline that predicts the next trading day's S&P 500 closing price using a stacked LSTM neural network, then classifies the predicted movement as **BULLISH**, **NEUTRAL**, or **BEARISH**.
+An end-to-end, full-stack machine learning application that forecasts next-trading-session returns for the S&P 500 Index (`^GSPC`) and recovers implied closing price levels and trend direction signals (**BULLISH**, **NEUTRAL**, **BEARISH**).
 
-Built with PyTorch, trained on nearly a century of daily market data (1927--2026), and designed for deployment via a FastAPI backend and React frontend.
+Built with **PyTorch**, **FastAPI**, and **React (Vite)**, the system features a leak-free machine learning pipeline, fixed-model walk-forward validation, dynamic artifact loading, dual role-based workspaces, and comprehensive automated test suites.
 
 ---
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [Dataset](#dataset)
-- [Features](#features)
-- [Model Architecture](#model-architecture)
-- [Pipeline](#pipeline)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Evaluation Metrics](#evaluation-metrics)
-- [Key Design Decisions](#key-design-decisions)
-- [Roadmap](#roadmap)
+- [System Architecture](#system-architecture)
+- [Dataset & Data Pipeline](#dataset--data-pipeline)
+- [Model Architecture & Hyperparameters](#model-architecture--hyperparameters)
+- [Verified Evaluation & Audit Results](#verified-evaluation--audit-results)
+- [Role-Based Workspaces](#role-based-workspaces)
+- [Repository Structure](#repository-structure)
+- [Installation & Quickstart](#installation--quickstart)
+- [API Reference](#api-reference)
+- [Testing & Validation](#testing--validation)
+- [Security & Architectural Notes](#security--architectural-notes)
 - [License](#license)
 
 ---
 
 ## Overview
 
-The project addresses two objectives:
+Stock Trend Forecaster delivers institutional-grade transparency for time-series equity forecasting:
 
-1. **Regression** -- Predict the next trading day's closing price of the S&P 500 index.
-2. **Classification** -- Derive a directional trend signal (BULLISH / NEUTRAL / BEARISH) from the predicted return using a configurable threshold.
-
-The model is evaluated against a naive baseline (tomorrow's price equals today's close) to ensure it provides genuine predictive value rather than simply echoing the most recent price.
-
----
-
-## Dataset
-
-| Property | Value |
-|----------|-------|
-| Source | Yahoo Finance (`^GSPC`) |
-| File | `GSPC.csv` |
-| Rows | ~24,800 |
-| Columns | Date, Open, High, Low, Close, Adj Close, Volume |
-| Date Range | 1927-12-30 to 2026-09-25 |
-| Missing Values | 0 |
-| Duplicates | 0 |
-
-**Note:** Approximately 5,500 rows (pre-1950s) contain zero volume because volume data was not recorded for early S&P 500 history. The price data for those rows is valid and is retained; Volume is excluded from the initial feature set.
+1. **Target Formulation:** Predicts continuous next-session Close return:
+   $$r_{t+1} = \frac{\text{Close}_{t+1} - \text{Close}_t}{\text{Close}_t}$$
+   Implied next-day closing price is recovered deterministically via:
+   $$\hat{P}_{t+1} = P_t \times (1 + \hat{r}_{t+1})$$
+2. **Trend Signal Derivation:** Directional classification derived using a configurable threshold:
+   - **BULLISH:** $\hat{r}_{t+1} > +0.15\%$
+   - **BEARISH:** $\hat{r}_{t+1} < -0.15\%$
+   - **NEUTRAL:** $-0.15\% \le \hat{r}_{t+1} \le +0.15\%$
+3. **Rigorous Benchmarking:** Compared against the standard zero-return naive baseline ($\hat{r}_{t+1} = 0$) on the exact same held-out test observations.
 
 ---
 
-## Features
-
-All input features are **stationary** (returns and ratios), not raw prices. This prevents the scaler -- fit on training data where prices average around 500 -- from extrapolating when test-set prices exceed 7,000.
-
-| Feature | Formula | Purpose |
-|---------|---------|---------|
-| `Daily_Return` | `Close.pct_change()` | Day-over-day return |
-| `Price_Range_Pct` | `(High - Low) / Close` | Intraday volatility |
-| `Open_Close_Pct` | `(Close - Open) / Open` | Intraday direction |
-| `Close_MA7_Ratio` | `Close / MA_7 - 1` | Short-term mean reversion |
-| `Close_MA20_Ratio` | `Close / MA_20 - 1` | Medium-term mean reversion |
-| `Volatility_20` | `rolling(20).std(Daily_Return)` | 20-day realized volatility |
-| `MA7_MA20_Cross` | `MA_7 / MA_20 - 1` | Trend strength |
-| `Momentum_5` | `Close / Close_5d_ago - 1` | 5-day momentum |
-| `Momentum_10` | `Close / Close_10d_ago - 1` | 10-day momentum |
-
-**Target:** Next-day return = `(Close[t+1] - Close[t]) / Close[t]`
-
-Predicted prices are recovered as: `predicted_price = Close[t] * (1 + predicted_return)`
-
----
-
-## Model Architecture
+## System Architecture
 
 ```
-Input (batch, 60, 9)
-        |
-  LSTM Layer 1    128 hidden units
-        |         dropout 0.2
-  LSTM Layer 2    128 hidden units
-        |         dropout 0.2
-  Linear Layer    128 --> 1
-        |
-  Predicted Return (scalar)
-```
-
-| Hyperparameter | Value |
-|----------------|-------|
-| Lookback window | 60 trading days |
-| Hidden size | 128 |
-| LSTM layers | 2 |
-| Dropout | 0.2 |
-| Optimizer | Adam (lr = 0.001) |
-| Loss function | MSE |
-| LR scheduler | ReduceLROnPlateau (factor 0.5, patience 5) |
-| Early stopping | Patience 15 epochs on validation loss |
-| Gradient clipping | Max norm 1.0 |
-| Batch size | 64 |
-
----
-
-## Pipeline
-
-```
-GSPC.csv
-   |
-   v
-Load and Validate
-   |  24,800 rows, 7 columns
-   |  Missing = 0, Duplicates = 0, Invalid OHLC = 0
-   v
-Exploratory Data Analysis
-   |  Price history, volume, distributions,
-   |  outlier check, correlation heatmap
-   v
-Feature Engineering
-   |  9 stationary features (returns and ratios)
-   |  Target = next-day return
-   v
-Chronological Split (70 / 15 / 15)
-   |  Train:  ~1928 -- ~1997
-   |  Val:    ~1997 -- ~2012
-   |  Test:   ~2012 -- 2026
-   v
-Preprocessing
-   |  StandardScaler fit on training data ONLY
-   |  Separate scaler for target returns
-   v
-60-Day Sequence Creation
-   |  Concatenate-then-slice to avoid boundary leakage
-   v
-   +-------------------+
-   |                   |
-   v                   v
-Naive Baseline      LSTM Training
-   |                   |
-   +--------+----------+
-            |
-            v
-      Evaluation
-      |  RMSE, MAE, MAPE
-      |  Directional Accuracy
-      v
-   Trend Classification
-      BULLISH / NEUTRAL / BEARISH
-      |
-      v
-   Save Artifacts
-      lstm_model.pt
-      feature_scaler.pkl
-      target_scaler.pkl
-      config.json
-      metrics.json
+                  +----------------------------------------------+
+                  |         Yahoo Finance Data Pipeline          |
+                  |           ^GSPC Daily OHLCV (2000+)          |
+                  +----------------------+-----------------------+
+                                         |
+                                         v
+                  +----------------------------------------------+
+                  |    Data Preprocessing & Split Isolation      |
+                  |     - 60-Session Lookback (6,678 windows)     |
+                  |     - 80% Train / 10% Val / 10% Test         |
+                  |     - StandardScaler (fit on train ONLY)     |
+                  +----------------------+-----------------------+
+                                         |
+                                         v
+                  +----------------------------------------------+
+                  |             PyTorch LSTM Model               |
+                  |   2 Layers (64 hidden units, dropout 0.2)    |
+                  |   Artifacts: model.pt, scalers, config.json  |
+                  +----------------------+-----------------------+
+                                         |
+                                         v
+                  +----------------------------------------------+
+                  |              FastAPI REST API                |
+                  |  - /api/market/*     - /api/forecast/*       |
+                  |  - /api/model/*      - /api/evaluation/*     |
+                  |  - SQLite Prediction History & Runs          |
+                  +----------------------+-----------------------+
+                                         |
+                     +-------------------+-------------------+
+                     |                                       |
+                     v                                       v
+      +-----------------------------+         +-----------------------------+
+      |       User Workspace        |         |   Data Scientist Workspace  |
+      |   - Next-Session Forecast   |         |   - Performance Diagnostics |
+      |   - Prediction History Log  |         |   - Model Cards & Configs   |
+      |   - Backtest Studio         |         |   - SQLite Experiments Lab  |
+      +-----------------------------+         +-----------------------------+
 ```
 
 ---
 
-## Installation
+## Dataset & Data Pipeline
 
-### Google Colab (Recommended)
+| Property | Value | Description |
+|:---|:---|:---|
+| **Asset** | `^GSPC` | S&P 500 Index exclusively |
+| **Source** | Yahoo Finance | Daily end-of-day observations |
+| **History** | `2000-01-03` to `2026-10-16` | **6,738 valid rows**, 0 missing, 0 duplicate dates |
+| **Input Features** | 6 raw OHLCV fields | `Open`, `High`, `Low`, `Close`, `Adj Close`, `Volume` |
+| **Lookback Window** | 60 trading sessions | Exactly 60 sessions per input window |
+| **Total Sequences** | 6,678 windows | Sliding window generated via concatenate-then-slice |
+| **Train Split (80%)** | 5,342 samples | Spans `2000-03-29` to `2021-06-22` |
+| **Validation Split (10%)** | 667 samples | Spans `2021-06-23` to `2024-02-15` |
+| **Held-Out Test Split (10%)** | 669 samples | Spans `2024-02-16` to `2026-10-16` (668 evaluated) |
+| **Scaling & Leakage** | `StandardScaler` | **Fit strictly on train split only**; zero future data leakage |
 
-All required libraries (PyTorch, pandas, scikit-learn, matplotlib, seaborn) are pre-installed in Colab. No setup is needed.
+---
 
-1. Open [Google Colab](https://colab.research.google.com).
-2. Upload `Stock_Trend_Forecaster.ipynb`.
-3. Set the runtime to **GPU** (Runtime > Change runtime type > T4 GPU).
-4. Run the first cell to upload `GSPC.csv`.
-5. Execute all cells sequentially.
+## Model Architecture & Hyperparameters
 
-### Local Environment
-
-```bash
-# Clone the repository
-git clone https://github.com/<your-username>/Stock-Trend-Forecaster.git
-cd Stock-Trend-Forecaster
-
-# Create a virtual environment
-python -m venv venv
-source venv/bin/activate        # Linux / macOS
-venv\Scripts\activate           # Windows
-
-# Install dependencies
-pip install pandas numpy matplotlib seaborn scikit-learn torch joblib
+```
+Input Tensor: (batch_size, 60, 6)
+      │
+┌─────▼─────────────────────────┐
+│ LSTM Layer 1 (hidden = 64)     │
+│ Dropout = 0.2                 │
+├───────────────────────────────┤
+│ LSTM Layer 2 (hidden = 64)     │
+│ Dropout = 0.2                 │
+├───────────────────────────────┤
+│ Fully Connected (64 ──> 1)    │
+└─────┬─────────────────────────┘
+      │
+Output: (batch_size, 1) continuous return scalar
 ```
 
----
-
-## Usage
-
-### Google Colab
-
-Open `Stock_Trend_Forecaster.ipynb` and run all 42 code cells from top to bottom. The notebook handles everything: data loading, validation, EDA, feature engineering, training, evaluation, and artifact saving.
-
-### Notebook Structure
-
-| Section | Steps | Description |
-|---------|-------|-------------|
-| Data Loading and Validation | 2--9 | Load CSV, check missing values, duplicates, OHLC validity, volume |
-| Exploratory Data Analysis | 10--14 | Price history, volume, distributions, outliers, correlation |
-| Feature Engineering | 15--19 | 9 stationary features, next-day return target |
-| Trend Labels | 20--21 | BULLISH / NEUTRAL / BEARISH distribution |
-| Split and Scaling | 22--24 | 70/15/15 chronological split, StandardScaler (train-only fit) |
-| Sequences | 25--26 | 60-day windows via concatenate-then-slice |
-| Naive Baseline | 27 | Benchmark metrics on the same test samples |
-| LSTM Model | 28 | Architecture definition |
-| Training | 29--30 | Adam, LR scheduling, early stopping, loss curves |
-| Evaluation | 31--35 | Metrics comparison, predictions plot, error distribution |
-| Trend Classification | 36--38 | Predicted trends, confusion matrix, classification report |
-| Save Artifacts | 39--40 | Model, scalers, config, metrics saved and downloadable |
+- **Optimizer:** Adam ($\text{learning rate} = 0.001$)
+- **Loss Function:** Mean Squared Error (MSE)
+- **Batch Size:** 64
+- **Regularization:** Gradient clipping ($\text{max\_norm} = 1.0$), Dropout ($0.2$)
+- **Early Stopping:** Patience of 10 epochs on validation loss
 
 ---
 
-## Project Structure
+## Verified Evaluation & Audit Results
+
+All metrics independently recalculated from disk artifacts ([backend/artifacts/lstm/test_predictions.json](backend/artifacts/lstm/test_predictions.json)) across the 668 held-out test sessions:
+
+| Model / Baseline | Test RMSE | Test MAE | Directional Accuracy | Evaluation Notes |
+|:---|:---|:---|:---|:---|
+| **Zero-Return Baseline ($\hat{r}=0$)** | `0.009680` | `0.006573` | N/A | Predicts zero return daily |
+| **Always-Long Drift Baseline** | `0.009680` | `0.006573` | `55.39%` (370 / 668) | Market test window has a 55.39% positive day ratio |
+| **PyTorch LSTM (`lstm-v1.0`)** | **`0.009655`** | **`0.006537`** | **`55.39%`** | **Beats zero-return baseline on RMSE & MAE** |
+| **Fixed-Model Walk-Forward** | **`0.009655`** | **`0.006537`** | **`55.39%`** | Strictly past-only sequential testing |
+
+---
+
+## Role-Based Workspaces
+
+The application features two distinct user workflows accessible via client-side role-based routing:
+
+### 1. User Workspace (`/app/*`)
+- **Dashboard (`/app/dashboard`):** Real-time S&P 500 status, latest daily close reference, and primary trend gauge.
+- **Forecast Page (`/app/forecast/^GSPC`):** Next trading day forecast, predicted return, confidence bounds, and target date.
+- **Predictions History (`/app/predictions`):** Chronological ledger tracking previous forecasts and actual realized outcomes.
+- **Backtesting Studio (`/app/backtest`):** Moving-threshold strategy simulation tool (clearly disclosed as an illustrative heuristic simulator).
+- **Model Card (`/app/model-card`):** High-level model explanation dynamically loaded from backend artifacts.
+
+### 2. Data Scientist Workspace (`/scientist/*`)
+- **Performance Diagnostics (`/scientist/performance`):** Real test split loss curves, RMSE/MAE error distribution, and walk-forward verification.
+- **Dataset Explorer (`/scientist/dataset`):** Interactive inspection of split distributions, missing values, and data leakage safeguards.
+- **Model Comparison (`/scientist/models`):** Head-to-head comparison against naive baselines and moving averages.
+- **Experiments Lab (`/scientist/experiments`):** Real-time experiment tracking wired to SQLite `training_runs` table with asynchronous PyTorch training triggers.
+- **Technical Model Card (`/scientist/model-card`):** Full architectural tensor dimensions, weights checksums, and artifact provenance.
+
+---
+
+## Repository Structure
 
 ```
 Stock-Trend-Forecaster/
-|
-|-- GSPC.csv                          # S&P 500 daily OHLCV dataset
-|-- Stock_Trend_Forecaster.ipynb      # Complete Colab training notebook
-|-- README.md                         # This file
-|
-|-- Docs/
-|   |-- Research for Stock trend Forecastor Project.pdf
-|
-|-- models/                           # Created by training
-|   |-- lstm_model.pt                 # PyTorch model weights
-|   |-- feature_scaler.pkl            # StandardScaler (input features)
-|   |-- target_scaler.pkl             # StandardScaler (target returns)
-|   |-- config.json                   # Feature list, hyperparameters
-|   |-- metrics.json                  # Evaluation results
+├── backend/
+│   ├── app/
+│   │   ├── api/routes/          # FastAPI routes (market, forecast, model, evaluation)
+│   │   ├── core/                # Configuration and settings
+│   │   ├── db/                  # SQLite models and session management
+│   │   ├── ml/                  # PyTorch LSTM, train, evaluate, and walk-forward
+│   │   ├── schemas/             # Pydantic request/response schemas
+│   │   └── services/            # Data pipeline, preprocessing, prediction services
+│   ├── artifacts/lstm/          # Saved model.pt, scalers, config.json, metrics.json
+│   ├── data/                    # Cached S&P 500 dataset (GSPC.csv) and SQLite DB
+│   ├── tests/                   # Pytest test suite (17 tests)
+│   ├── train_cli.py             # CLI training runner
+│   ├── verify_audit.py          # Metric verification and baseline recalculation script
+│   └── verify_pipeline.py       # Data split, sequence, and leakage verification script
+├── frontend/
+│   ├── src/
+│   │   ├── components/          # Reusable UI controls and chart wrappers
+│   │   ├── context/             # Auth and theme state management
+│   │   ├── features/            # Feature pages (Dashboard, Forecast, Scientist, etc.)
+│   │   ├── services/            # API integration layer (stockService.js)
+│   │   └── styles/              # Design tokens and CSS
+│   ├── dist/                    # Production bundle
+│   └── package.json             # React 19, Vite, Recharts, Vitest
+└── README.md                    # Root project documentation
 ```
 
 ---
 
-## Evaluation Metrics
+## Installation & Quickstart
 
-The LSTM is compared against a naive baseline on the **exact same test samples** to ensure a fair comparison.
+### Prerequisites
+- Python 3.10+ (tested on Python 3.11)
+- Node.js 18+ and npm
 
-| Metric | Description |
-|--------|-------------|
-| RMSE | Root Mean Squared Error (in price units) |
-| MAE | Mean Absolute Error (in price units) |
-| MAPE | Mean Absolute Percentage Error |
-| Directional Accuracy | Percentage of days where up/down direction was predicted correctly |
-| Trend Accuracy | Percentage of days where the BULLISH/NEUTRAL/BEARISH label matched |
+### 1. Setup Backend
+```bash
+# From workspace root
+python -m venv .venv
 
-**Naive baseline rule:** Tomorrow's predicted price = today's closing price.
+# Activate virtual environment
+# Windows:
+.venv\Scripts\activate
+# Linux/macOS:
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r backend/requirements.txt
+
+# Run initial pipeline & model training (optional, artifacts already included)
+python backend/train_cli.py
+
+# Start FastAPI server
+uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload
+```
+
+FastAPI will be running on `http://127.0.0.1:8000`. Interactive documentation is available at `http://127.0.0.1:8000/api/docs`.
+
+### 2. Setup Frontend
+```bash
+# In a new terminal
+cd frontend
+npm install
+
+# Start Vite dev server
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
 
 ---
 
-## Key Design Decisions
+## API Reference
 
-### Why stationary features instead of raw prices?
-
-A StandardScaler fit on training data (1927--1997, mean price around 500) would place test-set features (2012--2026, prices 3,000--7,700) at 6--9 standard deviations from the training mean. The LSTM would be forced to extrapolate into a region it never saw during training. Returns and ratios remain near-stationary across the full century.
-
-### Why predict returns instead of prices?
-
-Returns are stationary and bounded, making them a well-behaved target for regression. The final predicted price is recovered by multiplying the current close by `(1 + predicted_return)`.
-
-### Why concatenate-then-slice for sequences?
-
-Creating sequences on each split independently discards the first 60 samples of the validation and test sets and prevents validation sequences from looking back into the end of training data. Concatenating all scaled data before windowing, then slicing by target index, preserves all samples and mirrors real-world inference.
-
-### Why no SMOTE or class balancing?
-
-The LSTM is a regression model predicting continuous returns. Trend labels (BULLISH / NEUTRAL / BEARISH) are derived after prediction, not used as training targets. Class-balancing techniques like SMOTE apply to classification problems and are not applicable here.
-
-### Why not use Volume?
-
-Approximately 5,500 rows (pre-1950s) have zero volume. Including Volume would either require imputation for 22 percent of the training data or introduce a feature that is undefined for a large portion of the dataset. The initial model establishes a clean OHLC-based baseline; Volume can be added as a later experiment.
-
-### Why not remove outliers?
-
-The IQR method flags many "outliers" in price columns, but these reflect genuine long-term market growth from 17 (1928) to 7,700 (2026). Removing them would delete real data points.
+| Endpoint | Method | Description |
+|:---|:---|:---|
+| `/api/health` | `GET` | Health check and server status |
+| `/api/market/summary` | `GET` | Latest S&P 500 Close, day change, observation count |
+| `/api/market/history` | `GET` | Historical OHLCV series for specified range (`1M`, `1Y`, `MAX`) |
+| `/api/market/refresh` | `POST` | Fetches latest observations from Yahoo Finance |
+| `/api/forecast/latest` | `GET` | Latest next-trading-session forecast, return, and implied price |
+| `/api/forecast/generate` | `POST` | Generates a new forecast and logs to database |
+| `/api/model/status` | `GET` | Training status, weights presence, scaler availability |
+| `/api/model/config` | `GET` | Architecture specifications, lookback, and split parameters |
+| `/api/model/metrics` | `GET` | Verified held-out test and walk-forward metrics |
+| `/api/model/runs` | `GET` | Query recorded training experiments from SQLite |
+| `/api/model/train` | `POST` | Trigger asynchronous PyTorch model retraining |
+| `/api/evaluation/test` | `GET` | Date-aligned test predictions and loss values |
+| `/api/evaluation/walk-forward` | `GET` | Date-aligned walk-forward sequential evaluation series |
 
 ---
 
-## Roadmap
+## Testing & Validation
 
-- [x] Data loading, validation, and EDA
-- [x] Stationary feature engineering
-- [x] Chronological train/val/test split with leakage-safe scaling
-- [x] LSTM model training with early stopping
-- [x] Naive baseline comparison
-- [x] Trend classification (BULLISH / NEUTRAL / BEARISH)
-- [x] Model artifact saving
-- [ ] Walk-forward validation (expanding window retraining)
-- [ ] Hyperparameter tuning (hidden size, layers, lookback, dropout)
-- [ ] Volume feature experiment
-- [ ] FastAPI backend for real-time inference
-- [ ] React frontend dashboard
+### Backend Pytest Suite
+```bash
+# Run 17 unit and integration tests
+pytest backend/tests/ -v
+```
+
+### Frontend Vitest Suite
+```bash
+# Run 28 frontend component and logic tests
+cd frontend
+npm test
+```
+
+### Production Build
+```bash
+cd frontend
+npm run build
+```
+
+---
+
+## Security & Architectural Notes
+
+1. **Authentication Boundary:** Role-based access control (User vs. Data Scientist) is enforced client-side for navigation. In production, backend mutating endpoints (`POST /api/model/train`, `POST /api/market/refresh`) should be protected with JWT/Bearer token authentication.
+2. **Market Data Timeliness:** S&P 500 market data from Yahoo Finance reflects the latest available daily end-of-day Close, not streaming real-time tick quotes.
+3. **Model Safety:** During retraining, prior model checkpoints are automatically preserved in `backend/artifacts/lstm/archive/`. If a training run fails or degrades validation loss, the previous known-good model is retained.
 
 ---
 
 ## License
 
-This project is developed for academic and educational purposes.
+This project is developed for educational and machine learning research purposes.

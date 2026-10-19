@@ -108,7 +108,7 @@ Interactive API documentation will be available at:
 | Target Variable | Next-session Close return: `Close[t] / Close[t-1] - 1` |
 | Implied Close Formula | `predicted_next_close = latest_actual_close * (1 + predicted_next_return)` |
 | Chronological Split | 80% Train, 10% Validation, 10% Held-Out Test |
-| Model Architecture | 2-Layer Stacked LSTM (128 hidden units, dropout 0.2) |
+| Model Architecture | 2-Layer Stacked LSTM (64 hidden units, dropout 0.2) |
 | Loss Function | Mean Squared Error (MSE) |
 | Optimizer | Adam (learning rate = 0.001) |
 | Scaling | `StandardScaler` fitted strictly on training data only |
@@ -152,6 +152,7 @@ Walk-forward evaluation sequentially advances the forecast origin one trading se
 - `GET /api/model/status` — Model training status, weight existence, scaler status.
 - `GET /api/model/config` — Hyperparameters, feature schema, and split configuration.
 - `GET /api/model/metrics` — Held-out test and walk-forward performance metrics.
+- `GET /api/model/runs` — Query all historical training experiment runs recorded in SQLite.
 - `POST /api/model/train` — Initiates background training pipeline.
 
 ### Evaluation
@@ -185,7 +186,31 @@ pytest backend/tests/ -v
 
 ---
 
-## 10. Troubleshooting
+## 10. Independent Audit & Verification Scripts
+
+The backend includes standalone audit scripts to independently verify data integrity, pipeline isolation, and performance metrics:
+
+### Pipeline Integrity & Leakage Verification
+```bash
+python backend/verify_pipeline.py
+```
+- Validates all 6,738 rows in `backend/data/GSPC.csv`.
+- Confirms 60-session lookback, 6,678 sequences, and exact chronological splits:
+  - Train: 5,342 samples
+  - Val: 667 samples
+  - Test: 669 samples (668 evaluated)
+- Proves `StandardScaler` mean and variance were computed strictly on training data with zero leakage.
+
+### Metric Recalculation & Baseline Audit
+```bash
+python backend/verify_audit.py
+```
+- Recomputes RMSE, MAE, and Directional Accuracy directly from raw disk predictions in `backend/artifacts/lstm/test_predictions.json`.
+- Benchmarks against the zero-return naive baseline on the exact same 668 held-out test observations.
+
+---
+
+## 11. Troubleshooting
 
 - **"Model artifacts not found":** Run `python backend/train_cli.py` or `POST /api/model/train` to train the model and generate weights and scalers.
 - **Yahoo Finance Rate Limits / Network Failures:** The data service automatically caches the cleaned dataset to `backend/data/GSPC.csv`. If Yahoo Finance experiences temporary issues, the service transparently serves the cached data.
