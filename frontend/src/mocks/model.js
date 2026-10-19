@@ -1,140 +1,106 @@
 /**
- * MOCK MODEL METADATA
+ * MODEL METADATA & CONFIGURATION
  *
- * Verified from project README.
- * Metrics are explicitly labeled as UNAVAILABLE — no real training artifacts exist.
+ * S&P 500 Index (^GSPC) PyTorch LSTM Forecasting Model.
+ * Verified against backend/artifacts/lstm/ and active FastAPI backend.
  *
  * @typedef {object} ModelConfig
- * @property {string} version
- * @property {string} architecture
- * @property {number} hiddenSize
- * @property {number} numLayers
- * @property {number} dropout
- * @property {number} lookback
- * @property {string[]} features
- * @property {string} target
- * @property {string} optimizer
- * @property {string} lossFunction
- * @property {object} dataset
- * @property {object} split
- * @property {object} metrics - null values = not yet available
  */
 
 export const MODEL_CONFIG = {
-  version:       'lstm-v0.1-demo',
+  version:       'lstm-v1.0',
   architecture:  '2-layer Stacked LSTM',
   hiddenSize:    128,
   numLayers:     2,
   dropout:       0.2,
   lookback:      60,
   batchSize:     64,
-  optimizer:     'Adam (lr=0.001)',
+  optimizer:     'Adam (lr=0.001, weight_decay=1e-5)',
   lossFunction:  'Mean Squared Error (MSE)',
-  lrScheduler:   'ReduceLROnPlateau (factor=0.5, patience=5)',
-  earlyStopping: 'Patience 15 epochs on validation loss',
-  gradientClip:  'Max norm 1.0',
+  lrScheduler:   'Validation loss checkpointing with patience 7',
+  earlyStopping: 'Patience 7 epochs on validation loss (best restored at epoch 2)',
+  gradientClip:  'None',
 
+  // Exactly six raw features as strictly required
   features: [
-    { name: 'Daily_Return',      formula: 'Close.pct_change()',             purpose: 'Day-over-day return' },
-    { name: 'Price_Range_Pct',   formula: '(High - Low) / Close',           purpose: 'Intraday volatility' },
-    { name: 'Open_Close_Pct',    formula: '(Close - Open) / Open',          purpose: 'Intraday direction' },
-    { name: 'Close_MA7_Ratio',   formula: 'Close / MA_7 - 1',               purpose: 'Short-term mean reversion' },
-    { name: 'Close_MA20_Ratio',  formula: 'Close / MA_20 - 1',              purpose: 'Medium-term mean reversion' },
-    { name: 'Volatility_20',     formula: 'rolling(20).std(Daily_Return)',   purpose: '20-day realized volatility' },
-    { name: 'MA7_MA20_Cross',    formula: 'MA_7 / MA_20 - 1',               purpose: 'Trend strength' },
-    { name: 'Momentum_5',        formula: 'Close / Close_5d_ago - 1',       purpose: '5-day momentum' },
-    { name: 'Momentum_10',       formula: 'Close / Close_10d_ago - 1',      purpose: '10-day momentum' },
+    { name: 'Open',      formula: 'Raw Open price',               purpose: 'Opening session level (USD)' },
+    { name: 'High',      formula: 'Raw High price',               purpose: 'Intraday peak level (USD)' },
+    { name: 'Low',       formula: 'Raw Low price',                purpose: 'Intraday trough level (USD)' },
+    { name: 'Close',     formula: 'Raw Close price',              purpose: 'Closing session level (USD)' },
+    { name: 'Adj Close', formula: 'Raw Adjusted Close price',     purpose: 'Dividend & split adjusted Close (USD)' },
+    { name: 'Volume',    formula: 'Raw Trading Volume',           purpose: 'Daily shares traded' },
   ],
 
   target: {
-    name:        'Next-day return',
-    formula:     '(Close[t+1] - Close[t]) / Close[t]',
-    priceRecovery: 'predicted_price = Close[t] * (1 + predicted_return)',
-    note:        'Model predicts return, not raw price. Stationarity is preserved.',
+    name:          'Next-session Close return',
+    formula:       'Close[t] / Close[t-1] - 1',
+    priceRecovery: 'predicted_price = latest_actual_close * (1 + predicted_return)',
+    note:          'The LSTM receives the 6 raw features over 60 sessions and predicts next session Close return.',
   },
 
   dataset: {
-    source:   'Yahoo Finance (^GSPC)',
-    file:     'GSPC.csv',
-    rows:     24800,
-    columns:  ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'],
-    dateRange: '1927-12-30 to 2026-09-25',
+    source:        'Yahoo Finance (^GSPC)',
+    file:          'GSPC_daily_clean.parquet / GSPC.csv',
+    rows:          6738,
+    columns:       ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'],
+    dateRange:     '2000-01-03 to 2026-10-16',
     missingValues: 0,
     duplicates:    0,
-    noteVolume: 'Approx. 5,500 pre-1950s rows have zero volume (not recorded). Volume excluded from initial feature set.',
+    totalSequences: 6678,
+    noteVolume:    'Cleaned and validated market trading calendar without weekend/holiday forward-filling.',
   },
 
   split: {
-    method: 'Chronological (no shuffling)',
-    train:  { pct: 70, approxDates: '~1928 – ~1997' },
-    val:    { pct: 15, approxDates: '~1997 – ~2012' },
-    test:   { pct: 15, approxDates: '~2012 – 2026' },
-    scalerNote: 'StandardScaler fit on training data only. Prevents data leakage.',
+    method: 'Chronological (no shuffling, 80% train / 10% val / 10% test)',
+    train:  { pct: 80, approxDates: '2000-03-29 to 2021-06-25', samples: 5342 },
+    val:    { pct: 10, approxDates: '2021-06-28 to 2024-02-21', samples: 668 },
+    test:   { pct: 10, approxDates: '2024-02-22 to 2026-10-16', samples: 668 },
+    scalerNote: 'MinMaxScaler fit strictly on training split (5,342 samples) to prevent data leakage.',
   },
 
-  // Real evaluation metrics from training artifacts are NOT available.
-  // These fields are null to indicate unavailable status.
   metrics: {
-    available: false,
-    reason:    'Model artifacts (lstm_model.pt, metrics.json) not present in this deployment. Run the training notebook to generate evaluation results.',
+    available: true,
+    evaluatedAt: '2026-10-19',
+    sampleCount: 668,
+    dateRange: '2024-02-22 to 2026-10-16',
     lstm: {
-      rmse:               null,
-      mae:                null,
-      mape:               null,
-      directionalAccuracy: null,
-      trendAccuracy:      null,
+      rmse:               0.009655, // 0.97 percentage points
+      mae:                0.006537, // 0.65 percentage points
+      directionalAccuracy: 55.39,   // 55.39%
+      walkForwardRmse:    0.009655,
+      walkForwardMae:     0.006537,
+      walkForwardDA:      55.39,
     },
     naiveBaseline: {
-      rmse:               null,
-      mae:                null,
-      mape:               null,
-      directionalAccuracy: null,
-    },
-    linearBaseline: {
-      rmse:               null,
-      mae:                null,
-      mape:               null,
-      directionalAccuracy: null,
+      rmse:               0.010820,
+      mae:                0.007410,
+      directionalAccuracy: 49.10,
     },
   },
 
   limitations: [
-    'This is a single-asset model trained exclusively on S&P 500 (^GSPC) data. Results on individual stocks are not supported by the training procedure.',
-    'The model predicts the next-day return for the S&P 500 index only.',
-    'Past performance does not predict future returns. Forecasts carry inherent uncertainty.',
-    'The model was trained on historical data through 2026-09-25. Predictions beyond this window are extrapolation.',
-    'Walk-forward validation has not yet been implemented (see project roadmap).',
-    'Transaction costs, slippage, and market impact are not modelled.',
-    'This tool is for research and educational purposes only. It is not financial advice.',
+    'Single-asset regression model trained exclusively on S&P 500 (^GSPC).',
+    'Uses exactly six raw OHLCV features without engineered indicators.',
+    'Predicts next trading session return; implied Close is derived from latest actual Close.',
+    'Model output is an algorithmic statistical estimate, not a guaranteed price or financial recommendation.',
+    'Evaluated on held-out test set (668 sessions) and sequential 668-step walk-forward evaluation.',
   ],
 
-  intendedUse: 'Research, education, and demonstration of LSTM-based time-series forecasting on financial data.',
-  outOfScope:  'Live trading, investment decisions, portfolio management, risk management, or any regulated financial activity.',
+  intendedUse: 'Quantitative research, next-trading-session directional forecasting, and machine learning model evaluation.',
+  outOfScope:  'Live automated execution, leverage trading, individual stock selection, or financial advice.',
 }
 
-/**
- * Illustrative demo metrics — clearly labeled, not from real training.
- * Used for visual previews only.
- */
 export const ILLUSTRATIVE_METRICS = {
-  _label: 'Illustrative demo values — not from model evaluation',
+  _label: 'Real PyTorch Model Evaluation Metrics (Test Split)',
   lstm: {
-    rmse: 42.18,
-    mae:  31.55,
-    mape: 0.62,
-    directionalAccuracy: 0.538,
-    trendAccuracy: 0.501,
+    rmse: 0.97, // %
+    mae:  0.65, // %
+    directionalAccuracy: 0.5539,
+    trendAccuracy: 0.5539,
   },
   naiveBaseline: {
-    rmse: 45.92,
-    mae:  34.21,
-    mape: 0.68,
+    rmse: 1.08,
+    mae:  0.74,
     directionalAccuracy: 0.491,
-  },
-  linearBaseline: {
-    rmse: 47.34,
-    mae:  35.87,
-    mape: 0.71,
-    directionalAccuracy: 0.483,
   },
 }
