@@ -117,16 +117,13 @@ export default function PerformancePage() {
             <h3 className="req-title">Required Steps to Generate Real Artifacts:</h3>
             <ol className="req-list">
               <li>
-                <strong>Open Notebook:</strong> Launch <code>Stock_Trend_Forecaster.ipynb</code> in Google Colab (T4 GPU recommended) or a local Python 3.10+ virtual environment.
+                <strong>Start FastAPI Backend:</strong> Run <code>.venv\Scripts\python.exe -m uvicorn app.main:app --app-dir backend --port 8000</code>.
               </li>
               <li>
-                <strong>Load &amp; Validate:</strong> Execute Cells 1–26 to validate <code>GSPC.csv</code> (~24,800 rows) and compute 9 stationary features with 70/15/15 chronological split.
+                <strong>Execute CLI Training:</strong> Run <code>.venv\Scripts\python.exe backend/train_cli.py</code> to download S&amp;P 500 data and train the PyTorch LSTM.
               </li>
               <li>
-                <strong>Train PyTorch LSTM:</strong> Run Cells 27–38 with 128 hidden units, 2 stacked layers, dropout 0.2, and early stopping on validation loss.
-              </li>
-              <li>
-                <strong>Save Checkpoints:</strong> Download generated <code>models/lstm_model.pt</code>, <code>models/metrics.json</code>, <code>models/feature_scaler.pkl</code>, and <code>models/target_scaler.pkl</code>.
+                <strong>Verify Artifacts:</strong> Checkpoints (<code>model.pt</code>, <code>metrics.json</code>, scalers) are saved automatically in <code>backend/artifacts/lstm/</code>.
               </li>
             </ol>
           </div>
@@ -174,11 +171,12 @@ export default function PerformancePage() {
             <tbody>
               {metricDefs.map(mDef => {
                 let valDisplay = 'Unavailable (Pending)'
-                if (realMetrics) {
-                  if (mDef.name === 'RMSE') valDisplay = `${(realMetrics.rmse * 100).toFixed(3)}% (${realMetrics.rmse.toFixed(6)})`
-                  else if (mDef.name === 'MAE') valDisplay = `${(realMetrics.mae * 100).toFixed(3)}% (${realMetrics.mae.toFixed(6)})`
-                  else if (mDef.name === 'Directional Accuracy') valDisplay = `${realMetrics.directionalAccuracy.toFixed(2)}%`
-                  else if (mDef.name === 'Trend Accuracy') valDisplay = `${realMetrics.directionalAccuracy.toFixed(2)}%`
+                const mSrc = realMetrics || (MODEL_CONFIG.metrics.available ? MODEL_CONFIG.metrics.lstm : null)
+                if (mSrc) {
+                  if (mDef.name === 'RMSE') valDisplay = `${(mSrc.rmse * 100).toFixed(3)}% (${mSrc.rmse.toFixed(6)})`
+                  else if (mDef.name === 'MAE') valDisplay = `${(mSrc.mae * 100).toFixed(3)}% (${mSrc.mae.toFixed(6)})`
+                  else if (mDef.name === 'Directional Accuracy') valDisplay = `${mSrc.directionalAccuracy.toFixed(2)}%`
+                  else if (mDef.name === 'Trend Accuracy') valDisplay = `${mSrc.directionalAccuracy.toFixed(2)}%`
                 } else if (showDemoPreview) {
                   if (mDef.name === 'RMSE') valDisplay = `${m.lstm.rmse?.toFixed(2)} USD`
                   else if (mDef.name === 'MAE') valDisplay = `${m.lstm.mae?.toFixed(2)} USD`

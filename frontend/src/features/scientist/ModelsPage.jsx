@@ -165,9 +165,9 @@ export default function ModelsPage() {
         <div style={{ background: 'var(--surface)', padding: 'var(--space-3)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', fontSize: 'var(--text-xs)', color: 'var(--text-secondary)' }}>
           <strong>Metric Definitions:</strong>
           <ul style={{ marginTop: 'var(--space-2)', paddingLeft: 'var(--space-4)', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <li><strong>RMSE (Root Mean Squared Error):</strong> Standard deviation of price prediction residuals. Penalizes larger errors quadratically.</li>
-            <li><strong>MAE (Mean Absolute Error):</strong> Average magnitude of price forecast errors in index points. Robust to outlier shocks.</li>
-            <li><strong>Directional Accuracy:</strong> Proportion of days where predicted price movement direction correctly matches actual sign. 50% represents a random guess.</li>
+            <li><strong>RMSE (Root Mean Squared Error):</strong> Standard deviation of return forecast residuals. Evaluated in percentage points / return units.</li>
+            <li><strong>MAE (Mean Absolute Error):</strong> Average magnitude of return forecast errors in percentage points. Robust to outlier shocks.</li>
+            <li><strong>Directional Accuracy:</strong> Proportion of trading days where predicted return sign correctly matches actual realized direction.</li>
           </ul>
         </div>
       </section>
