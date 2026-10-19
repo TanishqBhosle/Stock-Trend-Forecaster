@@ -1,7 +1,10 @@
 import json
 from pathlib import Path
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
+from sqlalchemy.orm import Session
 from app.core.config import settings
+from app.db.database import get_db
+from app.db.models import TrainingRun
 from app.services.training_service import training_service
 from app.services.evaluation_service import evaluation_service
 from app.schemas.model import ModelStatusResponse, TrainJobResponse, TrainingHistoryResponse
@@ -85,3 +88,35 @@ def train_model():
         "status": job_info["status"],
         "message": job_info["message"]
     }
+
+
+@router.get("/runs")
+def get_training_runs(db: Session = Depends(get_db)):
+    """Returns all historical training experiment runs recorded in SQLite."""
+    runs = db.query(TrainingRun).order_by(TrainingRun.started_at.desc()).all()
+    results = []
+    for r in runs:
+        config = {}
+        if r.config_json:
+            try:
+                config = json.loads(r.config_json)
+            except Exception:
+                pass
+        results.append({
+            "id": r.run_id,
+            "name": f"LSTM Run ({r.run_id[:8]})",
+            "status": r.status,
+            "startedAt": r.started_at.isoformat() if r.started_at else None,
+            "completedAt": r.completed_at.isoformat() if r.completed_at else None,
+            "epochsTrained": r.epochs_trained,
+            "bestValLoss": r.best_val_loss,
+            "testRmse": r.test_rmse,
+            "testMae": r.test_mae,
+            "testDirectionalAccuracy": r.test_directional_accuracy,
+            "trainSamples": r.train_samples,
+            "valSamples": r.val_samples,
+            "testSamples": r.test_samples,
+            "config": config,
+            "error": r.error_message
+        })
+    return {"runs": results, "total": len(results)}
