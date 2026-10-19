@@ -108,7 +108,7 @@ export default function ForecastPage() {
                 Predicted close: {forecast ? formatPrice(forecast.predictedClose) : '—'}
               </p>
               <p className="forecast-figure-sub">
-                Last observed: {formatPrice(stock.mockPrice)}
+                Last observed: {formatPrice(forecast?.lastObservedClose || stock.currentPrice || stock.mockPrice)}
               </p>
             </div>
           </div>

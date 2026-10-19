@@ -95,8 +95,8 @@ export default function DashboardPage() {
             Educational time-series research &amp; directional trend forecasting — S&amp;P 500 Index
           </p>
         </div>
-        <DataProvenanceLabel type={isPrimary ? 'demo' : 'illustrative'}>
-          {isPrimary ? 'Dataset: Yahoo Finance ^GSPC (1927–2026)' : 'Illustrative Equity Preview'}
+        <DataProvenanceLabel type="verified">
+          Latest Daily Data: Yahoo Finance ^GSPC (2000–present)
         </DataProvenanceLabel>
       </div>
 
@@ -104,7 +104,7 @@ export default function DashboardPage() {
       <div className="dash-scope-banner">
         <Info size={16} className="dash-scope-icon" />
         <p className="dash-scope-text">
-          <strong>Dataset Scope:</strong> ArthNex is trained on 6,738 historical daily sessions of the <strong>S&amp;P 500 Index (^GSPC)</strong> (2000–present) using exactly 6 raw OHLCV features and a 60-day lookback window.
+          <strong>Market Data Notice:</strong> Market data reflects the latest available daily session observations from Yahoo Finance (not real-time streaming tick data). ArthNex is trained on 6,738 historical daily sessions of the <strong>S&amp;P 500 Index (^GSPC)</strong> (2000–present) using exactly 6 raw OHLCV features and a 60-day lookback window.
         </p>
       </div>
 
@@ -125,9 +125,9 @@ export default function DashboardPage() {
                 <span className="ms-ticker">{s.ticker}</span>
                 {isGspc && <span className="ms-index-tag">CORE</span>}
               </div>
-              <span className="ms-price">{formatPrice(s.mockPrice)}</span>
-              <span className={`ms-change ${s.mockChangePct >= 0 ? 'pos' : 'neg'}`}>
-                {s.mockChangePct >= 0 ? '↑' : '↓'} {Math.abs(s.mockChangePct).toFixed(2)}%
+              <span className="ms-price">{formatPrice(s.currentPrice || s.mockPrice)}</span>
+              <span className={`ms-change ${(s.changePct ?? s.mockChangePct) >= 0 ? 'pos' : 'neg'}`}>
+                {(s.changePct ?? s.mockChangePct) >= 0 ? '↑' : '↓'} {Math.abs(s.changePct ?? s.mockChangePct).toFixed(2)}%
               </span>
             </button>
           )
@@ -146,7 +146,7 @@ export default function DashboardPage() {
                 <span className="dash-asset-tag">{stock.sector} · {stock.exchange}</span>
               </div>
               {loading ? <Skeleton width="120px" height="32px" /> :
-                <span className="dash-price">{formatPrice(stock?.mockPrice)}</span>
+                <span className="dash-price">{formatPrice(stock?.currentPrice || stock?.mockPrice)}</span>
               }
             </div>
             <ChartRangeSelector selected={range} onChange={setRange} />

@@ -69,6 +69,10 @@ export default function BacktestPage() {
         <DataProvenanceLabel type="illustrative">Illustrative Simulation</DataProvenanceLabel>
       </div>
 
+      <div style={{ background: 'var(--bg-surface)', border: '1px solid var(--border)', borderLeft: '4px solid var(--amber)', padding: 'var(--space-3) var(--space-4)', borderRadius: 'var(--radius-sm)', marginBottom: 'var(--space-4)', fontSize: 'var(--text-xs)', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+        <strong>Important Technical Disclosure:</strong> This backtesting module is an illustrative heuristic parameter exploration simulator. It evaluates a rule-based moving threshold strategy and is <strong>strictly separated from the primary PyTorch LSTM next-session forecasting model</strong>. It does not represent live market trading results, algorithmic execution, or guaranteed investment profitability.
+      </div>
+
       <div className="backtest-layout">
         {/* Controls */}
         <aside className="backtest-controls">
