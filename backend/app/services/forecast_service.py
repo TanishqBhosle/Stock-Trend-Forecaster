@@ -1,4 +1,5 @@
 import datetime
+import threading
 from pathlib import Path
 from typing import Dict, Any, Optional
 import numpy as np
@@ -15,6 +16,8 @@ from app.db.models import PredictionRecord
 
 
 class ForecastService:
+    _lock = threading.Lock()
+
     def __init__(self, artifacts_dir: Optional[Path] = None):
         self.artifacts_dir = artifacts_dir or settings.ARTIFACTS_DIR
         self.model_path = self.artifacts_dir / "model.pt"
@@ -157,44 +160,45 @@ class ForecastService:
 
         # 8. Deduplicated persistence to SQLite
         if save_to_db:
-            db = SessionLocal()
-            try:
-                existing = (
-                    db.query(PredictionRecord)
-                    .filter(
-                        PredictionRecord.ticker == settings.TICKER,
-                        PredictionRecord.origin_date == origin_date,
-                        PredictionRecord.forecast_for == forecast_for,
-                        PredictionRecord.model_version == model_version
+            with ForecastService._lock:
+                db = SessionLocal()
+                try:
+                    existing = (
+                        db.query(PredictionRecord)
+                        .filter(
+                            PredictionRecord.ticker == settings.TICKER,
+                            PredictionRecord.origin_date == origin_date,
+                            PredictionRecord.forecast_for == forecast_for,
+                            PredictionRecord.model_version == model_version
+                        )
+                        .first()
                     )
-                    .first()
-                )
-                if existing:
-                    existing.forecast_date = forecast_date
-                    existing.reference_close = ref_close
-                    existing.predicted_return = pred_return
-                    existing.predicted_close = predicted_close
-                    existing.signal = trend_signal
-                    db.commit()
-                else:
-                    rec = PredictionRecord(
-                        ticker=settings.TICKER,
-                        origin_date=origin_date,
-                        forecast_date=forecast_date,
-                        forecast_for=forecast_for,
-                        reference_close=ref_close,
-                        predicted_return=pred_return,
-                        predicted_close=predicted_close,
-                        signal=trend_signal,
-                        model_version=model_version
-                    )
-                    db.add(rec)
-                    db.commit()
-            except Exception as e:
-                logger.error(f"Failed to persist prediction record: {e}")
-                db.rollback()
-            finally:
-                db.close()
+                    if existing:
+                        existing.forecast_date = forecast_date
+                        existing.reference_close = ref_close
+                        existing.predicted_return = pred_return
+                        existing.predicted_close = predicted_close
+                        existing.signal = trend_signal
+                        db.commit()
+                    else:
+                        rec = PredictionRecord(
+                            ticker=settings.TICKER,
+                            origin_date=origin_date,
+                            forecast_date=forecast_date,
+                            forecast_for=forecast_for,
+                            reference_close=ref_close,
+                            predicted_return=pred_return,
+                            predicted_close=predicted_close,
+                            signal=trend_signal,
+                            model_version=model_version
+                        )
+                        db.add(rec)
+                        db.commit()
+                except Exception as e:
+                    logger.error(f"Failed to persist prediction record: {e}")
+                    db.rollback()
+                finally:
+                    db.close()
 
         logger.info(
             f"Generated forecast for {settings.TICKER}: {trend_signal} ({pred_return_pct:+.2f}%) -> {predicted_close}"
