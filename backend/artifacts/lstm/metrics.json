@@ -1,8 +1,8 @@
 {
   "available": true,
   "modelVersion": "lstm-v1.0",
-  "jobId": "cli_training_run",
-  "evaluatedAt": "2026-10-19T04:46:40.083834",
+  "jobId": "6b6de676-0126-4172-9a3d-7cd4a1392cc5",
+  "evaluatedAt": "2026-10-30T11:45:33.740655",
   "datasetDateRange": "2000-01-03 to 2026-10-16",
   "totalObservations": 6738,
   "splits": {
@@ -24,8 +24,8 @@
     ]
   },
   "testMetrics": {
-    "rmse": 0.009654565758664512,
-    "mae": 0.006537330770582177,
+    "rmse": 0.009654565758192638,
+    "mae": 0.006537330772455627,
     "directionalAccuracy": 55.38922155688623,
     "sampleCount": 668,
     "startDate": "2024-02-20",
@@ -33,8 +33,8 @@
     "evaluationType": "held_out_test"
   },
   "walkForwardMetrics": {
-    "rmse": 0.009654565758078461,
-    "mae": 0.00653733076984151,
+    "rmse": 0.009654565758017888,
+    "mae": 0.0065373307704079025,
     "directionalAccuracy": 55.38922155688623,
     "sampleCount": 668,
     "startDate": "2024-02-20",

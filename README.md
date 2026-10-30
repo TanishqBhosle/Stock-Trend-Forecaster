@@ -67,7 +67,7 @@ Stock Trend Forecaster delivers institutional-grade transparency for time-series
                   |              FastAPI REST API                |
                   |  - /api/market/*     - /api/forecast/*       |
                   |  - /api/model/*      - /api/evaluation/*     |
-                  |  - SQLite Prediction History & Runs          |
+                  |  - Neon PostgreSQL (with SQLite fallback) History & Runs          |
                   +----------------------+-----------------------+
                                          |
                      +-------------------+-------------------+
@@ -77,7 +77,7 @@ Stock Trend Forecaster delivers institutional-grade transparency for time-series
       |       User Workspace        |         |   Data Scientist Workspace  |
       |   - Next-Session Forecast   |         |   - Performance Diagnostics |
       |   - Prediction History Log  |         |   - Model Cards & Configs   |
-      |   - Backtest Studio         |         |   - SQLite Experiments Lab  |
+      |   - Backtest Studio         |         |   - Neon Experiments Lab  |
       +-----------------------------+         +-----------------------------+
 ```
 
@@ -247,7 +247,7 @@ Open `http://localhost:5173` in your browser.
 | `/api/model/status` | `GET` | Training status, weights presence, scaler availability |
 | `/api/model/config` | `GET` | Architecture specifications, lookback, and split parameters |
 | `/api/model/metrics` | `GET` | Verified held-out test and walk-forward metrics |
-| `/api/model/runs` | `GET` | Query recorded training experiments from SQLite |
+| `/api/model/runs` | `GET` | Query recorded training experiments from PostgreSQL / SQLite |
 | `/api/model/train` | `POST` | Trigger asynchronous PyTorch model retraining |
 | `/api/evaluation/test` | `GET` | Date-aligned test predictions and loss values |
 | `/api/evaluation/walk-forward` | `GET` | Date-aligned walk-forward sequential evaluation series |
