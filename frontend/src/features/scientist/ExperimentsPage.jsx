@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Search, Play, RefreshCw, CheckCircle2, Clock } from 'lucide-react'
+import { Search, Play, RefreshCw,  } from 'lucide-react'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
@@ -18,6 +17,25 @@ export default function ExperimentsPage() {
 
   const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
 
+  useEffect(() => {
+    let active = true
+    async function load() {
+      try {
+        const res = await fetch(`${apiBase}/api/model/runs`)
+        if (res.ok && active) {
+          const data = await res.json()
+          if (data.runs) {
+            setRuns(data.runs)
+          }
+        }
+      } catch (err) {
+        console.warn('Could not fetch runs from backend:', err)
+      }
+    }
+    load()
+    return () => { active = false }
+  }, [apiBase])
+
   const fetchRuns = async () => {
     setLoadingRuns(true)
     try {
@@ -34,10 +52,6 @@ export default function ExperimentsPage() {
       setLoadingRuns(false)
     }
   }
-
-  useEffect(() => {
-    fetchRuns()
-  }, [apiBase])
 
   const handleStartTraining = async () => {
     setTraining(true)

@@ -28,7 +28,7 @@ function loadNotificationPrefs() {
 
 export default function SettingsPage() {
   const { theme, setTheme } = useTheme()
-  const { user, logout } = useAuth()
+  const { user, logout, updateRole } = useAuth()
   const { addToast } = useToast()
   const navigate = useNavigate()
   const [defaultTicker, setDefaultTicker] = useState('^GSPC')

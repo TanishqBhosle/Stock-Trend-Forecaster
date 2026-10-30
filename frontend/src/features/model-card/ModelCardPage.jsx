@@ -5,7 +5,7 @@ import './ModelCardPage.css'
 
 export default function ModelCardPage() {
   const [config, setConfig] = useState(MODEL_CONFIG)
-  const [metrics, setMetrics] = useState(MODEL_CONFIG.metrics)
+  // metrics state merged directly into config
 
   useEffect(() => {
     let mounted = true
@@ -24,7 +24,7 @@ export default function ModelCardPage() {
         if (mRes.status === 'fulfilled' && mRes.value.ok) {
           const mData = await mRes.value.json()
           if (mData.testMetrics) {
-            setMetrics(prev => ({ ...prev, ...mData }))
+            setConfig(prev => ({ ...prev, metrics: { ...prev.metrics, ...mData.testMetrics } }))
           }
         }
       } catch (err) {

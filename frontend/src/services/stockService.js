@@ -363,7 +363,7 @@ export async function checkHealth() {
         status: data,
       }
     }
-  } catch (err) {
+  } catch {
     // API offline
   }
   return {

@@ -160,7 +160,7 @@ export default function LandingPage() {
           const fData = await fRes.value.json()
           setLiveForecast(fData)
         }
-      } catch (err) {
+      } catch {
         // Fallback to demo mocks
       }
     }

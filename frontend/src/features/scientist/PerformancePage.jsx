@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AlertCircle, Eye, EyeOff, CheckCircle } from 'lucide-react'
+import { AlertCircle, Eye, EyeOff } from 'lucide-react'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { MODEL_CONFIG, ILLUSTRATIVE_METRICS } from '@/mocks/model'

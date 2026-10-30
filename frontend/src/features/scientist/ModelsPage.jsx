@@ -57,12 +57,26 @@ export default function ModelsPage() {
     { name: 'metrics.json', path: 'backend/artifacts/lstm/metrics.json', type: 'JSON Evaluation Report', size: '1.1 KB', status: isTrained ? 'Verified (RMSE: 0.0097, DA: 55.4%)' : 'Missing / Not generated' },
     { name: 'feature_scaler.pkl', path: 'backend/artifacts/lstm/feature_scaler.pkl', type: 'scikit-learn StandardScaler', size: '727 B', status: isTrained ? 'Verified (6 features)' : 'Missing / Not generated' },
     { name: 'target_scaler.pkl', path: 'backend/artifacts/lstm/target_scaler.pkl', type: 'scikit-learn StandardScaler', size: '591 B', status: isTrained ? 'Verified (Return target)' : 'Missing / Not generated' },
-    { name: 'GSPC.csv', path: 'backend/data/GSPC.csv', type: 'Historical Market Data', size: '6,738 rows', status: 'Verified (2000–2026 Yahoo Finance)' },
+    { name: 'GSPC.csv', path: 'backend/data/GSPC.csv', type: 'Historical Market Data', size: '6,738 rows', status: 'Verified (2000-2026 Yahoo Finance)' },
   ]
 
-  const rmseVal = testMetrics ? (testMetrics.rmse * 100).toFixed(2) : (MODEL_CONFIG.metrics.test.rmse * 100).toFixed(2)
-  const maeVal = testMetrics ? (testMetrics.mae * 100).toFixed(2) : (MODEL_CONFIG.metrics.test.mae * 100).toFixed(2)
-  const daVal = testMetrics ? testMetrics.directionalAccuracy.toFixed(2) : MODEL_CONFIG.metrics.test.directionalAccuracy.toFixed(2)
+  const fallbackMetrics = MODEL_CONFIG.metrics?.lstm || {
+    rmse: 0.009655,
+    mae: 0.006537,
+    directionalAccuracy: 55.39
+  }
+
+  const rmseVal = testMetrics?.rmse != null 
+    ? (testMetrics.rmse * 100).toFixed(2) 
+    : (fallbackMetrics.rmse * 100).toFixed(2)
+
+  const maeVal = testMetrics?.mae != null 
+    ? (testMetrics.mae * 100).toFixed(2) 
+    : (fallbackMetrics.mae * 100).toFixed(2)
+
+  const daVal = testMetrics?.directionalAccuracy != null 
+    ? testMetrics.directionalAccuracy.toFixed(2) 
+    : fallbackMetrics.directionalAccuracy.toFixed(2)
 
   return (
     <div className="sci-page">
@@ -195,7 +209,7 @@ export default function ModelsPage() {
           </div>
           <div className="dataset-meta-item">
             <span className="ds-label">Target Metric</span>
-            <span className="ds-value" style={{ fontSize: 'var(--text-sm)' }}>Next-day return (Δt+1)</span>
+            <span className="ds-value" style={{ fontSize: 'var(--text-sm)' }}>Next-day return (Delta t+1)</span>
           </div>
           <div className="dataset-meta-item">
             <span className="ds-label">Split Integrity</span>

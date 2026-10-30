@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { DataProvenanceLabel } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { MODEL_CONFIG } from '@/mocks/model'
-import { RefreshCw, CheckCircle2, ShieldCheck, Database } from 'lucide-react'
+import { RefreshCw,  } from 'lucide-react'
 import { useToast } from '@/components/ui/Toast'
 import './ScientistPages.css'
 
