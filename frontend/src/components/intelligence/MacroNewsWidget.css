@@ -1,0 +1,220 @@
+.macro-news-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.mn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-3);
+}
+
+.mn-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.mn-icon {
+  color: var(--teal);
+  flex-shrink: 0;
+}
+
+.mn-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  font-weight: var(--font-bold);
+  color: var(--text);
+  margin: 0;
+}
+
+.mn-sub {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin: 2px 0 0 0;
+}
+
+.mn-badge-live {
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  background: rgba(46, 125, 90, 0.12);
+  color: var(--bullish);
+  border: 1px solid rgba(46, 125, 90, 0.3);
+}
+
+.mn-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mn-item {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-fast);
+}
+
+.mn-item:hover {
+  transform: translateY(-1px);
+  border-color: var(--border);
+}
+
+.mn-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mn-category {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.mn-sentiment-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.sentiment-bullish {
+  background: rgba(46, 125, 90, 0.15);
+  color: var(--bullish);
+  border: 1px solid rgba(46, 125, 90, 0.35);
+}
+
+.sentiment-bearish {
+  background: rgba(181, 72, 58, 0.15);
+  color: var(--bearish);
+  border: 1px solid rgba(181, 72, 58, 0.35);
+}
+
+.sentiment-neutral {
+  background: rgba(120, 110, 100, 0.12);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+
+.mn-headline {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: 1.45;
+}
+
+.mn-link {
+  color: var(--text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mn-link:hover {
+  color: var(--teal);
+}
+
+.mn-ext {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.mn-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  position: relative;
+}
+
+.mn-edu-wrap {
+  margin-left: auto;
+  position: relative;
+}
+
+.mn-edu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: var(--radius-xs);
+}
+
+.mn-edu-trigger:hover {
+  background: rgba(28, 126, 110, 0.08);
+}
+
+.mn-tooltip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  width: 290px;
+  background: var(--bg-ink, #1f2421);
+  color: #f7f9f8;
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  font-size: 11px;
+  line-height: 1.5;
+  z-index: 50;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mn-tooltip-header {
+  font-weight: bold;
+  color: #8ed6c5;
+  margin-bottom: 4px;
+}
+
+.mn-tooltip p {
+  margin: 0;
+  color: #e2e8e5;
+}
+
+.mn-skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mn-skeleton-item {
+  height: 64px;
+  background: var(--surface-elevated);
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+}
+

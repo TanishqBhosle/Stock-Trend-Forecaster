@@ -28,6 +28,8 @@ function CustomTooltip({ active, payload }) {
 }
 
 import { fetchStocks, fetchOHLCV, fetchForecast, fetchPredictions } from '@/services/stockService'
+import { SectorHeatmapWidget } from '@/components/intelligence/SectorHeatmapWidget'
+import { MacroNewsWidget } from '@/components/intelligence/MacroNewsWidget'
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
@@ -231,6 +233,16 @@ export default function DashboardPage() {
             <p className="dash-unavailable">Forecast unavailable for {selectedTicker}</p>
           )}
         </aside>
+
+        {/* S&P 500 GICS Sector Heatmap & Breadth Analysis */}
+        <section className="dash-intelligence-section" style={{ gridColumn: '1 / -1' }}>
+          <SectorHeatmapWidget />
+        </section>
+
+        {/* S&P 500 Macro Intelligence & Sentiment Heat Feed */}
+        <section className="dash-intelligence-section" style={{ gridColumn: '1 / -1' }}>
+          <MacroNewsWidget />
+        </section>
 
         {/* Signal distribution across universe */}
         <section className="dash-signals">
