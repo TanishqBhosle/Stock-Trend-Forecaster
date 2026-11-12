@@ -5,6 +5,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader
 from app.ml.lstm_model import LSTMRegressor, set_seed, get_device
+from app.ml.loss import get_loss_criterion, DirectionalHuberLoss
 from app.core.config import settings
 from app.core.logging import logger
 
@@ -21,16 +22,18 @@ def train_lstm_model(
     batch_size: int = settings.BATCH_SIZE,
     max_epochs: int = settings.MAX_EPOCHS,
     patience: int = settings.PATIENCE,
-    seed: int = settings.RANDOM_SEED
+    seed: int = settings.RANDOM_SEED,
+    loss_type: str = "directional_huber",
+    loss_delta: float = 0.01,
+    directional_penalty_weight: float = 0.5
 ) -> Tuple[LSTMRegressor, Dict[str, Any]]:
     """
-    Trains PyTorch LSTM Regressor with early stopping on validation MSE loss.
-    Shuffles training sequence windows in the DataLoader for one-step sequence regression.
-    Keeps validation un-shuffled.
+    Trains PyTorch LSTM Regressor with early stopping on validation loss.
+    Supports Directional Huber Loss with sign-penalty to prevent mean-convergence.
     """
     set_seed(seed)
     device = get_device()
-    logger.info(f"Initiating LSTM training on {device} (Max epochs={max_epochs}, batch={batch_size}, lr={lr})")
+    logger.info(f"Initiating LSTM training on {device} (Loss={loss_type}, Max epochs={max_epochs}, batch={batch_size}, lr={lr})")
 
     # Prepare PyTorch Tensors and DataLoaders
     train_dataset = TensorDataset(
@@ -45,7 +48,7 @@ def train_lstm_model(
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
-    input_size = X_train_scaled.shape[2]  # 6 features
+    input_size = X_train_scaled.shape[2]  # Features count
     model = LSTMRegressor(
         input_size=input_size,
         hidden_size=hidden_size,
@@ -54,7 +57,11 @@ def train_lstm_model(
         output_size=1
     ).to(device)
 
-    criterion = nn.MSELoss()
+    criterion = get_loss_criterion(
+        loss_type=loss_type,
+        delta=loss_delta,
+        penalty_weight=directional_penalty_weight
+    )
     optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
     best_val_loss = float("inf")
@@ -93,17 +100,16 @@ def train_lstm_model(
                 val_losses.append(loss.item())
 
         avg_val_loss = float(np.mean(val_losses))
-
         history.append({
             "epoch": epoch,
-            "trainLoss": avg_train_loss,
-            "valLoss": avg_val_loss
+            "train_loss": avg_train_loss,
+            "val_loss": avg_val_loss
         })
 
         if epoch % 5 == 0 or epoch == 1:
-            logger.info(f"Epoch {epoch:02d}/{max_epochs} - Train MSE: {avg_train_loss:.6f} | Val MSE: {avg_val_loss:.6f}")
+            logger.info(f"Epoch [{epoch:03d}/{max_epochs:03d}] - Train Loss: {avg_train_loss:.6f} - Val Loss: {avg_val_loss:.6f}")
 
-        # Check early stopping improvement
+        # Early stopping check
         if avg_val_loss < best_val_loss:
             best_val_loss = avg_val_loss
             best_epoch = epoch
@@ -112,18 +118,19 @@ def train_lstm_model(
         else:
             epochs_no_improve += 1
             if epochs_no_improve >= patience:
-                logger.info(f"Early stopping triggered at epoch {epoch}. Best epoch was {best_epoch} (Val MSE: {best_val_loss:.6f}).")
+                logger.info(f"Early stopping triggered at epoch {epoch}. Best epoch was {best_epoch} with val loss {best_val_loss:.6f}")
                 break
 
-    # Load best checkpoint
+    # Restore best weights
     if best_model_weights is not None:
         model.load_state_dict(best_model_weights)
-        logger.info(f"Restored best model weights from epoch {best_epoch} with val loss {best_val_loss:.6f}")
+        logger.info(f"Loaded best model weights from epoch {best_epoch}")
 
     training_metadata = {
-        "bestEpoch": best_epoch,
-        "bestValLoss": best_val_loss,
-        "totalEpochsTrained": len(history),
+        "best_epoch": best_epoch,
+        "best_val_loss": best_val_loss,
+        "total_epochs": epoch,
+        "loss_type": loss_type,
         "history": history
     }
 

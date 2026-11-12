@@ -4,7 +4,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
 from app.core.logging import setup_logging, logger
 from app.db.database import engine, Base
-from app.api.routes import health, market_data, forecast, model, evaluation, predictions, compat_v1, intelligence
+from app.api.routes import (
+    health,
+    market_data,
+    forecast,
+    model,
+    evaluation,
+    predictions,
+    compat_v1,
+    intelligence,
+    backtest,
+    user_data
+)
 
 
 @asynccontextmanager
@@ -47,6 +58,8 @@ app.include_router(evaluation.router, prefix="/api")
 app.include_router(predictions.router, prefix="/api")
 app.include_router(compat_v1.router, prefix="/api")
 app.include_router(intelligence.router, prefix="/api")
+app.include_router(backtest.router, prefix="/api")
+app.include_router(user_data.router, prefix="/api")
 
 
 @app.get("/")

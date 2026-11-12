@@ -52,3 +52,28 @@ class MarketDataMeta(Base):
     row_count = Column(Integer, nullable=False)
     latest_close = Column(Float, nullable=False)
     last_refreshed_at = Column(DateTime, default=datetime.datetime.utcnow)
+
+
+class WatchlistItem(Base):
+    __tablename__ = "watchlist_items"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(String(64), index=True, nullable=False, default="default_user")
+    ticker = Column(String(20), index=True, nullable=False)
+    name = Column(String(100), nullable=True)
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+
+
+class PortfolioHolding(Base):
+    __tablename__ = "portfolio_holdings"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(String(64), index=True, nullable=False, default="default_user")
+    ticker = Column(String(20), index=True, nullable=False)
+    shares = Column(Float, nullable=False)
+    avg_buy_price = Column(Float, nullable=False)
+    purchase_date = Column(String(30), nullable=True)
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
