@@ -1,8 +1,8 @@
 {
   "available": true,
   "modelVersion": "lstm-v1.0",
-  "jobId": "d251ba8e-95d9-471a-8f80-b01527bb1550",
-  "evaluatedAt": "2026-11-02T13:01:19.775758",
+  "jobId": "14febe71-6152-42e0-a058-bb0d39da9064",
+  "evaluatedAt": "2026-11-12T11:35:36.638061",
   "datasetDateRange": "2000-01-03 to 2026-10-16",
   "totalObservations": 6738,
   "splits": {

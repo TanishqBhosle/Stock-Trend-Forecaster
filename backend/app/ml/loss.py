@@ -43,3 +43,4 @@ def get_loss_criterion(loss_type: str = "directional_huber", delta: float = 0.01
         return nn.L1Loss()
     else:
         return nn.MSELoss()
+

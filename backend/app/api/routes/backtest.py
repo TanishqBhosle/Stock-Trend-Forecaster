@@ -48,3 +48,4 @@ def run_model_backtest(
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Backtest execution failed: {str(e)}")
+

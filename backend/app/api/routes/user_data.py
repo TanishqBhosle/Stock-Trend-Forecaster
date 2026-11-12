@@ -281,3 +281,4 @@ def delete_portfolio_holding(
     db.delete(holding)
     db.commit()
     return {"status": "success", "message": f"Holding ID {holding_id} deleted"}
+

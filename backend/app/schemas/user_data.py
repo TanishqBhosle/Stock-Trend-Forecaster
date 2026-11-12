@@ -51,3 +51,4 @@ class PortfolioHoldingResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
