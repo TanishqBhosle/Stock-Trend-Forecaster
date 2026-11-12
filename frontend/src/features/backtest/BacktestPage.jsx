@@ -313,7 +313,7 @@ export default function BacktestPage() {
               <TrendingUp size={36} className="placeholder-icon" />
               <p>Configure parameters and click "Run Model Backtest" to evaluate performance.</p>
               <p className="backtest-placeholder-sub">
-                Executes event-driven simulation directly against 668 verified PyTorch LSTM predictions with real trading friction.
+                Executes an event-driven simulation against verified PyTorch LSTM predictions with real trading friction.
               </p>
             </div>
           )}
