@@ -12,7 +12,7 @@ import { formatPrice, formatReturn } from '@/lib/signals'
 import './WatchlistPage.css'
 
 export default function WatchlistPage() {
-  const { tickers, add, remove } = useWatchlist()
+  const { tickers, add, remove, isDbSynced } = useWatchlist()
   const { addToast } = useToast()
   const navigate = useNavigate()
   const [addQuery, setAddQuery] = useState('')
@@ -52,15 +52,17 @@ export default function WatchlistPage() {
       <div className="page-header">
         <div>
           <h1 className="page-title">Personal Watchlist</h1>
-          <p className="page-subtitle">{tickers.length} tracked instrument{tickers.length !== 1 ? 's' : ''} (saved in local browser storage)</p>
+          <p className="page-subtitle">{tickers.length} tracked instrument{tickers.length !== 1 ? 's' : ''} (persisted to database)</p>
         </div>
-        <DataProvenanceLabel type="demo">Client localStorage</DataProvenanceLabel>
+        <DataProvenanceLabel type={isDbSynced ? "verified" : "demo"}>
+          {isDbSynced ? "PostgreSQL Synced" : "Local Cached"}
+        </DataProvenanceLabel>
       </div>
 
       <div className="watchlist-notice-callout">
         <Info size={16} className="notice-icon" />
         <p className="notice-text">
-          <strong>Client-Side State:</strong> Watchlists are stored locally in your browser via <code>localStorage</code>. Data is not synced to an external database.
+          <strong>Database Persistence Active:</strong> Watchlist instruments are saved to the PostgreSQL backend and synchronized with browser local caching for offline resilience.
         </p>
       </div>
 

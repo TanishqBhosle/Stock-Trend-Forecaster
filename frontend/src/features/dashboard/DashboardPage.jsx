@@ -30,6 +30,7 @@ function CustomTooltip({ active, payload }) {
 import { fetchStocks, fetchOHLCV, fetchForecast, fetchPredictions } from '@/services/stockService'
 import { SectorHeatmapWidget } from '@/components/intelligence/SectorHeatmapWidget'
 import { MacroNewsWidget } from '@/components/intelligence/MacroNewsWidget'
+import { InteractiveCandleChart } from '@/components/charts/InteractiveCandleChart'
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true)
@@ -153,31 +154,16 @@ export default function DashboardPage() {
             </div>
             <ChartRangeSelector selected={range} onChange={setRange} />
           </div>
-          {loading ? <ChartSkeleton height="240px" /> : (
-            <ResponsiveContainer width="100%" height={240}>
-              <AreaChart data={chartData}>
-                <defs>
-                  <linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="var(--chart-line)" stopOpacity={0.12}/>
-                    <stop offset="95%" stopColor="var(--chart-line)" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="date" tick={{ fontFamily:'var(--font-data)', fontSize:9, fill:'var(--chart-axis)' }} tickLine={false} axisLine={false} interval="preserveStartEnd" tickFormatter={d=>d?.slice(5)} />
-                <YAxis hide domain={['auto','auto']} />
-                <Tooltip content={<CustomTooltip />} />
-                <Area type="monotone" dataKey="close" stroke="var(--chart-line)" strokeWidth={1.5} fill="url(#dashGrad)" dot={false} activeDot={{ r:3, fill:'var(--terracotta)', stroke:'none' }} />
-              </AreaChart>
-            </ResponsiveContainer>
+          {loading ? (
+            <ChartSkeleton height="280px" />
+          ) : (
+            <InteractiveCandleChart
+              data={ohlcv}
+              forecast={activeForecast}
+              height={280}
+            />
           )}
-          <div className="dash-chart-footer">
-            <span className="dash-chart-legend">
-              <span className="legend-indicator" /> Historical Close
-            </span>
-            <span className="dash-chart-meta">
-              {ohlcv.length} trading sessions in range · Clean OHLCV series
-            </span>
-          </div>
-          <p className="chart-sr-desc sr-only">{`Historical price chart for ${selectedTicker} — ${range} range.`}</p>
+          <p className="chart-sr-desc sr-only">{`Interactive candlestick and predictive cone chart for ${selectedTicker} — ${range} range.`}</p>
         </section>
 
         {/* Forecast panel */}

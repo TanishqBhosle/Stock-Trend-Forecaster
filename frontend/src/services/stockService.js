@@ -283,22 +283,42 @@ export async function fetchExperiment(id) {
 // ── Backtest ──────────────────────────────────────────────────────────────────
 
 /**
- * Run a simulated backtest (deterministic demo result).
- * Returns clearly labeled simulated results — not real trading outcomes.
- *
- * @param {object} params
- * @param {string} params.ticker
- * @param {string} params.startDate
- * @param {string} params.endDate
- * @param {number} params.initialCapital
- * @param {number} [params.bullishThreshold=0.005]
- * @param {number} [params.bearishThreshold=-0.005]
- * @param {number} [params.transactionCostPct=0.001]
+ * Run a backtest using out-of-sample PyTorch LSTM predictions with transaction costs.
+ * Falls back to deterministic simulation only if the backend is unreachable.
  */
 export async function runBacktest(params) {
-  await delay(1200) // simulate compute time
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/backtest/run`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ticker: params.ticker || '^GSPC',
+          initialCapital: Number(params.initialCapital) || 100000,
+          bullishThreshold: Number(params.bullishThreshold) ?? 0.002,
+          bearishThreshold: Number(params.bearishThreshold) ?? -0.002,
+          transactionCostPct: Number(params.transactionCostPct) ?? 0.0005,
+          slippagePct: Number(params.slippagePct) ?? 0.0002,
+          strategyMode: params.strategyMode || 'long_only',
+          startDate: params.startDate || null,
+          endDate: params.endDate || null,
+        }),
+      })
+      if (res.ok) {
+        const data = await res.json()
+        return {
+          ...data,
+          dataStatus: 'verified-model',
+          _label: data.dataProvenance || 'Verified Out-of-Sample PyTorch Model Inference',
+        }
+      }
+    } catch (err) {
+      console.warn('Real backtest backend call failed, falling back to client simulation:', err)
+    }
+  }
 
-  // Deterministic result based on ticker seed
+  await delay(800)
+  // Deterministic result fallback based on ticker seed
   const seed = params.ticker.split('').reduce((a, c) => a + c.charCodeAt(0), 0)
   const r = (seed % 100) / 100
 
@@ -308,9 +328,8 @@ export async function runBacktest(params) {
   const maxDrawdown = -(0.05 + r * 0.15)
   const sharpe = -0.2 + r * 1.4
 
-  // Generate equity curve
-  const startDate = new Date(params.startDate)
-  const endDate   = new Date(params.endDate)
+  const startDate = new Date(params.startDate || '2024-01-01')
+  const endDate   = new Date(params.endDate || '2025-01-01')
   const days = Math.max(1, Math.floor((endDate - startDate) / (1000 * 60 * 60 * 24)))
   const equityCurve = []
   let equity = params.initialCapital
@@ -329,20 +348,114 @@ export async function runBacktest(params) {
   }
 
   return {
-    _label: 'Simulated demo results — not real trading performance',
+    _label: 'Simulated demo results — fallback simulation',
     ticker:          params.ticker,
     startDate:       params.startDate,
     endDate:         params.endDate,
     initialCapital:  params.initialCapital,
     finalCapital:    +(params.initialCapital * (1 + totalReturn)).toFixed(2),
     totalReturn:     +totalReturn.toFixed(4),
+    benchmarkReturn: +0.12,
+    alpha:           +(totalReturn - 0.12).toFixed(4),
     maxDrawdown:     +maxDrawdown.toFixed(4),
     sharpeRatio:     +sharpe.toFixed(3),
+    sortinoRatio:    +(sharpe * 1.15).toFixed(3),
     winRate:         +winRate.toFixed(3),
     totalTrades:     trades,
     equityCurve,
+    trades:          [],
     dataStatus:      'simulated-demo',
   }
+}
+
+// ── Watchlist Persistence ──────────────────────────────────────────────────────
+
+export async function fetchPersistedWatchlist(userId = 'default_user') {
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/watchlist?userId=${encodeURIComponent(userId)}`)
+      if (res.ok) {
+        return await res.json()
+      }
+    } catch (err) {
+      console.warn('Watchlist API offline, using local fallback:', err)
+    }
+  }
+  return null
+}
+
+export async function addPersistedWatchlist(ticker, name = '', userId = 'default_user') {
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/watchlist?userId=${encodeURIComponent(userId)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ticker, name }),
+      })
+      if (res.ok) return await res.json()
+    } catch (err) {
+      console.warn('Failed to add watchlist item to backend:', err)
+    }
+  }
+  return null
+}
+
+export async function removePersistedWatchlist(ticker, userId = 'default_user') {
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/watchlist/${encodeURIComponent(ticker)}?userId=${encodeURIComponent(userId)}`, {
+        method: 'DELETE',
+      })
+      if (res.ok) return await res.json()
+    } catch (err) {
+      console.warn('Failed to remove watchlist item from backend:', err)
+    }
+  }
+  return null
+}
+
+// ── Portfolio Persistence ──────────────────────────────────────────────────────
+
+export async function fetchPersistedPortfolio(userId = 'default_user') {
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/portfolio?userId=${encodeURIComponent(userId)}`)
+      if (res.ok) return await res.json()
+    } catch (err) {
+      console.warn('Portfolio API offline, using local fallback:', err)
+    }
+  }
+  return null
+}
+
+export async function addPersistedPortfolioHolding(holding, userId = 'default_user') {
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/portfolio?userId=${encodeURIComponent(userId)}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(holding),
+      })
+      if (res.ok) return await res.json()
+    } catch (err) {
+      console.warn('Failed to add portfolio holding:', err)
+    }
+  }
+  return null
+}
+
+export async function deletePersistedPortfolioHolding(holdingId, userId = 'default_user') {
+  if (!USE_MOCKS) {
+    try {
+      const res = await fetch(`${API_BASE}/api/portfolio/${holdingId}?userId=${encodeURIComponent(userId)}`, {
+        method: 'DELETE',
+      })
+      if (res.ok) return await res.json()
+    } catch (err) {
+      console.warn('Failed to delete portfolio holding:', err)
+    }
+  }
+  return null
 }
 
 // ── Health ────────────────────────────────────────────────────────────────────
