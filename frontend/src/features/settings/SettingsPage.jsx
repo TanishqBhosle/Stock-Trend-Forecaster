@@ -201,18 +201,31 @@ export default function SettingsPage() {
 
         <section className="settings-section">
           <h2 className="settings-section-title">Data Source &amp; Backend Connectivity</h2>
-          <div className="settings-row">
-            <span className="settings-label">Frontend Mock Layer</span>
-            <span className="settings-value settings-status-active">Active (VITE_USE_MOCKS=true)</span>
-          </div>
-          <div className="settings-row">
-            <span className="settings-label">FastAPI Backend Service</span>
-            <span className="settings-value settings-status-inactive">Disconnected (Frontend-only mode)</span>
-          </div>
-          <div className="settings-row">
-            <span className="settings-label">Model Weights (models/lstm_model.pt)</span>
-            <span className="settings-value settings-status-inactive">Pending training notebook execution</span>
-          </div>
+          {(() => {
+            const useMocks = import.meta.env.VITE_USE_MOCKS === 'true'
+            return (
+              <>
+                <div className="settings-row">
+                  <span className="settings-label">Frontend Mock Layer</span>
+                  <span className={`settings-value ${useMocks ? 'settings-status-active' : 'settings-status-inactive'}`}>
+                    {useMocks ? 'Active (Demo Mode)' : 'Disabled (Live API Mode)'}
+                  </span>
+                </div>
+                <div className="settings-row">
+                  <span className="settings-label">FastAPI Backend Service</span>
+                  <span className={`settings-value ${useMocks ? 'settings-status-inactive' : 'settings-status-active'}`}>
+                    {useMocks ? 'Disconnected (Frontend-only mode)' : 'Connected (http://localhost:8000)'}
+                  </span>
+                </div>
+                <div className="settings-row">
+                  <span className="settings-label">Model Weights (artifacts/lstm/model.pt)</span>
+                  <span className={`settings-value ${useMocks ? 'settings-status-inactive' : 'settings-status-active'}`}>
+                    {useMocks ? 'Pending backend connection' : 'Loaded via FastAPI backend'}
+                  </span>
+                </div>
+              </>
+            )
+          })()}
         </section>
 
         <section className="settings-section settings-danger-zone">

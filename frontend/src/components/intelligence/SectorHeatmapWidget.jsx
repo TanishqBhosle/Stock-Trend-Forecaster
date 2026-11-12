@@ -42,7 +42,23 @@ export function SectorHeatmapWidget() {
     )
   }
 
-  if (!data || !data.sectors) return null
+  if (!data || !data.sectors) return (
+    <div className="sector-heatmap-card">
+      <div className="sh-header">
+        <div className="sh-title-wrap">
+          <PieChart size={18} className="sh-icon" />
+          <div>
+            <h3 className="sh-title">S&P 500 GICS Sector Heatmap &amp; Breadth</h3>
+            <p className="sh-sub">Performance across all 11 official S&P 500 sectors &amp; capital rotation analysis</p>
+          </div>
+        </div>
+      </div>
+      <div className="sh-unavailable-notice">
+        <Info size={16} />
+        <span>Sector heatmap data requires backend connection — start the FastAPI server to load live sector performance.</span>
+      </div>
+    </div>
+  )
 
   const { sectors, breadth, rotation } = data
 

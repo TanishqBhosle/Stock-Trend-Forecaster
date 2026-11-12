@@ -92,7 +92,7 @@ export default function PortfolioPage() {
         setIsDbSynced(true)
       } else {
         // Optimistic local add
-        const currentRefPrice = 5864.67
+        const currentRefPrice = holdings[0]?.currentPrice ?? DEMO_STOCKS.find(s => s.ticker === newTicker)?.mockPrice ?? 5864.67
         const totalCost = Number(newShares) * Number(newPrice)
         const marketValue = Number(newShares) * currentRefPrice
         const pnl = marketValue - totalCost

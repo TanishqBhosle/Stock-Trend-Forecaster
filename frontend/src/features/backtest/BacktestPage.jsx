@@ -38,8 +38,8 @@ export default function BacktestPage() {
       endDate: '2026-10-16',
       initialCapital: '100000',
       strategyMode: 'long_only',
-      bullThreshold: '0.20',
-      bearThreshold: '-0.20',
+      bullThreshold: '0.50',
+      bearThreshold: '-0.50',
       txCost: '0.05',
       slippage: '0.02',
     },
@@ -86,14 +86,14 @@ export default function BacktestPage() {
           </p>
         </div>
         <DataProvenanceLabel type={isVerifiedModel ? 'verified' : 'illustrative'}>
-          {isVerifiedModel ? 'Verified PyTorch Model Inference (668 Days)' : 'Illustrative Simulation'}
+          {isVerifiedModel ? 'Verified PyTorch Model Inference' : 'Illustrative Simulation'}
         </DataProvenanceLabel>
       </div>
 
       <div className="backtest-disclosure-banner">
         <ShieldCheck size={18} className="banner-icon" />
         <p className="banner-text">
-          <strong>Production ML Backtest Engine:</strong> Evaluates simulated trades across 668 verifiable out-of-sample daily sessions (2024–2026). Incorporates realistic <strong>0.05% brokerage commission</strong> and <strong>0.02% market slippage friction</strong> on every position transition.
+          <strong>Production ML Backtest Engine:</strong> Evaluates simulated trades across verified out-of-sample daily sessions from the held-out test split. Incorporates realistic <strong>0.05% brokerage commission</strong> and <strong>0.02% market slippage friction</strong> on every position transition.
         </p>
       </div>
 
@@ -144,7 +144,7 @@ export default function BacktestPage() {
           </form>
 
           <div className="backtest-engine-notice">
-            Evaluates signal thresholds against 668 verified sequential trading dates.
+            Evaluates signal thresholds against verified sequential out-of-sample LSTM predictions from the held-out test split.
           </div>
         </aside>
 

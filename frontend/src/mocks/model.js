@@ -15,10 +15,10 @@ export const MODEL_CONFIG = {
   dropout:       0.2,
   lookback:      60,
   batchSize:     64,
-  optimizer:     'Adam (lr=0.001, weight_decay=1e-5)',
+  optimizer:     'Adam (lr=0.001)',
   lossFunction:  'Mean Squared Error (MSE)',
-  lrScheduler:   'Validation loss checkpointing with patience 7',
-  earlyStopping: 'Patience 7 epochs on validation loss (best restored at epoch 2)',
+  lrScheduler:   'Validation loss checkpointing with patience 15',
+  earlyStopping: 'Patience 15 epochs on validation loss (best restored at epoch 2)',
   gradientClip:  'None',
 
   // Exactly six raw features as strictly required
@@ -55,7 +55,7 @@ export const MODEL_CONFIG = {
     train:  { pct: 80, approxDates: '2000-03-29 to 2021-06-25', samples: 5342 },
     val:    { pct: 10, approxDates: '2021-06-28 to 2024-02-21', samples: 668 },
     test:   { pct: 10, approxDates: '2024-02-22 to 2026-10-16', samples: 668 },
-    scalerNote: 'MinMaxScaler fit strictly on training split (5,342 samples) to prevent data leakage.',
+    scalerNote: 'StandardScaler fit strictly on training split (5,342 samples) to prevent data leakage.',
   },
 
   metrics: {

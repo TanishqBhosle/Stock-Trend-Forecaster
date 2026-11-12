@@ -112,19 +112,41 @@ export default function ModelCardPage() {
               </div>
               <div className="mc-row">
                 <span className="mc-label">Return RMSE</span>
-                <span className="mc-value font-data" style={{ color: 'var(--teal)' }}>0.009655 (0.97%)</span>
+                <span className="mc-value font-data" style={{ color: 'var(--teal)' }}>
+                  {m.metrics.rmse != null
+                    ? `${m.metrics.rmse.toFixed(6)} (${(m.metrics.rmse * 100).toFixed(2)}%)`
+                    : m.metrics.lstm?.rmse != null
+                    ? `${m.metrics.lstm.rmse.toFixed(6)} (${(m.metrics.lstm.rmse * 100).toFixed(2)}%)`
+                    : '0.009655 (0.97%)'}
+                </span>
               </div>
               <div className="mc-row">
                 <span className="mc-label">Return MAE</span>
-                <span className="mc-value font-data" style={{ color: 'var(--teal)' }}>0.006537 (0.65%)</span>
+                <span className="mc-value font-data" style={{ color: 'var(--teal)' }}>
+                  {m.metrics.mae != null
+                    ? `${m.metrics.mae.toFixed(6)} (${(m.metrics.mae * 100).toFixed(2)}%)`
+                    : m.metrics.lstm?.mae != null
+                    ? `${m.metrics.lstm.mae.toFixed(6)} (${(m.metrics.lstm.mae * 100).toFixed(2)}%)`
+                    : '0.006537 (0.65%)'}
+                </span>
               </div>
               <div className="mc-row">
                 <span className="mc-label">Directional Accuracy</span>
-                <span className="mc-value font-data" style={{ color: 'var(--bullish)', fontWeight: 'bold' }}>55.39%</span>
+                <span className="mc-value font-data" style={{ color: 'var(--bullish)', fontWeight: 'bold' }}>
+                  {m.metrics.directionalAccuracy != null
+                    ? `${Number(m.metrics.directionalAccuracy).toFixed(2)}%`
+                    : m.metrics.lstm?.directionalAccuracy != null
+                    ? `${Number(m.metrics.lstm.directionalAccuracy).toFixed(2)}%`
+                    : '55.39%'}
+                </span>
               </div>
               <div className="mc-row">
                 <span className="mc-label">Walk-Forward Accuracy</span>
-                <span className="mc-value font-data" style={{ color: 'var(--bullish)' }}>55.39% (668 sequential steps)</span>
+                <span className="mc-value font-data" style={{ color: 'var(--bullish)' }}>
+                  {m.metrics.lstm?.walkForwardDA != null
+                    ? `${Number(m.metrics.lstm.walkForwardDA).toFixed(2)}% (668 sequential steps)`
+                    : '55.39% (668 sequential steps)'}
+                </span>
               </div>
             </div>
           </section>

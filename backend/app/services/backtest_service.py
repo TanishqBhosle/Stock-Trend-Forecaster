@@ -51,7 +51,8 @@ class BacktestService:
             try:
                 with open(self.test_predictions_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
-                predictions = data.get("predictions", [])
+                # Handle both plain list and {"predictions": [...]} dict shapes
+                predictions = data if isinstance(data, list) else data.get("predictions", [])
                 formatted = []
                 for p in predictions:
                     d = p.get("forecast_for") or p.get("target_date")

@@ -54,15 +54,21 @@ export function MacroNewsWidget() {
         <div className="mn-title-wrap">
           <Newspaper size={18} className="mn-icon" />
           <div>
-            <h3 className="mn-title">S&P 500 Macro Intelligence & Sentiment Heat</h3>
+            <h3 className="mn-title">S&P 500 Macro Intelligence &amp; Sentiment Heat</h3>
             <p className="mn-sub">Real-time macroeconomic drivers classified by AI directional sentiment</p>
           </div>
         </div>
         <span className="mn-badge-live">LIVE MACRO FEED</span>
       </div>
 
-      <div className="mn-list">
-        {news.map((item) => {
+      {news.length === 0 ? (
+        <div className="mn-unavailable-notice">
+          <Newspaper size={16} />
+          <span>Live macro news feed requires backend connection — start the FastAPI server to load real-time intelligence.</span>
+        </div>
+      ) : (
+        <div className="mn-list">
+          {news.map((item) => {
           const isBullish = item.sentiment === 'Bullish'
           const isBearish = item.sentiment === 'Bearish'
           const badgeClass = isBullish ? 'sentiment-bullish' : isBearish ? 'sentiment-bearish' : 'sentiment-neutral'
@@ -114,7 +120,8 @@ export function MacroNewsWidget() {
             </article>
           )
         })}
-      </div>
+        </div>
+      )}
     </div>
   )
 }

@@ -39,7 +39,7 @@ export function InteractiveCandleChart({
     const lastDate = new Date(lastRow.date)
 
     // Expected drift and daily standard deviation (annualized ~13.5% vol -> daily ~0.85%)
-    const dailyDrift = forecast?.predicted_return ?? 0.0005
+    const dailyDrift = forecast?.predictedReturn ?? forecast?.predicted_return ?? 0.0005
     const dailyVol = 0.0085
 
     const points = []

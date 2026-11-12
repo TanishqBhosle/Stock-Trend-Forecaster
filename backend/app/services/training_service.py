@@ -214,9 +214,19 @@ class TrainingService:
             with open(staging_dir / "metrics.json", "w") as f:
                 json.dump(combined_metrics, f, indent=2)
 
-            # Save training_history.json to staging
+            # Save training_history.json to staging (normalized to camelCase for frontend charts)
+            normalized_history = [
+                {"epoch": h["epoch"], "trainLoss": h["train_loss"], "valLoss": h["val_loss"]}
+                for h in train_meta.get("history", [])
+            ]
+            history_payload = {
+                "totalEpochsTrained": train_meta["total_epochs"],
+                "bestEpoch": train_meta["best_epoch"],
+                "bestValLoss": train_meta["best_val_loss"],
+                "history": normalized_history
+            }
             with open(staging_dir / "training_history.json", "w") as f:
-                json.dump(train_meta, f, indent=2)
+                json.dump(history_payload, f, indent=2)
 
             # Save predictions cache to staging
             with open(staging_dir / "test_predictions.json", "w") as f:
@@ -246,8 +256,8 @@ class TrainingService:
             # Update DB
             run_record.status = "completed"
             run_record.completed_at = datetime.datetime.utcnow()
-            run_record.epochs_trained = train_meta["totalEpochsTrained"]
-            run_record.best_val_loss = train_meta["bestValLoss"]
+            run_record.epochs_trained = train_meta["total_epochs"]
+            run_record.best_val_loss = train_meta["best_val_loss"]
             run_record.test_rmse = test_eval["metrics"]["rmse"]
             run_record.test_mae = test_eval["metrics"]["mae"]
             run_record.test_directional_accuracy = test_eval["metrics"]["directionalAccuracy"]
