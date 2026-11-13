@@ -41,5 +41,6 @@ backend/data/*.sqlite*
 # OS / Editor
 .DS_Store
 Thumbs.db
+*.bak
 .vscode/
 .idea/
