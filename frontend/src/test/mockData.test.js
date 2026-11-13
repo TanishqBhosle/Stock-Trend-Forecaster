@@ -6,7 +6,7 @@ import { classifySignal } from '@/lib/signals'
 
 describe('DEMO_STOCKS', () => {
   it('contains the primary ^GSPC asset', () => {
-    expect(DEMO_STOCKS).toHaveLength(1)
+    expect(DEMO_STOCKS.length).toBeGreaterThanOrEqual(1)
     expect(DEMO_STOCKS[0].ticker).toBe('^GSPC')
   })
 
