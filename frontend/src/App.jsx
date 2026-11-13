@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { ThemeProvider } from '@/context/ThemeContext'
 import { AuthProvider } from '@/hooks/useAuth'
 import { ToastProvider } from '@/components/ui/Toast'
 import { AppShell } from '@/components/layout/AppShell'
@@ -40,8 +41,9 @@ function FallbackPage() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <ToastProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <ToastProvider>
           <Suspense fallback={<FallbackPage />}>
             <Routes>
               {/* ── Public landing ──────────────────────────────────── */}
@@ -99,6 +101,7 @@ export default function App() {
           </Suspense>
         </ToastProvider>
       </AuthProvider>
-    </BrowserRouter>
+    </ThemeProvider>
+  </BrowserRouter>
   )
 }

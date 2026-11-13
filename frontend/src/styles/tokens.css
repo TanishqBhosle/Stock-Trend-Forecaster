@@ -33,6 +33,9 @@
   --text-inverse:   #FBF8F2;
   --text-brand:     #C4552D;
   --text-data:      #2E4A57;
+  --text:           var(--text-primary);
+  --font-heading:   var(--font-display);
+  --font-bold:      700;
 
   /* ── Backgrounds ─────────────────────────────────────────── */
   --bg-page:        #FBF8F2;

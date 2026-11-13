@@ -40,6 +40,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.22s cubic-bezier(0.22, 1, 0.36, 1), color 0.18s ease;
+}
+
+body, .app-shell, .sidebar, .topnav, .macro-news-card, .sector-heatmap-card,
+.dash-chart-section, .dash-forecast-panel, .dash-signals, .dash-perf-summary,
+.dash-watchlist, .ln-root, .ln-preview, .ln-product__feature {
+  transition: background-color 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.18s ease;
 }
 
 /* Paper grain texture — very subtle, performance-safe */
