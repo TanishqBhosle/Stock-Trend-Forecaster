@@ -6,6 +6,7 @@ import {
   Activity, Database, Cpu, Shield, ArrowUpRight
 } from 'lucide-react'
 import { ArthNexLogo } from '@/components/ui/ArthNexLogo'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { DEMO_STOCKS } from '@/mocks/stocks'
 import { getOHLCV, filterByRange } from '@/mocks/ohlcv'
 import { getForecast } from '@/mocks/forecasts'
@@ -45,6 +46,7 @@ function LandingNav() {
 
         {/* Actions */}
         <div className="ln-nav__actions">
+          <ThemeToggle />
           <Link to="/login" className="ln-nav__sign-in">Sign In</Link>
           <Link to="/signup" className="ln-nav__cta">
             Get Started <ArrowRight size={14} />
@@ -494,14 +496,14 @@ export default function LandingPage() {
               </div>
               {/* Compact chart visual */}
               <div className="ln-product__feature-visual" aria-label="Illustrative forecast chart">
-                <ResponsiveContainer width="100%" height={100}>
+                <ResponsiveContainer width="100%" height={120}>
                   <AreaChart
                     data={filterByRange(getOHLCV('^GSPC'), '3M').slice(-40)}
-                    margin={{ top: 4, right: 0, bottom: 0, left: 0 }}
+                    margin={{ top: 8, right: 4, bottom: 4, left: 4 }}
                   >
                     <defs>
                       <linearGradient id="prodGrad1" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#C4552D" stopOpacity={0.18} />
+                        <stop offset="0%" stopColor="#C4552D" stopOpacity={0.22} />
                         <stop offset="100%" stopColor="#C4552D" stopOpacity={0.0} />
                       </linearGradient>
                     </defs>
@@ -509,7 +511,7 @@ export default function LandingPage() {
                       type="monotone"
                       dataKey="close"
                       stroke="#C4552D"
-                      strokeWidth={1.8}
+                      strokeWidth={2}
                       fill="url(#prodGrad1)"
                       dot={false}
                     />
@@ -571,7 +573,10 @@ export default function LandingPage() {
                 <div className="ln-eval-bars">
                   {PERF_METRICS_DATA.map(m => (
                     <div key={m.name} className="ln-eval-bar__row">
-                      <span className="ln-eval-bar__name">{m.name}</span>
+                      <div className="ln-eval-bar__header">
+                        <span className="ln-eval-bar__name">{m.name}</span>
+                        <span className="ln-eval-bar__val" style={{ color: m.color }}>{m.val}</span>
+                      </div>
                       <div className="ln-eval-bar__track">
                         <div
                           className="ln-eval-bar__fill"
@@ -579,10 +584,9 @@ export default function LandingPage() {
                           aria-label={`${m.name} ${m.val}`}
                         />
                       </div>
-                      <span className="ln-eval-bar__val">{m.val}</span>
                     </div>
                   ))}
-                  <p className="ln-eval-bars__note">Verified test split (668 sessions)</p>
+                  <p className="ln-eval-bars__note">Verified held-out test split (668 sessions)</p>
                 </div>
               </div>
             </Reveal>

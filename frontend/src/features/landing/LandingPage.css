@@ -64,6 +64,45 @@
   overflow-x: hidden;
 }
 
+/* ── Dark Mode Overrides for Landing Page ────────────────── */
+html.dark .ln-root {
+  --ln-bg-base:        #0E1318;
+  --ln-bg-surface:     #161D26;
+  --ln-bg-surface-2:   #1D2633;
+  --ln-bg-elevated:    #1F2937;
+  --ln-bg-card:        #18202C;
+  --ln-bg-card-subtle: #141A24;
+
+  --ln-text-primary:   #F3F4F6;
+  --ln-text-secondary: #9CA3AF;
+  --ln-text-muted:     #6B7280;
+
+  --ln-border:         #2B3545;
+  --ln-border-subtle:  #202938;
+  --ln-border-strong:  #3D4A5E;
+
+  --ln-shadow-xs:      0 1px 2px rgba(0, 0, 0, 0.4);
+  --ln-shadow-sm:      0 2px 5px rgba(0, 0, 0, 0.4);
+  --ln-shadow-md:      0 6px 18px rgba(0, 0, 0, 0.5);
+  --ln-shadow-lg:      0 14px 34px rgba(0, 0, 0, 0.6);
+  --ln-shadow-xl:      0 24px 56px rgba(0, 0, 0, 0.7);
+}
+
+html.dark .ln-nav--scrolled {
+  background: rgba(14, 19, 24, 0.88);
+  border-bottom-color: var(--ln-border-subtle);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+html.dark .ln-forecasting__detail-card,
+html.dark .ln-step-card,
+html.dark .ln-methodology__card,
+html.dark .ln-faq__item,
+html.dark .ln-research__card {
+  background: var(--ln-bg-card) !important;
+  border-color: var(--ln-border) !important;
+}
+
 /* ── Container ───────────────────────────────────────────── */
 .ln-container {
   width: 100%;
@@ -906,7 +945,7 @@
 }
 
 .ln-product__feature {
-  background: #FFFFFF;
+  background: var(--ln-bg-card);
   border: 1px solid var(--ln-border);
   border-radius: var(--ln-radius-lg);
   padding: 30px;
@@ -1042,23 +1081,36 @@
 
 .ln-eval-bar__row {
   display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ln-eval-bar__header {
+  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .ln-eval-bar__name {
   font-family: var(--font-data, 'JetBrains Mono', monospace);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ln-text-secondary);
-  width: 44px;
-  flex-shrink: 0;
+}
+
+.ln-eval-bar__val {
+  font-family: var(--font-data, 'JetBrains Mono', monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ln-text-primary);
+  text-align: right;
 }
 
 .ln-eval-bar__track {
-  flex: 1;
+  width: 100%;
   height: 6px;
-  background: var(--ln-bg-surface);
+  background: var(--ln-bg-surface-2);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -1069,20 +1121,10 @@
   transition: width 0.6s ease;
 }
 
-.ln-eval-bar__val {
-  font-family: var(--font-data, 'JetBrains Mono', monospace);
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--ln-text-primary);
-  width: 40px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
 .ln-eval-bars__note {
   font-size: 0.6875rem;
   color: var(--ln-text-muted);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* ═══════════════════════════════════════════════════════════
