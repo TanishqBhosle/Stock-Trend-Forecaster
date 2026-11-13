@@ -1,12 +1,13 @@
 .macro-news-card {
-  background: var(--surface);
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   padding: var(--space-5);
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  height: 100%;
 }
 
 .mn-unavailable-notice {
@@ -14,11 +15,12 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-4);
-  background: var(--bg-muted);
+  background: var(--bg-surface);
   border: 1px dashed var(--border);
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
+  line-height: 1.5;
 }
 
 .mn-header {
@@ -27,6 +29,7 @@
   justify-content: space-between;
   border-bottom: 1px solid var(--border-subtle);
   padding-bottom: var(--space-3);
+  gap: var(--space-2);
 }
 
 .mn-title-wrap {
@@ -41,10 +44,10 @@
 }
 
 .mn-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: var(--text-md);
-  font-weight: var(--font-bold);
-  color: var(--text);
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -55,36 +58,44 @@
 }
 
 .mn-badge-live {
+  font-family: var(--font-data);
   font-size: 10px;
-  font-weight: bold;
+  font-weight: var(--weight-bold);
   letter-spacing: 0.05em;
   padding: 3px 8px;
   border-radius: var(--radius-full);
-  background: rgba(46, 125, 90, 0.12);
+  background: rgba(47, 127, 122, 0.12);
   color: var(--bullish);
-  border: 1px solid rgba(46, 125, 90, 0.3);
+  border: 1px solid rgba(47, 127, 122, 0.25);
+  white-space: nowrap;
 }
 
 .mn-list {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-width: thin;
 }
 
 .mn-item {
-  background: var(--surface-elevated);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: var(--space-3) var(--space-4);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  transition: transform var(--duration-fast) var(--ease-out), border-color var(--duration-fast);
+  transition: all var(--duration-micro) var(--ease-out);
 }
 
 .mn-item:hover {
   transform: translateY(-1px);
-  border-color: var(--border);
+  border-color: var(--border-strong);
+  background: var(--bg-elevated);
+  box-shadow: var(--shadow-xs);
 }
 
 .mn-item-top {
@@ -94,8 +105,9 @@
 }
 
 .mn-category {
+  font-family: var(--font-data);
   font-size: 10px;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -105,128 +117,97 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  font-family: var(--font-data);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   padding: 2px 8px;
   border-radius: var(--radius-full);
 }
 
 .sentiment-bullish {
-  background: rgba(46, 125, 90, 0.15);
+  background: rgba(47, 127, 122, 0.12);
   color: var(--bullish);
-  border: 1px solid rgba(46, 125, 90, 0.35);
+  border: 1px solid rgba(47, 127, 122, 0.25);
 }
 
 .sentiment-bearish {
-  background: rgba(181, 72, 58, 0.15);
+  background: rgba(181, 72, 58, 0.12);
   color: var(--bearish);
-  border: 1px solid rgba(181, 72, 58, 0.35);
+  border: 1px solid rgba(181, 72, 58, 0.25);
 }
 
 .sentiment-neutral {
-  background: rgba(120, 110, 100, 0.12);
+  background: rgba(138, 127, 115, 0.12);
   color: var(--text-secondary);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-subtle);
 }
 
 .mn-headline {
   margin: 0;
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
+  font-size: var(--text-xs);
   line-height: 1.45;
+  font-weight: var(--weight-medium);
 }
 
 .mn-link {
-  color: var(--text);
+  color: var(--text-primary);
   text-decoration: none;
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 4px;
 }
 
 .mn-link:hover {
-  color: var(--teal);
+  color: var(--text-brand);
+  text-decoration: underline;
 }
 
 .mn-ext {
   color: var(--text-muted);
   flex-shrink: 0;
+  vertical-align: middle;
 }
 
 .mn-meta-bar {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  font-size: var(--text-xs);
+  font-size: 11px;
   color: var(--text-muted);
-  position: relative;
+  flex-wrap: wrap;
 }
 
-.mn-edu-wrap {
-  margin-left: auto;
-  position: relative;
+.mn-publisher {
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
 }
 
-.mn-edu-trigger {
+.mn-date {
+  font-family: var(--font-data);
+  font-size: 10px;
+}
+
+.mn-edu-btn {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  background: none;
+  gap: 3px;
+  background: transparent;
   border: none;
-  color: var(--teal);
   font-size: 11px;
-  font-weight: 500;
+  color: var(--text-muted);
   cursor: pointer;
-  padding: 2px 4px;
-  border-radius: var(--radius-xs);
+  padding: 0;
+}
+.mn-edu-btn:hover {
+  color: var(--text-primary);
 }
 
-.mn-edu-trigger:hover {
-  background: rgba(28, 126, 110, 0.08);
-}
-
-.mn-tooltip {
-  position: absolute;
-  bottom: calc(100% + 6px);
-  right: 0;
-  width: 290px;
-  background: var(--bg-ink, #1f2421);
-  color: #f7f9f8;
+.mn-edu-drawer {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
   padding: var(--space-3);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-  font-size: 11px;
+  font-size: var(--text-xs);
   line-height: 1.5;
-  z-index: 50;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
 }
-
-.mn-tooltip-header {
-  font-weight: bold;
-  color: #8ed6c5;
-  margin-bottom: 4px;
-}
-
-.mn-tooltip p {
-  margin: 0;
-  color: #e2e8e5;
-}
-
-.mn-skeleton-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-
-.mn-skeleton-item {
-  height: 64px;
-  background: var(--surface-elevated);
-  border-radius: var(--radius-sm);
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 0.3; }
-}
-

@@ -1,8 +1,7 @@
 .topnav {
   position: sticky;
   top: 0;
-  left: var(--sidebar-width);
-  right: 0;
+  width: 100%;
   height: var(--topnav-height);
   display: flex;
   align-items: center;
@@ -11,6 +10,8 @@
   background: var(--bg-page);
   border-bottom: 1px solid var(--border);
   z-index: var(--z-sticky);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .topnav-scientist {
