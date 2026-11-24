@@ -1,4 +1,6 @@
-.tabs {}
+.tabs {
+  width: 100%;
+}
 
 .tabs-list {
   display: flex;
@@ -42,4 +44,6 @@
 
 .tabs-content { padding-top: var(--space-6); }
 
-.tab-panel {}
+.tab-panel {
+  width: 100%;
+}

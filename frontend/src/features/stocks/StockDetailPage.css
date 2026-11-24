@@ -1,4 +1,8 @@
-.stock-detail {}
+.stock-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
 
 .detail-header {
   display: flex;

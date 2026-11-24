@@ -1,4 +1,8 @@
-.watchlist-page {}
+.watchlist-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
 
 .watchlist-add-wrap { position: relative; margin-bottom: var(--space-3); }
 .watchlist-add-input-wrap { position: relative; display: inline-block; }

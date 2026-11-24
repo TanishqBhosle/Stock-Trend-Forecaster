@@ -38,8 +38,8 @@ export default function BacktestPage() {
       endDate: '2026-10-16',
       initialCapital: '100000',
       strategyMode: 'long_only',
-      bullThreshold: '0.50',
-      bearThreshold: '-0.50',
+      bullThreshold: '0.051',
+      bearThreshold: '0.049',
       txCost: '0.05',
       slippage: '0.02',
     },
@@ -124,8 +124,8 @@ export default function BacktestPage() {
             <Input id="initialCapital" label="Initial Capital ($)" type="number" min="1000" step="1000" error={errors.initialCapital?.message} {...register('initialCapital')} />
 
             <div className="form-row-dual">
-              <Input id="bullThreshold" label="Bullish Trigger (%)" type="number" step="0.05" error={errors.bullThreshold?.message} {...register('bullThreshold')} />
-              <Input id="bearThreshold" label="Bearish Trigger (%)" type="number" step="0.05" error={errors.bearThreshold?.message} {...register('bearThreshold')} />
+              <Input id="bullThreshold" label="Bullish Trigger (%)" type="number" step="0.001" error={errors.bullThreshold?.message} {...register('bullThreshold')} />
+              <Input id="bearThreshold" label="Bearish Trigger (%)" type="number" step="0.001" error={errors.bearThreshold?.message} {...register('bearThreshold')} />
             </div>
 
             <div className="form-row-dual">
