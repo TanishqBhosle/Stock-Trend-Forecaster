@@ -13,7 +13,6 @@ const USER_NAV = [
     { to: '/app/dashboard',   icon: LayoutDashboard, label: 'Dashboard' },
     { to: '/app/stocks',      icon: TrendingUp,      label: 'Stocks' },
     { to: '/app/watchlist',   icon: Star,            label: 'Watchlist' },
-    { to: '/app/portfolio',   icon: BarChart2,       label: 'Portfolio' },
   ]},
   { group: 'Analysis', items: [
     { to: '/app/predictions', icon: FileText,  label: 'Predictions' },

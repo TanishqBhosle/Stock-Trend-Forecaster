@@ -21,7 +21,6 @@ const StocksPage         = lazy(() => import('@/features/stocks/StocksPage'))
 const StockDetailPage    = lazy(() => import('@/features/stocks/StockDetailPage'))
 const ForecastPage       = lazy(() => import('@/features/forecasts/ForecastPage'))
 const WatchlistPage      = lazy(() => import('@/features/watchlist/WatchlistPage'))
-const PortfolioPage      = lazy(() => import('@/features/portfolio/PortfolioPage'))
 const PredictionsPage    = lazy(() => import('@/features/predictions/PredictionsPage'))
 const BacktestPage       = lazy(() => import('@/features/backtest/BacktestPage'))
 const ModelCardPage      = lazy(() => import('@/features/model-card/ModelCardPage'))
@@ -70,7 +69,6 @@ export default function App() {
                 <Route path="stocks/:ticker"    element={<StockDetailPage />} />
                 <Route path="forecast/:ticker"  element={<ForecastPage />} />
                 <Route path="watchlist"         element={<WatchlistPage />} />
-                <Route path="portfolio"         element={<PortfolioPage />} />
                 <Route path="predictions"       element={<PredictionsPage />} />
                 <Route path="backtest"          element={<BacktestPage />} />
                 <Route path="model-card"        element={<ModelCardPage />} />

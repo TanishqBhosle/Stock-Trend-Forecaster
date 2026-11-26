@@ -75,7 +75,6 @@ function generateBreadcrumbs(pathname) {
     dashboard: 'Dashboard',
     stocks: 'Stocks',
     watchlist: 'Watchlist',
-    portfolio: 'Portfolio',
     predictions: 'Predictions',
     backtest: 'Backtesting',
     forecast: 'Forecast',

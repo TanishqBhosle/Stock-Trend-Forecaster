@@ -12,7 +12,7 @@ const ROLES = [
     id: 'user',
     icon: BarChart2,
     title: 'Investor / Analyst',
-    description: 'Explore stocks, view forecasts, manage a watchlist, compare portfolios, and run backtests.',
+    description: 'Explore stocks, view forecasts, manage a watchlist, and run backtests.',
     destination: '/app/dashboard',
   },
   {
