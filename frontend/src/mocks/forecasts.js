@@ -19,8 +19,8 @@
 import { DEMO_STOCKS } from './stocks'
 
 const MODEL_VERSION = 'lstm-v0.1-demo'
-const FORECAST_DATE = '2026-10-13'
-const FORECAST_FOR  = '2026-10-14'
+const FORECAST_DATE = '2026-11-23'
+const FORECAST_FOR  = '2026-11-24'
 
 /** @returns {ForecastResult[]} */
 export const DEMO_FORECASTS = DEMO_STOCKS.map((s) => ({

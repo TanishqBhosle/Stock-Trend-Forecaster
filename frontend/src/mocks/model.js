@@ -41,12 +41,12 @@ export const MODEL_CONFIG = {
   dataset: {
     source:        'Yahoo Finance (^GSPC)',
     file:          'GSPC_daily_clean.parquet / GSPC.csv',
-    rows:          6738,
+    rows:          6764,
     columns:       ['Date', 'Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume'],
-    dateRange:     '2000-01-03 to 2026-10-16',
+    dateRange:     '2000-01-03 to 2026-11-23',
     missingValues: 0,
     duplicates:    0,
-    totalSequences: 6678,
+    totalSequences: 6704,
     noteVolume:    'Cleaned and validated market trading calendar without weekend/holiday forward-filling.',
   },
 
