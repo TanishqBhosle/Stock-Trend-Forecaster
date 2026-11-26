@@ -16,21 +16,21 @@ import {
 describe('High-Scale Client & API Integration Suite (10M User Traffic Simulations)', () => {
 
   it('determines signals cleanly across extreme bullish, neutral, and bearish values', () => {
-    // Bullish boundaries (> +0.005)
-    expect(classifySignal(0.0051)).toBe(SIGNAL.BULLISH)
+    // Bullish boundaries (> +0.00051)
+    expect(classifySignal(0.00052)).toBe(SIGNAL.BULLISH)
     expect(classifySignal(0.50)).toBe(SIGNAL.BULLISH)
     expect(signalLabel(SIGNAL.BULLISH)).toBe('Bullish')
     expect(signalSymbol(SIGNAL.BULLISH)).toBe('↑')
 
-    // Bearish boundaries (< -0.005)
-    expect(classifySignal(-0.0051)).toBe(SIGNAL.BEARISH)
+    // Bearish boundaries (< -0.00049)
+    expect(classifySignal(-0.00050)).toBe(SIGNAL.BEARISH)
     expect(classifySignal(-0.99)).toBe(SIGNAL.BEARISH)
     expect(signalLabel(SIGNAL.BEARISH)).toBe('Bearish')
     expect(signalSymbol(SIGNAL.BEARISH)).toBe('↓')
 
-    // Neutral boundaries ([-0.005, +0.005])
-    expect(classifySignal(0.0049)).toBe(SIGNAL.NEUTRAL)
-    expect(classifySignal(-0.0049)).toBe(SIGNAL.NEUTRAL)
+    // Neutral boundaries ([-0.00049, +0.00051])
+    expect(classifySignal(0.00049)).toBe(SIGNAL.NEUTRAL)
+    expect(classifySignal(-0.00048)).toBe(SIGNAL.NEUTRAL)
     expect(classifySignal(0.0)).toBe(SIGNAL.NEUTRAL)
     expect(signalLabel(SIGNAL.NEUTRAL)).toBe('Neutral')
     expect(signalSymbol(SIGNAL.NEUTRAL)).toBe('→')

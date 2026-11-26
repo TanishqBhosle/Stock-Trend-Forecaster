@@ -2,10 +2,10 @@
  * Signal classification utilities.
  * Source of truth for BULLISH / NEUTRAL / BEARISH thresholds.
  *
- * Thresholds verified from project README:
- *   Bullish:  return > +0.5%
- *   Neutral: -0.5% <= return <= +0.5%
- *   Bearish:  return < -0.5%
+ * Calibrated conviction thresholds:
+ *   Bullish:  return > +0.051% (+0.00051)
+ *   Neutral: -0.049% <= return <= +0.051%
+ *   Bearish:  return < -0.049% (-0.00049)
  */
 
 /** @typedef {'BULLISH' | 'NEUTRAL' | 'BEARISH'} SignalType */
@@ -16,7 +16,9 @@ export const SIGNAL = {
   BEARISH: 'BEARISH',
 }
 
-export const SIGNAL_THRESHOLD = 0.005 // 0.5%
+export const BULLISH_THRESHOLD = 0.00051 // +0.051%
+export const BEARISH_THRESHOLD = -0.00049 // -0.049%
+export const SIGNAL_THRESHOLD = BULLISH_THRESHOLD
 
 /**
  * Classify a predicted return into a trend signal.
@@ -27,8 +29,8 @@ export function classifySignal(predictedReturn) {
   if (typeof predictedReturn !== 'number' || isNaN(predictedReturn)) {
     return SIGNAL.NEUTRAL
   }
-  if (predictedReturn > SIGNAL_THRESHOLD) return SIGNAL.BULLISH
-  if (predictedReturn < -SIGNAL_THRESHOLD) return SIGNAL.BEARISH
+  if (predictedReturn > BULLISH_THRESHOLD) return SIGNAL.BULLISH
+  if (predictedReturn < BEARISH_THRESHOLD) return SIGNAL.BEARISH
   return SIGNAL.NEUTRAL
 }
 

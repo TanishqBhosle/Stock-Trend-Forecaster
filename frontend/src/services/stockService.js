@@ -295,8 +295,8 @@ export async function runBacktest(params) {
         body: JSON.stringify({
           ticker: params.ticker || '^GSPC',
           initialCapital: Number(params.initialCapital) || 100000,
-          bullishThreshold: Number(params.bullishThreshold) ?? 0.002,
-          bearishThreshold: Number(params.bearishThreshold) ?? -0.002,
+          bullishThreshold: Number(params.bullishThreshold) ?? 0.00051,
+          bearishThreshold: Number(params.bearishThreshold) ?? -0.00049,
           transactionCostPct: Number(params.transactionCostPct) ?? 0.0005,
           slippagePct: Number(params.slippagePct) ?? 0.0002,
           strategyMode: params.strategyMode || 'long_only',

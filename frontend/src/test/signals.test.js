@@ -6,29 +6,32 @@ import {
   formatReturn,
   SIGNAL,
   SIGNAL_THRESHOLD,
+  BULLISH_THRESHOLD,
+  BEARISH_THRESHOLD,
 } from '@/lib/signals'
 
 describe('classifySignal', () => {
-  it('returns BULLISH for return above +0.5%', () => {
-    expect(classifySignal(0.006)).toBe(SIGNAL.BULLISH)
+  it('returns BULLISH for return above +0.051%', () => {
+    expect(classifySignal(0.0006)).toBe(SIGNAL.BULLISH)
     expect(classifySignal(0.05)).toBe(SIGNAL.BULLISH)
     expect(classifySignal(0.1)).toBe(SIGNAL.BULLISH)
   })
 
-  it('returns BEARISH for return below -0.5%', () => {
-    expect(classifySignal(-0.006)).toBe(SIGNAL.BEARISH)
+  it('returns BEARISH for return below -0.049%', () => {
+    expect(classifySignal(-0.0006)).toBe(SIGNAL.BEARISH)
     expect(classifySignal(-0.05)).toBe(SIGNAL.BEARISH)
     expect(classifySignal(-0.1)).toBe(SIGNAL.BEARISH)
   })
 
-  it('returns NEUTRAL for return exactly at +0.5% boundary', () => {
+  it('returns NEUTRAL for return exactly at +0.051% boundary', () => {
+    expect(classifySignal(BULLISH_THRESHOLD)).toBe(SIGNAL.NEUTRAL)
     expect(classifySignal(SIGNAL_THRESHOLD)).toBe(SIGNAL.NEUTRAL)
-    expect(classifySignal(0.005)).toBe(SIGNAL.NEUTRAL)
+    expect(classifySignal(0.00051)).toBe(SIGNAL.NEUTRAL)
   })
 
-  it('returns NEUTRAL for return exactly at -0.5% boundary', () => {
-    expect(classifySignal(-SIGNAL_THRESHOLD)).toBe(SIGNAL.NEUTRAL)
-    expect(classifySignal(-0.005)).toBe(SIGNAL.NEUTRAL)
+  it('returns NEUTRAL for return exactly at -0.049% boundary', () => {
+    expect(classifySignal(BEARISH_THRESHOLD)).toBe(SIGNAL.NEUTRAL)
+    expect(classifySignal(-0.00049)).toBe(SIGNAL.NEUTRAL)
   })
 
   it('returns NEUTRAL for zero', () => {
@@ -45,11 +48,11 @@ describe('classifySignal', () => {
     expect(classifySignal(undefined)).toBe(SIGNAL.NEUTRAL)
   })
 
-  it('uses strict greater/less than (not >=/>= )', () => {
+  it('uses strict greater/less than (not >=/<= )', () => {
     // Just above threshold = BULLISH
-    expect(classifySignal(0.00501)).toBe(SIGNAL.BULLISH)
+    expect(classifySignal(0.00052)).toBe(SIGNAL.BULLISH)
     // Just below threshold = BEARISH
-    expect(classifySignal(-0.00501)).toBe(SIGNAL.BEARISH)
+    expect(classifySignal(-0.00050)).toBe(SIGNAL.BEARISH)
   })
 })
 
