@@ -127,11 +127,11 @@ const PERF_METRICS_DATA = [
 
 // ── Workflow steps ───────────────────────────────────────────────────────────
 const WORKFLOW_STEPS = [
-  { num: '01', label: 'Historical Data', desc: '6,738 daily S&P 500 OHLCV observations from 2000–present via Yahoo Finance.' },
+  { num: '01', label: 'Historical Data', desc: '6,764 daily S&P 500 OHLCV observations from 2000–present via Yahoo Finance.' },
   { num: '02', label: 'Leak-Free Preprocessing', desc: '6 raw OHLCV features scaled with StandardScaler fit strictly on the 80% train split.' },
-  { num: '03', label: 'Stacked PyTorch LSTM', desc: '2-layer LSTM (64 hidden units, 0.2 dropout, 60-day lookback) predicting continuous return.' },
+  { num: '03', label: 'Stacked PyTorch LSTM', desc: '2-layer LSTM (128 hidden units, 0.2 dropout, 60-day lookback) predicting continuous return.' },
   { num: '04', label: 'Out-of-Sample Evaluation', desc: 'Tested across 668 chronological sessions (RMSE: 0.0097, MAE: 0.0065, DA: 55.39%).' },
-  { num: '05', label: 'Trend Classification', desc: 'Predicted return categorized into Bullish (>+0.15%), Neutral, or Bearish (<−0.15%).' },
+  { num: '05', label: 'Trend Classification', desc: 'Predicted return categorized into Bullish (>+0.051%), Neutral, or Bearish (<−0.049%).' },
 ]
 
 // ── Main export ──────────────────────────────────────────────────────────────
@@ -447,7 +447,7 @@ export default function LandingPage() {
         <div className="ln-container">
           <div className="ln-stats__grid">
             {[
-              { val: '6,738',   label: 'Daily Trading Days', desc: 'S&P 500 records from 2000–present' },
+              { val: '6,764',   label: 'Daily Trading Days', desc: 'S&P 500 records from 2000–present' },
               { val: '6',       label: 'Raw OHLCV Features', desc: 'Open, High, Low, Close, Adj Close, Volume' },
               { val: '55.39%',  label: 'Directional Accuracy', desc: 'Held-out test split (668 sessions)' },
               { val: '0.0097',  label: 'Test Return RMSE', desc: 'Outperforms zero-return naive baseline' },
@@ -656,7 +656,7 @@ export default function LandingPage() {
                       </div>
                       <span className="ln-data-range__to">Present</span>
                     </div>
-                    <p className="ln-data-range__note">6,738 daily observations · Yahoo Finance (^GSPC)</p>
+                    <p className="ln-data-range__note">6,764 daily observations · Yahoo Finance (^GSPC)</p>
                   </div>
                 )}
                 {activeStep === 1 && (

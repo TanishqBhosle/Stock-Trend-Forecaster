@@ -120,7 +120,7 @@ export default function StockDetailPage() {
       <div className="stock-detail-scope-callout">
         {ticker === '^GSPC' ? (
           <p>
-            <strong>Primary Model Instrument (^GSPC):</strong> This is the primary dataset used for the ArthNex 2-layer stacked LSTM model. Trained on 24,800 daily records (1927–2026), 9 stationary engineered features, 70/15/15 chronological split, and a 60-day lookback window.
+            <strong>Primary Model Instrument (^GSPC):</strong> This is the primary dataset used for the ArthNex 2-layer stacked LSTM model. Trained on 6,764 daily records (2000–2026), 6 raw OHLCV features, 80/10/10 chronological split, and a 60-day lookback window.
           </p>
         ) : (
           <p>

@@ -161,17 +161,17 @@ export default function ForecastPage() {
             <div className="forecast-thresholds-grid">
               <div className="threshold-rule-card bullish-rule">
                 <span className="trc-label">BULLISH</span>
-                <span className="trc-condition">Predicted Return &gt; +0.50% (+0.005)</span>
+                <span className="trc-condition">Predicted Return &gt; +0.051% (+0.00051)</span>
                 <span className="trc-desc">Upward price movement exceeds noise boundary.</span>
               </div>
               <div className="threshold-rule-card neutral-rule">
                 <span className="trc-label">NEUTRAL</span>
-                <span className="trc-condition">−0.50% &le; Predicted Return &le; +0.50%</span>
+                <span className="trc-condition">−0.049% &le; Predicted Return &le; +0.051%</span>
                 <span className="trc-desc">Movement within normal intraday volatility band.</span>
               </div>
               <div className="threshold-rule-card bearish-rule">
                 <span className="trc-label">BEARISH</span>
-                <span className="trc-condition">Predicted Return &lt; −0.50% (−0.005)</span>
+                <span className="trc-condition">Predicted Return &lt; −0.049% (−0.00049)</span>
                 <span className="trc-desc">Downward price movement exceeds noise boundary.</span>
               </div>
             </div>

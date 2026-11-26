@@ -89,8 +89,8 @@ export default function DatasetPage() {
             ['Source Provider', 'Yahoo Finance (yfinance)'],
             ['Total Observations', summary ? summary.totalObservations?.toLocaleString() : ds.rows.toLocaleString()],
             ['Date Range', summary ? `${summary.startDate} to ${summary.latestMarketDate}` : ds.dateRange],
-            ['Latest Observation', summary?.latestMarketDate || '2026-10-16'],
-            ['Current Close Price', summary ? `$${summary.currentPrice?.toFixed(2)}` : '$7,659.44'],
+            ['Latest Observation', summary?.latestMarketDate || '2026-11-23'],
+            ['Current Close Price', summary ? `$${summary.currentPrice?.toFixed(2)}` : '$7,237.17'],
             ['Missing Values', '0 (Zero missing values)'],
             ['Duplicate Dates', '0 (Sorted ascending, deduplicated)'],
           ].map(([label, value]) => (

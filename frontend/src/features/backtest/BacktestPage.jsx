@@ -39,7 +39,7 @@ export default function BacktestPage() {
       initialCapital: '100000',
       strategyMode: 'long_only',
       bullThreshold: '0.051',
-      bearThreshold: '0.049',
+      bearThreshold: '-0.049',
       txCost: '0.05',
       slippage: '0.02',
     },

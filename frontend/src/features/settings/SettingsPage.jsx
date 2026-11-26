@@ -174,7 +174,7 @@ export default function SettingsPage() {
             </label>
             <label className="settings-toggle-row">
               <div className="st-info">
-                <span className="st-title">Trend Boundary Alerts (&gt;±0.5%)</span>
+                <span className="st-title">Trend Boundary Alerts (&gt;+0.051% / &lt;−0.049%)</span>
                 <span className="st-sub">Alert when forecast returns breach bullish/bearish thresholds.</span>
               </div>
               <input

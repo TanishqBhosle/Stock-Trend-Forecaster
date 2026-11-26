@@ -57,7 +57,7 @@ export default function ModelsPage() {
     { name: 'metrics.json', path: 'backend/artifacts/lstm/metrics.json', type: 'JSON Evaluation Report', size: '1.1 KB', status: isTrained ? 'Verified (RMSE: 0.0097, DA: 55.4%)' : 'Missing / Not generated' },
     { name: 'feature_scaler.pkl', path: 'backend/artifacts/lstm/feature_scaler.pkl', type: 'scikit-learn StandardScaler', size: '727 B', status: isTrained ? 'Verified (6 features)' : 'Missing / Not generated' },
     { name: 'target_scaler.pkl', path: 'backend/artifacts/lstm/target_scaler.pkl', type: 'scikit-learn StandardScaler', size: '591 B', status: isTrained ? 'Verified (Return target)' : 'Missing / Not generated' },
-    { name: 'GSPC.csv', path: 'backend/data/GSPC.csv', type: 'Historical Market Data', size: '6,738 rows', status: 'Verified (2000-2026 Yahoo Finance)' },
+    { name: 'GSPC.csv', path: 'backend/data/GSPC.csv', type: 'Historical Market Data', size: '6,764 rows', status: 'Verified (2000-2026 Yahoo Finance)' },
   ]
 
   const fallbackMetrics = MODEL_CONFIG.metrics?.lstm || {

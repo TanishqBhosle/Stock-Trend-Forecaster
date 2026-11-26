@@ -71,9 +71,9 @@ export default function DashboardPage() {
   const isPrimary = stock.ticker === '^GSPC'
 
   const signalItems = [
-    { label: 'Bullish (>+0.5%)', count: bullish.length, color: 'var(--bullish)', symbol: '↑' },
-    { label: 'Neutral (±0.5%)', count: neutral.length, color: 'var(--neutral)', symbol: '→' },
-    { label: 'Bearish (<−0.5%)', count: bearish.length, color: 'var(--bearish)', symbol: '↓' },
+    { label: 'Bullish (>+0.051%)', count: bullish.length, color: 'var(--bullish)', symbol: '↑' },
+    { label: 'Neutral (−0.049% to +0.051%)', count: neutral.length, color: 'var(--neutral)', symbol: '→' },
+    { label: 'Bearish (<−0.049%)', count: bearish.length, color: 'var(--bearish)', symbol: '↓' },
   ]
   const totalSignals = signalItems.reduce((acc, curr) => acc + curr.count, 0) || 1
 
@@ -102,7 +102,7 @@ export default function DashboardPage() {
       <div className="dash-scope-banner">
         <Info size={16} className="dash-scope-icon" />
         <p className="dash-scope-text">
-          <strong>Market Data Notice:</strong> Market data reflects the latest daily session observations from Yahoo Finance (end-of-day close). ArthNex is trained on 6,738 historical daily sessions of the <strong>S&amp;P 500 Index (^GSPC)</strong> using 6 raw OHLCV features and a 60-day lookback window.
+          <strong>Market Data Notice:</strong> Market data reflects the latest daily session observations from Yahoo Finance (end-of-day close). ArthNex is trained on 6,764 historical daily sessions of the <strong>S&amp;P 500 Index (^GSPC)</strong> using 6 raw OHLCV features and a 60-day lookback window (80/10/10 chronological split).
         </p>
       </div>
 
@@ -178,7 +178,7 @@ export default function DashboardPage() {
             <div className="forecast-panel-body">
               <div className="forecast-badge-row">
                 <SignalBadge signal={activeForecast.signal || activeForecast.trendClassification} size="md" />
-                <span className="forecast-threshold-hint">Threshold: ±0.5%</span>
+                <span className="forecast-threshold-hint">Threshold: +0.051% / −0.049%</span>
               </div>
               <div className="forecast-return">
                 <span className="forecast-return-label">Predicted Return</span>
@@ -205,9 +205,9 @@ export default function DashboardPage() {
 
               <div className="forecast-rule-box">
                 <span className="rule-box-title">Classification Rule</span>
-                <span className="rule-box-item">&bull; Bullish: Return &gt; +0.5%</span>
-                <span className="rule-box-item">&bull; Bearish: Return &lt; −0.5%</span>
-                <span className="rule-box-item">&bull; Neutral: Within ±0.5%</span>
+                <span className="rule-box-item">&bull; Bullish: Return &gt; +0.051%</span>
+                <span className="rule-box-item">&bull; Bearish: Return &lt; −0.049%</span>
+                <span className="rule-box-item">&bull; Neutral: −0.049% to +0.051%</span>
               </div>
 
               <Link to={`/app/forecast/${selectedTicker}`} className="forecast-detail-link">
@@ -294,7 +294,7 @@ export default function DashboardPage() {
           <div className="dash-artifact-notice verified">
             <CheckCircle2 size={16} className="notice-icon-verified" />
             <span>
-              <strong>Verified Active Model:</strong> LSTM v1.0 trained on 6,738 sessions. Directional Accuracy: <strong>55.39%</strong> &middot; Test RMSE: <strong>0.0097</strong>.
+              <strong>Verified Active Model:</strong> LSTM v1.0 (6,764 sessions · 80/10/10 split). Directional Accuracy: <strong>55.39%</strong> &middot; Test RMSE: <strong>0.0097</strong>.
             </span>
           </div>
         </section>

@@ -146,14 +146,14 @@ export default function PredictionsPage() {
         regime: 'Direction Aligned'
       }
     }
-    if (record.predictedReturn >= 0 && record.actualReturn < -0.005) {
+    if (record.predictedReturn >= 0 && record.actualReturn < -0.00049) {
       return {
         type: 'Downside Volatility Shock',
         explanation: `The model anticipated low-volatility drift (+${(record.predictedReturn * 100).toFixed(2)}%), but unexpected market selling pushed the S&P 500 down ${(record.actualReturn * 100).toFixed(2)}%. Typical catalysts include surprise macroeconomic data (hot CPI inflation, Fed speaker comments), bond yield surges, or broad tech-led risk-off rotations.`,
         regime: 'High Volatility Sell-Off'
       }
     }
-    if (record.predictedReturn <= 0 && record.actualReturn > 0.005) {
+    if (record.predictedReturn <= 0 && record.actualReturn > 0.00051) {
       return {
         type: 'Upside Breakout Divergence',
         explanation: `The model anticipated muted or negative price action (${(record.predictedReturn * 100).toFixed(2)}%), but an aggressive market rally produced a +${(record.actualReturn * 100).toFixed(2)}% gain. Common catalysts include short-covering rallies, dovish policy signals, or positive earnings surprises.`,
@@ -162,7 +162,7 @@ export default function PredictionsPage() {
     }
     return {
       type: 'Threshold Boundary Drift',
-      explanation: `The prediction and actual outcome landed near the ±0.50% classification boundary, differing by ${getReturnDelta(record)}%.`,
+      explanation: `The prediction and actual outcome landed near the −0.049% to +0.051% classification boundary, differing by ${getReturnDelta(record)}%.`,
       regime: 'Compressed Volatility Drift'
     }
   }

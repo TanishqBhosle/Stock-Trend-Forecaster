@@ -80,7 +80,7 @@ export default function SciModelCardPage() {
       <section className="sci-section">
         <h2 className="sci-section-title">Verified Preprocessing Pipeline</h2>
         {[
-          'Download S&P 500 (^GSPC) from Yahoo Finance (2000-01-03 to 2026-10-16) — 6,738 clean trading observations.',
+          'Download S&P 500 (^GSPC) from Yahoo Finance (2000-01-03 to 2026-11-23) — 6,764 clean trading observations.',
           'Validate non-finite values, ascending date ordering, and deduplicate trading days.',
           'Extract exactly six raw OHLCV features: Open, High, Low, Close, Adj Close, Volume.',
           'Compute target as next trading session Close return: Close[t] / Close[t-1] - 1.',
