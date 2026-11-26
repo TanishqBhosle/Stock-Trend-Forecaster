@@ -39,9 +39,9 @@ class Settings(BaseSettings):
     RANDOM_SEED: int = 42
     
     # Trend Signal Thresholds
-    # Bullish > +0.005 (+0.5%), Bearish < -0.005 (-0.5%), Neutral in between
-    BULLISH_THRESHOLD: float = 0.005
-    BEARISH_THRESHOLD: float = -0.005
+    # Bullish > +0.00051 (+0.051%), Bearish < -0.00049 (-0.049%), Neutral in between
+    BULLISH_THRESHOLD: float = 0.00051
+    BEARISH_THRESHOLD: float = -0.00049
     
     # CORS
     CORS_ORIGINS: List[str] = [

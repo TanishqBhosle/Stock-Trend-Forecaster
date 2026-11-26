@@ -80,8 +80,8 @@ class BacktestService:
         db: Session,
         ticker: str = "^GSPC",
         initial_capital: float = 100000.0,
-        bullish_threshold: float = 0.0020,
-        bearish_threshold: float = -0.0020,
+        bullish_threshold: float = 0.00051,
+        bearish_threshold: float = -0.00049,
         transaction_cost_pct: float = 0.0005,  # 0.05%
         slippage_pct: float = 0.0002,          # 0.02%
         strategy_mode: str = "long_only",      # 'long_only' or 'long_short'
