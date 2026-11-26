@@ -1,44 +1,44 @@
 {
   "available": true,
   "modelVersion": "lstm-v1.0",
-  "jobId": "e8ab8def-f17e-487d-8fb8-bdf84e62ba32",
-  "evaluatedAt": "2026-11-13T18:25:20.237589",
-  "datasetDateRange": "2000-01-03 to 2026-10-16",
-  "totalObservations": 6738,
+  "jobId": "f71e7ce2-f424-4afb-bfb6-717ef7c24540",
+  "evaluatedAt": "2026-11-26T09:24:44.482949",
+  "datasetDateRange": "2000-01-03 to 2026-11-23",
+  "totalObservations": 6764,
   "splits": {
-    "total_samples": 6678,
-    "train_samples": 5342,
-    "val_samples": 668,
-    "test_samples": 668,
+    "total_samples": 6704,
+    "train_samples": 5363,
+    "val_samples": 670,
+    "test_samples": 671,
     "train_dates": [
       "2000-03-29",
-      "2021-06-22"
+      "2021-07-22"
     ],
     "val_dates": [
-      "2021-06-23",
-      "2024-02-16"
+      "2021-07-23",
+      "2024-03-21"
     ],
     "test_dates": [
-      "2024-02-20",
-      "2026-10-16"
+      "2024-03-22",
+      "2026-11-23"
     ]
   },
   "testMetrics": {
-    "rmse": 0.00966415364932183,
-    "mae": 0.006550843887190481,
-    "directionalAccuracy": 55.38922155688623,
-    "sampleCount": 668,
-    "startDate": "2024-02-20",
-    "endDate": "2026-10-16",
+    "rmse": 0.010165442228665294,
+    "mae": 0.006809836188537821,
+    "directionalAccuracy": 54.992548435171386,
+    "sampleCount": 671,
+    "startDate": "2024-03-22",
+    "endDate": "2026-11-23",
     "evaluationType": "held_out_test"
   },
   "walkForwardMetrics": {
-    "rmse": 0.009664153648799167,
-    "mae": 0.006550843886101266,
-    "directionalAccuracy": 55.38922155688623,
-    "sampleCount": 668,
-    "startDate": "2024-02-20",
-    "endDate": "2026-10-16",
+    "rmse": 0.01016544222687544,
+    "mae": 0.006809836185848644,
+    "directionalAccuracy": 54.992548435171386,
+    "sampleCount": 671,
+    "startDate": "2024-03-22",
+    "endDate": "2026-11-23",
     "evaluationType": "fixed_model_walk_forward"
   }
 }
